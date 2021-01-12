@@ -1,0 +1,7 @@
+.fill-window {
+    height: 100%;
+    display: flex;
+}
+html, body, #root, .App {
+    height: 100%;
+  }
