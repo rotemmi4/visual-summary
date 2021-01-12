@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom';
-import { useGetMediaById } from '../../model/requests/MediaModelRestAPI';
-import {TextVisualitaion} from '../TextVisualitaion'
-import * as textRepository from '../../repositories/TextRepository'
+import { useGetMediaById } from '../../../../../../visual-summary/client/src/model/requests/MediaModelRestAPI';
+import {TextVisualitaion} from '../../../../../../visual-summary/client/src/components/TextVisualitaion'
+import * as textRepository from '../../../../../../visual-summary/client/src/repositories/TextRepository'
 
 
 export default function DisplayTextPage(){
@@ -20,7 +20,6 @@ export default function DisplayTextPage(){
     //       isToggleOn: !state.isToggleOn
     //     }));
     //   }
-
     return(
         <>
         <form>
@@ -32,16 +31,15 @@ export default function DisplayTextPage(){
             </select> */}
 
             {/* radio buttons every change in radio button change type*/}
-
             <br/>
             <h3>Radio burron is : {radio}</h3>
             <input type="radio" checked={radio === "WithOutVisualitation"} value="WithOutVisualitation" onChange={(e)=>{setRadio(e.target.value)}}/>
             <label>WithOutVisualitation  </label>
             <br/>
-            <input type="radio" checked={radio === "Gadual Highlight"} value="Gadual Highlight" onChange={(e)=>{setRadio(e.target.value)}} onClick            />
+            <input type="radio" checked={radio === "Gadual Highlight"} value="Gadual Highlight" onChange={(e)=>{setRadio(e.target.value)}}/>
             <label>Gadual Highlight  </label>
 
-            {text && text.data ? <TextVisualitaion sentences={text.data.sentences} type={value} /*type={type}*/ name={text.data.name}/> : null}
+            {text && text.data ? <TextVisualitaion sentences={text.data.sentences} type={1} /*type={type}*/ name={text.data.name}/> : null}
 
        </form>
 
