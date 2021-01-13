@@ -18,18 +18,28 @@ export default function DisplayTextPage(){
         <>
 
                 <Container>
-                    <Row className="mt-5 justify-content-center align-items-center">
+                    <div className="mt-5 justify-content-center align-items-center"  style={{position: "absolute" , left: "40px"}} >
                         <h3>Radio button is : {type}</h3>
-                        <input type="radio" checked={type === "Without Visualization"} value="Without Visualization" onChange={(e)=>{setType(e.target.value)}}/>
-                        <label>Without Visualization</label>
-                        <input type="radio" checked={type === "Gradual Highlight"} value="Gradual Highlight" onChange={(e)=>{setType(e.target.value)}}/>
-                        <label>Gradual Highlight</label>
-                        <input type="radio" checked={type === "Gradual Font"} value="Gradual Font" onChange={(e)=>{setType(e.target.value)}}/>
-                        <label>Gradual Font</label>
-                        <input type="radio" checked={type === "Summary Only"} value="Summary Only" onChange={(e)=>{setType(e.target.value)}}/>
-                        <label>Summary Only</label>
-                    </Row>
-                    <Row className="justify-content-center align-items-center">
+                    </div>
+                    <div className="mt-5 justify-content-center align-items-center" style={{position: "absolute" , left: "40px"}}>
+                        <div className="mt-5 justify-content-center align-items-center">
+                            <input type="radio" checked={type === "Without Visualization"} value="Without Visualization" onChange={(e)=>{setType(e.target.value)}}/>
+                            <label>Without Visualization</label>
+                        </div>
+                        <div className="mt-5 justify-content-center align-items-center">
+                            <input type="radio" checked={type === "Gradual Highlight"} value="Gradual Highlight" onChange={(e)=>{setType(e.target.value)}}/>
+                            <label>Gradual Highlight</label>
+                        </div>
+                        <div className="mt-5 justify-content-center align-items-center">
+                            <input type="radio" checked={type === "Gradual Font"} value="Gradual Font" onChange={(e)=>{setType(e.target.value)}}/>
+                            <label>Gradual Font</label>
+                        </div>
+                        <div className="mt-5 justify-content-center align-items-center">
+                            <input type="radio" checked={type === "Summary Only"} value="Summary Only" onChange={(e)=>{setType(e.target.value)}}/>
+                            <label>Summary Only</label>
+                        </div>
+                    </div>
+                    <Row className="justify-content-center align-items-center" style={{position: "absolute" , right: "40px" ,  width: "60pc" }}>
                         {text && text.data ? <TextVisualitaion sentences={text.data.sentences} type={type} /*type={type}*/ name={text.data.name}/> : null}
                     </Row>
                 </Container>
