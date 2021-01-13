@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-export function WithOutVisualitation(props){
+export function WithOutVisualization(props){
 
     const sentences = props.sentences
 

@@ -1,8 +1,8 @@
 import React from 'react'
-import { TextVisualitaionFactory } from './TextVisualitaionFactory'
+import { TextVisualizationFactory } from './TextVisualizationFactory'
 
 
-export function TextVisualitaion(props){
+export function TextVisualization(props){
 
     const sentences = props.sentences
     const type = props.type
@@ -13,7 +13,7 @@ export function TextVisualitaion(props){
     return (
         <div>
             {name ? <h3 >{name}</h3> : null}
-            <TextVisualitaionFactory sentences={sentences} type={type}/>
+            <TextVisualizationFactory sentences={sentences} type={type}/>
         </div>
     )
 }

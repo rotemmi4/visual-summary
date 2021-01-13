@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {Button, Container, Modal, Row, Col} from 'react-bootstrap';
-import {TextVisualitaion} from "./TextVisualitaion";
+import {TextVisualization} from "./TextVisualization";
 import * as textRepository from "../repositories/TextRepository";
 import "./Modal.css"
 
@@ -56,7 +56,7 @@ export function CenteredModal(props) {
               </div>
               </Col >
               <Col >
-              {text1 && text1.data ? <TextVisualitaion sentences={text1.data.sentences} type={type} /*type={type}*/ name={text1.data.name}/> : null}
+              {text1 && text1.data ? <TextVisualization sentences={text1.data.sentences} type={type} /*type={type}*/ name={text1.data.name}/> : null}
               </Col>
           </Container>
         </Modal.Body>

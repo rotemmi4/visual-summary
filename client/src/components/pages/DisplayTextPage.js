@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { useGetMediaById } from '../../model/requests/MediaModelRestAPI';
-import {TextVisualitaion} from '../TextVisualitaion'
+import {TextVisualization} from '../TextVisualization'
 import * as textRepository from '../../repositories/TextRepository'
 import Button from 'react-bootstrap/Button';
 import {Container, Row} from "react-bootstrap";
@@ -53,7 +53,7 @@ export default function DisplayTextPage(){
                         </div>
                     </div>
                     <div className="justify-content-center align-items-center" style={{position: "absolute" , right: "40px" ,  width: "60pc" }}>
-                        {text && text.data ? <TextVisualitaion sentences={text.data.sentences} type={type} /*type={type}*/ name={text.data.name}/> : null}
+                        {text && text.data ? <TextVisualization sentences={text.data.sentences} type={type} /*type={type}*/ name={text.data.name}/> : null}
 
                     </div>
                 </Container>

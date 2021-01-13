@@ -7,7 +7,7 @@ import { useGetAllText } from '../../model/requests/TextModelRestAPI'
 import { useAuth } from '../../model/context/auth_context';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { DropdownButton } from 'react-bootstrap';
-import {TextVisualitaion} from "../TextVisualitaion";
+import {TextVisualization} from "../TextVisualization";
 import * as textRepository from "../../repositories/TextRepository";
 import { CenteredModal } from '../CenteredModal';
 import { Modal } from 'react-bootstrap';

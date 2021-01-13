@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-export function YellowHighlightVisualitation(props){
+export function GradualHighlightVisualization(props){
 
     const sentences = props.sentences
 
