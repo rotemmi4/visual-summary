@@ -7,20 +7,21 @@ import Button from 'react-bootstrap/Button';
 import {Container, Row} from "react-bootstrap";
 
 
+
 export default function DisplayTextPage(){
 
     const { id } = useParams()
     const text = textRepository.useGetTextWeights(id)
     const [type, setType] = useState("Without Visualization");
+    const [modalShow,setModalShow] = useState(false)
+
 
 
     return(
         <>
-
                 <Container>
                     <div className="mt-5 justify-content-center align-items-center"  style={{position: "absolute" , left: "40px"}} >
                         <h3>Visualization : {type}</h3>
-                        <h3>The Visualization: {type}</h3>
                     </div>
                     <div className="mt-5 justify-content-center align-items-center" style={{position: "absolute" , left: "40px"}}>
                         <div className="mt-5 justify-content-center align-items-center">
@@ -46,10 +47,14 @@ export default function DisplayTextPage(){
                         <div className="mt-5 justify-content-center align-items-center">
                             <input type="radio" checked={type === "Summary Only"} value="Summary Only" onChange={(e)=>{setType(e.target.value)}}/>
                             <label>Summary Only</label>
+                            <br/><br/><br/>
+                            <Button href={''}>Save</Button>
+
                         </div>
                     </div>
                     <Row className="justify-content-center align-items-center" style={{position: "absolute" , right: "40px" ,  width: "60pc" }}>
                         {text && text.data ? <TextVisualitaion sentences={text.data.sentences} type={type} /*type={type}*/ name={text.data.name}/> : null}
+
                     </Row>
                 </Container>
                 {/* <h1>Drop Down Value is : {dropdown}</h1> */}
