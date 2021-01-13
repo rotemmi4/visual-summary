@@ -20,6 +20,7 @@ export default function DisplayTextPage(){
                 <Container>
                     <div className="mt-5 justify-content-center align-items-center"  style={{position: "absolute" , left: "40px"}} >
                         <h3>Visualization : {type}</h3>
+                        <h3>The Visualization: {type}</h3>
                     </div>
                     <div className="mt-5 justify-content-center align-items-center" style={{position: "absolute" , left: "40px"}}>
                         <div className="mt-5 justify-content-center align-items-center">
@@ -27,8 +28,16 @@ export default function DisplayTextPage(){
                             <label>Without Visualization</label>
                         </div>
                         <div className="mt-5 justify-content-center align-items-center">
+                            <input type="radio" checked={type === "Highlight"} value="Highlight" onChange={(e)=>{setType(e.target.value)}}/>
+                            <label>Highlight</label>
+                        </div>
+                        <div className="mt-5 justify-content-center align-items-center">
                             <input type="radio" checked={type === "Gradual Highlight"} value="Gradual Highlight" onChange={(e)=>{setType(e.target.value)}}/>
                             <label>Gradual Highlight</label>
+                        </div>
+                        <div className="mt-5 justify-content-center align-items-center">
+                            <input type="radio" checked={type === "Increased Font"} value="Increased Font" onChange={(e)=>{setType(e.target.value)}}/>
+                            <label>Increased Font</label>
                         </div>
                         <div className="mt-5 justify-content-center align-items-center">
                             <input type="radio" checked={type === "Gradual Font"} value="Gradual Font" onChange={(e)=>{setType(e.target.value)}}/>
