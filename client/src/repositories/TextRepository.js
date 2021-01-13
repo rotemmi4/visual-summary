@@ -13,7 +13,7 @@ export function useGetAllText(){
         error: false
     })
 
-    const restMedia = restModelMedia()
+    const restText = textModelRestAPI.useGetAllText()
     //const fileMedia = textDummieModel.useGetAllText()    
 
     useEffect( () => {
@@ -22,10 +22,10 @@ export function useGetAllText(){
             data: [],
             error: false
         })
-        if(!restMedia.error && !restMedia.loading && restMedia.data != null){
+        if(!restText.error && !restText.loading && restText.data != null){
             setText({
                 loading: false,
-                data: restMedia.data,
+                data: restText.data,
                 error: false
             })
         }
@@ -43,7 +43,7 @@ export function useGetAllText(){
                 error: true
             })
         }
-    },[/*fileMedia.data,*/restMedia.data])
+    },[/*fileMedia.data,*/restText.data])
 
     return text
 }

@@ -13,7 +13,7 @@ return (
         <Navbar.Brand href="/">Grand Media</Navbar.Brand>
         <Nav className="mr-auto">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/texts">Tests</Nav.Link>
+            <Nav.Link as={Link} to="/media">Tests</Nav.Link>
             <Nav.Link as={Link} to="/create">Upload New Text</Nav.Link>
             {/* {user ? <NavDropdown title="Actions" id="collasible-nav-dropdown">
                 <NavDropdown.Item as={Link} to="/create">Add Media</NavDropdown.Item>

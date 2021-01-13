@@ -19,7 +19,7 @@ export default function DisplayTextPage(){
 
                 <Container>
                     <div className="mt-5 justify-content-center align-items-center"  style={{position: "absolute" , left: "40px"}} >
-                        <h3>Radio button is : {type}</h3>
+                        <h3>Visualization : {type}</h3>
                     </div>
                     <div className="mt-5 justify-content-center align-items-center" style={{position: "absolute" , left: "40px"}}>
                         <div className="mt-5 justify-content-center align-items-center">
