@@ -52,10 +52,10 @@ export default function DisplayTextPage(){
 
                         </div>
                     </div>
-                    <Row className="justify-content-center align-items-center" style={{position: "absolute" , right: "40px" ,  width: "60pc" }}>
+                    <div className="justify-content-center align-items-center" style={{position: "absolute" , right: "40px" ,  width: "60pc" }}>
                         {text && text.data ? <TextVisualitaion sentences={text.data.sentences} type={type} /*type={type}*/ name={text.data.name}/> : null}
 
-                    </Row>
+                    </div>
                 </Container>
                 {/* <h1>Drop Down Value is : {dropdown}</h1> */}
                 {/* <select value={dropdown} onChange={(e)=>{setDropdown(e.target.value)}}>

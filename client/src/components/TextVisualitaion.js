@@ -12,7 +12,7 @@ export function TextVisualitaion(props){
 
     return (
         <div>
-            {name ? <h1>{name}</h1> : null}
+            {name ? <h3 >{name}</h3> : null}
             <TextVisualitaionFactory sentences={sentences} type={type}/>
         </div>
     )
