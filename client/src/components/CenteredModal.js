@@ -52,7 +52,6 @@ export function CenteredModal(props) {
               <div class="form-check">
                 <input type="radio" checked={type === "Summary Only"} value="Summary Only" onChange={(e)=>{setType(e.target.value)}}/>
                 <label>Summary Only</label>
-
               </div>
               </Col >
               <Col >

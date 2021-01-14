@@ -4,6 +4,7 @@ import { WithOutVisualization } from './pages/WithOutVisualization'
 import {GradualFontVisualization} from "./GradualFontVisualization";
 import {SummaryOnlyVisualization} from "./SummaryOnlyVisualization";
 import {HighlightVisualization} from "./HighlightVisualization";
+import {FontSizeVisualization} from "./FontSizeVisualization";
 
 
 
@@ -23,7 +24,7 @@ export function TextVisualizationFactory(props){
         return <HighlightVisualization sentences={props.sentences}/>
     }
     else if (type == "Increased Font"){
-        return <GradualFontVisualization sentences={props.sentences}/>
+        return <FontSizeVisualization sentences={props.sentences}/>
     }
     else if (type == "Gradual Font"){
         return <GradualFontVisualization sentences={props.sentences}/>
