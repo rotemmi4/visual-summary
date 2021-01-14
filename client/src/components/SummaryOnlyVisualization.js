@@ -5,7 +5,7 @@ import {Form} from "react-bootstrap";
 export function SummaryOnlyVisualization(props){
 
     const sentences = props.sentences
-    const [threshold , setThreshold] = useState(0.0)
+    const [threshold , setThreshold] = useState(0.5)
 
     return (
         <>
