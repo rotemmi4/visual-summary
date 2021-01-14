@@ -57,11 +57,11 @@ export default function TestManagement() {
                                     <option value={text.id}>{text.name}</option>
                                     )) : null}
                                 </select>
-                                <Button onClick={(e)=>{
+                                    {'    '}<Button onClick={(e)=>{
                                     let arr=[...modalShow]
                                     arr[index] = true
                                     setModalShow(arr)
-                                }}>Choose Visualization</Button>
+                                }}>Choose Visualization</Button><br/><br/>
                                 <VisualizationDisplayModal show={modalShow[index]} onHide={() => {
                                     let arr=[...modalShow]
                                     arr[index] = false
