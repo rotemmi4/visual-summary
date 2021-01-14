@@ -4,8 +4,8 @@ import * as textModelRestAPI  from '../model/requests/TextModelRestAPI';
 import * as textDummieModel from '../model/dummies/TextDummiesModel';
 
 
-export function save(){
-    textModelRestAPI.saveVisualizationForText()
+export function save(type,textID,propertyName,propertyValue,propertyType){
+    textModelRestAPI.saveVisualizationForText(type,textID,propertyName,propertyValue,propertyType)
 }
 
 export function useGetAllText(){

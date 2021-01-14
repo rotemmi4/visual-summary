@@ -12,7 +12,9 @@ export function VisualizationDisplayModal(props) {
   const text1 = textRepository.useGetTextWeights(id)
   const [type, setType] = useState("Without Visualization");
 
-
+  const [propertyName, setPropertyName] = useState("none");
+  const [propertyValue, setPropertyValue] = useState("none");
+  const [propertyType, setPropertyType] = useState("none");
 
 
     return (
@@ -33,27 +35,27 @@ export function VisualizationDisplayModal(props) {
               <h3>Visualization : {type}</h3>
 
               <div class="form-check">
-                <input type="radio" checked={type === "Without Visualization"} value="Without Visualization" onChange={(e)=>{setType(e.target.value)}}/>
+                <input type="radio" checked={type === "Without Visualization"} value="Without Visualization" onChange={(e)=>{setType(e.target.value); setPropertyName("none");setPropertyValue("none"); setPropertyType("none")}}/>
                 <label>Without Visualization</label>
               </div>
               <div class="form-check">
-                <input type="radio" checked={type === "Highlight"} value="Highlight" onChange={(e)=>{setType(e.target.value)}}/>
+                <input type="radio" checked={type === "Highlight" } value="Highlight"  onChange={(e)=>{setType(e.target.value); setPropertyName("color"); setPropertyValue("yellow"); setPropertyType("str")}}/>
                 <label>Highlight</label>
               </div>
               <div class="form-check">
-                <input type="radio" checked={type === "Gradual Highlight"} value="Gradual Highlight" onChange={(e)=>{setType(e.target.value)}}/>
+                <input type="radio" checked={type === "Gradual Highlight"} value="Gradual Highlight" onChange={(e)=>{setType(e.target.value);setPropertyName("color");setPropertyValue("yellow"); setPropertyType("str")}}/>
                 <label>Gradual Highlight</label>
               </div>
               <div class="form-check">
-                <input type="radio" checked={type === "Increased Font"} value="Increased Font" onChange={(e)=>{setType(e.target.value)}}/>
+                <input type="radio" checked={type === "Increased Font"} value="Increased Font" onChange={(e)=>{setType(e.target.value);setPropertyName("font"); setPropertyValue("18"); setPropertyType("int") }}/>
                 <label>Increased Font</label>
               </div>
               <div class="form-check">
-                <input type="radio" checked={type === "Gradual Font"} value="Gradual Font" onChange={(e)=>{setType(e.target.value)}}/>
+                <input type="radio" checked={type === "Gradual Font"} value="Gradual Font" onChange={(e)=>{setType(e.target.value); setPropertyName("font"); setPropertyValue("18"); setPropertyType("int") }}/>
                 <label>Gradual Font</label>
               </div>
               <div class="form-check">
-                <input type="radio" checked={type === "Summary Only"} value="Summary Only" onChange={(e)=>{setType(e.target.value)}}/>
+                <input type="radio" checked={type === "Summary Only"} value="Summary Only" onChange={(e)=>{setType(e.target.value); setPropertyName("none") ;setPropertyValue("none"); setPropertyType("none") }}/>
                 <label>Summary Only</label>
               </div>
               </Col >
@@ -63,7 +65,7 @@ export function VisualizationDisplayModal(props) {
           </Container>
         </Modal.Body>
         <Modal.Footer>
-          <Button  onClick={(e)=>{textRepository.save() }} href={''}>Save</Button>
+          <Button  onClick={(e)=>{textRepository.save(type,id,propertyName,propertyValue,propertyType) }} href={''}>Save</Button>
           <Button onClick={props.onHide}>Close</Button>
         </Modal.Footer>
       </Modal>
