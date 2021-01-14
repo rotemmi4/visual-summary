@@ -15,7 +15,7 @@ import { Modal } from 'react-bootstrap';
 
 
 
-export default function MediaManagment() {
+export default function TestManagement() {
     
     const {user} = useAuth()
 

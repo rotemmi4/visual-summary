@@ -10,7 +10,7 @@ export default function DeveloperNavbar (){
 return (
     <>
     <Navbar bg="light" variant="light">
-        <Navbar.Brand href="/">Grand Media</Navbar.Brand>
+        <Navbar.Brand href="/" class="font-weight-bold">Visual Summary</Navbar.Brand>
         <Nav className="mr-auto">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
             <Nav.Link as={Link} to="/media">Tests</Nav.Link>
