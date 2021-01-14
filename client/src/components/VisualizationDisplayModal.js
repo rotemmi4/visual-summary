@@ -4,11 +4,14 @@ import {TextVisualization} from "./TextVisualization";
 import * as textRepository from "../repositories/TextRepository";
 import "./Modal.css"
 
+
 //style={{position: "absolute" , left: "10px"}}
 export function VisualizationDisplayModal(props) {
   const id = props.text
+
   const text1 = textRepository.useGetTextWeights(id)
   const [type, setType] = useState("Without Visualization");
+
 
 
 
@@ -60,7 +63,7 @@ export function VisualizationDisplayModal(props) {
           </Container>
         </Modal.Body>
         <Modal.Footer>
-          <Button href={''}>Save</Button>
+          <Button  onClick={(e)=>{textRepository.save() }} href={''}>Save</Button>
           <Button onClick={props.onHide}>Close</Button>
         </Modal.Footer>
       </Modal>

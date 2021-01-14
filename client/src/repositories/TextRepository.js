@@ -4,6 +4,10 @@ import * as textModelRestAPI  from '../model/requests/TextModelRestAPI';
 import * as textDummieModel from '../model/dummies/TextDummiesModel';
 
 
+export function save(){
+    textModelRestAPI.saveVisualizationForText()
+}
+
 export function useGetAllText(){
 
     const [text, setText] = useState({

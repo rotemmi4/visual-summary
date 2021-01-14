@@ -39,6 +39,13 @@ export function useGetAllText(){
     return useAxiosGet(url, headers)
 }
 
+ export function saveVisualizationForText(){
+     const url = 'http://127.0.0.1:5000/saveVisu'
+     const body = "test"
+     const headers = {headers : {"x-auth-token": getToken()}}
+     return axios.post(url,body,headers)
+ }
+
 export function useGetTextById(id){
     const url = `http://127.0.0.1:5000/texts/${id}`
     const headers = {headers: {"x-auth-token": getToken()}}
