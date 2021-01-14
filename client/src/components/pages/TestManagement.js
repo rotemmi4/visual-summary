@@ -9,7 +9,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import { DropdownButton } from 'react-bootstrap';
 import {TextVisualization} from "../TextVisualization";
 import * as textRepository from "../../repositories/TextRepository";
-import { CenteredModal } from '../CenteredModal';
+import { VisualizationDisplayModal } from '../VisualizationDisplayModal';
 import { Modal } from 'react-bootstrap';
 
 
@@ -24,11 +24,11 @@ export default function TestManagement() {
 
     const { id } = useParams()
     const textById = textRepository.useGetTextById(id)
-    const [modalShow,setModalShow] = useState(false)
+    const [modalShow,setModalShow] = useState([false,false,false,false,false,false,false,false,false,false])
 
 
-
-    const [dropdown, setDropdown] = useState("0");
+    const size = 10
+    const [dropdown, setDropdown] = useState([0,0,0,0,0,0,0,0,0,0]);
     // const [dropdown2, setDropdown2] = useState("0");
 
 
@@ -44,22 +44,33 @@ export default function TestManagement() {
                 <Col></Col>
                 <Col xs="9">
                     <div>
-                    {<select value={dropdown} onChange={(e)=>{setDropdown(e.target.value)}}>
-                        {texts && texts.data ? texts.data.map(text => (
-                            <option value={text.id}>{text.name}</option>
-                            )) : null}
-                    </select>}
-                        <Button onClick={(e)=>{setModalShow(true)}}>Choose Visualization</Button>
-                    </div>
-                    <div>
-                    {<select value={dropdown} onChange={(e)=>{setDropdown(e.target.value)}}>
-                        {texts && texts.data ? texts.data.map(text => (
-                            <option value={text.id}>{text.name}</option>
-                        )) : null}
-                    </select>}
-                    <Button onClick={(e)=>{setModalShow(true)}}>Choose Visualization</Button>
-                    <CenteredModal show={modalShow} onHide={() => setModalShow(false)} text={dropdown}></CenteredModal>
-
+                    {
+                        dropdown.map((value, index) => {
+                            return (
+                                <>
+                                <select value={dropdown[index]} onChange={(e)=>{
+                                    let arr=[...dropdown]
+                                    arr[index] = parseInt(e.target.value)
+                                    setDropdown(arr)
+                                }}>
+                                {texts && texts.data ? texts.data.map(text => (
+                                    <option value={text.id}>{text.name}</option>
+                                    )) : null}
+                                </select>
+                                <Button onClick={(e)=>{
+                                    let arr=[...modalShow]
+                                    arr[index] = true
+                                    setModalShow(arr)
+                                }}>Choose Visualization</Button>
+                                <VisualizationDisplayModal show={modalShow[index]} onHide={() => {
+                                    let arr=[...modalShow]
+                                    arr[index] = false
+                                    setModalShow(arr)
+                                }} text={dropdown[index]}></VisualizationDisplayModal>
+                                </>
+                            )
+                        })
+                    }
                     </div>
 
 

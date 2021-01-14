@@ -3,7 +3,7 @@
 // import { RegisterCard } from '../RegisterCard'
 // import './LoginPage.css';
 // import { useAuth } from '../../model/context/auth_context'
-// import { CenteredModal } from '../CenteredModal';
+// import { VisualizationDisplayModal } from '../VisualizationDisplayModal';
 //
 //
 // export function RegisterPage(){
@@ -44,7 +44,7 @@
 //                     <RegisterCard handleRegister={handleRegister} handleInputChange={handleInputChange}/>
 //                 </Col>
 //             </Row>
-//             <CenteredModal show={modalShow} onHide={() => setModalShow(false)} text={errorMessage}></CenteredModal>
+//             <VisualizationDisplayModal show={modalShow} onHide={() => setModalShow(false)} text={errorMessage}></VisualizationDisplayModal>
 //         </Container>
 //     )
 //

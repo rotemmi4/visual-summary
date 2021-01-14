@@ -18,8 +18,8 @@ function AuthenticatedApp() {
             <AppNavbar/>
             <Switch>
                 <Route path='/' exact component={HomePage} />
-                <Route path='/media' component={TestManagement} />
-                <Route path='/create' component={CreateTextPage} />
+                <Route path='/create-test' component={TestManagement} />
+                <Route path='/create-text' component={CreateTextPage} />
                 <Route path='/edit/:id' component={EditTestPage} />
                 <Route path='/texts/:id' component={DisplayTextPage} />
             </Switch>

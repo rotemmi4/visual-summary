@@ -3,7 +3,7 @@
 // import { useGetMediaById, editMedia } from '../../repositories/MediaRepository'
 // import { Col, Container, Form, Row } from 'react-bootstrap';
 // import { useHistory, useParams } from 'react-router-dom';
-// import { CenteredModal } from '../CenteredModal';
+// import { VisualizationDisplayModal } from '../VisualizationDisplayModal';
 //
 // export default function EditTestPage() {
 //
@@ -73,7 +73,7 @@
 //                     </Col>
 //                     <Col></Col>
 //                 </Row>
-//                 <CenteredModal show={modalShow} onHide={() => setModalShow(false)} text={errorMessage}></CenteredModal>
+//                 <VisualizationDisplayModal show={modalShow} onHide={() => setModalShow(false)} text={errorMessage}></VisualizationDisplayModal>
 //             </Container>
 //         )
 //     }

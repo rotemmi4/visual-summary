@@ -57,14 +57,14 @@ export function createText(props){
     const headers = {headers : {"x-auth-token": getToken()}}
     return axios.post(url,body,headers)
 }
-// export function editMedia(props){
+// export function editText(props){
 //     const url = 'http://127.0.0.1:5000/texts'
 //     const body = props
 //     const headers = {headers : {"x-auth-token": getToken()}}
 //     return axios.put(url,body,headers)
 // }
 
-// export function deleteMedia(props){
+// export function deleteText(props){
 //     const url = 'http://127.0.0.1:5000/texts'
 //     const body = props
 //     const headers = {headers : {"x-auth-token": getToken()}}

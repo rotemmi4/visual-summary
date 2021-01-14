@@ -29,12 +29,12 @@ export default function CreateTextPage() {
     }
 
     const handleCancel = (event) => {
-        history.push('/media')
+        history.push('/create-test')
     }
 
     const handleSubmit = (event) => {
         createMedia(state)
-        history.push('/media')
+        history.push('/create-test')
     }
     
     const optionControl = (<Form.Control

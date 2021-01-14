@@ -5,7 +5,7 @@ import * as textRepository from "../repositories/TextRepository";
 import "./Modal.css"
 
 //style={{position: "absolute" , left: "10px"}}
-export function CenteredModal(props) {
+export function VisualizationDisplayModal(props) {
   const id = props.text
   const text1 = textRepository.useGetTextWeights(id)
   const [type, setType] = useState("Without Visualization");
