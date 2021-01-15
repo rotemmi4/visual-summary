@@ -34,7 +34,6 @@ export function LoginCard(props){
                 </Form.Row>
             </Form>
             <Button className="mb-2" onClick={props.handleLogin} variant="primary" block>Login</Button>
-            {/* <Link to="/register"><Button variant="secondary" block>Register</Button></Link> */}
         </Card.Body>
       </Card>
     )

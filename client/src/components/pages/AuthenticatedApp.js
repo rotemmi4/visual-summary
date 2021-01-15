@@ -4,24 +4,18 @@ import '../../App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { HomePage } from './HomePage';
 import TestManagement from './TestManagement.js';
-import EditTestPage from './EditTestPage';
-import CreateTextPage from './CreateTextPage';
 import { useAuth } from '../../model/context/auth_context';
-import AppNavbar from '../Navbar';
-import DisplayTextPage from './DisplayTextPage';
+import DeveloperNavbar from "../DeveloperNavbar";
 
 function AuthenticatedApp() {
 
     const {user, logout} = useAuth()
     return (
         <>
-            <AppNavbar/>
+            <DeveloperNavbar/>
             <Switch>
                 <Route path='/' exact component={HomePage} />
                 <Route path='/create-test' component={TestManagement} />
-                <Route path='/create-text' component={CreateTextPage} />
-                <Route path='/edit/:id' component={EditTestPage} />
-                <Route path='/texts/:id' component={DisplayTextPage} />
             </Switch>
         </>
     );

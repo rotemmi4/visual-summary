@@ -15,10 +15,6 @@ return (
         <Nav className="mr-auto">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
             {user && <Nav.Link as={Link} to="/create-test">Tests</Nav.Link>}
-            {/*<Nav.Link as={Link} to="/create-text">Upload New Text</Nav.Link>*/}
-            {/* {user ? <NavDropdown title="Actions" id="collasible-nav-dropdown">
-                <NavDropdown.Item as={Link} to="/create">Add Media</NavDropdown.Item>
-            </NavDropdown> : null} */}
         </Nav>
         <Nav>
              {user ? <Nav.Link as={Link} to="/" onClick={logout}>Logout</Nav.Link> : <Nav.Link as={Link} to="/login">Login</Nav.Link>}

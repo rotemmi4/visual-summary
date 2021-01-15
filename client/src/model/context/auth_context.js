@@ -15,7 +15,6 @@ export function AuthProvider({children}){
             setValue({
                 user: user,
                 login: login,
-                register: register,
                 logout: logout
             })
         })
@@ -26,7 +25,6 @@ export function AuthProvider({children}){
             setValue({
                 user: user,
                 login: login,
-                register: register,
                 logout: logout
             })
             history.push('/')
@@ -35,38 +33,17 @@ export function AuthProvider({children}){
             setValue({
                 user: null,
                 login: login,
-                register: register,
                 logout: logout
             })
         })
     }
 
-    const register = (user_data) => {
-        provider.userRegister(user_data).then(function (user){
-            setValue({
-                user: user,
-                login: login,
-                register: register,
-                logout: logout
-            })
-            history.push('/')
-        })
-        .catch(function(err){
-            setValue({
-                user: null,
-                login: login,
-                register: register,
-                logout: logout
-            })
-        })
-    }
 
     const logout = () => {
         provider.userLogout()
         setValue({
             user: null,
             login: login,
-            register: register,
             logout: logout
         })
     }
@@ -74,7 +51,6 @@ export function AuthProvider({children}){
     const [value, setValue] = useState({
         user: null,
         login: login,
-        register: register,
         logout: logout
     })
 
@@ -85,21 +61,6 @@ export function AuthProvider({children}){
             {children}
         </AuthContext.Provider>
     )
-    //   const register = React.useCallback(
-    //     form => provider.register(form).then(user => setData(user)),
-    //     [setData],
-    //   )
-    //   const logout = React.useCallback(() => {
-    //     provider.logout()
-    //     setData(null)
-    //   }, [setData])
-    
-    //   const value = React.useMemo(() => ({user, login, logout, register}), [
-    //     login,
-    //     logout,
-    //     register,
-    //     user,
-    //   ])
 }
 
 export function useAuth() {

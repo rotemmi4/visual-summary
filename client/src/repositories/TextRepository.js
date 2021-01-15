@@ -1,7 +1,5 @@
 import React,{ useState , useEffect } from 'react';
-// import { useGetAllMedia as restModelMedia, useGetMediaById as restModelGetMediaById } from '../model/requests/MediaModelRestAPI';
 import * as textModelRestAPI  from '../model/requests/TextModelRestAPI';
-import * as textDummieModel from '../model/dummies/TextDummiesModel';
 
 
 export function save(type,textID,propertyName,propertyValue,propertyType){

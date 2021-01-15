@@ -15,7 +15,6 @@ function App() {
   return (
     <React.Suspense fallback={<HomePage />}>
        {user ? <DeveloperApp /> : <UnauthenticatedApp />}
-      {/*<DeveloperApp/>*/}
     </React.Suspense>
   )
 }

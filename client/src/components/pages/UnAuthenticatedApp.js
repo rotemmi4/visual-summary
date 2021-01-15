@@ -9,7 +9,7 @@ import DeveloperNavbar from "../DeveloperNavbar";
 
 function UnAuthenticatedApp() {
 
-    const {login, register} = useAuth()
+    const {login} = useAuth()
     return (
         <>
         <Router>
