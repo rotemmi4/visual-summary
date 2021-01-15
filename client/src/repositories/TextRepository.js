@@ -46,7 +46,7 @@ export function useGetAllText(){
                 error: true
             })
         }
-    },[/*fileMedia.data,*/restText.data])
+    },[/*fileText.data,*/restText.data])
 
     return text
 }
