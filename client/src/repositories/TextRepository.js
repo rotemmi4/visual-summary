@@ -1,5 +1,5 @@
 import React,{ useState , useEffect } from 'react';
-import { useGetAllMedia as restModelMedia, useGetMediaById as restModelGetMediaById } from '../model/requests/MediaModelRestAPI';
+// import { useGetAllMedia as restModelMedia, useGetMediaById as restModelGetMediaById } from '../model/requests/MediaModelRestAPI';
 import * as textModelRestAPI  from '../model/requests/TextModelRestAPI';
 import * as textDummieModel from '../model/dummies/TextDummiesModel';
 
@@ -59,7 +59,7 @@ export function useGetTextById(id){
         error: false
     })
 
-    const restMedia = restModelGetMediaById(id)
+    const restText = textModelRestAPI.useGetTextById()
     // const fileMedia = textDummieModel.useGetTextById(id)
 
     useEffect( () => {
@@ -68,10 +68,10 @@ export function useGetTextById(id){
             data: [],
             error: false
         })
-        if(!restMedia.error && !restMedia.loading && restMedia.data != null){
+        if(!restText.error && !restText.loading && restText.data != null){
             setText({
                 loading: false,
-                data: restMedia.data,
+                data: restText.data,
                 error: false
             })
         }
@@ -89,7 +89,7 @@ export function useGetTextById(id){
                 error: true
             })
         }
-    },[/*fileMedia.data,*/restMedia.data])
+    },[/*fileMedia.data,*/restText.data])
 
     return text
 }
