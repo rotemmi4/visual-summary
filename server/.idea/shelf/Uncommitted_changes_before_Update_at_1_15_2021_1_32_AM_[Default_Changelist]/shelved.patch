@@ -1,0 +1,179 @@
+Index: server.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import uvicorn as uvicorn\r\nfrom fastapi import FastAPI\r\nfrom fastapi.middleware.cors import CORSMiddleware\r\n\r\nfrom repositories import TextRepository\r\nfrom pydantic import BaseModel\r\nimport jwt\r\nfrom algorithems import RandomAlgorithem\r\nimport json\r\n\r\n\r\n\r\nadmin_user = 'admin'\r\nadmin_password = 'admin'\r\nsecret = 'Mr.Awesome'\r\n\r\napp = FastAPI()\r\n\r\norigins = [\r\n    \"http://localhost.tiangolo.com\",\r\n    \"https://localhost.tiangolo.com\",\r\n    \"http://localhost\",\r\n    \"http://localhost:3000\",\r\n]\r\n\r\napp.add_middleware(\r\n    CORSMiddleware,\r\n    allow_origins=origins,\r\n    allow_credentials=True,\r\n    allow_methods=[\"*\"],\r\n    allow_headers=[\"*\"],\r\n)\r\n\r\nclass TextCreate(BaseModel):\r\n    name: str\r\n    content: str\r\n\r\nclass UserLogin(BaseModel):\r\n    username: str\r\n    password: str\r\n\r\n@app.get(\"/\")\r\ndef read_root():\r\n    pass\r\n\r\n\r\n@app.get(\"/texts\")\r\ndef get_texts():\r\n    return TextRepository.get_texts()\r\n\r\n\r\n@app.post(\"/texts\")\r\ndef create_text(text: TextCreate):\r\n    TextRepository.insert_text(text.name, text.content)\r\n    return {}\r\n\r\n\r\n@app.get(\"/texts/{id}\")\r\ndef get_text_by_id():\r\n    pass\r\n\r\n\r\n@app.get(\"/texts/{id}/weights\")\r\ndef get_text_weights(id: int):\r\n    text = TextRepository.get_text_by_id(id)\r\n    if (text[0]):\r\n        response = RandomAlgorithem.getWeights(text[0],'random')\r\n#         response = AlgorithemFactory.get('random').getWeight(text[0])\r\n    arrResponse =[]\r\n    arrResponse.append(response)\r\n    return arrResponse\r\n\r\n\r\n@app.post(\"/auth/login\")\r\ndef login(user_data: UserLogin):\r\n    if (user_data.username == admin_user and user_data.password == admin_password):\r\n        payload = {'username': user_data.username, 'admin': True};\r\n        encoded_jwt = jwt.encode(payload, secret, algorithm=\"HS256\")\r\n        return encoded_jwt\r\n    pass\r\n\r\n@app.get(\"/private/user/get\")\r\ndef getLoginUser():\r\n    #token  = request header x-auth-token\r\n    #decoded_data = jwt.decode(token, secret)\r\n    #return decoded_data['username']\r\n    return {\"username\": \"admin\"}\r\n    pass\r\n\r\nuvicorn.run(app, host=\"localhost\", port=5000)\r\n# @app.delete(\"/texts/{id}\")\r\n# def delete_text():\r\n#     pass\r\n\r\n# @app.put(\"/texts/{id}\")\r\n# def update_text():\r\n#     pass\r\n\r\nuvicorn.run(app, host=\"localhost\", port=3000)
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- server.py	(revision 77cdaad06c0e8eec32b4051e613ba72eeb5b19a2)
++++ server.py	(date 1610665521172)
+@@ -8,8 +8,6 @@
+ from algorithems import RandomAlgorithem
+ import json
+ 
+-
+-
+ admin_user = 'admin'
+ admin_password = 'admin'
+ secret = 'Mr.Awesome'
+@@ -31,14 +29,17 @@
+     allow_headers=["*"],
+ )
+ 
++
+ class TextCreate(BaseModel):
+     name: str
+     content: str
+ 
++
+ class UserLogin(BaseModel):
+     username: str
+     password: str
+ 
++
+ @app.get("/")
+ def read_root():
+     pass
+@@ -63,22 +64,23 @@
+ @app.get("/texts/{id}/weights")
+ def get_text_weights(id: int):
+     text = TextRepository.get_text_by_id(id)
+-    if (text[0]):
+-        response = RandomAlgorithem.getWeights(text[0],'random')
++    if text[0]:
++        response = RandomAlgorithem.getWeights(text[0], 'random')
+ #         response = AlgorithemFactory.get('random').getWeight(text[0])
+-    arrResponse =[]
++    arrResponse = []
+     arrResponse.append(response)
+     return arrResponse
+ 
+ 
+ @app.post("/auth/login")
+ def login(user_data: UserLogin):
+-    if (user_data.username == admin_user and user_data.password == admin_password):
++    if user_data.username == admin_user and user_data.password == admin_password:
+         payload = {'username': user_data.username, 'admin': True};
+         encoded_jwt = jwt.encode(payload, secret, algorithm="HS256")
+         return encoded_jwt
+     pass
+ 
++
+ @app.get("/private/user/get")
+ def getLoginUser():
+     #token  = request header x-auth-token
+@@ -87,6 +89,7 @@
+     return {"username": "admin"}
+     pass
+ 
++
+ uvicorn.run(app, host="localhost", port=5000)
+ # @app.delete("/texts/{id}")
+ # def delete_text():
+@@ -96,4 +99,3 @@
+ # def update_text():
+ #     pass
+ 
+-uvicorn.run(app, host="localhost", port=3000)
+\ No newline at end of file
+Index: model/dao/VisualiztionPropertiesDAO.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\ndef insert(test_id, text_id, visualiztion_id,property_name,property_value, property_type):\r\n    return (\"INSERT INTO visualiztion_properties values (?,?,?,?,?,?)\", [test_id, text_id, visualiztion_id,property_name,property_value, property_type])\r\n\r\ndef update(test_id, text_id, visualiztion_id,property_name,property_value, property_type):\r\n    return (\"UPDATE visualiztion_properties set property_value=?, property_type=? where test_id=? and text_id=? and visualiztion_id=? and property_name=?)\", [property_value, property_type, test_id, text_id, visualiztion_id,property_name])\r\n\r\ndef delete(test_id, text_id, visualiztion_id,property_name):\r\n    return (\"DELETE FROM visualiztion_properties where test_id=? and text_id=? and visualiztion_id=? and property_name=?)\", [test_id, text_id, visualiztion_id,property_name])\r\n\r\ndef get_answer_by_id(test_id, text_id, visualiztion_id,property_name):\r\n    return (\"SELECT * FROM visualiztion_properties where test_id=? and text_id=? and visualiztion_id=? and property_name=?\".format(test_id, text_id, visualiztion_id,property_name))\r\n\r\ndef get_answers():\r\n    return (\"SELECT * FROM visualiztion_properties\")
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- model/dao/VisualiztionPropertiesDAO.py	(revision 77cdaad06c0e8eec32b4051e613ba72eeb5b19a2)
++++ model/dao/VisualiztionPropertiesDAO.py	(date 1610665521211)
+@@ -1,6 +1,6 @@
+ 
+-def insert(test_id, text_id, visualiztion_id,property_name,property_value, property_type):
+-    return ("INSERT INTO visualiztion_properties values (?,?,?,?,?,?)", [test_id, text_id, visualiztion_id,property_name,property_value, property_type])
++def insert(test_id, text_id, visualization_id,property_name,property_value, property_type):
++    return ("INSERT INTO visualiztion_properties values (?,?,?,?,?,?)", [test_id, text_id, visualization_id,property_name,property_value, property_type])
+ 
+ def update(test_id, text_id, visualiztion_id,property_name,property_value, property_type):
+     return ("UPDATE visualiztion_properties set property_value=?, property_type=? where test_id=? and text_id=? and visualiztion_id=? and property_name=?)", [property_value, property_type, test_id, text_id, visualiztion_id,property_name])
+Index: model/dao/VisualiztionDAO.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\ndef insert(type):\r\n    return (\"INSERT INTO visualiztions (type) values (?)\", [type])\r\n\r\ndef update(id, type):\r\n    return (\"UPDATE visualiztions set type=? where id=?)\", [type, id])\r\n\r\ndef delete(id):\r\n    return (\"DELETE FROM visualiztions where id=?)\", [id])\r\n\r\ndef get_visualiztion_by_id(id):\r\n    return (\"SELECT * FROM visualiztions WHERE id={}\".format(id))\r\n\r\ndef get_visualiztions():\r\n    return (\"SELECT * FROM visualiztions\")
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- model/dao/VisualiztionDAO.py	(revision 77cdaad06c0e8eec32b4051e613ba72eeb5b19a2)
++++ model/dao/VisualiztionDAO.py	(date 1610665521190)
+@@ -1,15 +1,15 @@
+ 
+ def insert(type):
+-    return ("INSERT INTO visualiztions (type) values (?)", [type])
++    return ("INSERT INTO visualizations (type) values (?)", [type])
+ 
+ def update(id, type):
+-    return ("UPDATE visualiztions set type=? where id=?)", [type, id])
++    return ("UPDATE visualizations set type=? where id=?)", [type, id])
+ 
+ def delete(id):
+-    return ("DELETE FROM visualiztions where id=?)", [id])
++    return ("DELETE FROM visualizations where id=?)", [id])
+ 
+ def get_visualiztion_by_id(id):
+-    return ("SELECT * FROM visualiztions WHERE id={}".format(id))
++    return ("SELECT * FROM visualizations WHERE id={}".format(id))
+ 
+ def get_visualiztions():
+-    return ("SELECT * FROM visualiztions")
+\ No newline at end of file
++    return ("SELECT * FROM visualizations")
+\ No newline at end of file
+Index: model/dao/TextDAO.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\ndef insert_text(name, content):\r\n    return (\"INSERT INTO texts (name, content) values (?, ?)\")\r\n\r\ndef update_text(id, name, content):\r\n    return (\"UPDATE texts set name=?, content=? where id=?)\", [name, content, id])\r\n\r\ndef delete_text(id):\r\n    return (\"DELETE FROM texts where id=?)\", [id])\r\n\r\ndef get_text_by_id(id):\r\n    return (\"SELECT * FROM texts WHERE id={}\".format(id))\r\n\r\n\r\n\r\ndef get_texts():\r\n    return (\"SELECT * FROM texts\")
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- model/dao/TextDAO.py	(revision 77cdaad06c0e8eec32b4051e613ba72eeb5b19a2)
++++ model/dao/TextDAO.py	(date 1610666980434)
+@@ -2,6 +2,7 @@
+ def insert_text(name, content):
+     return ("INSERT INTO texts (name, content) values (?, ?)")
+ 
++
+ def update_text(id, name, content):
+     return ("UPDATE texts set name=?, content=? where id=?)", [name, content, id])
+ 
+Index: model/db/sqlliteDButils.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import sqlite3\r\nimport json\r\n\r\ndb_loc = 'db/docDB.db'\r\n\r\n\r\ndef dict_factory(cursor, row):\r\n    dic = {}\r\n    for idx, col in enumerate(cursor.description):\r\n        dic[col[0]] = row[idx]\r\n    return dic\r\n\r\n\r\ndef execute_select(query):\r\n    conn = sqlite3.connect(db_loc)\r\n    conn.row_factory = dict_factory\r\n    cursor = conn.cursor()\r\n    cursor.execute(query)\r\n    res = cursor.fetchall()\r\n    data = json.dumps(res)\r\n    conn.close()\r\n    return res\r\n\r\n\r\ndef execute_run(query,val):\r\n    conn = sqlite3.connect(db_loc)\r\n    cursor = conn.cursor()\r\n    cursor.execute(query,val)\r\n    conn.commit()\r\n    conn.close()\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- model/db/sqlliteDButils.py	(revision 77cdaad06c0e8eec32b4051e613ba72eeb5b19a2)
++++ model/db/sqlliteDButils.py	(date 1610665521154)
+@@ -22,10 +22,10 @@
+     return res
+ 
+ 
+-def execute_run(query,val):
++def execute_run(query, val):
+     conn = sqlite3.connect(db_loc)
+     cursor = conn.cursor()
+-    cursor.execute(query,val)
++    cursor.execute(query, val)
+     conn.commit()
+     conn.close()
+ 
+diff --git model/addText.py model/addText.py
+diff --git algorithems/RandomAlgorithem.py algorithems/RandomAlgorithem.py
+diff --git .gitignore .gitignore
+diff --git main.py main.py
+diff --git Text.py Text.py
+diff --git repositories/TextRepository.py repositories/TextRepository.py
+diff --git model/db/converters/visualization_properties.py model/db/converters/visualization_properties.py
+diff --git model/concrete/TextConcrete.py model/concrete/TextConcrete.py
+diff --git model/concrete/TestConcrete.py model/concrete/TestConcrete.py
+diff --git model/dao/TestDAO.py model/dao/TestDAO.py
+diff --git model/dao/questionsDAO.py model/dao/questionsDAO.py
+diff --git model/dao/AnswersDAO.py model/dao/AnswersDAO.py
