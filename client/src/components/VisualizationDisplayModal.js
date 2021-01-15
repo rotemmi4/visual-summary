@@ -16,6 +16,10 @@ export function VisualizationDisplayModal(props) {
   const [propertyValue, setPropertyValue] = useState("none");
   const [propertyType, setPropertyType] = useState("none");
 
+  let onButtonClick = function(event){
+    textRepository.save(type,id,propertyName,propertyValue,propertyType)
+    props.onHide()
+  }
 
     return (
       <Modal
@@ -65,7 +69,7 @@ export function VisualizationDisplayModal(props) {
           </Container>
         </Modal.Body>
         <Modal.Footer>
-          <Button  onClick={(e)=>{textRepository.save(type,id,propertyName,propertyValue,propertyType) ,props.onHide }} href={''}>Save</Button>
+          <Button  onClick={(e)=>{onButtonClick() }} href={''}>Save</Button>
           <Button onClick={props.onHide}>Close</Button>
         </Modal.Footer>
       </Modal>
