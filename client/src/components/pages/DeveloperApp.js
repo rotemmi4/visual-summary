@@ -3,12 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { HomePage } from './HomePage';
-import MediaManagment from './MediaManagment';
-import EditMediaPage from './EditMediaPage';
-import CreateTextPage from './CreateTextPage';
+import TestManagement from './TestManagement';
 import { useAuth } from '../../model/context/auth_context';
 import DeveloperNavbar from '../DeveloperNavbar';
-import DisplayTextPage from './DisplayTextPage';
+import TextManagement from "./TextManagement";
 
 function AuthenticatedApp() {
 
@@ -17,9 +15,10 @@ function AuthenticatedApp() {
             <DeveloperNavbar/>
             <Switch>
                 <Route path='/' exact component={HomePage} />
-                <Route path='/media' component={MediaManagment} />
-                <Route path='/create' component={CreateTextPage} />
-                <Route path='/texts/:id' component={DisplayTextPage} />
+                <Route path='/create-test' component={TestManagement} />
+
+                {/*<Route path='/create-text' component={} />*/}
+                {/*<Route path='/texts/:id' component={} />*/}
             </Switch>
         </>
     );

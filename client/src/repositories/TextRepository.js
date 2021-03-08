@@ -1,9 +1,10 @@
 import React,{ useState , useEffect } from 'react';
-import { useGetAllMedia as restModelMedia, useGetMediaById as restModelGetMediaById } from '../model/requests/MediaModelRestAPI';
-import { Textreate, editMedia as edit} from '../model/requests/MediaModelRestAPI'
 import * as textModelRestAPI  from '../model/requests/TextModelRestAPI';
-import * as textDummieModel from '../model/dummies/TextDummiesModel';
 
+
+export function save(type,textID,propertyName,propertyValue,propertyType){
+    textModelRestAPI.saveVisualizationForText(type,textID,propertyName,propertyValue,propertyType)
+}
 
 export function useGetAllText(){
 
@@ -13,8 +14,8 @@ export function useGetAllText(){
         error: false
     })
 
-    const restMedia = restModelMedia()
-    //const fileMedia = textDummieModel.useGetAllText()    
+    const restText = textModelRestAPI.useGetAllText()
+    //const fileText = textDummieModel.useGetAllText()
 
     useEffect( () => {
         setText({
@@ -22,17 +23,17 @@ export function useGetAllText(){
             data: [],
             error: false
         })
-        if(!restMedia.error && !restMedia.loading && restMedia.data != null){
+        if(!restText.error && !restText.loading && restText.data != null){
             setText({
                 loading: false,
-                data: restMedia.data,
+                data: restText.data,
                 error: false
             })
         }
-        // else if (!fileMedia.error && !fileMedia.loading && fileMedia.data != null){
+        // else if (!fileText.error && !fileText.loading && fileText.data != null){
         //     setText({
         //         loading: false,
-        //         data: fileMedia.data,
+        //         data: fileText.data,
         //         error: false
         //     })
         // }
@@ -43,7 +44,7 @@ export function useGetAllText(){
                 error: true
             })
         }
-    },[/*fileMedia.data,*/restMedia.data])
+    },[/*fileText.data,*/restText.data])
 
     return text
 }
@@ -56,7 +57,7 @@ export function useGetTextById(id){
         error: false
     })
 
-    const restMedia = restModelGetMediaById(id)
+    const restText = textModelRestAPI.useGetTextById()
     // const fileMedia = textDummieModel.useGetTextById(id)
 
     useEffect( () => {
@@ -65,10 +66,10 @@ export function useGetTextById(id){
             data: [],
             error: false
         })
-        if(!restMedia.error && !restMedia.loading && restMedia.data != null){
+        if(!restText.error && !restText.loading && restText.data != null){
             setText({
                 loading: false,
-                data: restMedia.data,
+                data: restText.data,
                 error: false
             })
         }
@@ -86,7 +87,7 @@ export function useGetTextById(id){
                 error: true
             })
         }
-    },[/*fileMedia.data,*/restMedia.data])
+    },[/*fileMedia.data,*/restText.data])
 
     return text
 }

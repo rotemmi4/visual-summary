@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { login, register, get_user_details } from '../requests/UserModelRestAPI'
+import { login, get_user_details } from '../requests/UserModelRestAPI'
 import Cookies from "js-cookie"
 
 
@@ -14,16 +14,6 @@ export function userLogin (user_data) {
     })
 }
 
-export function userRegister (user_data) {
-    let response = register(user_data)
-    return response.then(function (response){
-        Cookies.set("x-auth-token", response.data.token, { expires: 1 });
-        return Promise.resolve(response.data.user)
-    })
-    .catch(function(err){
-        return Promise.reject(err);
-    })
-}
 
 export function userLogout () {
     Cookies.remove("x-auth-token")

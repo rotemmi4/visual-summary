@@ -4,17 +4,16 @@ import '../../App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { HomePage } from './HomePage';
 import { LoginPage } from './LoginPage';
-import { RegisterPage } from './RegisterPage';
 import { useAuth } from '../../model/context/auth_context';
-import AppNavbar from '../Navbar';
+import DeveloperNavbar from "../DeveloperNavbar";
 
 function UnAuthenticatedApp() {
 
-    const {login, register} = useAuth()
+    const {login} = useAuth()
     return (
         <>
         <Router>
-            <AppNavbar/>
+            <DeveloperNavbar/>
             <Switch>
                 <Route path='/' exact component={HomePage} />
                 <Route path='/login' component={LoginPage} />

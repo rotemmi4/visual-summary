@@ -10,10 +10,10 @@ export function HomePage(){
         <>
             <Container>
                 <Row className="mt-5 justify-content-center align-items-center">
-                    <h1 className="block">Home</h1>
+                    <h1 className="block">Welcome</h1>
                 </Row>
                 <Row className="justify-content-center align-items-center">
-                    <h2>Cloud for our precious family</h2>
+                    <h2>Visualization Summary Platform</h2>
                 </Row>
             </Container>
             

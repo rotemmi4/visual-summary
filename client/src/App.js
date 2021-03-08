@@ -14,8 +14,7 @@ function App() {
   const {user} = useAuth()
   return (
     <React.Suspense fallback={<HomePage />}>
-      {/* {user ? <AuthenticatedApp /> : <UnauthenticatedApp />} */}
-      <DeveloperApp/>
+       {user ? <DeveloperApp /> : <UnauthenticatedApp />}
     </React.Suspense>
   )
 }

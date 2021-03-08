@@ -8,11 +8,6 @@ export function login(props){
     return axios.post(url,body)
 }
 
-export function register(props){
-    const url = 'http://127.0.0.1:5000/public/register'
-    const body = props
-    return axios.post(url,body)
-}
 
 export function get_user_details(){
     const url = 'http://127.0.0.1:5000/private/user/get'

@@ -3,25 +3,22 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { HomePage } from './HomePage';
-import MediaManagment from './MediaManagment';
-import EditMediaPage from './EditMediaPage';
-import CreateTextPage from './CreateTextPage';
+import TestManagement from './TestManagement.js';
+import TextManagement from './TextManagement.js';
+
 import { useAuth } from '../../model/context/auth_context';
-import AppNavbar from '../Navbar';
-import DisplayTextPage from './DisplayTextPage';
+import DeveloperNavbar from "../DeveloperNavbar";
 
 function AuthenticatedApp() {
 
     const {user, logout} = useAuth()
     return (
         <>
-            <AppNavbar/>
+            <DeveloperNavbar/>
             <Switch>
                 <Route path='/' exact component={HomePage} />
-                <Route path='/media' component={MediaManagment} />
-                <Route path='/create' component={CreateTextPage} />
-                <Route path='/edit/:id' component={EditMediaPage} />
-                <Route path='/texts/:id' component={DisplayTextPage} />
+                <Route path='/create-test' component={TestManagement} />
+                <Route path='/add-text' component={TextManagement} />
             </Switch>
         </>
     );
