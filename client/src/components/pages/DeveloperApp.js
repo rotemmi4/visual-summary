@@ -6,6 +6,7 @@ import { HomePage } from './HomePage';
 import TestManagement from './TestManagement';
 import { useAuth } from '../../model/context/auth_context';
 import DeveloperNavbar from '../DeveloperNavbar';
+import TextManagement from "./TextManagement";
 
 function AuthenticatedApp() {
 
@@ -15,6 +16,7 @@ function AuthenticatedApp() {
             <Switch>
                 <Route path='/' exact component={HomePage} />
                 <Route path='/create-test' component={TestManagement} />
+
                 {/*<Route path='/create-text' component={} />*/}
                 {/*<Route path='/texts/:id' component={} />*/}
             </Switch>
