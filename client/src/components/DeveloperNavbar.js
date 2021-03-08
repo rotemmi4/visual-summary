@@ -3,12 +3,15 @@ import { Button, Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../model/context/auth_context'
 
+import * as ReactBootStrap from "react-bootstrap";
+
 
 
 export default function DeveloperNavbar (){
-
     const {user, logout} = useAuth()
-    const [open, setOpen] = useState(false);
+
+    const [click, setClick] = useState(false);
+    const [dropdown, setDropdown] = useState(false);
 
 return (
     <>
@@ -18,11 +21,19 @@ return (
             <Nav.Link as={Link} to="/">Home</Nav.Link>
             {user && <Nav.Link as={Link} to="/create-test">Tests</Nav.Link>}
 
-            {user && <Nav.Link as={Link} to="/add-text" >Texts </Nav.Link>}
-
-
-
+            {user &&
+            <ReactBootStrap.NavDropdown title="Texts" id="collasible-nav-dropdown">
+                <ReactBootStrap.NavDropdown.Item href="/add-text">Upload Text</ReactBootStrap.NavDropdown.Item>
+                <ReactBootStrap.NavDropdown.Item href="/add-question">Add Question</ReactBootStrap.NavDropdown.Item>
+            </ReactBootStrap.NavDropdown>
+            }
         </Nav>
+
+
+
+
+
+
         <Nav>
              {user ? <Nav.Link as={Link} to="/" onClick={logout}>Logout</Nav.Link> : <Nav.Link as={Link} to="/login">Login</Nav.Link>}
         </Nav>

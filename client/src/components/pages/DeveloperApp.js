@@ -16,6 +16,7 @@ function AuthenticatedApp() {
             <Switch>
                 <Route path='/' exact component={HomePage} />
                 <Route path='/create-test' component={TestManagement} />
+                <Route path='/add-text' component={TextManagement} />
 
                 {/*<Route path='/create-text' component={} />*/}
                 {/*<Route path='/texts/:id' component={} />*/}
