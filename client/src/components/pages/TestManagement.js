@@ -22,7 +22,7 @@ export default function TestManagement() {
         <Button variant="primary"  > + Create New Test</Button><br/><br/>
         <TestRow testName={"Test1"}></TestRow><br/>
         <TestRow testName={"Test2"}></TestRow><br/>
-        <TestRow testName={"Test1"}></TestRow><br/>
+        <TestRow testName={"Test3"}></TestRow><br/>
 </div>
      );
 }
