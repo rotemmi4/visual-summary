@@ -64,6 +64,19 @@ export function createText(props){
     const headers = {headers : {"x-auth-token": getToken()}}
     return axios.post(url,body,headers)
 }
+
+export function uploadText(name, content){
+    const url = 'http://127.0.0.1:5000/uploadText'
+    console.log(content)
+    //const body = "{  \"name\":" + "\"" + name +"\"" + ", \"content\":\"" + content + "\" }"
+
+    const body = "{  \"name\":\"" + name + "\", \"content\":\"" + content + "\" }"
+    console.log(body)
+    const headers = {headers : {"x-auth-token": getToken()}}
+    return axios.post(url,body,headers)
+}
+
+
 // export function editText(props){
 //     const url = 'http://127.0.0.1:5000/texts'
 //     const body = props
