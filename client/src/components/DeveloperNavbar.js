@@ -19,7 +19,7 @@ return (
         <Navbar.Brand href="/" class="font-weight-bold">Visual Summary</Navbar.Brand>
         <Nav className="mr-auto">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
-            {user && <Nav.Link as={Link} to="/create-test">Tests</Nav.Link>}
+            {user && <Nav.Link as={Link} to="/testManagement">Tests</Nav.Link>}
 
             {user &&
             <ReactBootStrap.NavDropdown title="Texts" id="collasible-nav-dropdown">
