@@ -16,7 +16,7 @@ export default function DeveloperNavbar (){
 return (
     <>
     <Navbar bg="light" variant="light">
-        <Navbar.Brand href="/" class="font-weight-bold">Visual Summary</Navbar.Brand>
+        <Navbar.Brand href="/" className="font-weight-bold">Visual Summary</Navbar.Brand>
         <Nav className="mr-auto">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
             {user && <Nav.Link as={Link} to="/create-test">Tests</Nav.Link>}
