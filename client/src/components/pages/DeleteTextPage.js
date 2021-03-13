@@ -60,7 +60,7 @@ export default function DeleteText() {
                                                     }} text={dropdown[index]}></TextDisplayModal>
 
                                                     <Button onClick={(e)=>{
-                                                        console.log(arr)
+
                                                         deleteText(arr)
 
                                                     }}>Delete</Button>
