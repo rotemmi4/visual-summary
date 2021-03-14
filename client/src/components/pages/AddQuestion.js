@@ -3,6 +3,7 @@ import {Button, Col, Container, Form, Row} from 'react-bootstrap';
 import axios from "axios";
 import * as textRepository from "../../repositories/TextRepository";
 import {TextDisplayModal} from "../TextDisplayModel";
+import {addQuestion, uploadText} from "../../model/requests/TextModelRestAPI";
 
 
 export default function AddQuestion() {
@@ -12,7 +13,8 @@ export default function AddQuestion() {
     const texts = textRepository.useGetAllText()
     const [modalShow,setModalShow] = useState([false])
     const [arr,setArr] = useState([0])
-
+    const [ques_num,setques_num] = useState([0])
+    const[name, setName]= useState("");
 
 
     return (
@@ -49,7 +51,10 @@ export default function AddQuestion() {
 
                                                                 <Form.Group controlId="formBasicQuestion">
                                                                     <Form.Label>Question:</Form.Label>
-                                                                    <Form.Control type="question" placeholder="Enter the Question here" />
+                                                                    <Form.Control type="question" placeholder="Enter the Question here" name= 'question' onChange={(e)=>{
+
+                                                                        setName(e.target.value);
+                                                                    }} />
                                                                 </Form.Group>
 
                                                                 <Form.Group controlId="formBasicAnswer1">
@@ -102,9 +107,9 @@ export default function AddQuestion() {
                                                                               />
                                                                           </div>
                                                                       ))}
-                                                                <Button variant="primary" type="submit">
-                                                                    Submit
-                                                                </Button>
+                                                            <Button onClick={(e)=>{
+                                                                addQuestion(ques_num(ques_num+1), arr, name)
+                                                            }}>Save</Button>
                                                         </>
                                                     )
                                                 })
