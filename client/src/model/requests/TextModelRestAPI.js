@@ -80,6 +80,13 @@ export function deleteText(id){
     return axios.post(url,body,headers)
 }
 
+export function addQuestion(id){
+    const url = 'http://127.0.0.1:5000/deleteText'
+    const body = "{ \"id\":\"" + id + "\" }"
+    console.log(body)
+    const headers = {headers : {"x-auth-token": getToken()}}
+    return axios.post(url,body,headers)
+}
 
 // export function editText(props){
 //     const url = 'http://127.0.0.1:5000/texts'

@@ -8,6 +8,7 @@ import { useAuth } from '../../model/context/auth_context';
 import DeveloperNavbar from '../DeveloperNavbar';
 import TextManagement from "./TextManagement";
 import DeleteText from "./DeleteTextPage"
+import AddQuestion from "./AddQuestion";
 
 function AuthenticatedApp() {
 
@@ -19,7 +20,7 @@ function AuthenticatedApp() {
                 <Route path='/create-test' component={TestManagement} />
                 <Route path='/add-text' component={TextManagement} />
                 <Route path='/delete-text' component={DeleteText} />
-                {/*<Route path='/create-text' component={} />*/}
+                {<Route path='/add-question' component={AddQuestion} />}
                 {/*<Route path='/texts/:id' component={} />*/}
             </Switch>
         </>
