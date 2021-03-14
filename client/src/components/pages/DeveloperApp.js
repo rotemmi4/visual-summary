@@ -7,6 +7,7 @@ import TestManagement from './TestManagement';
 import { useAuth } from '../../model/context/auth_context';
 import DeveloperNavbar from '../DeveloperNavbar';
 import TextManagement from "./TextManagement";
+import DeleteText from "./DeleteTextPage"
 
 function AuthenticatedApp() {
 
@@ -17,7 +18,7 @@ function AuthenticatedApp() {
                 <Route path='/' exact component={HomePage} />
                 <Route path='/create-test' component={TestManagement} />
                 <Route path='/add-text' component={TextManagement} />
-
+                <Route path='/delete-text' component={DeleteText} />
                 {/*<Route path='/create-text' component={} />*/}
                 {/*<Route path='/texts/:id' component={} />*/}
             </Switch>

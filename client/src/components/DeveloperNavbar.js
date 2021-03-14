@@ -24,6 +24,7 @@ return (
             {user &&
             <ReactBootStrap.NavDropdown title="Texts" id="collasible-nav-dropdown">
                 <ReactBootStrap.NavDropdown.Item href="/add-text">Upload Text</ReactBootStrap.NavDropdown.Item>
+                <ReactBootStrap.NavDropdown.Item href="/delete-text">Delete Text</ReactBootStrap.NavDropdown.Item>
                 <ReactBootStrap.NavDropdown.Item href="/add-question">Add Question</ReactBootStrap.NavDropdown.Item>
             </ReactBootStrap.NavDropdown>
             }
