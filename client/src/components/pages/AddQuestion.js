@@ -3,7 +3,7 @@ import {Button, Col, Container, Form, Row} from 'react-bootstrap';
 import axios from "axios";
 import * as textRepository from "../../repositories/TextRepository";
 import {TextDisplayModal} from "../TextDisplayModel";
-import {addQuestion, uploadText} from "../../model/requests/TextModelRestAPI";
+import {addQuestion} from "../../model/requests/TextModelRestAPI";
 
 
 export default function AddQuestion() {
@@ -89,41 +89,38 @@ export default function AddQuestion() {
                                                         </Form.Group>
 
                                                     <h4 className="mb-3 text-left">Check the Correct Answer:</h4>
-                                                    {['checkbox'].map((type) => (
-                                                                  <div key={`custom-inline-${type}`} className="mb-3">
-                                                                      <Form.Check
-                                                                          custom
-                                                                          inline
-                                                                          label="Answer 1"
-                                                                          type={type}
-                                                                          id={`custom-inline-${type}-1`}
-                                                                      />
-                                                                      <Form.Check
-                                                                          custom
-                                                                          inline
-                                                                          label="Answer 2"
-                                                                          type={type}
-                                                                          id={`custom-inline-${type}-2`}
-                                                                      />
-                                                                      <Form.Check
-                                                                          custom
-                                                                          inline
-                                                                          label="Answer 3"
-                                                                          type={type}
-                                                                          id={`custom-inline-${type}-3`}
-                                                                      />
-                                                                      <Form.Check
-                                                                          custom
-                                                                          inline
-                                                                          label="Answer 4"
-                                                                          type={type}
-                                                                          id={`custom-inline-${type}-4`}
-                                                                      />
-                                                                  </div>
-                                                              ))}
-
+                                                  <Form.Check
+                                                      type="radio"
+                                                      name="formHorizontalRadios"
+                                                      id="formHorizontalRadios1"
+                                                      inline
+                                                      label="Answer 1"
+                                                  />
+                                                  <Form.Check
+                                                      type="radio"
+                                                      name="formHorizontalRadios"
+                                                      id="formHorizontalRadios2"
+                                                      inline
+                                                      label="Answer 2"
+                                                  />
+                                                  <Form.Check
+                                                      type="radio"
+                                                      name="formHorizontalRadios"
+                                                      id="formHorizontalRadios3"
+                                                      inline
+                                                      label="Answer 3"
+                                                  />
+                                                  <Form.Check
+                                                      type="radio"
+                                                      name="formHorizontalRadios"
+                                                      id="formHorizontalRadios4"
+                                                      inline
+                                                      label="Answer 4"
+                                                  />
+                                                    <br></br><br></br>
                                                     <Button onClick={(e)=>{
-                                                        addQuestion(setQues_num(ques_num + 1), dropdown[index], que_content)
+                                                        setQues_num(ques_num + 1)
+                                                        addQuestion(ques_num, dropdown[index], que_content)
                                                         /*addAnswer()*/
                                                     }}>Save</Button>
                                                 </>
