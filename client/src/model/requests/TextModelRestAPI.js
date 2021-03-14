@@ -86,6 +86,7 @@ export function addQuestion(id){
     console.log(body)
     const headers = {headers : {"x-auth-token": getToken()}}
     return axios.post(url,body,headers)
+    /*ghjghj*/
 }
 
 // export function editText(props){
