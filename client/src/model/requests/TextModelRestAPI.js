@@ -83,10 +83,18 @@ export function deleteText(id){
 export function addQuestion(que_id, text_id, content){
     const url = 'http://127.0.0.1:5000/addQuestion'
     const body = "{  \"number_id\":\"" + que_id + "\", \"text_id\":\"" + text_id + "\", \"question_content\":\"" + content + "\" }"
+    console.log(body)
     const headers = {headers : {"x-auth-token": getToken()}}
     return axios.post(url,body,headers)
 }
 
+export function addAnswer(option_id ,que_id, is_correct, answer_content){
+    const url = 'http://127.0.0.1:5000/addQuestion'
+    const body = "{  \"option_id\":\"" + option_id + "\", \"que_id\":\"" + que_id + "\", \"is_correct\":\"" + is_correct + "\", \"answer_content\":\"" + answer_content + "\"  }"
+    console.log(body)
+    const headers = {headers : {"x-auth-token": getToken()}}
+    return axios.post(url,body,headers)
+}
 // export function editText(props){
 //     const url = 'http://127.0.0.1:5000/texts'
 //     const body = props

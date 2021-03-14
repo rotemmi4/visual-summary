@@ -13,111 +13,127 @@ export default function AddQuestion() {
     const texts = textRepository.useGetAllText()
     const [modalShow,setModalShow] = useState([false])
     const [arr,setArr] = useState([0])
-    const [ques_num,setques_num] = useState([0])
-    const[name, setName]= useState("");
+    const [ques_num,setQues_num] = useState([0])
+    const[que_content, setQue_content]= useState("");
+
+    const[answer1, setAnswer1]= useState("");
+    const[answer2, setAnswer2]= useState("");
+    const[answer3, setAnswer3]= useState("");
+    const[answer4, setAnswer4]= useState("");
+
 
 
     return (
         <>
-            <div className="container">
-                <h2 className="mb-3 text-left">Add Question:</h2>
+            <Container>
+               <h2 className="mb-3 text-left">Add Question:</h2>
                 <div className="row">
                     <div className="col-sm">
                         <h4 className="mb-3 text-left">Add Question for Text:</h4>
-                                <Form>
-                                        {
-                                                dropdown.map((value, index) => {
-                                                    return (
-                                                        <>
-                                                            <select value={dropdown[index]} onChange={(e)=>{
-                                                                setArr([...dropdown])
-                                                                arr[index] = parseInt(e.target.value)
-                                                                setDropdown(arr)
-                                                            }}>
-                                                                {texts && texts.data ? texts.data.map(text => (
-                                                                    <option value={text.id}>{text.name}</option>
-                                                                )) : null}
-                                                            </select> {'    '}<Button onClick={(e)=>{
-                                                            setArr([...dropdown])
-                                                            arr[index] = true
-                                                            setModalShow(arr)
-                                                        }}>Show Text</Button><br/><br/>
+                            <Form>
+                                <div>
+                                    {
+                                        dropdown.map((value, index) => {
+                                            return (
+                                                <>
+                                                    <select value={dropdown[index]} onChange={(e)=>{
+                                                        setArr([...dropdown])
+                                                        arr[index] = parseInt(e.target.value)
+                                                        setDropdown(arr)
+                                                    }}>
+                                                        {texts && texts.data ? texts.data.map(text => (
+                                                            <option value={text.id}>{text.name}</option>
+                                                        )) : null}
+                                                    </select> {'    '}<Button onClick={(e)=>{
+                                                    setArr([...dropdown])
+                                                    arr[index] = true
+                                                    setModalShow(arr)
+                                                }}>Show Text</Button><br/><br/>
 
-                                                            <TextDisplayModal show={modalShow[index]} onHide={() => {
-                                                                setArr([...dropdown])
-                                                                arr[index] = false
-                                                                setModalShow(arr)
-                                                            }} text={dropdown[index]}></TextDisplayModal>
+                                                    <TextDisplayModal show={modalShow[index]} onHide={() => {
+                                                        setArr([...dropdown])
+                                                        arr[index] = false
+                                                        setModalShow(arr)
+                                                    }} text={dropdown[index]}></TextDisplayModal>
 
-                                                                <Form.Group controlId="formBasicQuestion">
-                                                                    <Form.Label>Question:</Form.Label>
-                                                                    <Form.Control type="question" placeholder="Enter the Question here" name= 'question' onChange={(e)=>{
+                                                    <Form.Group controlId="formBasicQuestion">
+                                                            <Form.Label>Question:</Form.Label>
+                                                            <Form.Control type="question" placeholder="Enter the Question here" name= 'question' onChange={(e)=>{
+                                                                setQue_content(e.target.value);
+                                                            }} />
+                                                        </Form.Group>
 
-                                                                        setName(e.target.value);
-                                                                    }} />
-                                                                </Form.Group>
+                                                        <Form.Group controlId="formBasicAnswer1">
+                                                            <Form.Label>Answer 1:</Form.Label>
+                                                            <Form.Control type="answer1" placeholder="Enter Answer 1 here" onChange={(e)=>{
+                                                                setAnswer1(e.target.value);
+                                                            }} />
+                                                        </Form.Group>
+                                                        <Form.Group controlId="formBasicAnswer2">
+                                                            <Form.Label>Answer 2:</Form.Label>
+                                                            <Form.Control type="answer2" placeholder="Enter Answer 2 here" onChange={(e)=>{
+                                                                setAnswer2(e.target.value);
+                                                            }} />
+                                                        </Form.Group>
+                                                        <Form.Group controlId="formBasicAnswer3">
+                                                            <Form.Label>Answer 3:</Form.Label>
+                                                            <Form.Control type="answer3" placeholder="Enter Answer 3 here" onChange={(e)=>{
+                                                                setAnswer3(e.target.value);
+                                                            }} />
+                                                        </Form.Group>
+                                                        <Form.Group controlId="formBasicAnswer4">
+                                                            <Form.Label>Answer 4:</Form.Label>
+                                                            <Form.Control type="answer4" placeholder="Enter Answer 4 here" onChange={(e)=>{
+                                                                setAnswer4(e.target.value);
+                                                            }} />
+                                                        </Form.Group>
 
-                                                                <Form.Group controlId="formBasicAnswer1">
-                                                                    <Form.Label>Answer 1:</Form.Label>
-                                                                    <Form.Control type="answer1" placeholder="Enter Answer 1 here" />
-                                                                </Form.Group>
-                                                                <Form.Group controlId="formBasicAnswer2">
-                                                                    <Form.Label>Answer 2:</Form.Label>
-                                                                    <Form.Control type="answer2" placeholder="Enter Answer 2 here" />
-                                                                </Form.Group>
-                                                                <Form.Group controlId="formBasicAnswer3">
-                                                                    <Form.Label>Answer 3:</Form.Label>
-                                                                    <Form.Control type="answer3" placeholder="Enter Answer 3 here" />
-                                                                </Form.Group>
-                                                                <Form.Group controlId="formBasicAnswer4">
-                                                                    <Form.Label>Answer 4:</Form.Label>
-                                                                    <Form.Control type="answer4" placeholder="Enter Answer 4 here" />
-                                                                </Form.Group>
+                                                    <h4 className="mb-3 text-left">Check the Correct Answer:</h4>
+                                                    {['checkbox'].map((type) => (
+                                                                  <div key={`custom-inline-${type}`} className="mb-3">
+                                                                      <Form.Check
+                                                                          custom
+                                                                          inline
+                                                                          label="Answer 1"
+                                                                          type={type}
+                                                                          id={`custom-inline-${type}-1`}
+                                                                      />
+                                                                      <Form.Check
+                                                                          custom
+                                                                          inline
+                                                                          label="Answer 2"
+                                                                          type={type}
+                                                                          id={`custom-inline-${type}-2`}
+                                                                      />
+                                                                      <Form.Check
+                                                                          custom
+                                                                          inline
+                                                                          label="Answer 3"
+                                                                          type={type}
+                                                                          id={`custom-inline-${type}-3`}
+                                                                      />
+                                                                      <Form.Check
+                                                                          custom
+                                                                          inline
+                                                                          label="Answer 4"
+                                                                          type={type}
+                                                                          id={`custom-inline-${type}-4`}
+                                                                      />
+                                                                  </div>
+                                                              ))}
 
-                                                            <h4 className="mb-3 text-left">Check the Correct Answer:</h4>
-                                                            {['checkbox'].map((type) => (
-                                                                          <div key={`custom-inline-${type}`} className="mb-3">
-                                                                              <Form.Check
-                                                                                  custom
-                                                                                  inline
-                                                                                  label="Answer 1"
-                                                                                  type={type}
-                                                                                  id={`custom-inline-${type}-1`}
-                                                                              />
-                                                                              <Form.Check
-                                                                                  custom
-                                                                                  inline
-                                                                                  label="Answer 2"
-                                                                                  type={type}
-                                                                                  id={`custom-inline-${type}-2`}
-                                                                              />
-                                                                              <Form.Check
-                                                                                  custom
-                                                                                  inline
-                                                                                  label="Answer 3"
-                                                                                  type={type}
-                                                                                  id={`custom-inline-${type}-3`}
-                                                                              />
-                                                                              <Form.Check
-                                                                                  custom
-                                                                                  inline
-                                                                                  label="Answer 4"
-                                                                                  type={type}
-                                                                                  id={`custom-inline-${type}-4`}
-                                                                              />
-                                                                          </div>
-                                                                      ))}
-                                                            <Button onClick={(e)=>{
-                                                                addQuestion(ques_num(ques_num+1), arr, name)
-                                                            }}>Save</Button>
-                                                        </>
-                                                    )
-                                                })
-                                        }
-                                </Form>
+                                                    <Button onClick={(e)=>{
+                                                        addQuestion(setQues_num(ques_num + 1), dropdown[index], que_content)
+                                                        addAnswer()
+                                                    }}>Save</Button>
+                                                </>
+                                            )
+                                        })
+                                    }
+                                </div>
+                            </Form>
                     </div>
                 </div>
-            </div>
-
-            </>);
+            </Container>
+        </>);
 }

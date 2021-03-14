@@ -50,7 +50,6 @@ export default function DeleteText() {
                                                     setArr([...dropdown])
                                                     arr[index] = true
                                                     setModalShow(arr)
-
                                                 }}>Show Text</Button><br/><br/>
 
                                                     <TextDisplayModal show={modalShow[index]} onHide={() => {
