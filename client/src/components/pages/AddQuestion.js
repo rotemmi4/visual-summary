@@ -124,7 +124,7 @@ export default function AddQuestion() {
 
                                                     <Button onClick={(e)=>{
                                                         addQuestion(setQues_num(ques_num + 1), dropdown[index], que_content)
-                                                        addAnswer()
+                                                        /*addAnswer()*/
                                                     }}>Save</Button>
                                                 </>
                                             )
