@@ -28,8 +28,7 @@ export default function TestManagement() {
         {/*        + Create New Test*/}
         {/*    </button><br/><br/>*/}
         {/*</Link>*/}
-        <Link to="/new_test_options" className="btn btn-primary">+ Create New Test</Link>
-
+        <Link to="/new_test_options" className="btn btn-primary" >+ Create New Test</Link>
         <TestRow testName={"Test1"}></TestRow><br/>
         <TestRow testName={"Test2"}></TestRow><br/>
         <TestRow testName={"Test3"}></TestRow><br/>
