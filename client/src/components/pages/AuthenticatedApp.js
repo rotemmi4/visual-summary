@@ -8,6 +8,8 @@ import TestManagement from './TestManagement.js';
 
 import { useAuth } from '../../model/context/auth_context';
 import DeveloperNavbar from "../DeveloperNavbar";
+import CreateNewTestOptions from "./CreateNewTestOptions";
+import ChooseTestAndVisualization from "./ChooseTestAndVisualization";
 
 function AuthenticatedApp() {
 
@@ -18,7 +20,8 @@ function AuthenticatedApp() {
             <Switch>
                 <Route path='/' exact component={HomePage} />
                 <Route path='/testManagement' component={TestManagement} />
-
+                <Route path='../new_test_options' component={CreateNewTestOptions} />
+                <Route path='/ChooseTextsAndVisualizations' component={ChooseTestAndVisualization} />
 
             </Switch>
         </>

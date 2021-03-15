@@ -1,19 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Col, Container, Row } from 'react-bootstrap';
-import {Link, useParams} from 'react-router-dom';
-import { useAuth } from '../../model/context/auth_context';
+import {Link, useParams} from "react-router-dom";
 import * as textRepository from "../../repositories/TextRepository";
-import { VisualizationDisplayModal } from '../VisualizationDisplayModal';
+import {Button, Col, Container, Row} from "react-bootstrap";
+import {VisualizationDisplayModal} from "../VisualizationDisplayModal";
 
-
-
-
-export default function TestManagement() {
-
-    const {user} = useAuth()
-
-    const setModal = useParams()
-
+export default function ChooseTestAndVisualization() {
 
     const { id } = useParams()
     const textById = textRepository.useGetTextById(id)
@@ -29,7 +20,11 @@ export default function TestManagement() {
     return (
         <>
             <Container>
-                <h2 className="mb-3 text-left">Test</h2>
+                <h2 className="mb-3 text-left">Test</h2><br/>
+                <label>
+                   Test Name:
+                    <input type="text" name="name" />
+                </label>
                 <Row className="justify-content-center">
                     <Col></Col>
                     <Col xs="9">
@@ -67,6 +62,7 @@ export default function TestManagement() {
                     </Col>
                     <Col></Col>
                 </Row>
+                <Button className="btn btn-primary">SAVE TEST</Button>
             </Container>
         </>);
 }

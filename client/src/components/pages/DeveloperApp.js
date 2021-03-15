@@ -6,9 +6,11 @@ import { HomePage } from './HomePage';
 import TestManagement from './TestManagement';
 import { useAuth } from '../../model/context/auth_context';
 import DeveloperNavbar from '../DeveloperNavbar';
+import CreateNewTestOptions from "./CreateNewTestOptions";
+import ChooseTestAndVisualization from "./ChooseTestAndVisualization";
 
 
-function AuthenticatedApp() {
+function AuthenticatedApp(props) {
 
     return (
         <>
@@ -16,6 +18,8 @@ function AuthenticatedApp() {
             <Switch>
                 <Route path='/' exact component={HomePage} />
                 <Route path='/testManagement' component={TestManagement} />
+                <Route path='/new_test_options' component={CreateNewTestOptions} />
+                <Route path='/ChooseTextsAndVisualizations' component={ChooseTestAndVisualization} />
 
 
                 {/*<Route path='/create-text' component={} />*/}
