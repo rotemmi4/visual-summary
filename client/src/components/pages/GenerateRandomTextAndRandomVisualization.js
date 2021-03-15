@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import {Link, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import * as textRepository from "../../repositories/TextRepository";
 import {Button, Col, Container, Row} from "react-bootstrap";
 import {VisualizationDisplayModal} from "../VisualizationDisplayModal";
 
-export default function ChooseTestAndVisualization() {
+
+export default function GenerateRandomTextAndRandomVisualization() {
 
     const { id } = useParams()
     const textById = textRepository.useGetTextById(id)
@@ -21,9 +22,9 @@ export default function ChooseTestAndVisualization() {
         <>
             <Container>
                 <h2 className="mb-3 text-left">Test</h2><br/>
-                <text>Choose Tests And Visualizations</text><br/>
+                <text>Generate Random Texts And Random Visualizations</text><br/>
                 <label>
-                   Test Name:
+                    Test Name:
                     <input type="text" name="name" />
                 </label>
                 <Row className="justify-content-center">

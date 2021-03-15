@@ -8,6 +8,8 @@ import { useAuth } from '../../model/context/auth_context';
 import DeveloperNavbar from '../DeveloperNavbar';
 import CreateNewTestOptions from "./CreateNewTestOptions";
 import ChooseTestAndVisualization from "./ChooseTestAndVisualization";
+import GenerateRandomTextsAndChooseVisualization from "./GenerateRandomTextAndChooseVisualization";
+import GenerateRandomTextAndRandomVisualization from "./GenerateRandomTextAndRandomVisualization";
 
 
 function AuthenticatedApp(props) {
@@ -20,6 +22,8 @@ function AuthenticatedApp(props) {
                 <Route path='/testManagement' component={TestManagement} />
                 <Route path='/new_test_options' component={CreateNewTestOptions} />
                 <Route path='/ChooseTextsAndVisualizations' component={ChooseTestAndVisualization} />
+                <Route path='/GenerateRandomTextsAndChooseVisualizations' component={GenerateRandomTextsAndChooseVisualization} />
+                <Route path='/GenerateRandomTextsAndRandomVisualizations' component={GenerateRandomTextAndRandomVisualization} />
 
 
                 {/*<Route path='/create-text' component={} />*/}
