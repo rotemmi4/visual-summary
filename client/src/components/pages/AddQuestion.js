@@ -3,7 +3,7 @@ import {Button, Col, Container, Form, Row} from 'react-bootstrap';
 import axios from "axios";
 import * as textRepository from "../../repositories/TextRepository";
 import {TextDisplayModal} from "../TextDisplayModel";
-import {addQuestion} from "../../model/requests/TextModelRestAPI";
+import {addQuestion, addAnswers} from "../../model/requests/TextModelRestAPI";
 
 
 export default function AddQuestion() {
@@ -21,6 +21,10 @@ export default function AddQuestion() {
     const[answer3, setAnswer3]= useState("");
     const[answer4, setAnswer4]= useState("");
 
+    const[checkbox1, setCheckbox1]= useState("false");
+    const[checkbox2, setCheckbox2]= useState("false");
+    const[checkbox3, setCheckbox3]= useState("false");
+    const[checkbox4, setCheckbox4]= useState("false");
 
 
     return (
@@ -95,13 +99,19 @@ export default function AddQuestion() {
                                                       id="formHorizontalRadios1"
                                                       inline
                                                       label="Answer 1"
-                                                  />
+                                                      onChange={(e)=>{
+                                                          setCheckbox1("true");
+                                                      }}
+                                                       />
                                                   <Form.Check
                                                       type="radio"
                                                       name="formHorizontalRadios"
                                                       id="formHorizontalRadios2"
                                                       inline
                                                       label="Answer 2"
+                                                      onChange={(e)=>{
+                                                          setCheckbox2("true");
+                                                      }}
                                                   />
                                                   <Form.Check
                                                       type="radio"
@@ -109,6 +119,9 @@ export default function AddQuestion() {
                                                       id="formHorizontalRadios3"
                                                       inline
                                                       label="Answer 3"
+                                                      onChange={(e)=>{
+                                                          setCheckbox3("true");
+                                                      }}
                                                   />
                                                   <Form.Check
                                                       type="radio"
@@ -116,12 +129,18 @@ export default function AddQuestion() {
                                                       id="formHorizontalRadios4"
                                                       inline
                                                       label="Answer 4"
+                                                      onChange={(e)=>{
+                                                          setCheckbox4("true");
+                                                      }}
                                                   />
                                                     <br></br><br></br>
                                                     <Button onClick={(e)=>{
                                                         setQues_num(ques_num + 1)
                                                         addQuestion(ques_num, dropdown[index], que_content)
-                                                        /*addAnswer()*/
+                                                        addAnswers(1, ques_num, checkbox1, answer1)
+                                                        addAnswers(2, ques_num, checkbox2, answer2)
+                                                        addAnswers(3, ques_num, checkbox3, answer3)
+                                                        addAnswers(4, ques_num, checkbox4, answer4)
                                                     }}>Save</Button>
                                                 </>
                                             )
