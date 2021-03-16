@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Button, Col, Container, Row } from 'react-bootstrap';
+import {Button, Col, Container, Modal, Row} from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { uploadText} from "../../model/requests/TextModelRestAPI";
+import {deleteText, uploadText} from "../../model/requests/TextModelRestAPI";
+import {TextDisplayModal} from "../TextDisplayModel";
 
 
 export default function TextManagement() {
@@ -11,6 +12,15 @@ export default function TextManagement() {
     const {register, handleSubmit} = useForm();
     const[content, setContent]= useState("");
     const[name, setName]= useState("");
+    const [modalShow,setModalShow] = useState([false])
+    const [show, setShow] = useState(false);
+    const reload=()=>window.location.reload();
+    const handleClose = () => {
+        setShow(false)
+        setModalShow(false)
+    };
+    const handleShow = () => setShow(true);
+
 
     const onChange = (e) => {
         const file = e.target.files[0];
@@ -47,9 +57,37 @@ export default function TextManagement() {
                                 <div>
                                     {flag && content}
                                 </div>
-                               <Button onClick={(e)=>{
-                                   uploadText(name, content)
-                               }}>Save</Button>
+
+
+
+                                <Button variant="primary" onClick={(e)=>{
+
+                                    uploadText(name, content)
+                                    handleShow()
+                                }}>Save</Button>
+
+                                <Modal
+                                    show={show}
+                                    onHide={handleClose}
+                                    backdrop="static"
+                                    keyboard={false}
+                                >
+                                    <Modal.Header closeButton>
+                                        <Modal.Title>Modal title</Modal.Title>
+                                    </Modal.Header>
+                                    <Modal.Body>
+                                        text added!
+                                    </Modal.Body>
+                                    <Modal.Footer>
+                                        <Button variant="secondary" onClick={handleClose}>
+                                            Close
+                                        </Button>
+                                    </Modal.Footer>
+                                </Modal>
+
+
+
+
                             </form>
                         </div>
                     </Col>
