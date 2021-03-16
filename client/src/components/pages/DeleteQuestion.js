@@ -2,23 +2,28 @@ import React, { useState } from 'react';
 import {Button, Col, Container, Modal, Row} from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import {deleteText} from "../../model/requests/TextModelRestAPI";
+import {deleteQuestion, deleteText} from "../../model/requests/TextModelRestAPI";
 import * as textRepository from "../../repositories/TextRepository";
 import {TextDisplayModal} from "../TextDisplayModel";
+import {useParams} from "react-router-dom";
 
 
 export default function DeleteQuestion() {
 
+    let questionsById
+
     const {register, handleSubmit} = useForm();
     const[content, setContent]= useState("");
+    const [text_id,setText_id] = useState(1)
 
     const [dropdown, setDropdown] = useState([0]);
     const texts = textRepository.useGetAllText()
-    const questionsById = textRepository.useGetAllQuestionsById()
+    const text_questions = textRepository.useGetAllQuestionsById(text_id)
     const [modalShow,setModalShow] = useState([false])
     const [arr,setArr] = useState([0])
-
     const [show, setShow] = useState(false);
+
+
     const reload=()=>window.location.reload();
 
     const handleClose = () => {
@@ -36,7 +41,7 @@ export default function DeleteQuestion() {
                     <Col xs="9">
                         <div>
                             <form onSubmit={handleSubmit(onsubmit)}>
-                                <h4 className="mb-3 text-left">Choose Text Name:</h4> <br/><br/>
+                                <h5 className="mb-3 text-left">Choose Text Name:</h5>
 
                                 <div>
                                     {
@@ -47,28 +52,40 @@ export default function DeleteQuestion() {
                                                         setArr([...dropdown])
                                                         arr[index] = parseInt(e.target.value)
                                                         setDropdown(arr)
-
-
-
+                                                        setText_id(arr[index])
                                                     }}>
                                                         {texts && texts.data ? texts.data.map(text => (
                                                             <option value={text.id}>{text.name}</option>
                                                         )) : null}
-                                                    </select> {'    '}<Button onClick={(e)=>{
+                                                    </select> {'    '}
+                                                    <Button onClick={(e)=>{
                                                     setArr([...dropdown])
                                                     arr[index] = true
-                                                    setModalShow(arr)
-                                                }}>Show Text</Button><br/><br/>
+                                                    setText_id(dropdown[index])
+                                                    setModalShow(arr)}}>
+                                                        Show Text
+                                                    </Button><br/><br/>
 
                                                     <TextDisplayModal show={modalShow[index]} onHide={() => {
                                                         setArr([...dropdown])
                                                         arr[index] = false
                                                         setModalShow(arr)
                                                     }} text={dropdown[index]}></TextDisplayModal>
+                                                    <br></br>
+
+                                                   <select onChange={(e)=>{
+                                                        setArr([...dropdown])
+                                                        arr[index] = parseInt(e.target.value)
+                                                        setDropdown(arr)
+
+                                                    }}>
+                                                        {text_id && text_questions && text_questions.data ? text_questions.data.map(question => (
+                                                            <option value={question.question_id}>{question.question_content}</option>
+                                                        )) : null}
+                                                    </select>{'    '}
 
                                                     <Button variant="primary" onClick={(e)=>{
-
-                                                        deleteText(arr)
+                                                        deleteQuestion(Que_id)
                                                         handleShow()
                                                     }}>Delete</Button>
 
@@ -79,29 +96,22 @@ export default function DeleteQuestion() {
                                                         keyboard={false}
                                                     >
                                                         <Modal.Header closeButton>
-                                                            <Modal.Title>Modal title</Modal.Title>
+                                                            <Modal.Title>Message</Modal.Title>
                                                         </Modal.Header>
                                                         <Modal.Body>
-                                                            I will not close if you click outside me. Don't even try to press
-                                                            escape key.
+                                                            Question Deleted!
                                                         </Modal.Body>
                                                         <Modal.Footer>
                                                             <Button variant="secondary" onClick={handleClose}>
                                                                 Close
                                                             </Button>
-                                                            <Button variant="primary">Understood</Button>
                                                         </Modal.Footer>
                                                     </Modal>
-
                                                 </>
                                             )
                                         })
                                     }
                                 </div>
-
-
-
-
                             </form>
                         </div>
                     </Col>

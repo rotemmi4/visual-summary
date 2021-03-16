@@ -41,7 +41,8 @@ export function useGetAllText(){
     return text
 }
 
-export function useGetAllQuestionsById() {
+
+export function useGetAllQuestionsById(id){
 
     const [question, setQuestion] = useState({
         loading: false,
@@ -49,7 +50,7 @@ export function useGetAllQuestionsById() {
         error: false
     })
 
-    const restQuestion = textModelRestAPI.useGetAllQuestionsById()
+    const restQuestion = textModelRestAPI.useGetAllQuestionsById(id)
 
     useEffect( () => {
         setQuestion({
