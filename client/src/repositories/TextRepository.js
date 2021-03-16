@@ -15,7 +15,6 @@ export function useGetAllText(){
     })
 
     const restText = textModelRestAPI.useGetAllText()
-    //const fileText = textDummieModel.useGetAllText()
 
     useEffect( () => {
         setText({
@@ -30,13 +29,6 @@ export function useGetAllText(){
                 error: false
             })
         }
-        // else if (!fileText.error && !fileText.loading && fileText.data != null){
-        //     setText({
-        //         loading: false,
-        //         data: fileText.data,
-        //         error: false
-        //     })
-        // }
         else {
             setText({
                 loading: false,
@@ -44,10 +36,46 @@ export function useGetAllText(){
                 error: true
             })
         }
-    },[/*fileText.data,*/restText.data])
+    },[restText.data])
 
     return text
 }
+
+export function useGetAllQuestionsById() {
+
+    const [question, setQuestion] = useState({
+        loading: false,
+        data: [],
+        error: false
+    })
+
+    const restQuestion = textModelRestAPI.useGetAllQuestionsById()
+
+    useEffect( () => {
+        setQuestion({
+            loading: true,
+            data: [],
+            error: false
+        })
+        if(!restQuestion.error && !restQuestion.loading && restQuestion.data != null){
+            setQuestion({
+                loading: false,
+                data: restQuestion.data,
+                error: false
+            })
+        }
+        else {
+            setQuestion({
+                loading: false,
+                data: [],
+                error: true
+            })
+        }
+    },[restQuestion.data])
+
+    return question
+}
+
 
 export function useGetTextById(id){
 

@@ -9,6 +9,7 @@ import DeveloperNavbar from '../DeveloperNavbar';
 import TextManagement from "./TextManagement";
 import DeleteText from "./DeleteTextPage"
 import AddQuestion from "./AddQuestion";
+import DeleteQuestion from "./DeleteQuestion";
 
 function AuthenticatedApp() {
 
@@ -21,6 +22,7 @@ function AuthenticatedApp() {
                 <Route path='/add-text' component={TextManagement} />
                 <Route path='/delete-text' component={DeleteText} />
                 {<Route path='/add-question' component={AddQuestion} />}
+                {<Route path='/delete-question' component={DeleteQuestion} />}
                 {/*<Route path='/texts/:id' component={} />*/}
             </Switch>
         </>

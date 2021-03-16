@@ -137,10 +137,10 @@ export default function AddQuestion() {
                                                     <Button onClick={(e)=>{
                                                         setQues_num(ques_num + 1)
                                                         addQuestion(ques_num, dropdown[index], que_content)
-                                                        addAnswers(1, ques_num, checkbox1, answer1)
-                                                        addAnswers(2, ques_num, checkbox2, answer2)
-                                                        addAnswers(3, ques_num, checkbox3, answer3)
-                                                        addAnswers(4, ques_num, checkbox4, answer4)
+                                                        addAnswers(1, ques_num, dropdown[index], checkbox1, answer1)
+                                                        addAnswers(2, ques_num, dropdown[index], checkbox2, answer2)
+                                                        addAnswers(3, ques_num, dropdown[index], checkbox3, answer3)
+                                                        addAnswers(4, ques_num, dropdown[index], checkbox4, answer4)
                                                     }}>Save</Button>
                                                 </>
                                             )

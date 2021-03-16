@@ -7,13 +7,14 @@ import * as textRepository from "../../repositories/TextRepository";
 import {TextDisplayModal} from "../TextDisplayModel";
 
 
-export default function DeleteText() {
+export default function DeleteQuestion() {
 
     const {register, handleSubmit} = useForm();
     const[content, setContent]= useState("");
 
     const [dropdown, setDropdown] = useState([0]);
     const texts = textRepository.useGetAllText()
+    const questionsById = textRepository.useGetAllQuestionsById()
     const [modalShow,setModalShow] = useState([false])
     const [arr,setArr] = useState([0])
 
@@ -29,7 +30,7 @@ export default function DeleteText() {
     return (
         <>
             <Container>
-                <h2 className="mb-3 text-left">Delete Text</h2> <br/><br/>
+                <h2 className="mb-3 text-left">Delete Question</h2> <br/><br/>
                 <Row className="justify-content-center">
                     <Col></Col>
                     <Col xs="9">
