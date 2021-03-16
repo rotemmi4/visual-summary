@@ -39,6 +39,12 @@ export function useGetAllText(){
     return useAxiosGet(url, headers)
 }
 
+export function useGetAllQuestionsById(){
+    const url = 'http://127.0.0.1:5000/questions'
+    const headers = {headers: {"x-auth-token": getToken()}}
+    return useAxiosGet(url, headers)
+}
+
  export function saveVisualizationForText(type,textID,propertyName,propertyValue,propertyType){
      const url = 'http://127.0.0.1:5000/saveVisu'
      const body = "{ \"testName\": \"test\", \"textID\":" + textID + ", \"visualizationType\": \"" + type + "\", \"propName\": \"" + propertyName + "\", \"propVal\": \"" + propertyValue + "\" , \"propType\":\"" + propertyType + "\" }"
@@ -80,7 +86,22 @@ export function deleteText(id){
     return axios.post(url,body,headers)
 }
 
+export function addQuestion(que_id, text_id, content){
+    const url = 'http://127.0.0.1:5000/addQuestion'
+    const body = "{  \"number_id\":\"" + que_id + "\", \"text_id\":\"" + text_id + "\", \"content\":\"" + content + "\" }"
+    console.log(body)
+    const headers = {headers : {"x-auth-token": getToken()}}
+    console.log(body)
+    return axios.post(url,body,headers)
+}
 
+export function addAnswers(option_id ,question_id, is_correct, answer_content){
+    const url = 'http://127.0.0.1:5000/addAnswers'
+    const body = "{  \"option_id\":\"" + option_id + "\", \"question_id\":\"" + question_id + "\", \"is_correct\":\"" + is_correct + "\", \"answer_content\":\"" + answer_content + "\"  }"
+    console.log(body)
+    const headers = {headers : {"x-auth-token": getToken()}}
+    return axios.post(url,body,headers)
+}
 // export function editText(props){
 //     const url = 'http://127.0.0.1:5000/texts'
 //     const body = props

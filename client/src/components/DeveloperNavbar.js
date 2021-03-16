@@ -26,6 +26,8 @@ return (
                 <ReactBootStrap.NavDropdown.Item href="/add-text">Upload Text</ReactBootStrap.NavDropdown.Item>
                 <ReactBootStrap.NavDropdown.Item href="/delete-text">Delete Text</ReactBootStrap.NavDropdown.Item>
                 <ReactBootStrap.NavDropdown.Item href="/add-question">Add Question</ReactBootStrap.NavDropdown.Item>
+                <ReactBootStrap.NavDropdown.Item href="/delete-question">Delete Question</ReactBootStrap.NavDropdown.Item>
+
             </ReactBootStrap.NavDropdown>
             }
         </Nav>

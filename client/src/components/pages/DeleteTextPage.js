@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Col, Container, Row } from 'react-bootstrap';
+import {Button, Col, Container, Modal, Row} from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import {deleteText} from "../../model/requests/TextModelRestAPI";
@@ -17,7 +17,14 @@ export default function DeleteText() {
     const [modalShow,setModalShow] = useState([false])
     const [arr,setArr] = useState([0])
 
+    const [show, setShow] = useState(false);
+    const reload=()=>window.location.reload();
 
+    const handleClose = () => {
+        setShow(false)
+        reload();
+    };
+    const handleShow = () => setShow(true);
 
     return (
         <>
@@ -50,7 +57,6 @@ export default function DeleteText() {
                                                     setArr([...dropdown])
                                                     arr[index] = true
                                                     setModalShow(arr)
-
                                                 }}>Show Text</Button><br/><br/>
 
                                                     <TextDisplayModal show={modalShow[index]} onHide={() => {
@@ -59,11 +65,30 @@ export default function DeleteText() {
                                                         setModalShow(arr)
                                                     }} text={dropdown[index]}></TextDisplayModal>
 
-                                                    <Button onClick={(e)=>{
+                                                    <Button variant="primary" onClick={(e)=>{
 
                                                         deleteText(arr)
-
+                                                        handleShow()
                                                     }}>Delete</Button>
+
+                                                    <Modal
+                                                        show={show}
+                                                        onHide={handleClose}
+                                                        backdrop="static"
+                                                        keyboard={false}
+                                                    >
+                                                        <Modal.Header closeButton>
+                                                            <Modal.Title>Modal title</Modal.Title>
+                                                        </Modal.Header>
+                                                        <Modal.Body>
+                                                            text deleted!
+                                                        </Modal.Body>
+                                                        <Modal.Footer>
+                                                            <Button variant="secondary" onClick={handleClose}>
+                                                                Close
+                                                            </Button>
+                                                        </Modal.Footer>
+                                                    </Modal>
 
                                                 </>
                                             )
