@@ -40,6 +40,12 @@ export function useGetAllText(){
 }
 
 
+export function useGetQuestionId(){
+    const url = 'http://127.0.0.1:5000/questionId'
+    const headers = {headers: {"x-auth-token": getToken()}}
+    return useAxiosGet(url, headers)
+}
+
 
  export function saveVisualizationForText(type,textID,propertyName,propertyValue,propertyType){
      const url = 'http://127.0.0.1:5000/saveVisu'
@@ -89,9 +95,9 @@ export function deleteText(id){
     return axios.post(url,body,headers)
 }
 
-export function addQuestion(question_id, text_id, question_content){
+export function addQuestion(text_id, question_content){
     const url = 'http://127.0.0.1:5000/addQuestion'
-    const body = "{  \"question_id\":\"" + question_id + "\", \"text_id\":\"" + text_id + "\", \"question_content\":\"" + question_content + "\" }"
+    const body = "{  \"text_id\":\"" + text_id + "\", \"question_content\":\"" + question_content + "\" }"
     const headers = {headers : {"x-auth-token": getToken()}}
     console.log(body)
     return axios.post(url,body,headers)
