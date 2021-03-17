@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Col, Container, Form, Row} from 'react-bootstrap';
 import axios from "axios";
 import * as textRepository from "../../repositories/TextRepository";
@@ -7,6 +7,17 @@ import {addQuestion, addAnswers} from "../../model/requests/TextModelRestAPI";
 
 
 export default function AddQuestion() {
+
+    const [count, setCount] =useState(0)
+
+    useEffect(() => {
+        const parsedCount = Number(localStorage.getItem("count") || 0)
+        setCount(parsedCount)
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem("count", count)
+    }, [count])
 
 
     const [dropdown, setDropdown] = useState([0]);
@@ -136,7 +147,10 @@ export default function AddQuestion() {
                                                     <br></br><br></br>
                                                     <Button onClick={(e)=>{
                                                         setQues_num(ques_num + 1)
-                                                        addQuestion(ques_num, dropdown[index], que_content)
+                                                        console.log(count)
+                                                        console.log({count})
+                                                        setCount(count+1)
+                                                        addQuestion(count, dropdown[index], que_content)
                                                         addAnswers(1, ques_num, dropdown[index], checkbox1, answer1)
                                                         addAnswers(2, ques_num, dropdown[index], checkbox2, answer2)
                                                         addAnswers(3, ques_num, dropdown[index], checkbox3, answer3)

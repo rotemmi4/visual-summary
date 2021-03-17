@@ -85,7 +85,7 @@ export default function DeleteQuestion() {
                                                     </select>{'    '}
 
                                                     <Button variant="primary" onClick={(e)=>{
-                                                        deleteQuestion(Que_id)
+                                                        /*deleteQuestion(Que_id)*/
                                                         handleShow()
                                                     }}>Delete</Button>
 
