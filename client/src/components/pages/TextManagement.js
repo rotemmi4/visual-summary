@@ -3,7 +3,8 @@ import {Button, Col, Container, Modal, Row} from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import {deleteText, uploadText} from "../../model/requests/TextModelRestAPI";
-import {TextDisplayModal} from "../TextDisplayModel";
+import { AddTextModal } from '../AddTextModal';
+
 
 
 export default function TextManagement() {
@@ -14,10 +15,9 @@ export default function TextManagement() {
     const[name, setName]= useState("");
     const [modalShow,setModalShow] = useState([false])
     const [show, setShow] = useState(false);
-    const reload=()=>window.location.reload();
+
     const handleClose = () => {
         setShow(false)
-        setModalShow(false)
     };
     const handleShow = () => setShow(true);
 
@@ -66,24 +66,18 @@ export default function TextManagement() {
                                     handleShow()
                                 }}>Save</Button>
 
-                                <Modal
-                                    show={show}
-                                    onHide={handleClose}
-                                    backdrop="static"
-                                    keyboard={false}
-                                >
-                                    <Modal.Header closeButton>
-                                        <Modal.Title>Modal title</Modal.Title>
-                                    </Modal.Header>
-                                    <Modal.Body>
-                                        text added!
-                                    </Modal.Body>
-                                    <Modal.Footer>
-                                        <Button variant="secondary" onClick={handleClose}>
-                                            Close
-                                        </Button>
-                                    </Modal.Footer>
-                                </Modal>
+                                <Button variant="primary" onClick={(e)=>{
+
+                                    setShow(true)
+                                }}>Showcontent</Button>
+
+                                <AddTextModal show={show} onHide={() => {
+                                    console.log(show)
+                                    setShow(false)
+                                    console.log(setModalShow)
+                                }} text={content}></AddTextModal>
+
+
 
 
 

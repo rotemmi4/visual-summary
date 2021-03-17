@@ -39,8 +39,6 @@ export default function AddQuestion() {
 
     const questionId = textRepository.useGetQuestionId()
 
-    const[maxId, setMaxId]= useState(0);
-
 
     return (
         <>
@@ -153,26 +151,24 @@ export default function AddQuestion() {
 
 
                                                     {questionId && questionId.data ? questionId.data.map(question => (
-                                                        <div value={question.queId}></div>
+                                                        <Button onClick={(e)=>{
+
+
+
+                                                            addQuestion(dropdown[index], que_content)
+
+                                                            console.log(questionId.data)
+
+                                                            addAnswers(1, question.queId+1, dropdown[index], checkbox1, answer1)
+                                                            addAnswers(2, question.queId+1, dropdown[index], checkbox2, answer2)
+                                                            addAnswers(3, question.queId+1, dropdown[index], checkbox3, answer3)
+                                                            addAnswers(4, question.queId+1, dropdown[index], checkbox4, answer4)
+
+                                                        }}>Save</Button>
 
                                                     )) : null}
 
-                                                    <Button onClick={(e)=>{
 
-
-                                                        setQues_num(ques_num + 1)
-
-                                                        setCount(count+1)
-                                                        addQuestion(dropdown[index], que_content)
-
-                                                        console.log(questionId.data)
-
-                                                        /*addAnswers(1, maxId, dropdown[index], checkbox1, answer1)
-                                                        addAnswers(2, maxId, dropdown[index], checkbox2, answer2)
-                                                        addAnswers(3, maxId, dropdown[index], checkbox3, answer3)
-                                                        addAnswers(4, maxId, dropdown[index], checkbox4, answer4)*/
-
-                                                    }}>Save</Button>
                                                 </>
                                             )
                                         })

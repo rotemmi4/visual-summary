@@ -53,8 +53,11 @@ export default function TestManagement() {
                                     setModalShow(arr)
                                 }}>Choose Visualization</Button><br/><br/>
                                 <VisualizationDisplayModal show={modalShow[index]} onHide={() => {
+                                    console.log(modalShow[index])
                                     let arr=[...modalShow]
                                     arr[index] = false
+                                    console.log(arr)
+                                    console.log(arr[index])
                                     setModalShow(arr)
                                 }} text={dropdown[index]}></VisualizationDisplayModal>
                                 </>
