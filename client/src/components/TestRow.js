@@ -11,7 +11,7 @@ export function TestRow(props){
     return (
         <div>
             <Row>
-                <Col><text>{testName}</text></Col>
+                <Col><h5>{testName}</h5></Col>
                 <Col>
                     <Button variant="light"  position="absolute" right="15px" >Edit</Button>
                     <Button variant="light">Delete</Button>
