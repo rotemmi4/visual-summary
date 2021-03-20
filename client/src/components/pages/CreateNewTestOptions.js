@@ -14,6 +14,7 @@ export default function CreateNewTestOptions() {
                 Test Name:
                 <input type="text" name="name" />
             </label>
+
             <br/><br/><br/>
             <Link to="/ChooseTextsAndVisualizations" className="btn btn-light" >Choose Texts and Visualizations</Link><br/><br/>
             <Link to="/GenerateRandomTextsAndChooseVisualizations" className="btn btn-light">Generate Random Texts and Choose Visualizations </Link><br/><br/>
