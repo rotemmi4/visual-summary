@@ -22,10 +22,6 @@ export default function ChooseTestAndVisualization() {
             <Container>
                 <h2 className="mb-3 text-left">Test</h2><br/>
                 <text>Choose Tests And Visualizations</text><br/>
-                <label>
-                   Test Name:
-                    <input type="text" name="name" />
-                </label>
                 <Row className="justify-content-center">
                     <Col></Col>
                     <Col xs="9">
@@ -63,7 +59,7 @@ export default function ChooseTestAndVisualization() {
                     </Col>
                     <Col></Col>
                 </Row>
-                <Button className="btn btn-primary">SAVE TEST</Button>
+                <Button className="btn btn-primary">SAVE TEST</Button><br/><br/><br/>
             </Container>
         </>);
 }
