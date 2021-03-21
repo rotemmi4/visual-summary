@@ -38,6 +38,11 @@ export function useGetAllText(){
     const headers = {headers: {"x-auth-token": getToken()}}
     return useAxiosGet(url, headers)
 }
+export function useRandomTexts(){
+    const url = 'http://127.0.0.1:5000/getRandom'
+    const headers = {headers: {"x-auth-token": getToken()}}
+    return useAxiosGet(url, headers)
+}
 
  export function saveVisualizationForText(type,textID,propertyName,propertyValue,propertyType){
      const url = 'http://127.0.0.1:5000/saveVisu'

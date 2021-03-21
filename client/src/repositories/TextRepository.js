@@ -127,6 +127,49 @@ export function useGetTextWeights(id){
     return text
 }
 
+
+export function useRandomText(){
+
+    const [text, setText] = useState({
+        loading: false,
+        data: [],
+        error: false
+    })
+
+    const restText = textModelRestAPI.useRandomTexts()
+    //const fileText = textDummieModel.useGetAllText()
+
+    useEffect( () => {
+        setText({
+            loading: true,
+            data: [],
+            error: false
+        })
+        if(!restText.error && !restText.loading && restText.data != null){
+            setText({
+                loading: false,
+                data: restText.data,
+                error: false
+            })
+        }
+            // else if (!fileText.error && !fileText.loading && fileText.data != null){
+            //     setText({
+            //         loading: false,
+            //         data: fileText.data,
+            //         error: false
+            //     })
+        // }
+        else {
+            setText({
+                loading: false,
+                data: [],
+                error: true
+            })
+        }
+    },[/*fileText.data,*/restText.data])
+
+    return text
+}
 // export function createText(text){
 //     return create(text)
 // }
