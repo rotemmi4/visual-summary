@@ -8,10 +8,10 @@ export default function ChooseTestAndVisualization() {
 
     const { id } = useParams()
     const textById = textRepository.useGetTextById(id)
-    const [modalShow,setModalShow] = useState([false,false,false,false,false,false,false,false,false,false])
+    const [modalShow,setModalShow] = useState([false,false,false,false,false,false,false,false,false,false,false,false])
 
     const size = 10
-    const [dropdown, setDropdown] = useState([0,0,0,0,0,0,0,0,0,0]);
+    const [dropdown, setDropdown] = useState([0,0,0,0,0,0,0,0,0,0,0,0]);
 
 
     const texts = textRepository.useGetAllText()
