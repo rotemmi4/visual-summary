@@ -3,6 +3,7 @@ import {useParams} from "react-router-dom";
 import * as textRepository from "../../repositories/TextRepository";
 import {Button, Col, Container, Row} from "react-bootstrap";
 import {VisualizationDisplayModal} from "../VisualizationDisplayModal";
+import {RandomVisualizationDisplayModal} from "../RandomVisualizationDispalyModal";
 
 
 export default function GenerateRandomTextAndRandomVisualization() {
@@ -15,7 +16,7 @@ export default function GenerateRandomTextAndRandomVisualization() {
     const [dropdown, setDropdown] = useState([0,0,0,0,0,0,0,0,0,0]);
 
 
-    const texts = textRepository.useGetAllText()
+    const texts = textRepository.useRandomTextAndVisualization()
 
 
     return (
@@ -33,12 +34,12 @@ export default function GenerateRandomTextAndRandomVisualization() {
                                 let arr=[...modalShow]
                                 arr[text.id] = true
                                 setModalShow(arr)
-                            }}>Choose Visualization</Button><br/><br/>
-                            <VisualizationDisplayModal show={modalShow[text.id]} onHide={() => {
+                            }}>Show Visualization</Button><br/><br/>
+                            <RandomVisualizationDisplayModal visualization={text.visualization} show={modalShow[text.id]} onHide={() => {
                                 let arr=[...modalShow]
                                 arr[text.id] = false
                                 setModalShow(arr)
-                            }} text={text.id}></VisualizationDisplayModal>
+                            }} text={text.id}></RandomVisualizationDisplayModal>
                         </Col>
                     </Row>
 

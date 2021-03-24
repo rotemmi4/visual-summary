@@ -44,6 +44,12 @@ export function useRandomTexts(){
     return useAxiosGet(url, headers)
 }
 
+export function useRandomTextsAndVisualization(){
+    const url = 'http://127.0.0.1:5000/getRandomTextAndVisualization'
+    const headers = {headers: {"x-auth-token": getToken()}}
+    return useAxiosGet(url, headers)
+}
+
  export function saveVisualizationForText(type,textID,propertyName,propertyValue,propertyType){
      const url = 'http://127.0.0.1:5000/saveVisu'
      const body = "{ \"testName\": \"test\", \"textID\":" + textID + ", \"visualizationType\": \"" + type + "\", \"propName\": \"" + propertyName + "\", \"propVal\": \"" + propertyValue + "\" , \"propType\":\"" + propertyType + "\" }"
