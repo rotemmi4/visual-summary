@@ -23,7 +23,7 @@ export default function GenerateRandomTextAndRandomVisualization() {
         <>
             <Container>
                 <h2 className="mb-3 text-left">Test</h2><br/>
-                <text>Generate Random Texts And Random Visualizations</text><br/>
+                <text>Generate Random Texts And Random Visualizations</text><br/><br/><br/>
                 {texts && texts.data ? texts.data.map(text => (
                     <Row className="justify-content-center">
                         <Col>
