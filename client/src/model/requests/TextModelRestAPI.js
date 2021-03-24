@@ -61,7 +61,6 @@ export function useGetTextById(id){
 }
 
 export function useGetAllQuestionsById(id){
-    console.log("aaaaav "+id)
     const url = `http://127.0.0.1:5000/questions/${id}`
     const headers = {headers: {"x-auth-token": getToken()}}
     return useAxiosGet(url, headers)

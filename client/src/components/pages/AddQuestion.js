@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Col, Container, Form, Row} from 'react-bootstrap';
+import {Button, Col, Container, Form, Modal, Row} from 'react-bootstrap';
 import axios from "axios";
 import * as textRepository from "../../repositories/TextRepository";
 import {TextDisplayModal} from "../TextDisplayModel";
@@ -38,6 +38,16 @@ export default function AddQuestion() {
     const[checkbox4, setCheckbox4]= useState("false");
 
     const questionId = textRepository.useGetQuestionId()
+
+    const [show, setShow] = useState(false);
+    const reload=()=>window.location.reload();
+
+    const handleClose = () => {
+        setShow(false)
+        reload();
+    };
+
+    const handleShow = () => setShow(true);
 
 
     return (
@@ -148,27 +158,36 @@ export default function AddQuestion() {
                                                   />
                                                     <br></br><br></br>
 
-
-
                                                     {questionId && questionId.data ? questionId.data.map(question => (
                                                         <Button onClick={(e)=>{
-
-
-
                                                             addQuestion(dropdown[index], que_content)
-
+                                                            handleShow()
                                                             console.log(questionId.data)
-
                                                             addAnswers(1, question.queId+1, dropdown[index], checkbox1, answer1)
                                                             addAnswers(2, question.queId+1, dropdown[index], checkbox2, answer2)
                                                             addAnswers(3, question.queId+1, dropdown[index], checkbox3, answer3)
                                                             addAnswers(4, question.queId+1, dropdown[index], checkbox4, answer4)
-
                                                         }}>Save</Button>
-
                                                     )) : null}
 
-
+                                                    <Modal
+                                                        show={show}
+                                                        onHide={handleClose}
+                                                        backdrop="static"
+                                                        keyboard={false}
+                                                    >
+                                                        <Modal.Header closeButton>
+                                                            <Modal.Title>Message</Modal.Title>
+                                                        </Modal.Header>
+                                                        <Modal.Body>
+                                                            Question Added!
+                                                        </Modal.Body>
+                                                        <Modal.Footer>
+                                                            <Button variant="secondary" onClick={handleClose}>
+                                                                Close
+                                                            </Button>
+                                                        </Modal.Footer>
+                                                    </Modal>
                                                 </>
                                             )
                                         })
