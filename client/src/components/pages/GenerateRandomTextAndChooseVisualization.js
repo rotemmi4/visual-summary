@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {useParams} from "react-router-dom";
+import {useParams, useLocation} from "react-router-dom";
 import * as textRepository from "../../repositories/TextRepository";
 import {Button, Col, Container, Row} from "react-bootstrap";
 import {VisualizationDisplayModal} from "../VisualizationDisplayModal";
@@ -8,6 +8,8 @@ import {TestRow} from "../TestRow";
 
 export default function GenerateRandomTextAndChooseVisualization() {
 
+    let location = useLocation();
+    let testName = location.state.testName
     const { id } = useParams()
     const textById = textRepository.useGetTextById(id)
     const [modalShow,setModalShow] = useState([false,false,false,false,false,false,false,false,false,false])
@@ -22,7 +24,7 @@ export default function GenerateRandomTextAndChooseVisualization() {
     return (
         <>
             <Container>
-                <h2 className="mb-3 text-left">Test</h2><br/>
+                <h2 className="mb-3 text-left">Test: {testName}</h2><br/>
                 <text>Generate Random Texts And Choose Visualizations</text><br/><br/><br/><br/>
                 {texts && texts.data ? texts.data.map(text => (
                     <Row className="justify-content-center">
