@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import {Link, useParams} from "react-router-dom";
+import {Link, useParams, useLocation} from "react-router-dom";
 import * as textRepository from "../../repositories/TextRepository";
 import {Button, Col, Container, Row} from "react-bootstrap";
 import {VisualizationDisplayModal} from "../VisualizationDisplayModal";
 
-export default function ChooseTestAndVisualization() {
+export default function ChooseTestAndVisualization(props) {
 
+    let location = useLocation();
+    let type = location.state.type
     const { id } = useParams()
     const textById = textRepository.useGetTextById(id)
     const [modalShow,setModalShow] = useState([false,false,false,false,false,false,false,false,false,false,false,false])
