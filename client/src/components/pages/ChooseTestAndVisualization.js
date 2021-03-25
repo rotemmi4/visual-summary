@@ -8,6 +8,7 @@ export default function ChooseTestAndVisualization(props) {
 
     let location = useLocation();
     let type = location.state.type
+    let testName = location.state.testName
     const { id } = useParams()
     const textById = textRepository.useGetTextById(id)
     const [modalShow,setModalShow] = useState([false,false,false,false,false,false,false,false,false,false,false,false])
@@ -16,13 +17,14 @@ export default function ChooseTestAndVisualization(props) {
     const [dropdown, setDropdown] = useState([0,0,0,0,0,0,0,0,0,0,0,0]);
 
 
-    const texts = textRepository.useGetAllText()
+    let texts = textRepository.useGetAllText()
+
 
 
     return (
         <>
             <Container>
-                <h2 className="mb-3 text-left">Test</h2><br/>
+                <h2 className="mb-3 text-left">Test: {testName}</h2><br/>
                 <text>Choose Tests And Visualizations</text><br/>
                 <Row className="justify-content-center">
                     <Col></Col>
