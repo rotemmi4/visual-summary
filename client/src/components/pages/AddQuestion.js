@@ -8,18 +8,6 @@ import {addQuestion, addAnswers} from "../../model/requests/TextModelRestAPI";
 
 export default function AddQuestion() {
 
-    const [count, setCount] =useState(0)
-
-    useEffect(() => {
-        const parsedCount = Number(localStorage.getItem("count") || 0)
-        setCount(parsedCount)
-    }, [])
-
-    useEffect(() => {
-        localStorage.setItem("count", count)
-    }, [count])
-
-
     const [dropdown, setDropdown] = useState([0]);
     const texts = textRepository.useGetAllText()
     const [modalShow,setModalShow] = useState([false])
@@ -36,8 +24,6 @@ export default function AddQuestion() {
     const[checkbox2, setCheckbox2]= useState("false");
     const[checkbox3, setCheckbox3]= useState("false");
     const[checkbox4, setCheckbox4]= useState("false");
-
-    const questionId = textRepository.useGetQuestionId()
 
     const [show, setShow] = useState(false);
     const reload=()=>window.location.reload();
@@ -158,17 +144,16 @@ export default function AddQuestion() {
                                                   />
                                                     <br></br><br></br>
 
-                                                    {questionId && questionId.data ? questionId.data.map(question => (
                                                         <Button onClick={(e)=>{
-                                                            addQuestion(dropdown[index], que_content)
                                                             handleShow()
-                                                            console.log(questionId.data)
-                                                            addAnswers(1, question.queId+1, dropdown[index], checkbox1, answer1)
-                                                            addAnswers(2, question.queId+1, dropdown[index], checkbox2, answer2)
-                                                            addAnswers(3, question.queId+1, dropdown[index], checkbox3, answer3)
-                                                            addAnswers(4, question.queId+1, dropdown[index], checkbox4, answer4)
+                                                            let ansDict= {
+                                                                '1': {'isCorrect': checkbox1, 'content': answer1},
+                                                                '2': {'isCorrect': checkbox2, 'content': answer2},
+                                                                '3': {'isCorrect': checkbox3, 'content': answer3},
+                                                                '4': {'isCorrect': checkbox4, 'content': answer4}
+                                                            }
+                                                            addQuestion(dropdown[index], que_content, ansDict)
                                                         }}>Save</Button>
-                                                    )) : null}
 
                                                     <Modal
                                                         show={show}

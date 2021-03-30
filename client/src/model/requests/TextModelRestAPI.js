@@ -94,9 +94,11 @@ export function deleteText(id){
     return axios.post(url,body,headers)
 }
 
-export function addQuestion(text_id, question_content){
+export function addQuestion(text_id, question_content, ansDict){
+    console.log("here")
+    console.log(ansDict)
     const url = 'http://127.0.0.1:5000/addQuestion'
-    const body = "{  \"text_id\":\"" + text_id + "\", \"question_content\":\"" + question_content + "\" }"
+    const body = "{  \"text_id\":\"" + text_id + "\", \"question_content\":\"" + question_content + "\", \"answer1_isCorrect\":\"" + ansDict[1].isCorrect + "\", \"answer1_content\":\"" + ansDict[1].content + "\", \"answer2_isCorrect\":\"" + ansDict[2].isCorrect + "\", \"answer2_content\":\"" + ansDict[2].content + "\", \"answer3_isCorrect\":\"" + ansDict[3].isCorrect + "\", \"answer3_content\":\"" + ansDict[3].content + "\", \"answer4_isCorrect\":\"" + ansDict[4].isCorrect + "\", \"answer4_content\":\"" + ansDict[4].content + "\"  }"
     const headers = {headers : {"x-auth-token": getToken()}}
     console.log(body)
     return axios.post(url,body,headers)
