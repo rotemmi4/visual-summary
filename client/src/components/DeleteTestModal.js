@@ -18,7 +18,7 @@ export function DeleteTestModal(props) {
 
         >
             <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">Delete Test
+                <Modal.Title id="contained-modal-title-vcenter">Delete {props.name}
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>

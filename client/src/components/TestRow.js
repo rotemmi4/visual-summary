@@ -33,7 +33,7 @@ export function TestRow(props){
                 <Col>
                     {EditLink}
                     <Button variant="light" onClick={handleShow}>Delete</Button>
-                    <DeleteTestModal show={show} onHide={handleClose}></DeleteTestModal>
+                    <DeleteTestModal show={show} onHide={handleClose} name={testName}></DeleteTestModal>
                 </Col>
                 <Col></Col><Col></Col><Col></Col>
         </Row>
