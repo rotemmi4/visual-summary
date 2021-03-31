@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {Button, Container, Modal, Row, Col} from 'react-bootstrap';
+import * as testRepository from "../repositories/TestRepository";
 // import {TextVisualization} from "./TextVisualization";
 // import * as textRepository from "../repositories/TextRepository";
 // import "./Modal.css"
@@ -8,6 +9,10 @@ import {Button, Container, Modal, Row, Col} from 'react-bootstrap';
 //style={{position: "absolute" , left: "10px"}}
 export function DeleteTestModal(props) {
 
+    let onButtonClick = function(event){
+        testRepository.delete_test(props.name)
+        props.onHide()
+    }
 
     return (
         <Modal
@@ -25,7 +30,7 @@ export function DeleteTestModal(props) {
                 <p>Are you sure you want to delete this test?</p>
             </Modal.Body>
             <Modal.Footer>
-                <Button  >Delete</Button>
+                <Button   onClick={(e)=>{onButtonClick(props) }} >Delete</Button>
                 <Button onClick={props.onHide}>Close</Button>
             </Modal.Footer>
         </Modal>

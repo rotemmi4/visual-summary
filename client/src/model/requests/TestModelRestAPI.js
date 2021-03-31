@@ -38,3 +38,9 @@ export function useGetAllTest(){
     const headers = {headers: {"x-auth-token": getToken()}}
     return useAxiosGet(url, headers)
 }
+
+export function deleteTest(name){
+    const url = `http://127.0.0.1:5000/tests/deleteTest/${name}`
+    const headers = {headers: {"x-auth-token": getToken()}}
+    return axios.post(url,headers)
+}

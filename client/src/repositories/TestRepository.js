@@ -1,5 +1,6 @@
 import React,{ useState , useEffect } from 'react';
 import * as testModelRestAPI  from '../model/requests/TestModelRestAPI';
+import * as textModelRestAPI from "../model/requests/TextModelRestAPI";
 
 
 export function useGetAllTest(){
@@ -36,4 +37,8 @@ export function useGetAllTest(){
     },[/*fileText.data,*/restTest.data])
 
     return test
+}
+
+export function delete_test(test_name){
+    testModelRestAPI.deleteTest(test_name)
 }
