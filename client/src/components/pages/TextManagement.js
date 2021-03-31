@@ -49,14 +49,16 @@ export default function TextManagement() {
                                 <h4 className="mb-3 text-left">Upload Text:</h4>
                                <input type="file" required name="file" onChange={onChange}/> <br/><br/>
 
-                                <div>
-                                    <Button onClick={(e)=>{
-                                        setFlag(!flag)
-                                    }}> {flag?"Hide Text" : "Show Text"}</Button> <br/><br/>
-                                </div>
-                                <div>
-                                    {flag && content}
-                                </div>
+                                <Button variant="primary" onClick={(e)=>{
+
+                                    setShow(true)
+                                }}>Show Content</Button>
+
+                                <AddTextModal show={show} onHide={() => {
+                                    console.log(show)
+                                    setShow(false)
+                                    console.log(setModalShow)
+                                }} text={content}></AddTextModal><br/><br/>
 
 
 
@@ -65,20 +67,6 @@ export default function TextManagement() {
                                     uploadText(name, content)
                                     handleShow()
                                 }}>Save</Button>
-
-                                <Button variant="primary" onClick={(e)=>{
-
-                                    setShow(true)
-                                }}>Showcontent</Button>
-
-                                <AddTextModal show={show} onHide={() => {
-                                    console.log(show)
-                                    setShow(false)
-                                    console.log(setModalShow)
-                                }} text={content}></AddTextModal>
-
-
-
 
 
 
