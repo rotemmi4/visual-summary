@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import {Button, Col, Container, Form, Row} from 'react-bootstrap';
+import React, {useEffect, useState} from 'react';
+import {Button, Col, Container, Form, Modal, Row} from 'react-bootstrap';
 import axios from "axios";
 import * as textRepository from "../../repositories/TextRepository";
 import {TextDisplayModal} from "../TextDisplayModel";
@@ -7,7 +7,6 @@ import {addQuestion, addAnswers} from "../../model/requests/TextModelRestAPI";
 
 
 export default function AddQuestion() {
-
 
     const [dropdown, setDropdown] = useState([0]);
     const texts = textRepository.useGetAllText()
@@ -25,6 +24,16 @@ export default function AddQuestion() {
     const[checkbox2, setCheckbox2]= useState("false");
     const[checkbox3, setCheckbox3]= useState("false");
     const[checkbox4, setCheckbox4]= useState("false");
+
+    const [show, setShow] = useState(false);
+    const reload=()=>window.location.reload();
+
+    const handleClose = () => {
+        setShow(false)
+        reload();
+    };
+
+    const handleShow = () => setShow(true);
 
 
     return (
@@ -134,14 +143,36 @@ export default function AddQuestion() {
                                                       }}
                                                   />
                                                     <br></br><br></br>
-                                                    <Button onClick={(e)=>{
-                                                        setQues_num(ques_num + 1)
-                                                        addQuestion(ques_num, dropdown[index], que_content)
-                                                        addAnswers(1, ques_num, dropdown[index], checkbox1, answer1)
-                                                        addAnswers(2, ques_num, dropdown[index], checkbox2, answer2)
-                                                        addAnswers(3, ques_num, dropdown[index], checkbox3, answer3)
-                                                        addAnswers(4, ques_num, dropdown[index], checkbox4, answer4)
-                                                    }}>Save</Button>
+
+                                                        <Button onClick={(e)=>{
+                                                            handleShow()
+                                                            let ansDict= {
+                                                                '1': {'isCorrect': checkbox1, 'content': answer1},
+                                                                '2': {'isCorrect': checkbox2, 'content': answer2},
+                                                                '3': {'isCorrect': checkbox3, 'content': answer3},
+                                                                '4': {'isCorrect': checkbox4, 'content': answer4}
+                                                            }
+                                                            addQuestion(dropdown[index], que_content, ansDict)
+                                                        }}>Save</Button>
+
+                                                    <Modal
+                                                        show={show}
+                                                        onHide={handleClose}
+                                                        backdrop="static"
+                                                        keyboard={false}
+                                                    >
+                                                        <Modal.Header closeButton>
+                                                            <Modal.Title>Message</Modal.Title>
+                                                        </Modal.Header>
+                                                        <Modal.Body>
+                                                            Question Added!
+                                                        </Modal.Body>
+                                                        <Modal.Footer>
+                                                            <Button variant="secondary" onClick={handleClose}>
+                                                                Close
+                                                            </Button>
+                                                        </Modal.Footer>
+                                                    </Modal>
                                                 </>
                                             )
                                         })

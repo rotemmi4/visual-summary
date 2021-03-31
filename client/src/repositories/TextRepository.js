@@ -41,7 +41,8 @@ export function useGetAllText(){
     return text
 }
 
-export function useGetAllQuestionsById() {
+
+export function useGetAllQuestionsById(id){
 
     const [question, setQuestion] = useState({
         loading: false,
@@ -49,7 +50,7 @@ export function useGetAllQuestionsById() {
         error: false
     })
 
-    const restQuestion = textModelRestAPI.useGetAllQuestionsById()
+    const restQuestion = textModelRestAPI.useGetAllQuestionsById(id)
 
     useEffect( () => {
         setQuestion({
@@ -153,6 +154,42 @@ export function useGetTextWeights(id){
     },[restMedia.data])
 
     return text
+}
+
+
+export function useGetQuestionId(){
+
+    const [questionId, setQuestionId] = useState({
+        loading: false,
+        data: [],
+        error: false
+    })
+
+    const restQuestionId = textModelRestAPI.useGetQuestionId()
+
+    useEffect( () => {
+        setQuestionId({
+            loading: true,
+            data: [],
+            error: false
+        })
+        if(!restQuestionId.error && !restQuestionId.loading && restQuestionId.data != null){
+            setQuestionId({
+                loading: false,
+                data: restQuestionId.data,
+                error: false
+            })
+        }
+        else {
+            setQuestionId({
+                loading: false,
+                data: [],
+                error: true
+            })
+        }
+    },[restQuestionId.data])
+
+    return questionId
 }
 
 // export function createText(text){
