@@ -10,8 +10,8 @@ export default function GenerateRandomTextAndRandomVisualization() {
 
     let location = useLocation();
     let testName = location.state.testName
-    const { id } = useParams()
-    const textById = textRepository.useGetTextById(id)
+    // const { id } = useParams()
+    // const textById = textRepository.useGetTextById(id)
     const [modalShow,setModalShow] = useState([false,false,false,false,false,false,false,false,false,false])
     const size = 10
     const [dropdown, setDropdown] = useState([0,0,0,0,0,0,0,0,0,0]);

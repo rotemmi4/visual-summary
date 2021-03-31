@@ -1,12 +1,20 @@
-import React from 'react'
+import React , {useState} from 'react'
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import {Link} from "react-router-dom";
+import {DeleteTestModal} from "./DeleteTestModal";
 
 
 
 export function TestRow(props){
     const testName = props.testName
     const testType = props.testType
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+
     let EditLink
     if(testType=="Choose Tests And Visualizations"){
        EditLink=<Link  className="btn btn-light" to={{pathname:"/ChooseTextsAndVisualizations", state:{type: "edit", testName: testName}}} >Edit</Link>
@@ -24,7 +32,8 @@ export function TestRow(props){
                 <Col><text>{testName}</text></Col>
                 <Col>
                     {EditLink}
-                    <Button variant="light">Delete</Button>
+                    <Button variant="light" onClick={handleShow}>Delete</Button>
+                    <DeleteTestModal show={show} onHide={handleClose}></DeleteTestModal>
                 </Col>
                 <Col></Col><Col></Col><Col></Col>
         </Row>
