@@ -1,7 +1,7 @@
 import React from 'react'
-import { Col, Container, Row } from 'react-bootstrap'
+import { Button, Container, Row } from 'react-bootstrap'
 import './HomePage.css'
-
+import {Link} from "react-router-dom";
 
 export function HomePage(){
 
@@ -14,6 +14,12 @@ export function HomePage(){
                 </Row>
                 <Row className="justify-content-center align-items-center">
                     <h2>Visualization Summary Platform</h2>
+                </Row>
+
+                <Row className="justify-content-center align-items-center">
+                    <Link to={"/StudentEntrance"}>
+                        <Button variant="outline-success" block size="lg">Start Test!</Button>
+                    </Link>
                 </Row>
             </Container>
             

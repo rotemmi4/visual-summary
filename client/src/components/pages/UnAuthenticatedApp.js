@@ -6,6 +6,7 @@ import { HomePage } from './HomePage';
 import { LoginPage } from './LoginPage';
 import { useAuth } from '../../model/context/auth_context';
 import DeveloperNavbar from "../DeveloperNavbar";
+import { StudentEntrancePage } from './StudentEntrancePage';
 
 function UnAuthenticatedApp() {
 
@@ -17,6 +18,7 @@ function UnAuthenticatedApp() {
             <Switch>
                 <Route path='/' exact component={HomePage} />
                 <Route path='/login' component={LoginPage} />
+                <Route path='/StudentEntrance' component={StudentEntrancePage} />
             </Switch>
         </Router>
         </>
