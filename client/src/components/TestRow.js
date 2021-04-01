@@ -15,6 +15,7 @@ export function TestRow(props){
     const handleShow = () => setShow(true);
 
 
+
     let EditLink
     if(testType=="Choose Tests And Visualizations"){
        EditLink=<Link  className="btn btn-light" to={{pathname:"/ChooseTextsAndVisualizations", state:{type: "edit", testName: testName}}} >Edit</Link>

@@ -19,9 +19,9 @@ export default function CreateNewTestOptions() {
             </label>
 
             <br/><br/><br/>
-            <Link  className="btn btn-light" to={{pathname:"/ChooseTextsAndVisualizations", state:{type: "new", testName:name}}}>Choose Texts and Visualizations</Link><br/><br/>
-            <Link  className="btn btn-light" to={{pathname:"/GenerateRandomTextsAndChooseVisualizations", state:{type: "new", testName:name}}}>Generate Random Texts and Choose Visualizations </Link><br/><br/>
-            <Link  className="btn btn-light" to={{pathname:"/GenerateRandomTextsAndRandomVisualizations", state:{type: "new", testName:name}}}>Generate Random Texts and Random Visualizations</Link><br/><br/>
+            <Link  className="btn btn-primary" to={{pathname:"/ChooseTextsAndVisualizations", state:{type: "new", testName:name}}}>Choose Texts and Visualizations</Link><br/><br/>
+            <Link  className="btn btn-primary" to={{pathname:"/GenerateRandomTextsAndChooseVisualizations", state:{type: "new", testName:name}}}>Generate Random Texts and Choose Visualizations </Link><br/><br/>
+            <Link  className="btn btn-primary" to={{pathname:"/GenerateRandomTextsAndRandomVisualizations", state:{type: "new", testName:name}}}>Generate Random Texts and Random Visualizations</Link><br/><br/>
         </div>
 
             </>);

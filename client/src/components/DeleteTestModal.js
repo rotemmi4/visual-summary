@@ -8,10 +8,12 @@ import * as testRepository from "../repositories/TestRepository";
 
 //style={{position: "absolute" , left: "10px"}}
 export function DeleteTestModal(props) {
+    const reload=()=>window.location.reload();
 
     let onButtonClick = function(event){
         testRepository.delete_test(props.name)
         props.onHide()
+        reload()
     }
 
     return (
