@@ -10,6 +10,7 @@ export function FontSizeVisualization(props){
     return (
         <>
             <Form.Control type="range" onChange={(e)=>{setThreshold(e.target.value / 100 )}}/>
+            <p>Threshold: {threshold}</p>
             {sentences.map(sentence => (
                 sentence.weight > threshold ? <span style={{'font-size': '150%' }}>{sentence.content}</span> : <span >{sentence.content}</span>
             ))}
