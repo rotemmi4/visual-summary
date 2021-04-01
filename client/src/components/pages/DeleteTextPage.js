@@ -46,9 +46,6 @@ export default function DeleteText() {
                                                         setArr([...dropdown])
                                                         arr[index] = parseInt(e.target.value)
                                                         setDropdown(arr)
-
-
-
                                                     }}>
                                                         {texts && texts.data ? texts.data.map(text => (
                                                             <option value={text.id}>{text.name}</option>
