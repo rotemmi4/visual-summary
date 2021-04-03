@@ -6,6 +6,8 @@ import {deleteQuestion, deleteText} from "../../model/requests/TextModelRestAPI"
 import * as textRepository from "../../repositories/TextRepository";
 import {TextDisplayModal} from "../TextDisplayModel";
 import {useParams} from "react-router-dom";
+import {QuestionsDropdown} from "../QuestionsDropdown";
+import {DeleteQuestionModal} from "../DeleteQuestionModal";
 
 
 export default function DeleteQuestion() {
@@ -13,11 +15,9 @@ export default function DeleteQuestion() {
 
 
     const {register, handleSubmit} = useForm();
-    const[que_id, setQue_id]= useState();
-    const [text_id,setText_id] = useState()
-
+    const [textId,setTextId] = useState()
+    const [questionId, setQuestionId]= useState();
     const texts = textRepository.useGetAllText()
-    let text_questions = textRepository.useGetAllQuestionsById(text_id)
 
     const [modalShow,setModalShow] = useState(false)
     const [show, setShow] = useState(false);
@@ -29,12 +29,6 @@ export default function DeleteQuestion() {
         setShow(false)
         reload();
     };
-
-    const getTextById = (id) => {
-        let filtered = texts.data.filter(text => text.id == id)
-        return filtered.length > 0 ? filtered[0] : null;
-    };
-    const handleShow = () => setShow(true);
 
     return (
         <>
@@ -48,61 +42,35 @@ export default function DeleteQuestion() {
                                 <h5 className="mb-3 text-left">Choose Text Name:</h5>
                                 { texts && texts.data ?
                                     <div>
-                                        <select onChange={(e)=>{
-                                            setText_id(parseInt(e.target.value))
-                                            setQue_id(null)
+                                        <select defaultValue={-1} onChange={(e)=>{
+                                            setTextId(parseInt(e.target.value))
                                         }}>
-                                            <option disabled selected value hidden> -- select an option -- </option>
+                                            <option disabled value={-1} hidden> -- select an option -- </option>
                                             {texts.data.map(text => (
-                                                <option value={text.id}>{text.name}</option>
+                                                <option key={text.id} value={text.id}>{text.name}</option>
                                             ))}
                                         </select> {'    '}
-                                        {text_id ?
+                                        {textId ?
                                             <>
                                                 <Button onClick={(e) => {
                                                     setModalShow(true)
                                                 }}>
                                                     Show Text
                                                 </Button><br/><br/>
-                                                <TextDisplayModal show={modalShow} onHide={() => {setModalShow(false)}} text={text_id}></TextDisplayModal>
+                                                <TextDisplayModal show={modalShow} onHide={() => {setModalShow(false)}} text={textId}></TextDisplayModal>
                                             </> : null }
                                 </div> : null }
-                                {text_id && text_questions && text_questions.data ?
+                                {textId  ?
                                 <div>
-                                    <select onChange={(e)=>{
-                                        setQue_id(parseInt(e.target.value))
-                                    }}>
-                                        <option disabled selected value hidden> -- select an option -- </option>
-                                        {text_questions.data.map(question => (
-                                            <option value={question.question_id}>{question.question_content}</option>
-                                        ))}
-                                    </select> {'    '}
-                                    {que_id ?
-                                    <Button onClick={(e)=>{
-                                        deleteQuestion(que_id)
-                                        handleShow()
-                                    }}>
-                                        Delete
-                                    </Button> : null}
-
-                                    <Modal
-                                        show={show}
-                                        onHide={handleClose}
-                                        backdrop="static"
-                                        keyboard={false}
-                                    >
-                                        <Modal.Header closeButton>
-                                            <Modal.Title>Message</Modal.Title>
-                                        </Modal.Header>
-                                        <Modal.Body>
-                                            Question Deleted!
-                                        </Modal.Body>
-                                        <Modal.Footer>
-                                            <Button variant="secondary" onClick={handleClose}>
-                                                Close
-                                            </Button>
-                                        </Modal.Footer>
-                                    </Modal>
+                                    <QuestionsDropdown text_id={textId} setQuestionId={setQuestionId}/>
+                                    {questionId ?
+                                        <Button onClick={(e)=>{
+                                            deleteQuestion(questionId)
+                                            setShow(true)
+                                        }}>
+                                            Delete
+                                        </Button> : null}
+                                    <DeleteQuestionModal show={show} handleClose={handleClose} ></DeleteQuestionModal>
                                 </div> : null}
                             </form>
                         </div>
@@ -112,5 +80,4 @@ export default function DeleteQuestion() {
             </Container>
         </>);
 }
-
 
