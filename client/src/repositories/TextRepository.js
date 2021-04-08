@@ -2,8 +2,8 @@ import React,{ useState , useEffect } from 'react';
 import * as textModelRestAPI  from '../model/requests/TextModelRestAPI';
 
 
-export function save(type,textID,propertyName,propertyValue,propertyType){
-    textModelRestAPI.saveVisualizationForText(type,textID,propertyName,propertyValue,propertyType)
+export function save(type,textID,propertyName,propertyValue,propertyType,testName){
+    textModelRestAPI.saveVisualizationForText(type,textID,propertyName,propertyValue,propertyType,testName)
 }
 
 export function useGetAllText(){

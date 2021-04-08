@@ -46,7 +46,7 @@ export default function ChooseTestAndVisualization(props) {
     let saveFullTest = function(event){
 
         for (let i = 0; i < 12; i++) {
-            textRepository.save(visualizationType[i],selectedTexts[i],propertyName[i],propertyValue[i],propertyType[i])
+            textRepository.save(visualizationType[i],selectedTexts[i],propertyName[i],propertyValue[i],propertyType[i],testName)
         }
         // textRepository.save(type,id,propertyName,propertyValue,propertyType)
         // props.onHide()

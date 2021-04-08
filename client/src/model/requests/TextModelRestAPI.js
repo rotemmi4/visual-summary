@@ -50,9 +50,9 @@ export function useRandomTextsAndVisualization(){
     return useAxiosGet(url, headers)
 }
 
- export function saveVisualizationForText(type,textID,propertyName,propertyValue,propertyType){
+ export function saveVisualizationForText(type,textID,propertyName,propertyValue,propertyType,testName){
      const url = 'http://127.0.0.1:5000/saveVisu'
-     const body = "{ \"testName\": \"test\", \"textID\":" + textID + ", \"visualizationType\": \"" + type + "\", \"propName\": \"" + propertyName + "\", \"propVal\": \"" + propertyValue + "\" , \"propType\":\"" + propertyType + "\" }"
+     const body = "{ \"testName\":"+"\"" +testName+"\"" +", \"textID\":" + textID + ", \"visualizationType\": \"" + type + "\", \"propName\": \"" + propertyName + "\", \"propVal\": \"" + propertyValue + "\" , \"propType\":\"" + propertyType + "\" }"
      const headers = {headers : {"x-auth-token": getToken()}}
      return axios.post(url,body,headers)
  }
