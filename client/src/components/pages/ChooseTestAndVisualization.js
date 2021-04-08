@@ -19,14 +19,15 @@ export default function ChooseTestAndVisualization(props) {
     const [propertyValue,setPropertyValue] = useState(["none","none","none","none","none","none","none","none","none","none","none","none"])
     const [propertyType,setPropertyType] = useState(["none","none","none","none","none","none","none","none","none","none","none","none"])
     const [visualizationType,setVisualizationType] = useState(["none","none","none","none","none","none","none","none","none","none","none","none"])
-    let callbackFunction = (propName,propValue,propType,visualType,index) => {
+    const [selectedTexts,setSelectedTexts] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
+    let callbackFunction = (propName,propValue,propType,visualType,textID,index) => {
 
         let newPropertyName = [...propertyName]
         newPropertyName[index]=propName
         setPropertyName(newPropertyName)
 
         let newPropertyValue = [...propertyValue]
-        newPropertyName[index]=propValue
+        newPropertyValue[index]=propValue
         setPropertyValue(newPropertyValue)
 
         let newPropertyType = [...propertyType]
@@ -36,8 +37,20 @@ export default function ChooseTestAndVisualization(props) {
         let newVisualizationType = [...visualizationType]
         newVisualizationType[index]=visualType
         setVisualizationType(newVisualizationType)
+
+        let newSelectedTexts = [...selectedTexts]
+        newSelectedTexts[index]=textID
+        setSelectedTexts(newSelectedTexts)
     }
 
+    let saveFullTest = function(event){
+
+        for (let i = 0; i < 12; i++) {
+            textRepository.save(visualizationType[i],selectedTexts[i],propertyName[i],propertyValue[i],propertyType[i])
+        }
+        // textRepository.save(type,id,propertyName,propertyValue,propertyType)
+        // props.onHide()
+    }
     let texts = textRepository.useGetAllText()
 
 
@@ -84,7 +97,7 @@ export default function ChooseTestAndVisualization(props) {
                     </Col>
                     <Col></Col>
                 </Row>
-                <Button className="btn btn-primary">SAVE TEST</Button><br/><br/><br/>
+                <Button className="btn btn-primary" onClick={saveFullTest}>SAVE TEST</Button><br/><br/><br/>
             </Container>
         </>);
 }
