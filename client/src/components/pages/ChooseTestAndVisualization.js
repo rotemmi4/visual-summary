@@ -15,7 +15,28 @@ export default function ChooseTestAndVisualization(props) {
 
     const size = 10
     const [dropdown, setDropdown] = useState([0,0,0,0,0,0,0,0,0,0,0,0]);
+    const [propertyName,setPropertyName] = useState(["none","none","none","none","none","none","none","none","none","none","none","none"])
+    const [propertyValue,setPropertyValue] = useState(["none","none","none","none","none","none","none","none","none","none","none","none"])
+    const [propertyType,setPropertyType] = useState(["none","none","none","none","none","none","none","none","none","none","none","none"])
+    const [visualizationType,setVisualizationType] = useState(["none","none","none","none","none","none","none","none","none","none","none","none"])
+    let callbackFunction = (propName,propValue,propType,visualType,index) => {
 
+        let newPropertyName = [...propertyName]
+        newPropertyName[index]=propName
+        setPropertyName(newPropertyName)
+
+        let newPropertyValue = [...propertyValue]
+        newPropertyName[index]=propValue
+        setPropertyValue(newPropertyValue)
+
+        let newPropertyType = [...propertyType]
+        newPropertyType[index]=propType
+        setPropertyType(newPropertyType)
+
+        let newVisualizationType = [...visualizationType]
+        newVisualizationType[index]=visualType
+        setVisualizationType(newVisualizationType)
+    }
 
     let texts = textRepository.useGetAllText()
 
@@ -47,12 +68,12 @@ export default function ChooseTestAndVisualization(props) {
                                             let arr=[...modalShow]
                                             arr[index] = true
                                             setModalShow(arr)
-                                        }}>Choose Visualization</Button><br/><br/>
+                                        }}>Choose Visualization</Button> <b>Visualization: {visualizationType[index]}</b><br/><br/>
                                             <VisualizationDisplayModal show={modalShow[index]} onHide={() => {
                                                 let arr=[...modalShow]
                                                 arr[index] = false
                                                 setModalShow(arr)
-                                            }} text={dropdown[index]}></VisualizationDisplayModal>
+                                            }} text={dropdown[index]} parentCallback = {callbackFunction} index={index}></VisualizationDisplayModal>
                                         </>
                                     )
                                 })
