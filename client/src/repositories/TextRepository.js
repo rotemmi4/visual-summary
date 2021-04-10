@@ -49,6 +49,43 @@ export function useGetAllText(){
     return text
 }
 
+
+export function useGetAllQuestionsById(id){
+
+    const [question, setQuestion] = useState({
+        loading: false,
+        data: [],
+        error: false
+    })
+
+    const restQuestion = textModelRestAPI.useGetAllQuestionsById(id)
+
+    useEffect( () => {
+        setQuestion({
+            loading: true,
+            data: [],
+            error: false
+        })
+        if(!restQuestion.error && !restQuestion.loading && restQuestion.data != null){
+            setQuestion({
+                loading: false,
+                data: restQuestion.data,
+                error: false
+            })
+        }
+        else {
+            setQuestion({
+                loading: false,
+                data: [],
+                error: true
+            })
+        }
+    },[restQuestion.data])
+
+    return question
+}
+
+
 export function useGetTextById(id){
 
     const [text, setText] = useState({
@@ -214,6 +251,42 @@ export function useRandomTextAndVisualization(){
     return text
 }
 
+
+
+export function useGetQuestionId(){
+
+    const [questionId, setQuestionId] = useState({
+        loading: false,
+        data: [],
+        error: false
+    })
+
+    const restQuestionId = textModelRestAPI.useGetQuestionId()
+
+    useEffect( () => {
+        setQuestionId({
+            loading: true,
+            data: [],
+            error: false
+        })
+        if(!restQuestionId.error && !restQuestionId.loading && restQuestionId.data != null){
+            setQuestionId({
+                loading: false,
+                data: restQuestionId.data,
+                error: false
+            })
+        }
+        else {
+            setQuestionId({
+                loading: false,
+                data: [],
+                error: true
+            })
+        }
+    },[restQuestionId.data])
+
+    return questionId
+}
 
 // export function createText(text){
 //     return create(text)

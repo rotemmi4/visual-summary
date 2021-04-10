@@ -1,21 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
-import {Link, Route, useParams} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import { useAuth } from '../../model/context/auth_context';
-import { CreateNewTestOptions } from './CreateNewTestOptions';
-import * as testRepository from "../../repositories/TestRepository";
-import { TestRow } from '../TestRow';
-import {HomePage} from "./HomePage";
-
-
-
+import * as textRepository from "../../repositories/TextRepository";
+import { VisualizationDisplayModal } from '../VisualizationDisplayModal';
 
 
 
 
 export default function TestManagement() {
+    
+    const {user} = useAuth()
 
     const allTests = testRepository.useGetAllTest()
+
+
+    const { id } = useParams()
+    const textById = textRepository.useGetTextById(id)
+    const [modalShow,setModalShow] = useState([false,false,false,false,false,false,false,false,false,false])
+
+    const size = 10
+    const [dropdown, setDropdown] = useState([0,0,0,0,0,0,0,0,0,0]);
+
+
+    const texts = textRepository.useGetAllText()
 
 
     return (

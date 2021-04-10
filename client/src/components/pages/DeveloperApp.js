@@ -11,8 +11,7 @@ import ChooseTestAndVisualization from "./ChooseTestAndVisualization";
 import GenerateRandomTextsAndChooseVisualization from "./GenerateRandomTextAndChooseVisualization";
 import GenerateRandomTextAndRandomVisualization from "./GenerateRandomTextAndRandomVisualization";
 
-
-function AuthenticatedApp(props) {
+function AuthenticatedApp() {
 
     return (
         <>

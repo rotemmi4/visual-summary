@@ -51,17 +51,31 @@ export function useRandomTextsAndVisualization(){
 }
 
  export function saveVisualizationForText(type,textID,propertyName,propertyValue,propertyType,testName,testType){
+
+export function useGetQuestionId(){
+    const url = 'http://127.0.0.1:5000/questionId'
+    const headers = {headers: {"x-auth-token": getToken()}}
+    return useAxiosGet(url, headers)
+}
+
+
+ export function saveVisualizationForText(type,textID,propertyName,propertyValue,propertyType){
      const url = 'http://127.0.0.1:5000/saveVisu'
      const body = "{ \"testName\":"+"\"" +testName+"\"" +",\"testType\":"+"\""+testType+"\""+", \"textID\":" + textID + ", \"visualizationType\": \"" + type + "\", \"propName\": \"" + propertyName + "\", \"propVal\": \"" + propertyValue + "\" , \"propType\":\"" + propertyType + "\" }"
      const headers = {headers : {"x-auth-token": getToken()}}
      return axios.post(url,body,headers)
  }
 
-
 export function useGetTextById(id){
     const url = `http://127.0.0.1:5000/texts/${id}`
     const headers = {headers: {"x-auth-token": getToken()}}
     return useAxiosGet(url, headers, false)
+}
+
+export function useGetAllQuestionsById(id){
+    const url = `http://127.0.0.1:5000/questions/${id}`
+    const headers = {headers: {"x-auth-token": getToken()}}
+    return useAxiosGet(url, headers)
 }
 
 export function useGetTextWeights(id){
@@ -83,6 +97,39 @@ export function uploadText(name, content){
     //const body = "{  \"name\":" + "\"" + name +"\"" + ", \"content\":\"" + content + "\" }"
 
     const body = "{  \"name\":\"" + name + "\", \"content\":\"" + content + "\" }"
+    const headers = {headers : {"x-auth-token": getToken()}}
+    return axios.post(url,body,headers)
+}
+
+export function deleteText(id){
+    const url = 'http://127.0.0.1:5000/deleteText'
+    const body = "{ \"id\":\"" + id + "\" }"
+    console.log(body)
+    const headers = {headers : {"x-auth-token": getToken()}}
+    return axios.post(url,body,headers)
+}
+
+export function addQuestion(text_id, question_content, ansDict){
+    console.log("here")
+    console.log(ansDict)
+    const url = 'http://127.0.0.1:5000/addQuestion'
+    const body = "{  \"text_id\":\"" + text_id + "\", \"question_content\":\"" + question_content + "\", \"answer1_isCorrect\":\"" + ansDict[1].isCorrect + "\", \"answer1_content\":\"" + ansDict[1].content + "\", \"answer2_isCorrect\":\"" + ansDict[2].isCorrect + "\", \"answer2_content\":\"" + ansDict[2].content + "\", \"answer3_isCorrect\":\"" + ansDict[3].isCorrect + "\", \"answer3_content\":\"" + ansDict[3].content + "\", \"answer4_isCorrect\":\"" + ansDict[4].isCorrect + "\", \"answer4_content\":\"" + ansDict[4].content + "\"  }"
+    const headers = {headers : {"x-auth-token": getToken()}}
+    console.log(body)
+    return axios.post(url,body,headers)
+}
+
+export function addAnswers(option_id ,question_id, text_id, is_correct, answer_content){
+    const url = 'http://127.0.0.1:5000/addAnswers'
+    const body = "{  \"option_id\":\"" + option_id + "\", \"question_id\":\"" + question_id + "\", \"text_id\":\"" + text_id + "\" ,  \"is_correct\":\"" + is_correct + "\", \"answer_content\":\"" + answer_content + "\"  }"
+    console.log(body)
+    const headers = {headers : {"x-auth-token": getToken()}}
+    return axios.post(url,body,headers)
+}
+
+export function deleteQuestion(id){
+    const url = 'http://127.0.0.1:5000/deleteQuestion'
+    const body = "{ \"id\":\"" + id + "\" }"
     console.log(body)
     const headers = {headers : {"x-auth-token": getToken()}}
     return axios.post(url,body,headers)
