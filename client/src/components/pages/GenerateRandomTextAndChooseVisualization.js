@@ -4,6 +4,7 @@ import * as textRepository from "../../repositories/TextRepository";
 import {Button, Col, Container, Row} from "react-bootstrap";
 import {VisualizationDisplayModal} from "../VisualizationDisplayModal";
 import {TestRow} from "../TestRow";
+import * as testRepository from "../../repositories/TestRepository";
 
 
 export default function GenerateRandomTextAndChooseVisualization() {
@@ -19,14 +20,50 @@ export default function GenerateRandomTextAndChooseVisualization() {
 
 
     const texts = textRepository.useRandomText()
+    const [propertyName,setPropertyName] = useState(["none","none","none","none","none","none","none","none","none","none","none","none"])
+    const [propertyValue,setPropertyValue] = useState(["none","none","none","none","none","none","none","none","none","none","none","none"])
+    const [propertyType,setPropertyType] = useState(["none","none","none","none","none","none","none","none","none","none","none","none"])
+    const [visualizationType,setVisualizationType] = useState(["none","none","none","none","none","none","none","none","none","none","none","none"])
+    const [selectedTexts,setSelectedTexts] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
+    let callbackFunction = (propName,propValue,propType,visualType,textID,index) => {
 
+        let newPropertyName = [...propertyName]
+        newPropertyName[index]=propName
+        setPropertyName(newPropertyName)
 
+        let newPropertyValue = [...propertyValue]
+        newPropertyValue[index]=propValue
+        setPropertyValue(newPropertyValue)
+
+        let newPropertyType = [...propertyType]
+        newPropertyType[index]=propType
+        setPropertyType(newPropertyType)
+
+        let newVisualizationType = [...visualizationType]
+        newVisualizationType[index]=visualType
+        setVisualizationType(newVisualizationType)
+
+        let newSelectedTexts = [...selectedTexts]
+        newSelectedTexts[index]=textID
+        setSelectedTexts(newSelectedTexts)
+    }
+
+    let saveFullTest = function(event){
+
+        for (let i = 0; i < 12; i++) {
+            textRepository.save(visualizationType[i],selectedTexts[i],propertyName[i],propertyValue[i],propertyType[i],testName)
+        }
+        testRepository.saveTest(testName,"Generate Random Texts And Choose Visualizations")
+
+        // textRepository.save(type,id,propertyName,propertyValue,propertyType)
+        // props.onHide()
+    }
     return (
         <>
             <Container>
                 <h2 className="mb-3 text-left">Test: {testName}</h2><br/>
                 <text>Generate Random Texts And Choose Visualizations</text><br/><br/><br/><br/>
-                {texts && texts.data ? texts.data.map(text => (
+                {texts && texts.data ? texts.data.map((text,index) => (
                     <Row className="justify-content-center">
                         <Col>
                             <p>{text.name}</p>
@@ -36,17 +73,17 @@ export default function GenerateRandomTextAndChooseVisualization() {
                                 let arr=[...modalShow]
                                 arr[text.id] = true
                                 setModalShow(arr)
-                            }}>Choose Visualization</Button><br/><br/>
+                            }}>Choose Visualization</Button><b>  Visualization: {visualizationType[index]}</b><br/><br/>
                             <VisualizationDisplayModal show={modalShow[text.id]} onHide={() => {
                                 let arr=[...modalShow]
                                 arr[text.id] = false
                                 setModalShow(arr)
-                            }} text={text.id}></VisualizationDisplayModal>
+                            }} text={text.id} parentCallback = {callbackFunction} index={index} ></VisualizationDisplayModal>
                         </Col>
                     </Row>
 
                 )) : null}
-                <Button className="btn btn-primary">SAVE TEST</Button><br/><br/><br/>
+                <Button className="btn btn-primary" onClick={saveFullTest}>SAVE TEST</Button><br/><br/><br/>
             </Container>
         </>);
 }
