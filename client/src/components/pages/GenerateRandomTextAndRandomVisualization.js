@@ -4,6 +4,7 @@ import * as textRepository from "../../repositories/TextRepository";
 import {Button, Col, Container, Row} from "react-bootstrap";
 import {VisualizationDisplayModal} from "../VisualizationDisplayModal";
 import {RandomVisualizationDisplayModal} from "../RandomVisualizationDispalyModal";
+import * as testRepository from "../../repositories/TestRepository";
 
 
 export default function GenerateRandomTextAndRandomVisualization() {
@@ -35,7 +36,7 @@ export default function GenerateRandomTextAndRandomVisualization() {
                                 let arr=[...modalShow]
                                 arr[text.id] = true
                                 setModalShow(arr)
-                            }}>Show Visualization</Button><br/><br/>
+                            }}>Show Visualization</Button> <b>  Visualization: {text.visualization}</b><br/><br/>
                             <RandomVisualizationDisplayModal visualization={text.visualization} show={modalShow[text.id]} onHide={() => {
                                 let arr=[...modalShow]
                                 arr[text.id] = false
