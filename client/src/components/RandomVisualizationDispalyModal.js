@@ -15,6 +15,8 @@ export function RandomVisualizationDisplayModal(props) {
     const [propertyValue, setPropertyValue] = useState("none");
     const [propertyType, setPropertyType] = useState("none");
 
+
+
     let onButtonClick = function(event){
         // textRepository.save(visualization,id,propertyName,propertyValue,propertyType)
         // props.onHide()

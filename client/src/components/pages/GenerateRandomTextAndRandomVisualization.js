@@ -19,7 +19,32 @@ export default function GenerateRandomTextAndRandomVisualization() {
 
 
     const texts = textRepository.useRandomTextAndVisualization()
+    let saveFullTest = function(event){
 
+        for (let i = 0; i < 12; i++) {
+            // if(texts[i]. == "Without Visualization"){
+            //     //textRepository.save(texts[i]["visualization"],texts[i]["text"],"none","none","none",testName)
+            // }
+            // else if(texts[i].visualization == "Summary Only"){
+            //     textRepository.save(texts[i].visualization,texts[i].text,"none","none","none",testName)
+            // }
+            // else if(texts[i].visualization == "Gradual Highlight"){
+            //     textRepository.save(texts[i].visualization,texts[i].text,"color","yellow","str",testName)
+            // }
+            // else if(texts[i].visualization == "Highlight"){
+            //     textRepository.save(texts[i].visualization,texts[i].text,"color","yellow","str",testName)
+            // }
+            // else if(texts[i].visualization == "Increased Font"){
+            //     textRepository.save(texts[i].visualization,texts[i].text,"font","18","int",testName)
+            // }
+            // else if(texts[i].visualization == "Summary Only"){
+            //     textRepository.save(texts[i].visualization,texts[i].text,"font","18","int",testName)
+            // }
+
+        }
+        testRepository.saveTest(testName,"Generate Random Texts And Random Visualizations")
+
+    }
 
     return (
         <>
@@ -46,7 +71,7 @@ export default function GenerateRandomTextAndRandomVisualization() {
                     </Row>
 
                 )) : null}
-                <Button className="btn btn-primary">SAVE TEST</Button><br/><br/><br/>
+                <Button className="btn btn-primary" onClick={saveFullTest}>SAVE TEST</Button><br/><br/><br/>
             </Container>
         </>);
 }
