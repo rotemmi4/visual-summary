@@ -4,6 +4,8 @@ import {Link, useParams} from 'react-router-dom';
 import { useAuth } from '../../model/context/auth_context';
 import * as textRepository from "../../repositories/TextRepository";
 import { VisualizationDisplayModal } from '../VisualizationDisplayModal';
+import {TestRow} from "../TestRow";
+import * as testRepository from "../../repositories/TestRepository";
 
 
 
@@ -16,14 +18,7 @@ export default function TestManagement() {
 
 
     const { id } = useParams()
-    const textById = textRepository.useGetTextById(id)
-    const [modalShow,setModalShow] = useState([false,false,false,false,false,false,false,false,false,false])
 
-    const size = 10
-    const [dropdown, setDropdown] = useState([0,0,0,0,0,0,0,0,0,0]);
-
-
-    const texts = textRepository.useGetAllText()
 
 
     return (

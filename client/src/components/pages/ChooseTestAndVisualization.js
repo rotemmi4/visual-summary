@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {Link, useParams, useLocation} from "react-router-dom";
 import * as textRepository from "../../repositories/TextRepository";
+import * as testRepository from "../../repositories/TestRepository"
 import {Button, Col, Container, Row} from "react-bootstrap";
 import {VisualizationDisplayModal} from "../VisualizationDisplayModal";
 
@@ -46,8 +47,10 @@ export default function ChooseTestAndVisualization(props) {
     let saveFullTest = function(event){
 
         for (let i = 0; i < 12; i++) {
-            textRepository.save(visualizationType[i],selectedTexts[i],propertyName[i],propertyValue[i],propertyType[i],testName,"Choose Tests And Visualizations")
+            textRepository.save(visualizationType[i],selectedTexts[i],propertyName[i],propertyValue[i],propertyType[i],testName)
         }
+        testRepository.saveTest(testName,"Choose Tests And Visualizations")
+
         // textRepository.save(type,id,propertyName,propertyValue,propertyType)
         // props.onHide()
     }
