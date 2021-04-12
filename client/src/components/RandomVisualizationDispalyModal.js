@@ -16,8 +16,8 @@ export function RandomVisualizationDisplayModal(props) {
     const [propertyType, setPropertyType] = useState("none");
 
     let onButtonClick = function(event){
-        textRepository.save(visualization,id,propertyName,propertyValue,propertyType)
-        props.onHide()
+        // textRepository.save(visualization,id,propertyName,propertyValue,propertyType)
+        // props.onHide()
     }
 
     return (
@@ -40,7 +40,7 @@ export function RandomVisualizationDisplayModal(props) {
                 </Container>
             </Modal.Body>
             <Modal.Footer>
-                <Button  onClick={(e)=>{onButtonClick() }} href={''}>Save</Button>
+                {/*<Button  onClick={(e)=>{onButtonClick() }} href={''}>Save</Button>*/}
                 <Button onClick={props.onHide}>Close</Button>
             </Modal.Footer>
         </Modal>
