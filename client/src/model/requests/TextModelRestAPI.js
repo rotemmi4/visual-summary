@@ -38,6 +38,18 @@ export function useGetAllText(){
     const headers = {headers: {"x-auth-token": getToken()}}
     return useAxiosGet(url, headers)
 }
+export function useRandomTexts(){
+    const url = 'http://127.0.0.1:5000/getRandom'
+    const headers = {headers: {"x-auth-token": getToken()}}
+    return useAxiosGet(url, headers)
+}
+
+export function useRandomTextsAndVisualization(){
+    const url = 'http://127.0.0.1:5000/getRandomTextAndVisualization'
+    const headers = {headers: {"x-auth-token": getToken()}}
+    return useAxiosGet(url, headers)
+}
+
 
 
 export function useGetQuestionId(){
@@ -47,9 +59,9 @@ export function useGetQuestionId(){
 }
 
 
- export function saveVisualizationForText(type,textID,propertyName,propertyValue,propertyType){
+ export function saveVisualizationForText(type,textID,propertyName,propertyValue,propertyType,testName){
      const url = 'http://127.0.0.1:5000/saveVisu'
-     const body = "{ \"testName\": \"test\", \"textID\":" + textID + ", \"visualizationType\": \"" + type + "\", \"propName\": \"" + propertyName + "\", \"propVal\": \"" + propertyValue + "\" , \"propType\":\"" + propertyType + "\" }"
+     const body = "{ \"testName\":"+"\"" +testName+"\"" +", \"textID\":" + textID + ", \"visualizationType\": \"" + type + "\", \"propName\": \"" + propertyName + "\", \"propVal\": \"" + propertyValue + "\" , \"propType\":\"" + propertyType + "\" }"
      const headers = {headers : {"x-auth-token": getToken()}}
      return axios.post(url,body,headers)
  }
@@ -81,6 +93,9 @@ export function createText(props){
 
 export function uploadText(name, content){
     const url = 'http://127.0.0.1:5000/uploadText'
+    console.log(content)
+    //const body = "{  \"name\":" + "\"" + name +"\"" + ", \"content\":\"" + content + "\" }"
+
     const body = "{  \"name\":\"" + name + "\", \"content\":\"" + content + "\" }"
     const headers = {headers : {"x-auth-token": getToken()}}
     return axios.post(url,body,headers)
@@ -113,6 +128,8 @@ export function deleteQuestion(id){
     const headers = {headers : {"x-auth-token": getToken()}}
     return axios.post(url,body,headers)
 }
+
+
 // export function editText(props){
 //     const url = 'http://127.0.0.1:5000/texts'
 //     const body = props

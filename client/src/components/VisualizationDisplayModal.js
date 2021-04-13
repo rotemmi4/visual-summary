@@ -17,7 +17,8 @@ export function VisualizationDisplayModal(props) {
   const [propertyType, setPropertyType] = useState("none");
 
   let onButtonClick = function(event){
-    textRepository.save(type,id,propertyName,propertyValue,propertyType)
+    props.parentCallback(propertyName,propertyValue,propertyType,type,id,props.index)
+    // textRepository.save(type,id,propertyName,propertyValue,propertyType)
     props.onHide()
   }
 

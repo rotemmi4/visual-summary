@@ -2,8 +2,8 @@ import React,{ useState , useEffect } from 'react';
 import * as textModelRestAPI  from '../model/requests/TextModelRestAPI';
 
 
-export function save(type,textID,propertyName,propertyValue,propertyType){
-    textModelRestAPI.saveVisualizationForText(type,textID,propertyName,propertyValue,propertyType)
+export function save(type,textID,propertyName,propertyValue,propertyType,testName){
+    textModelRestAPI.saveVisualizationForText(type,textID,propertyName,propertyValue,propertyType,testName)
 }
 
 export function useGetAllText(){
@@ -15,6 +15,7 @@ export function useGetAllText(){
     })
 
     const restText = textModelRestAPI.useGetAllText()
+    //const fileText = textDummieModel.useGetAllText()
 
     useEffect( () => {
         setText({
@@ -29,6 +30,13 @@ export function useGetAllText(){
                 error: false
             })
         }
+        // else if (!fileText.error && !fileText.loading && fileText.data != null){
+        //     setText({
+        //         loading: false,
+        //         data: fileText.data,
+        //         error: false
+        //     })
+        // }
         else {
             setText({
                 loading: false,
@@ -36,7 +44,7 @@ export function useGetAllText(){
                 error: true
             })
         }
-    },[restText.data])
+    },[/*fileText.data,*/restText.data])
 
     return text
 }
@@ -155,6 +163,94 @@ export function useGetTextWeights(id){
 
     return text
 }
+
+
+export function useRandomText(){
+
+    const [text, setText] = useState({
+        loading: false,
+        data: [],
+        error: false
+    })
+
+    const restText = textModelRestAPI.useRandomTexts()
+    //const fileText = textDummieModel.useGetAllText()
+
+    useEffect( () => {
+        setText({
+            loading: true,
+            data: [],
+            error: false
+        })
+        if(!restText.error && !restText.loading && restText.data != null){
+            setText({
+                loading: false,
+                data: restText.data,
+                error: false
+            })
+        }
+            // else if (!fileText.error && !fileText.loading && fileText.data != null){
+            //     setText({
+            //         loading: false,
+            //         data: fileText.data,
+            //         error: false
+            //     })
+        // }
+        else {
+            setText({
+                loading: false,
+                data: [],
+                error: true
+            })
+        }
+    },[/*fileText.data,*/restText.data])
+
+    return text
+}
+
+export function useRandomTextAndVisualization(){
+
+    const [text, setText] = useState({
+        loading: false,
+        data: [],
+        error: false
+    })
+
+    const restText = textModelRestAPI.useRandomTextsAndVisualization()
+    //const fileText = textDummieModel.useGetAllText()
+
+    useEffect( () => {
+        setText({
+            loading: true,
+            data: [],
+            error: false
+        })
+        if(!restText.error && !restText.loading && restText.data != null){
+            setText({
+                loading: false,
+                data: restText.data,
+                error: false
+            })
+        }
+            // else if (!fileText.error && !fileText.loading && fileText.data != null){
+            //     setText({
+            //         loading: false,
+            //         data: fileText.data,
+            //         error: false
+            //     })
+        // }
+        else {
+            setText({
+                loading: false,
+                data: [],
+                error: true
+            })
+        }
+    },[/*fileText.data,*/restText.data])
+
+    return text
+}
+
 
 
 export function useGetQuestionId(){
