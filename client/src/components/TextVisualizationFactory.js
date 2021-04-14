@@ -12,28 +12,29 @@ export function TextVisualizationFactory(props){
 
    
     const type = props.type
+    const showBar = props.showBar
 
     if(type == "Without Visualization"){
-        return <WithOutVisualization sentences={props.sentences}/>
+        return <WithOutVisualization sentences={props.sentences} showBar={showBar}/>
     }
 
     else if (type == "Gradual Highlight"){
-        return <GradualHighlightVisualization sentences={props.sentences}/>
+        return <GradualHighlightVisualization sentences={props.sentences} showBar={showBar}/>
     }
     else if (type == "Highlight"){
-        return <HighlightVisualization sentences={props.sentences}/>
+        return <HighlightVisualization sentences={props.sentences} showBar={showBar}/>
     }
     else if (type == "Increased Font"){
-        return <FontSizeVisualization sentences={props.sentences}/>
+        return <FontSizeVisualization sentences={props.sentences} showBar={showBar}/>
     }
     else if (type == "Gradual Font"){
-        return <GradualFontVisualization sentences={props.sentences}/>
+        return <GradualFontVisualization sentences={props.sentences} showBar={showBar}/>
     }
     else if (type == "Summary Only"){
-        return <SummaryOnlyVisualization sentences={props.sentences}/>
+        return <SummaryOnlyVisualization sentences={props.sentences} showBar={showBar}/>
     }
     else{
-        return <WithOutVisualization sentences={props.sentences}/>
+        return <WithOutVisualization sentences={props.sentences} showBar={showBar}/>
     }
 
 

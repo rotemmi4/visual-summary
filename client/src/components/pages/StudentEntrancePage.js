@@ -7,6 +7,7 @@ import { set_student_info} from "../../model/requests/StudentModelRestAPI";
 export function StudentEntrancePage(){
 
 
+
     const [studentInfo, setStudentInfo] = useState({
         studentID: "",
         studentAge: "",
@@ -25,8 +26,9 @@ export function StudentEntrancePage(){
     }
 
     const handleStudentInfo = () => {
-        console.log(studentInfo)
-        set_student_info(studentInfo)
+        console.log(studentInfo);
+        localStorage.setItem('student_id', studentInfo.studentID);
+        set_student_info(studentInfo);
     }
 
     return (
