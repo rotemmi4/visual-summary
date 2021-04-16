@@ -26,7 +26,7 @@ export function VisualizationDisplayModal(props) {
     // textRepository.save(type,id,propertyName,propertyValue,propertyType)
     props.onHide()
   }
-  let color = 'rgba('+colorR+','+colorG+','+colorB +')'
+  let color = 'rgb('+colorR+','+colorG+','+colorB +')'
 
   let colorBar
   if(propertyName == "color" ){
