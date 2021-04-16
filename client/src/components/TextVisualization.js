@@ -13,7 +13,7 @@ export function TextVisualization(props){
     return (
         <div>
             {name ? <h3 >{name}</h3> : null}
-            <TextVisualizationFactory sentences={sentences} type={type} />
+            <TextVisualizationFactory sentences={sentences} type={type} selectColorR={props.selectColorR} selectColorG={props.selectColorG} selectColorB={props.selectColorB} />
         </div>
     )
 }
