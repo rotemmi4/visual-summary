@@ -78,12 +78,14 @@ export function VisualizationDisplayModal(props) {
                 <label>Summary Only</label>
               </div>
               </Col >
+            <Col>
+              <div >{colorBar}</div>
+            </Col>
               <Col >
               {text1 && text1.data ? <TextVisualization sentences={text1.data.sentences} type={type} /*type={type}*/ name={text1.data.name} selectColorR={colorR} selectColorG={colorG} selectColorB={colorB}/> : null}
               </Col>
           </Container>
-          <div >{colorBar}</div>
-          <p>COLOR: {color}</p>
+
         </Modal.Body>
         <Modal.Footer>
           <Button  onClick={(e)=>{onButtonClick() }} href={''}>Save</Button>
