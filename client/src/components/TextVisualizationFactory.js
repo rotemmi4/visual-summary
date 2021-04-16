@@ -18,7 +18,7 @@ export function TextVisualizationFactory(props){
     }
 
     else if (type == "Gradual Highlight"){
-        return <GradualHighlightVisualization sentences={props.sentences} />
+        return <GradualHighlightVisualization sentences={props.sentences} selectColorR={props.selectColorR} selectColorG={props.selectColorG} selectColorB={props.selectColorB}/>
     }
     else if (type == "Highlight"){
         return <HighlightVisualization sentences={props.sentences} selectColorR={props.selectColorR} selectColorG={props.selectColorG} selectColorB={props.selectColorB} />
