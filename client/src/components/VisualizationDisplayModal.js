@@ -3,7 +3,7 @@ import {Button, Container, Modal, Row, Col} from 'react-bootstrap';
 import {TextVisualization} from "./TextVisualization";
 import * as textRepository from "../repositories/TextRepository";
 import "./Modal.css"
-import { BlockPicker   } from 'react-color'
+import { CompactPicker   } from 'react-color'
 
 
 //style={{position: "absolute" , left: "10px"}}
@@ -17,17 +17,20 @@ export function VisualizationDisplayModal(props) {
   const [propertyValue, setPropertyValue] = useState("none");
   const [propertyType, setPropertyType] = useState("none");
 
-  const [color,setColor]=useState("FCB900")
+  const [colorR,setColorR]=useState("255")
+  const [colorG,setColorG]=useState("255")
+  const [colorB,setColorB]=useState("255")
 
   let onButtonClick = function(event){
     props.parentCallback(propertyName,propertyValue,propertyType,type,id,props.index)
     // textRepository.save(type,id,propertyName,propertyValue,propertyType)
     props.onHide()
   }
+  let color = 'rgb('+colorR+','+colorG+','+colorB +')'
 
   let colorBar
   if(propertyName == "color" ){
-    colorBar = <BlockPicker  color={color}  onChangeComplete={(color)=>{setColor(color.hex)}}   />
+    colorBar = <CompactPicker  color={color}  onChangeComplete={(color)=>{setColorR(color.R);setColorG(color.G);setColorB(color.B)}}   />
   }
   else {
     colorBar = <text></text>
@@ -76,10 +79,10 @@ export function VisualizationDisplayModal(props) {
               </div>
               </Col >
               <Col >
-              {text1 && text1.data ? <TextVisualization sentences={text1.data.sentences} type={type} /*type={type}*/ name={text1.data.name}/> : null}
+              {text1 && text1.data ? <TextVisualization sentences={text1.data.sentences} type={type} /*type={type}*/ name={text1.data.name} selectedColorR={colorR} selectedColorG={colorG} selectedColorB={colorB}/> : null}
               </Col>
           </Container>
-          <div>{colorBar}</div>
+          <div >{colorBar}</div>
         </Modal.Body>
         <Modal.Footer>
           <Button  onClick={(e)=>{onButtonClick() }} href={''}>Save</Button>
