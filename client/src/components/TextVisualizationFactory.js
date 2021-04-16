@@ -18,10 +18,10 @@ export function TextVisualizationFactory(props){
     }
 
     else if (type == "Gradual Highlight"){
-        return <GradualHighlightVisualization sentences={props.sentences} selectedColorR={props.selectedColorR} selectedColorG={props.selectedColorG} selectedColorB={props.selectedColorB}/>
+        return <GradualHighlightVisualization sentences={props.sentences} />
     }
     else if (type == "Highlight"){
-        return <HighlightVisualization sentences={props.sentences} selectedColorR={props.selectedColorR} selectedColorG={props.selectedColorG} selectedColorB={props.selectedColorB}/>
+        return <HighlightVisualization sentences={props.sentences} />
     }
     else if (type == "Increased Font"){
         return <FontSizeVisualization sentences={props.sentences}/>

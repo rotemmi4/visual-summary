@@ -26,11 +26,11 @@ export function VisualizationDisplayModal(props) {
     // textRepository.save(type,id,propertyName,propertyValue,propertyType)
     props.onHide()
   }
-  let color = 'rgb('+colorR+','+colorG+','+colorB +')'
+  let color = 'rgba('+colorR+','+colorG+','+colorB +')'
 
   let colorBar
   if(propertyName == "color" ){
-    colorBar = <CompactPicker  color={color}  onChangeComplete={(color)=>{setColorR(color.R);setColorG(color.G);setColorB(color.B)}}   />
+    colorBar = <CompactPicker  color={color}  onChange={(color)=>{setColorR(color.rgb.r);setColorG(color.rgb.g);setColorB(color.rgb.b)}}   />
   }
   else {
     colorBar = <text></text>
@@ -79,10 +79,11 @@ export function VisualizationDisplayModal(props) {
               </div>
               </Col >
               <Col >
-              {text1 && text1.data ? <TextVisualization sentences={text1.data.sentences} type={type} /*type={type}*/ name={text1.data.name} selectedColorR={colorR} selectedColorG={colorG} selectedColorB={colorB}/> : null}
+              {text1 && text1.data ? <TextVisualization sentences={text1.data.sentences} type={type} /*type={type}*/ name={text1.data.name} /> : null}
               </Col>
           </Container>
           <div >{colorBar}</div>
+          <p>COLOR: {color}</p>
         </Modal.Body>
         <Modal.Footer>
           <Button  onClick={(e)=>{onButtonClick() }} href={''}>Save</Button>
