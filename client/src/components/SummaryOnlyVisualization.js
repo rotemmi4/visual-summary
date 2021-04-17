@@ -16,9 +16,8 @@ export function SummaryOnlyVisualization(props){
 
     return (
         <>
-            <Form.Control type="range" onChange={(e)=>{setThreshold(e.target.value / 100 )}}/>
-            <p>Threshold: {threshold}</p>
             {rangeBar}
+            <p>Threshold: {threshold}</p>
             {sentences.map(sentence => (
                 sentence.weight > threshold ? <span>{sentence.content}</span> : null
             ))}

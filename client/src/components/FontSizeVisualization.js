@@ -17,6 +17,8 @@ export function FontSizeVisualization(props){
     return (
         <>
             {rangeBar}
+            <p>Threshold: {threshold}</p>
+            <br/>
             {sentences.map(sentence => (
                 sentence.weight > threshold ? <span style={{'font-size': '150%' }}>{sentence.content}</span> : <span >{sentence.content}</span>
             ))}

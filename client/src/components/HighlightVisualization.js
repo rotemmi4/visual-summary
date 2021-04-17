@@ -18,7 +18,6 @@ export function HighlightVisualization(props){
     return (
         <>
             {rangeBar}
-            <Form.Control type="range" onChange={(e)=>{setThreshold(e.target.value / 100 )}}/>
             <p>Threshold: {threshold}</p>
             {sentences.map(sentence => (
                 sentence.weight > threshold ? <span style={{'background': 'rgba(238, 238, 0, 0.5)'}}>{sentence.content}</span> : <span>{sentence.content}</span>
