@@ -82,7 +82,7 @@ export function VisualizationDisplayModal(props) {
               <div >{colorBar}</div>
             </Col>
               <Col >
-              {text1 && text1.data ? <TextVisualization sentences={text1.data.sentences} type={type} /*type={type}*/ name={text1.data.name} selectColorR={colorR} selectColorG={colorG} selectColorB={colorB}/> : null}
+              {text1 && text1.data ? <TextVisualization sentences={text1.data.sentences} type={type} /*type={type}*/ name={text1.data.name} showBar={true} selectColorR={colorR} selectColorG={colorG} selectColorB={colorB}/> : null}
               </Col>
           </Container>
 

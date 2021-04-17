@@ -15,26 +15,26 @@ export function TextVisualizationFactory(props){
     const showBar = props.showBar
 
     if(type == "Without Visualization"){
-        return <WithOutVisualization sentences={props.sentences} showBar={showBar}/>
+        return <WithOutVisualization sentences={props.sentences}/>
     }
 
     else if (type == "Gradual Highlight"){
         return <GradualHighlightVisualization sentences={props.sentences} selectColorR={props.selectColorR} selectColorG={props.selectColorG} selectColorB={props.selectColorB}/>
     }
     else if (type == "Highlight"){
-        return <HighlightVisualization sentences={props.sentences} selectColorR={props.selectColorR} selectColorG={props.selectColorG} selectColorB={props.selectColorB} />
+        return <HighlightVisualization sentences={props.sentences} selectColorR={props.selectColorR} selectColorG={props.selectColorG} selectColorB={props.selectColorB} showBar={showBar} />
     }
     else if (type == "Increased Font"){
         return <FontSizeVisualization sentences={props.sentences} showBar={showBar}/>
     }
     else if (type == "Gradual Font"){
-        return <GradualFontVisualization sentences={props.sentences} showBar={showBar}/>
+        return <GradualFontVisualization sentences={props.sentences}/>
     }
     else if (type == "Summary Only"){
         return <SummaryOnlyVisualization sentences={props.sentences} showBar={showBar}/>
     }
     else{
-        return <WithOutVisualization sentences={props.sentences} showBar={showBar}/>
+        return <WithOutVisualization sentences={props.sentences}/>
     }
 
 
