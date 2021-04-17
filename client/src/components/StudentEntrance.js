@@ -1,5 +1,6 @@
 import React from 'react'
 import {Button, Form, Container, Row} from 'react-bootstrap'
+import {Link} from "react-router-dom";
 
 
 export function StudentEntrance(props){
@@ -18,6 +19,11 @@ export function StudentEntrance(props){
               </Form.Group>
 
               <Form.Group >
+                <Form.Label>Student Name</Form.Label>
+                <Form.Control placeholder="Name..." name="studentName" />
+              </Form.Group>
+
+              <Form.Group >
                 <Form.Label>Student Age</Form.Label>
                 <Form.Control placeholder="Age..."  name="studentAge" onChange={props.handleInputChange}/>
               </Form.Group>
@@ -29,9 +35,13 @@ export function StudentEntrance(props){
               </Form.Control>
 
               <br/>
-              <Button variant="outline-primary" block size="lg"  onClick={props.handleStudentInfo}>
-                Ok, Lets Start1!
-              </Button>
+              <Link to={"/StudentExplanation"}>
+                  <Button variant="outline-primary" block size="lg"  onClick={props.handleStudentInfo}>
+                    Ok, Lets Start!
+                       {/*(explanation)!*/}
+                  </Button>
+              </Link>
+
             </Form>
 
         </Container>
