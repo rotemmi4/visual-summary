@@ -3,6 +3,7 @@ import {Button, Container, Modal, Row, Col} from 'react-bootstrap';
 import {TextVisualization} from "./TextVisualization";
 import * as textRepository from "../repositories/TextRepository";
 import "./Modal.css"
+import { CompactPicker   } from 'react-color'
 
 
 //style={{position: "absolute" , left: "10px"}}
@@ -16,10 +17,23 @@ export function VisualizationDisplayModal(props) {
   const [propertyValue, setPropertyValue] = useState("none");
   const [propertyType, setPropertyType] = useState("none");
 
+  const [colorR,setColorR]=useState("255")
+  const [colorG,setColorG]=useState("255")
+  const [colorB,setColorB]=useState("255")
+
   let onButtonClick = function(event){
     props.parentCallback(propertyName,propertyValue,propertyType,type,id,props.index)
     // textRepository.save(type,id,propertyName,propertyValue,propertyType)
     props.onHide()
+  }
+  let color = 'rgb('+colorR+','+colorG+','+colorB +')'
+
+  let colorBar
+  if(propertyName == "color" ){
+    colorBar = <CompactPicker  color={color}  onChange={(color)=>{setColorR(color.rgb.r);setColorG(color.rgb.g);setColorB(color.rgb.b)}}   />
+  }
+  else {
+    colorBar = <text></text>
   }
 
     return (
@@ -64,10 +78,14 @@ export function VisualizationDisplayModal(props) {
                 <label>Summary Only</label>
               </div>
               </Col >
+            <Col>
+              <div >{colorBar}</div>
+            </Col>
               <Col >
-              {text1 && text1.data ? <TextVisualization sentences={text1.data.sentences} type={type} showBar={true}/*type={type}*/ name={text1.data.name}/> : null}
+              {text1 && text1.data ? <TextVisualization sentences={text1.data.sentences} type={type} /*type={type}*/ name={text1.data.name} selectColorR={colorR} selectColorG={colorG} selectColorB={colorB}/> : null}
               </Col>
           </Container>
+
         </Modal.Body>
         <Modal.Footer>
           <Button  onClick={(e)=>{onButtonClick() }} href={''}>Save</Button>
