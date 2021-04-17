@@ -6,10 +6,18 @@ export function HighlightVisualization(props){
 
     const sentences = props.sentences
     const [threshold , setThreshold] = useState(0.5)
+    const showBar = props.showBar
+
+    let rangeBar = null
+
+    if(showBar){
+        rangeBar = <Form.Control type="range" onChange={(e)=>{setThreshold(e.target.value / 100 )}}/>
+    }
 
 
     return (
         <>
+            {rangeBar}
             <Form.Control type="range" onChange={(e)=>{setThreshold(e.target.value / 100 )}}/>
             <p>Threshold: {threshold}</p>
             {sentences.map(sentence => (
