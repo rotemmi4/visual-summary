@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Button, Container, Modal, Row, Col} from 'react-bootstrap';
+import {Button, Container, Modal, Row, Col, Form} from 'react-bootstrap';
 import {TextVisualization} from "./TextVisualization";
 import * as textRepository from "../repositories/TextRepository";
 import "./Modal.css"
@@ -12,6 +12,7 @@ export function VisualizationDisplayModal(props) {
 
   const text1 = textRepository.useGetTextWeights(id)
   const [type, setType] = useState("Without Visualization");
+  const [threshold , setThreshold] = useState(0.5)
 
   const [propertyName, setPropertyName] = useState("none");
   const [propertyValue, setPropertyValue] = useState("none");
@@ -36,6 +37,15 @@ export function VisualizationDisplayModal(props) {
     colorBar = <text></text>
   }
 
+  let thresholdBar
+    if(type == "Highlight" || type == "Increased Font" || type == "Summary Only" ){
+        thresholdBar = <div><Form.Control type="range" onChange={(e)=>{setThreshold(e.target.value / 100 )}}/>
+            <p>Threshold: {threshold}</p></div>
+    }
+    else{
+        thresholdBar = <text></text>
+    }
+
     return (
       <Modal
         {...props}
@@ -54,7 +64,7 @@ export function VisualizationDisplayModal(props) {
               <h3>Visualization : {type}</h3>
 
               <div class="form-check">
-                <input type="radio" checked={type === "Without Visualization"} value="Without Visualization" onChange={(e)=>{setType(e.target.value); setPropertyName("none");setPropertyValue("none"); setPropertyType("none")}}/>
+                <input type="radio" checked={type === "Without Visualization"} value="Without Visualization" onChange={(e)=>{setType(e.target.value); setPropertyName("none");setPropertyValue("none"); setPropertyType("none");setThreshold(0.5)}}/>
                 <label>Without Visualization</label>
               </div>
               <div class="form-check">
@@ -62,7 +72,7 @@ export function VisualizationDisplayModal(props) {
                 <label>Highlight</label>
               </div>
               <div class="form-check">
-                <input type="radio" checked={type === "Gradual Highlight"} value="Gradual Highlight" onChange={(e)=>{setType(e.target.value);setPropertyName("color");setPropertyValue(colorR+','+colorG+','+colorB); setPropertyType("str")}}/>
+                <input type="radio" checked={type === "Gradual Highlight"} value="Gradual Highlight" onChange={(e)=>{setType(e.target.value);setPropertyName("color");setPropertyValue(colorR+','+colorG+','+colorB); setPropertyType("str");setThreshold(0.5)}}/>
                 <label>Gradual Highlight</label>
               </div>
               <div class="form-check">
@@ -70,7 +80,7 @@ export function VisualizationDisplayModal(props) {
                 <label>Increased Font</label>
               </div>
               <div class="form-check">
-                <input type="radio" checked={type === "Gradual Font"} value="Gradual Font" onChange={(e)=>{setType(e.target.value); setPropertyName("font"); setPropertyValue("18"); setPropertyType("int") }}/>
+                <input type="radio" checked={type === "Gradual Font"} value="Gradual Font" onChange={(e)=>{setType(e.target.value); setPropertyName("font"); setPropertyValue("18"); setPropertyType("int") ;setThreshold(0.5)}}/>
                 <label>Gradual Font</label>
               </div>
               <div class="form-check">
@@ -80,9 +90,12 @@ export function VisualizationDisplayModal(props) {
               </Col >
             <Col>
               <div >{colorBar}</div>
+                <div>
+                    {thresholdBar}
+                </div>
             </Col>
               <Col >
-              {text1 && text1.data ? <TextVisualization sentences={text1.data.sentences} type={type} /*type={type}*/ name={text1.data.name} showBar={true} selectColorR={colorR} selectColorG={colorG} selectColorB={colorB}/> : null}
+              {text1 && text1.data ? <TextVisualization sentences={text1.data.sentences} type={type} /*type={type}*/ name={text1.data.name} showBar={false} selectColorR={colorR} selectColorG={colorG} selectColorB={colorB} threshold={threshold}/> : null}
               </Col>
           </Container>
 
