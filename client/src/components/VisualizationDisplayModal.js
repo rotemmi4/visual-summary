@@ -58,11 +58,11 @@ export function VisualizationDisplayModal(props) {
                 <label>Without Visualization</label>
               </div>
               <div class="form-check">
-                <input type="radio" checked={type === "Highlight" } value="Highlight"  onChange={(e)=>{setType(e.target.value); setPropertyName("color"); setPropertyValue("yellow"); setPropertyType("str")}}/>
+                <input type="radio" checked={type === "Highlight" } value="Highlight"  onChange={(e)=>{setType(e.target.value); setPropertyName("color"); setPropertyValue(colorR+','+colorG+','+colorB); setPropertyType("str")}}/>
                 <label>Highlight</label>
               </div>
               <div class="form-check">
-                <input type="radio" checked={type === "Gradual Highlight"} value="Gradual Highlight" onChange={(e)=>{setType(e.target.value);setPropertyName("color");setPropertyValue("yellow"); setPropertyType("str")}}/>
+                <input type="radio" checked={type === "Gradual Highlight"} value="Gradual Highlight" onChange={(e)=>{setType(e.target.value);setPropertyName("color");setPropertyValue(colorR+','+colorG+','+colorB); setPropertyType("str")}}/>
                 <label>Gradual Highlight</label>
               </div>
               <div class="form-check">
