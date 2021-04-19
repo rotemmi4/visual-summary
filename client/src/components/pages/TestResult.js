@@ -3,12 +3,15 @@ import {Button, Container, Form, Modal} from "react-bootstrap";
 import {TextDisplayModal} from "../TextDisplayModel";
 import * as testRepository from "../../repositories/TestRepository";
 import * as resultRepository from "../../repositories/ResultRepository";
+import {AddTextModal} from "../AddTextModal";
 
 export default function TestResult() {
 
     const allTests = testRepository.useGetAllTest()
     const [testName, setTestName] = useState()
     const test_result = resultRepository.useGetTestResult(testName)
+    const [show, setShow] = useState(false);
+    const [summary, setSummary] = useState("");
     let resultTable
     if(testName != null){
         resultTable = <div>
@@ -31,7 +34,7 @@ export default function TestResult() {
                 </tr>
                 </thead>
                 <tbody>
-                {test_result && test_result.data ? test_result.data.map(result => (
+                {test_result && test_result.data ? test_result.data.map((result) => (
                     <tr>
                         <td>{result.Timestamp}</td>
                         <td>{result.studentID}</td>
@@ -44,7 +47,10 @@ export default function TestResult() {
                         <td>{result.question_id}</td>
                         <td>{result.is_correct}</td>
                         <td>{result.time_to_answer}</td>
-                        <td>{result.Summary}</td>
+                        <td> <Button variant="primary" onClick={(e)=>{setShow(true);setSummary(result.Summary)}}>Show Summary</Button>
+                            <AddTextModal show={show} onHide={() => {
+                                setShow(false)
+                            }} text={summary}></AddTextModal></td>
                     </tr>
                 )) : null}
 

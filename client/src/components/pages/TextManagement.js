@@ -55,9 +55,7 @@ export default function TextManagement() {
                                 }}>Show Content</Button>
 
                                 <AddTextModal show={show} onHide={() => {
-                                    console.log(show)
                                     setShow(false)
-                                    console.log(setModalShow)
                                 }} text={content}></AddTextModal><br/><br/>
 
 
