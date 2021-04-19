@@ -14,6 +14,7 @@ import TextManagement from "./TextManagement";
 import DeleteText from "./DeleteTextPage"
 import AddQuestion from "./AddQuestion";
 import DeleteQuestion from "./DeleteQuestion";
+import RankPage from "./RankPage";
 
 function AuthenticatedApp() {
 
@@ -32,7 +33,7 @@ function AuthenticatedApp() {
                 <Route path='/ChooseTextsAndVisualizations' component={ChooseTestAndVisualization} />
                 <Route path='/GenerateRandomTextsAndChooseVisualizations' component={GenerateRandomTextsAndChooseVisualization} />
                 <Route path='/GenerateRandomTextsAndRandomVisualizations' component={GenerateRandomTextAndRandomVisualization} />
-
+                {<Route path='/RankPage' component={RankPage} />}
 
                 {/*<Route path='/create-text' component={} />*/}
                 {/*<Route path='/texts/:id' component={} />*/}
