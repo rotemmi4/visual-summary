@@ -23,7 +23,7 @@ export function VisualizationDisplayModal(props) {
   const [colorB,setColorB]=useState("255")
 
   let onButtonClick = function(event){
-    props.parentCallback(propertyName,propertyValue,propertyType,type,id,props.index)
+    props.parentCallback(propertyName,propertyValue,propertyType,type,id,props.index,threshold)
     // textRepository.save(type,id,propertyName,propertyValue,propertyType)
     props.onHide()
   }
