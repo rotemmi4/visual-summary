@@ -30,6 +30,7 @@ return (
 
             </ReactBootStrap.NavDropdown>
             }
+            {user && <Nav.Link as={Link} to="/result">Result</Nav.Link>}
         </Nav>
 
 

@@ -14,6 +14,7 @@ import TextManagement from "./TextManagement";
 import DeleteText from "./DeleteTextPage"
 import AddQuestion from "./AddQuestion";
 import DeleteQuestion from "./DeleteQuestion";
+import TestResult from "./TestResult"
 
 function AuthenticatedApp() {
 
@@ -25,6 +26,7 @@ function AuthenticatedApp() {
                 <Route path='/testManagement' component={TestManagement} />
                 <Route path='/new_test_options' component={CreateNewTestOptions} />
                 <Route path='/add-text' component={TextManagement} />
+                <Route path='/result' component={TestResult} />
                 <Route path='/delete-text' component={DeleteText} />
                 {<Route path='/add-question' component={AddQuestion} />}
                 {<Route path='/delete-question' component={DeleteQuestion} />}
@@ -32,6 +34,7 @@ function AuthenticatedApp() {
                 <Route path='/ChooseTextsAndVisualizations' component={ChooseTestAndVisualization} />
                 <Route path='/GenerateRandomTextsAndChooseVisualizations' component={GenerateRandomTextsAndChooseVisualization} />
                 <Route path='/GenerateRandomTextsAndRandomVisualizations' component={GenerateRandomTextAndRandomVisualization} />
+
 
 
                 {/*<Route path='/create-text' component={} />*/}
