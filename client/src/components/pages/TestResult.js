@@ -4,6 +4,7 @@ import {TextDisplayModal} from "../TextDisplayModel";
 import * as testRepository from "../../repositories/TestRepository";
 import * as resultRepository from "../../repositories/ResultRepository";
 import {AddTextModal} from "../AddTextModal";
+import { CSVLink } from "react-csv";
 
 export default function TestResult() {
 
@@ -12,13 +13,37 @@ export default function TestResult() {
     const test_result = resultRepository.useGetTestResult(testName)
     const [show, setShow] = useState(false);
     const [summary, setSummary] = useState("");
+
+    //CSV FILE
+    const headers = [
+        { label: "Date", key: "Timestamp" },
+        { label: "Student ID", key: "studentID" },
+        { label: "Age", key: "studentAge" },
+        { label: "Gender", key: "studentGender" },
+        { label: "Text ID", key: "text_id" },
+        { label: "Visualization", key: "type" },
+        { label: "Property Name", key: "property_name" },
+        { label: "Property Value", key: "property_value" },
+        { label: "Question ID", key: "question_id" },
+        { label: "Is Correct", key: "is_correct" },
+        { label: "Time to Answer", key: "time_to_answer" },
+        { label: "Summary", key: "Summary" }
+    ];
+    const data = test_result.data
+
+    const csvReport = {
+        data: data,
+        headers: headers,
+        filename: testName+'_Results.csv'
+    };
+
     let resultTable
     if(testName != null){
         resultTable = <div>
+            <CSVLink {...csvReport} target="_blank">Export to CSV</CSVLink><br/><br/>
             <table className="table">
                 <thead>
                 <tr>
-
                     <th scope="col">Date</th>
                     <th scope="col">Student ID</th>
                     <th scope="col">Age</th>
@@ -81,10 +106,11 @@ export default function TestResult() {
                             </div>
                         </Form>
                     </div>
-                </div>
+                </div><br/><br/>
+                <div >{resultTable}</div>
             </Container><br/><br/>
-            <div><p></p></div>
-            <div>{resultTable}</div>
+
+
 
         </>);
 
