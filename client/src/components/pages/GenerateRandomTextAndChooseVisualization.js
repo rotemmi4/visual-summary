@@ -24,8 +24,9 @@ export default function GenerateRandomTextAndChooseVisualization() {
     const [propertyValue,setPropertyValue] = useState(["none","none","none","none","none","none","none","none","none","none","none","none"])
     const [propertyType,setPropertyType] = useState(["none","none","none","none","none","none","none","none","none","none","none","none"])
     const [visualizationType,setVisualizationType] = useState(["none","none","none","none","none","none","none","none","none","none","none","none"])
+    const [thresholdTexts, setThreshold] = useState([0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5])
     const [selectedTexts,setSelectedTexts] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
-    let callbackFunction = (propName,propValue,propType,visualType,textID,index) => {
+    let callbackFunction = (propName,propValue,propType,visualType,textID,index,thresh) => {
 
         let newPropertyName = [...propertyName]
         newPropertyName[index]=propName
@@ -46,14 +47,18 @@ export default function GenerateRandomTextAndChooseVisualization() {
         let newSelectedTexts = [...selectedTexts]
         newSelectedTexts[index]=textID
         setSelectedTexts(newSelectedTexts)
+
+        let newThresholdTexts = [...thresholdTexts]
+        newThresholdTexts[index] = thresh
+        setThreshold(newThresholdTexts)
     }
 
     let saveFullTest = function(event){
-
-        for (let i = 0; i < 12; i++) {
-            textRepository.save(visualizationType[i],selectedTexts[i],propertyName[i],propertyValue[i],propertyType[i],testName)
-        }
         testRepository.saveTest(testName,"Generate Random Texts And Choose Visualizations")
+        for (let i = 0; i < 12; i++) {
+            textRepository.save(visualizationType[i],selectedTexts[i],propertyName[i],propertyValue[i],propertyType[i],testName,thresholdTexts[i])
+        }
+
 
         // textRepository.save(type,id,propertyName,propertyValue,propertyType)
         // props.onHide()
