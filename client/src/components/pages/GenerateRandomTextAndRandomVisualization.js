@@ -66,7 +66,7 @@ export default function GenerateRandomTextAndRandomVisualization() {
                                 let arr=[...modalShow]
                                 arr[text.id] = false
                                 setModalShow(arr)
-                            }} text={text.id}></RandomVisualizationDisplayModal>
+                            }} text={text.id} threshold={text.threshold} propertyValue={text.propertyValue}></RandomVisualizationDisplayModal>
                         </Col>
                     </Row>
 
