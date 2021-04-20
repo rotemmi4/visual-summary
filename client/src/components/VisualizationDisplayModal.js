@@ -23,7 +23,12 @@ export function VisualizationDisplayModal(props) {
   const [colorB,setColorB]=useState("255")
 
   let onButtonClick = function(event){
-    props.parentCallback(propertyName,propertyValue,propertyType,type,id,props.index,threshold)
+    if(propertyName == "color"){
+      props.parentCallback(propertyName,""+colorR+','+colorG+','+colorB+"",propertyType,type,id,props.index,threshold)
+
+    }
+    else {props.parentCallback(propertyName,propertyValue,propertyType,type,id,props.index,threshold)}
+
     // textRepository.save(type,id,propertyName,propertyValue,propertyType)
     props.onHide()
   }
@@ -31,7 +36,8 @@ export function VisualizationDisplayModal(props) {
 
   let colorBar
   if(propertyName == "color" ){
-    colorBar = <CompactPicker  color={color}  onChange={(color)=>{setColorR(color.rgb.r);setColorG(color.rgb.g);setColorB(color.rgb.b)}}   />
+    colorBar = <CompactPicker  color={color}  onChange={(color)=>{setColorR(color.rgb.r);setColorG(color.rgb.g);setColorB(color.rgb.b);setPropertyValue(colorR+','+colorG+','+colorB)}}   />
+
   }
   else {
     colorBar = <text></text>
@@ -90,9 +96,7 @@ export function VisualizationDisplayModal(props) {
               </Col >
             <Col>
               <div >{colorBar}</div>
-                <div>
-                    {thresholdBar}
-                </div>
+              <div>{thresholdBar}</div>
             </Col>
               <Col >
               {text1 && text1.data ? <TextVisualization sentences={text1.data.sentences} type={type} /*type={type}*/ name={text1.data.name} showBar={false} selectColorR={colorR} selectColorG={colorG} selectColorB={colorB} threshold={threshold}/> : null}

@@ -90,7 +90,9 @@ export default function ChooseTestAndVisualization(props) {
                                             arr[index] = true
                                             setModalShow(arr)
                                         }}>Choose Visualization</Button>
-                                            <b>Visualization: {visualizationType[index]}</b><br/><br/>
+                                            <b>Visualization: {visualizationType[index]}</b>
+                                            {/*<b>Proper: {propertyValue[index]}</b>*/}
+                                            <br/><br/>
                                             <VisualizationDisplayModal show={modalShow[index]} onHide={() => {
                                                 let arr = [...modalShow]
                                                 arr[index] = false
