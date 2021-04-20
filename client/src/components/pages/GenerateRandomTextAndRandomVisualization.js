@@ -20,8 +20,12 @@ export default function GenerateRandomTextAndRandomVisualization() {
 
     const texts = textRepository.useRandomTextAndVisualization()
     let saveFullTest = function(event){
-
+        testRepository.saveTest(testName,"Generate Random Texts And Random Visualizations")
         for (let i = 0; i < 12; i++) {
+            // {texts && texts.data ? texts.data.map((text) => (
+                 textRepository.save(texts.data[i].visualization, texts.data[i].id, texts.data[i].propertyName, texts.data[i].propertyValue, texts.data[i].propertyType , testName,texts.data[i].threshold)
+
+            // )) : null}
             // if(texts[i]. == "Without Visualization"){
             //     //textRepository.save(texts[i]["visualization"],texts[i]["text"],"none","none","none",testName)
             // }
@@ -42,7 +46,7 @@ export default function GenerateRandomTextAndRandomVisualization() {
             // }
 
         }
-        testRepository.saveTest(testName,"Generate Random Texts And Random Visualizations")
+
 
     }
 
