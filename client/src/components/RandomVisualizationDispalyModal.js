@@ -47,7 +47,6 @@ export function RandomVisualizationDisplayModal(props) {
                 <Container>
                     <Col >
                         <p>Threshold: {props.threshold}</p><br/>
-                        {/*<p>{colR},{colG},{colB}</p>*/}
                         {text1 && text1.data ? <TextVisualization sentences={text1.data.sentences} type={visualization} /*type={type}*/ name={text1.data.name} selectColorR={colR} selectColorG={colG} selectColorB={colB} threshold={props.threshold}/> : null}
                     </Col>
                 </Container>
