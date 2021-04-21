@@ -23,7 +23,7 @@ export default function GenerateRandomTextAndChooseVisualization() {
     const [propertyName,setPropertyName] = useState(["none","none","none","none","none","none","none","none","none","none","none","none"])
     const [propertyValue,setPropertyValue] = useState(["none","none","none","none","none","none","none","none","none","none","none","none"])
     const [propertyType,setPropertyType] = useState(["none","none","none","none","none","none","none","none","none","none","none","none"])
-    const [visualizationType,setVisualizationType] = useState(["none","none","none","none","none","none","none","none","none","none","none","none"])
+    const [visualizationType,setVisualizationType] = useState(["Without Visualization", "Without Visualization", "Without Visualization", "Without Visualization", "Without Visualization", "Without Visualization", "Without Visualization", "Without Visualization", "Without Visualization", "Without Visualization","Without Visualization", "Without Visualization"])
     const [thresholdTexts, setThreshold] = useState([0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5])
     const [selectedTexts,setSelectedTexts] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
     let callbackFunction = (propName,propValue,propType,visualType,textID,index,thresh) => {
@@ -83,7 +83,9 @@ export default function GenerateRandomTextAndChooseVisualization() {
                                 let arr=[...modalShow]
                                 arr[text.id] = false
                                 setModalShow(arr)
-                            }} text={text.id} parentCallback = {callbackFunction} index={index} ></VisualizationDisplayModal>
+                            }} text={text.id} parentCallback = {callbackFunction} index={index}
+                               visualizationType={visualizationType[index]} threshold={thresholdTexts[index]}
+                               propertyName={propertyName[index]} propertyValue={propertyValue[index]} propertyType={propertyType[index]}></VisualizationDisplayModal>
                         </Col>
                     </Row>
 

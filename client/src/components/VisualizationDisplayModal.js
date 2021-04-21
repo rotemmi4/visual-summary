@@ -11,13 +11,14 @@ export function VisualizationDisplayModal(props) {
   const id = props.text
 
   const text1 = textRepository.useGetTextWeights(id)
-  const [type, setType] = useState("Without Visualization");
-  const [threshold , setThreshold] = useState(0.5)
+  const [type, setType] = useState(props.visualizationType);
+  const [threshold , setThreshold] = useState(props.threshold)
 
-  const [propertyName, setPropertyName] = useState("none");
-  const [propertyValue, setPropertyValue] = useState("none");
-  const [propertyType, setPropertyType] = useState("none");
+  const [propertyName, setPropertyName] = useState(props.propertyName);
+  const [propertyValue, setPropertyValue] = useState(props.propertyValue);
+  const [propertyType, setPropertyType] = useState(props.propertyType);
 
+  //להעתיק את 3 הפרמטירים לקומפוננטת אב. לשלוח בcallback שלוש פרמטרים ולפונקציית השמירה את המיזוג בין שלושת הפרמטרים של הצבעים. לשלוח מקומפוננטת אב עוד שלושה props על הצבעים.
   const [colorR,setColorR]=useState("255")
   const [colorG,setColorG]=useState("255")
   const [colorB,setColorB]=useState("255")
@@ -45,7 +46,7 @@ export function VisualizationDisplayModal(props) {
 
   let thresholdBar
     if(type == "Highlight" || type == "Increased Font" || type == "Summary Only" ){
-        thresholdBar = <div><Form.Control type="range" onChange={(e)=>{setThreshold(e.target.value / 100 )}}/>
+        thresholdBar = <div><Form.Control  type="range" onChange={(e)=>{setThreshold(e.target.value / 100 )}}/>
             <p>Threshold: {threshold}</p></div>
     }
     else{
