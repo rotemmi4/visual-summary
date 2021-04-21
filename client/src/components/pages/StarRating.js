@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {FaStar} from "react-icons/all";
 import './HomePage.css';
 
-const StarRating = () =>{
+const StarRating = (props) =>{
     const [rating,setRaing]= useState(null)
     const [hover,setHover]= useState(null)
 
@@ -16,7 +16,7 @@ const StarRating = () =>{
                             type="radio"
                             name="rating"
                             value={ratingVal}
-                            onClick={() => setRaing(ratingVal)}
+                            onClick={() => {setRaing(ratingVal); props.parentCallback(ratingVal,props.type)}}
 
                         />
                         <FaStar
@@ -25,6 +25,7 @@ const StarRating = () =>{
                             size={20}
                             onMouseEnter={()=> setHover(ratingVal)}
                             onMouseLeave={()=> setHover(null)}
+                            // onChange={(e)=>props.callback(ratingVal,props.type)}
 
                         />
                     </label>
