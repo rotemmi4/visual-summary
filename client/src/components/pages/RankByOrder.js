@@ -16,6 +16,19 @@ export default function RankByOrderPage() {
 
     const [rank_order, setRankOrder] = useState("")
 
+    const saveFunc= ()=> {
+        /*
+           let student_id= localStorage.getItem('student_id')
+        */
+        let rankName= firstPlace+":"+secondPlace+":"+thirdPlace+":"+fourthPlace+":"+fifthPlace+":"+sixthPlace;
+        let student_id=1
+        console.log(rankName)
+        updateRank(student_id,rankName)
+    }
+
+    const setRank=()=>{
+        setRankOrder(firstPlace+","+secondPlace+","+thirdPlace+","+fourthPlace+","+fifthPlace+","+sixthPlace)
+    }
 
     return (
 
@@ -113,19 +126,9 @@ export default function RankByOrderPage() {
                 </select><br/><br/><br/>
 
 
-                <Link to={"/Done"}>
-                    <Button variant="primary" onClick={(e)=>{
-
-                        setRankOrder(firstPlace+","+secondPlace+","+thirdPlace+","+fourthPlace+","+fifthPlace+","+sixthPlace)
-                        /*
-                           let student_id= localStorage.getItem('student_id')
-                        */
-                        let student_id=1
-                        console.log(rank_order)
-                        updateRank(student_id,rank_order)
-
-                    }}>Save</Button><br/><br/><br/><br/><br/>
-                </Link>
+                {/*<Link to={"/Done"}>*/}
+                    <Button variant="primary" onClick={saveFunc}>Save</Button><br/><br/><br/><br/><br/>
+                {/*</Link>*/}
 
             </div>
 
