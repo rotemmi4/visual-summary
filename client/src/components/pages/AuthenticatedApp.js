@@ -27,6 +27,7 @@ function AuthenticatedApp() {
                 <Route path='/GenerateRandomTextsAndChooseVisualizations' component={GenerateRandomTextsAndChooseVisualization} />
                 <Route path='/GenerateRandomTextsAndRandomVisualizations' component={GenerateRandomTextAndRandomVisualization} />
 
+
             </Switch>
         </>
     );

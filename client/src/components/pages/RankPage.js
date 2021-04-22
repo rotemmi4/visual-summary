@@ -3,6 +3,7 @@ import {Button, Col, Container, Row} from 'react-bootstrap';
 import './RankPage.css';
 import StarRating from "./StarRating";
 import {addRank,} from "../../model/requests/StudentModelRestAPI";
+import {Link} from "react-router-dom";
 
 
 export default function RankPage() {
@@ -97,14 +98,20 @@ export default function RankPage() {
 
 
                 <Button variant="primary" onClick={(e)=>{
+/*
+                    let student_id= localStorage.getItem('student_id')
+*/
                     let student_id=1
-                    let rank_order=1
+                    let rank_order="1"
                     addRank(student_id, textRank, GhighLightRank, highLightRank, pontRank,GpontRank, sammarytRank,rank_order)
-                }}>Save</Button><br/><br/><br/><br/><br/>
+                }}>Save</Button><br/><br/><br/><br/>
 
-                <Button variant="primary" onClick={(e)=>{
 
-                }}>Next</Button><br/><br/><br/><br/><br/>
+                <Row className="justify-content-center align-items-center">
+                    <Link to={"/RankByOrder"}>
+                        <Button variant="outline-success" block size="lg">Next</Button>
+                    </Link><br/><br/><br/><br/><br/>
+                </Row>
 
             </div>
 

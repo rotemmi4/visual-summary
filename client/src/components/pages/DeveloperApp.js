@@ -35,7 +35,6 @@ function AuthenticatedApp() {
                 <Route path='/ChooseTextsAndVisualizations' component={ChooseTestAndVisualization} />
                 <Route path='/GenerateRandomTextsAndChooseVisualizations' component={GenerateRandomTextsAndChooseVisualization} />
                 <Route path='/GenerateRandomTextsAndRandomVisualizations' component={GenerateRandomTextAndRandomVisualization} />
-                <Route path='/RankPage' component={RankPage} />
 
 
                 {/*<Route path='/create-text' component={} />*/}

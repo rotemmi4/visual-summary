@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {Button, Col, Container, Row} from 'react-bootstrap';
 import './RankPage.css';
-import {addRank,} from "../../model/requests/StudentModelRestAPI";
+import {addRank, updateRank,} from "../../model/requests/StudentModelRestAPI";
 
 
-export default function RankPage() {
+export default function RankByOrderPage() {
 
     const [firstPlace, setFirstPlace] = useState("")
     const [secondPlace, setSecondPlace] = useState("")
@@ -12,6 +12,8 @@ export default function RankPage() {
     const [fourthPlace, setFourthPlace] = useState("")
     const [fifthPlace, setFifthPlace] = useState("")
     const [sixthPlace, setSixthPlace] = useState("")
+
+    const [rankOrder, setRankOrder] = useState("")
 
 
     return (
@@ -30,7 +32,8 @@ export default function RankPage() {
                     const selectedOne=e.target.value;
                     setFirstPlace(selectedOne)
                 }}>
-                    <option value="withoutVisualization">without Visualization</option>
+                    <option value="chooseVisualization">Choose Visualization</option>
+                    <option value="withoutVisualization">Without Visualization</option>
                     <option value="gradualHighlight">Gradual Highlight</option>
                     <option value="highlight">Highlight</option>
                     <option value="increasedFont">Increased Font</option>
@@ -43,7 +46,8 @@ export default function RankPage() {
                     const selectedTwo=e.target.value;
                     setSecondPlace(selectedTwo)
                 }}>
-                    <option value="withoutVisualization">without Visualization</option>
+                    <option value="chooseVisualization">Choose Visualization</option>
+                    <option value="withoutVisualization">Without Visualization</option>
                     <option value="gradualHighlight">Gradual Highlight</option>
                     <option value="highlight">Highlight</option>
                     <option value="increasedFont">Increased Font</option>
@@ -56,7 +60,8 @@ export default function RankPage() {
                     const selectedThird=e.target.value;
                     setThirdPlace(selectedThird)
                 }}>
-                    <option value="withoutVisualization">without Visualization</option>
+                    <option value="chooseVisualization">Choose Visualization</option>
+                    <option value="withoutVisualization">Without Visualization</option>
                     <option value="gradualHighlight">Gradual Highlight</option>
                     <option value="highlight">Highlight</option>
                     <option value="increasedFont">Increased Font</option>
@@ -69,7 +74,8 @@ export default function RankPage() {
                     const selectedFourth=e.target.value;
                     setFourthPlace(selectedFourth)
                 }}>
-                    <option value="withoutVisualization">without Visualization</option>
+                    <option value="chooseVisualization">Choose Visualization</option>
+                    <option value="withoutVisualization">Without Visualization</option>
                     <option value="gradualHighlight">Gradual Highlight</option>
                     <option value="highlight">Highlight</option>
                     <option value="increasedFont">Increased Font</option>
@@ -82,7 +88,8 @@ export default function RankPage() {
                     const selectedFifth=e.target.value;
                     setFifthPlace(selectedFifth)
                 }}>
-                    <option value="withoutVisualization">without Visualization</option>
+                    <option value="chooseVisualization">Choose Visualization</option>
+                    <option value="withoutVisualization">Without Visualization</option>
                     <option value="gradualHighlight">Gradual Highlight</option>
                     <option value="highlight">Highlight</option>
                     <option value="increasedFont">Increased Font</option>
@@ -95,17 +102,24 @@ export default function RankPage() {
                     const selectedSixth=e.target.value;
                     setSixthPlace(selectedSixth)
                 }}>
-                    <option value="withoutVisualization">without Visualization</option>
+                    <option value="chooseVisualization">Choose Visualization</option>
+                    <option value="withoutVisualization">Without Visualization</option>
                     <option value="gradualHighlight">Gradual Highlight</option>
                     <option value="highlight">Highlight</option>
                     <option value="increasedFont">Increased Font</option>
                     <option value="gradualFont">Gradual Font</option>
                     <option value="summaryOnly">Summary Only</option>
-                </select>
+                </select><br/><br/><br/>
 
                 <Button variant="primary" onClick={(e)=>{
 
-                    let rank_order= firstPlace+","+secondPlace+","+thirdPlace+","+fourthPlace+","+fifthPlace+","+sixthPlace
+                    setRankOrder(firstPlace+","+secondPlace+","+thirdPlace+","+fourthPlace+","+fifthPlace+","+sixthPlace)
+                    /*
+                       let student_id= localStorage.getItem('student_id')
+                    */
+                    let student_id=1
+                    console.log(rankOrder)
+                    updateRank(student_id,rankOrder)
 
                 }}>Save</Button><br/><br/><br/><br/><br/>
 
