@@ -11,6 +11,7 @@ import { StudentExplanationPage } from './StudentExplanationPage';
 import { StudentTestPage } from './StudentTestPage';
 import  RankPage  from "./RankPage";
 import RankByOrderPage from "./RankByOrder";
+import TheLastPage from "./TheLastPage";
 
 function UnAuthenticatedApp() {
 
@@ -28,6 +29,7 @@ function UnAuthenticatedApp() {
                 <Route path='/Student/Test/:id' component={StudentTestPage} />
                 <Route path='/RankByOrder' component={RankByOrderPage} />
                 <Route path='/RankPage' component={RankPage} />
+                <Route path='/Done' component={TheLastPage} />
 
 
 

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Button, Col, Container, Row} from 'react-bootstrap';
+import {Button, Col, Container, Modal, Row} from 'react-bootstrap';
 import './RankPage.css';
 import StarRating from "./StarRating";
 import {addRank,} from "../../model/requests/StudentModelRestAPI";
@@ -14,7 +14,13 @@ export default function RankPage() {
     const [GpontRank, setGpontRank] = useState(1)
     const [sammarytRank, setSammarytRank] = useState(1)
     const [textRank, setTextRank] = useState(1)
+    const [show, setShow] = useState(false);
 
+    const handleClose = () => {
+        setShow(false)
+    };
+
+    const handleShow = () => setShow(true);
 
     let callbackFunction = (propRank,type) => {
         if (type == "highligth" ){
@@ -84,13 +90,13 @@ export default function RankPage() {
 
                     <Col>
                         <h3 className="block">Summary</h3>
-                        <img src={"/images/sammary.PNG"} alt=""/>
+                        <img src={"/images/sammary.PNG"} alt=""/><br/><br/>
                         <StarRating type={"sammary"} parentCallback={callbackFunction}></StarRating>
                     </Col>
 
                     <Col>
                         <h3 className="block">Without Visualization</h3>
-
+                        <img src={"/images/withoutVisu.PNG"} alt=""/>
                         <StarRating type={"withoutvisualization"} parentCallback={callbackFunction}></StarRating>
                     </Col>
                 </Row>
@@ -101,10 +107,30 @@ export default function RankPage() {
 /*
                     let student_id= localStorage.getItem('student_id')
 */
-                    let student_id=1
+                    let student_id="2"
                     let rank_order="1"
                     addRank(student_id, textRank, GhighLightRank, highLightRank, pontRank,GpontRank, sammarytRank,rank_order)
-                }}>Save</Button><br/><br/>
+                    handleShow()
+                }}>Save</Button><br/>
+
+                <Modal
+                    show={show}
+                    onHide={handleClose}
+                    backdrop="static"
+                    keyboard={false}
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title>Message</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        saved
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Close
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
 
 
                 <Row className="justify-content-center align-items-center">

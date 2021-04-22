@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Button, Col, Container, Row} from 'react-bootstrap';
 import './RankPage.css';
 import {addRank, updateRank,} from "../../model/requests/StudentModelRestAPI";
+import {Link} from "react-router-dom";
 
 
 export default function RankByOrderPage() {
@@ -112,19 +113,19 @@ export default function RankByOrderPage() {
                 </select><br/><br/><br/>
 
 
+                <Link to={"/Done"}>
+                    <Button variant="primary" onClick={(e)=>{
 
-                <Button variant="primary" onClick={(e)=>{
+                        setRankOrder(firstPlace+","+secondPlace+","+thirdPlace+","+fourthPlace+","+fifthPlace+","+sixthPlace)
+                        /*
+                           let student_id= localStorage.getItem('student_id')
+                        */
+                        let student_id=1
+                        console.log(rank_order)
+                        updateRank(student_id,rank_order)
 
-                    setRankOrder(firstPlace+","+secondPlace+","+thirdPlace+","+fourthPlace+","+fifthPlace+","+sixthPlace)
-                    /*
-                       let student_id= localStorage.getItem('student_id')
-                    */
-                    let student_id=1
-                    console.log(rank_order)
-                    updateRank(student_id,rank_order)
-
-                }}>Save</Button><br/><br/><br/><br/><br/>
-
+                    }}>Save</Button><br/><br/><br/><br/><br/>
+                </Link>
 
             </div>
 
