@@ -106,6 +106,7 @@ export function addRank(student_id, withoutVisualization, gradualHighlight, high
 export function updateRank(student_id, rank_order){
     const url = 'http://127.0.0.1:5000/updateRankOrder'
     const body = "{  \"student_id\":\"" + student_id + "\"," + " \"rank_order\":\"" + rank_order + "\" }"
+    console.log(body)
     const headers = {headers : {"x-auth-token": getToken()}}
     return axios.post(url,body,headers)
 }

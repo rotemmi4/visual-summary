@@ -13,7 +13,7 @@ export default function RankByOrderPage() {
     const [fifthPlace, setFifthPlace] = useState("")
     const [sixthPlace, setSixthPlace] = useState("")
 
-    const [rankOrder, setRankOrder] = useState("")
+    const [rank_order, setRankOrder] = useState("")
 
 
     return (
@@ -111,6 +111,8 @@ export default function RankByOrderPage() {
                     <option value="summaryOnly">Summary Only</option>
                 </select><br/><br/><br/>
 
+
+
                 <Button variant="primary" onClick={(e)=>{
 
                     setRankOrder(firstPlace+","+secondPlace+","+thirdPlace+","+fourthPlace+","+fifthPlace+","+sixthPlace)
@@ -118,8 +120,8 @@ export default function RankByOrderPage() {
                        let student_id= localStorage.getItem('student_id')
                     */
                     let student_id=1
-                    console.log(rankOrder)
-                    updateRank(student_id,rankOrder)
+                    console.log(rank_order)
+                    updateRank(student_id,rank_order)
 
                 }}>Save</Button><br/><br/><br/><br/><br/>
 

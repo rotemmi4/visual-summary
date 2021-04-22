@@ -104,7 +104,7 @@ export default function RankPage() {
                     let student_id=1
                     let rank_order="1"
                     addRank(student_id, textRank, GhighLightRank, highLightRank, pontRank,GpontRank, sammarytRank,rank_order)
-                }}>Save</Button><br/><br/><br/><br/>
+                }}>Save</Button><br/><br/>
 
 
                 <Row className="justify-content-center align-items-center">
