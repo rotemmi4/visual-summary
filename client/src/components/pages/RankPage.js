@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import { Col, Container, Row} from 'react-bootstrap';
+import {Button, Col, Container, Row} from 'react-bootstrap';
 import './RankPage.css';
 import StarRating from "./StarRating";
 import ImageSlider from "./ImageSlider";
 import {SliderData} from "./SliderData";
+import {addRank,} from "../../model/requests/StudentModelRestAPI";
 
 
 export default function RankPage() {
@@ -97,6 +98,13 @@ export default function RankPage() {
                         <p>Check: {textRank}</p>                    </Col>
                 </Row>
 
+                <Button variant="primary" onClick={(e)=>{
+                    let student_id=1
+                    let rank_order=1
+                    addRank(student_id, textRank, GhighLightRank, highLightRank, pontRank,GpontRank, sammarytRank,rank_order)
+
+
+                }}>Save</Button><br/><br/><br/><br/><br/>
             </div>
 
         </Container>
