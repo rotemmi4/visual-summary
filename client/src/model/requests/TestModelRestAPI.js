@@ -45,6 +45,12 @@ export function deleteTest(name){
     return axios.post(url,headers)
 }
 
+export function deleteTestProperties(name){
+    const url = `http://127.0.0.1:5000/tests/deleteTestProperties/${name}`
+    const headers = {headers: {"x-auth-token": getToken()}}
+    return axios.post(url,headers)
+}
+
 export function saveTestType(testName,testType){
     const url = 'http://127.0.0.1:5000/saveTest'
     const body = "{ \"testName\":"+"\"" +testName+"\"" +",\"testType\":"+"\""+testType+"\""+" }"

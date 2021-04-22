@@ -40,7 +40,9 @@ export function useGetAllTest(){
 }
 
 export function delete_test(test_name){
+    testModelRestAPI.deleteTestProperties(test_name)
     testModelRestAPI.deleteTest(test_name)
+
 }
 
 export function saveTest(testName,testType){
