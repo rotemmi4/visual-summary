@@ -17,9 +17,9 @@ export function TestRow(props){
 
 
     let EditLink
-    if(testType=="Choose Tests And Visualizations"){
+    if(testType=="\"Choose Tests And Visualizations\""){
        EditLink=<Link  className="btn btn-light" to={{pathname:"/ChooseTextsAndVisualizations", state:{type: "edit", testName: testName}}} >Edit</Link>
-    }else if(testType=="Generate Random Texts And Choose Visualizations"){
+    }else if(testType=="\"Generate Random Texts And Choose Visualizations\""){
         EditLink=<Link  className="btn btn-light" to={{pathname:"/GenerateRandomTextsAndChooseVisualizations", state:{type: "edit", testName: testName}}} >Edit</Link>
     }else{
         EditLink=<Link className="btn btn-light" to={{pathname:"/GenerateRandomTextsAndRandomVisualizations", state:{type: "edit", testName: testName}}} >Edit</Link>
