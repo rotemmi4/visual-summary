@@ -14,6 +14,7 @@ import TextManagement from "./TextManagement";
 import DeleteText from "./DeleteTextPage"
 import AddQuestion from "./AddQuestion";
 import DeleteQuestion from "./DeleteQuestion";
+import ShowTest from './ShowTest'
 
 function AuthenticatedApp() {
 
@@ -32,6 +33,7 @@ function AuthenticatedApp() {
                 <Route path='/ChooseTextsAndVisualizations' component={ChooseTestAndVisualization} />
                 <Route path='/GenerateRandomTextsAndChooseVisualizations' component={GenerateRandomTextsAndChooseVisualization} />
                 <Route path='/GenerateRandomTextsAndRandomVisualizations' component={GenerateRandomTextAndRandomVisualization} />
+                <Route path='/ShowTest' component={ShowTest} />
 
 
                 {/*<Route path='/create-text' component={} />*/}
