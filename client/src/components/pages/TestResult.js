@@ -15,7 +15,7 @@ export default function TestResult() {
     const [summary, setSummary] = useState("");
 
     //CSV FILE
-    const headers = [
+    const headers= [
         { label: "Date", key: "Timestamp" },
         { label: "Student ID", key: "studentID" },
         { label: "Age", key: "studentAge" },
@@ -40,6 +40,7 @@ export default function TestResult() {
     let resultTable
     if(testName != null){
         resultTable = <div>
+            <h4>Students Results For {testName}</h4>
             <CSVLink {...csvReport} target="_blank">Export to CSV</CSVLink><br/><br/>
             <table className="table">
                 <thead>
@@ -85,6 +86,76 @@ export default function TestResult() {
     }
 
 
+    const test_placing_result = resultRepository.useGetTestRankingResult(testName)
+    const headers_placing= [
+        { label: "Student ID", key: "student_id" },
+        { label: "Without Visualization Rank", key: "withoutVisualization_rank" },
+        { label: "Gradual Highlight Rank", key: "gradualHighlight_rank" },
+        { label: "Highlight Rank", key: "highlight_rank" },
+        { label: "Increased Font Rank", key: "increasedFont_rank" },
+        { label: "Gradual Font Rank", key: "gradualFont_rank" },
+        { label: "Summary Only Rank", key: "summaryOnly_rank" },
+        { label: "Without Visualization Place", key: "withoutVisualization_place" },
+        { label: "Gradual Highlight Place", key: "gradualHighlight_place" },
+        { label: "Highlight Place", key: "highlight_place" },
+        { label: "Increased Font Place", key: "increasedFont_place" },
+        { label: "Gradual Font Place", key: "gradualFont_place" },
+        { label: "Summary Only Place", key: "summaryOnly_place" },
+
+    ];
+    const data_placing = test_placing_result.data
+
+    const csvReport2 = {
+        data: data_placing,
+        headers: headers_placing,
+        filename: testName+'_Ranking_Results.csv'
+    };
+
+    let resultTable2
+    if(testName != null){
+        resultTable2 = <div>
+            <h4>Students Ranking Results For {testName}</h4>
+            <CSVLink {...csvReport2} target="_blank">Export to CSV For Ranking Results</CSVLink><br/><br/>
+            <table className="table">
+                <thead>
+                <tr>
+                    <th scope="col">Student ID</th>
+                    <th scope="col">Without Visualization Rank</th>
+                    <th scope="col">Gradual Highlight Rank</th>
+                    <th scope="col">Highlight Rank</th>
+                    <th scope="col">Increased Font Rank</th>
+                    <th scope="col">Gradual Font Rank</th>
+                    <th scope="col">Summary Only Rank</th>
+                    <th scope="col">Without Visualization Place</th>
+                    <th scope="col">Gradual Highlight Place</th>
+                    <th scope="col">Highlight Place</th>
+                    <th scope="col">Increased Font Place</th>
+                    <th scope="col">Gradual Font Place</th>
+                    <th scope="col">Summary Only Place</th>
+                </tr>
+                </thead>
+                <tbody>
+                {test_placing_result && test_placing_result.data ? test_placing_result.data.map((rank) => (
+                    <tr>
+                        <td>{rank.student_id}</td>
+                        <td>{rank.withoutVisualization_rank}</td>
+                        <td>{rank.gradualHighlight_rank}</td>
+                        <td>{rank.highlight_rank}</td>
+                        <td>{rank.increasedFont_rank}</td>
+                        <td>{rank.gradualFont_rank}</td>
+                        <td>{rank.summaryOnly_rank}</td>
+                        <td>{rank.WithoutVisualization_place}</td>
+                        <td>{rank.gradualHighlight_place}</td>
+                        <td>{rank.highlight_place}</td>
+                        <td>{rank.increasedFont_place}</td>
+                        <td>{rank.gradualFont_place}</td>
+                        <td>{rank.summaryOnly_place}</td>
+                    </tr>
+                )) : null}
+                </tbody>
+            </table></div>
+    }
+
 
 
     return (
@@ -107,7 +178,12 @@ export default function TestResult() {
                         </Form>
                     </div>
                 </div><br/><br/>
-                <div >{resultTable}</div>
+                <div>
+                    {resultTable}
+                </div>
+                <div>
+                    {resultTable2}
+                </div>
             </Container><br/><br/>
 
 
