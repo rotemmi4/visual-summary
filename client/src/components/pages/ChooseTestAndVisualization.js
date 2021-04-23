@@ -54,10 +54,6 @@ export default function ChooseTestAndVisualization(props) {
         for (let i = 0; i < 12; i++) {
             textRepository.save(visualizationType[i], selectedTexts[i], propertyName[i], propertyValue[i], propertyType[i], testName,thresholdTexts[i])
         }
-
-
-        // textRepository.save(type,id,propertyName,propertyValue,propertyType)
-        // props.onHide()
     }
     let texts = textRepository.useGetAllText()
 
@@ -98,15 +94,13 @@ export default function ChooseTestAndVisualization(props) {
                                                 arr[index] = false
                                                 setModalShow(arr)
                                             }} text={dropdown[index]} parentCallback={callbackFunction} index={index}
-                                               visualizationType={visualizationType[index]} threshold={thresholdTexts[index]}
-                                               propertyName={propertyName[index]} propertyValue={propertyValue[index]} propertyType={propertyType[index]}></VisualizationDisplayModal>
+                                                                       visualizationType={visualizationType[index]} threshold={thresholdTexts[index]}
+                                                                       propertyName={propertyName[index]} propertyValue={propertyValue[index]} propertyType={propertyType[index]}></VisualizationDisplayModal>
                                         </>
                                     )
                                 })
                             }
                         </div>
-
-
                     </Col>
                     <Col></Col>
                 </Row>

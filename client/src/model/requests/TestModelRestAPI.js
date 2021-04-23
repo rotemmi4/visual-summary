@@ -61,5 +61,5 @@ export function saveTestType(testName,testType){
 export function useGetTestProperties(test_name){
     const url = `http://127.0.0.1:5000/test/getTestProperties/${test_name}`
     const headers = {headers: {"x-auth-token": getToken()}}
-    return useAxiosGet(url, headers, false)
+    return useAxiosGet(url, headers)
 }
