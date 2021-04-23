@@ -9,10 +9,14 @@ import DeveloperNavbar from "../DeveloperNavbar";
 import { StudentEntrancePage } from './StudentEntrancePage';
 import { StudentExplanationPage } from './StudentExplanationPage';
 import { StudentTestPage } from './StudentTestPage';
+import  RankPage  from "./RankPage";
+import RankByOrderPage from "./RankByOrder";
+import TheLastPage from "./TheLastPage";
 
 function UnAuthenticatedApp() {
 
     const {login} = useAuth()
+
     return (
         <>
         <Router>
@@ -23,6 +27,13 @@ function UnAuthenticatedApp() {
                 <Route path='/StudentEntrance' component={StudentEntrancePage} />
                 <Route path='/StudentExplanation' component={StudentExplanationPage} />
                 <Route path='/Student/Test/:id' component={StudentTestPage} />
+                <Route path='/RankByOrder' component={RankByOrderPage} />
+                <Route path='/RankPage' component={RankPage} />
+                <Route path='/Done' component={TheLastPage} />
+
+
+
+
             </Switch>
         </Router>
         </>

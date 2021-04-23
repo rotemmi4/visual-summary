@@ -4,7 +4,7 @@ import {TextDisplayModal} from "../TextDisplayModel";
 import * as testRepository from "../../repositories/TestRepository";
 import * as resultRepository from "../../repositories/ResultRepository";
 import {AddTextModal} from "../AddTextModal";
-import { CSVLink } from "react-csv";
+import {CSVLink} from "react-csv";
 
 export default function TestResult() {
 
