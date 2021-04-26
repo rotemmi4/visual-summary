@@ -49,6 +49,6 @@ export function saveTest(testName,testType){
     testModelRestAPI.saveTestType(testName,testType)
 }
 
-export function get_test_properties(testName){
-    testModelRestAPI.useGetTestProperties(testName)
+export function getTestProperties(testName){
+    return testModelRestAPI.useGetTestProperties(testName)
 }
