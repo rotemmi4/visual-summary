@@ -42,24 +42,24 @@ export default function ShowTest() {
     <h2 className="mb-3 text-left">Test: {testName}</h2><br/><br/><br/><br/>
 
     {texts && texts.data ? texts.data.map((text,index) => (
-        <p>Check</p>
-        // <Row className="justify-content-center">
-        //     <Col>
-        //         <p>{text.name}</p>
-        //     </Col>
-        //     <Col>
-        //         <Button onClick={(e)=>{
-        //             let arr=[...modalShow]
-        //             arr[text.text_id] = true
-        //             setModalShow(arr)
-        //         }}>Show Visualization</Button> <b>  Visualization: {get_visualization(text.visualiztion_id)}</b><br/><br/>
-        //         <RandomVisualizationDisplayModal visualization={get_visualization(text.visualiztion_id)} show={modalShow[text.text_id]} onHide={() => {
-        //             let arr=[...modalShow]
-        //             arr[text.text_id] = false
-        //             setModalShow(arr)
-        //         }} text={text.text_id} threshold={text.threshold} propertyValue={text.property_value}></RandomVisualizationDisplayModal>
-        //     </Col>
-        // </Row>
+        // <p>Check</p>
+        <Row className="justify-content-center">
+            <Col>
+                <p>{text.name}</p>
+            </Col>
+            <Col>
+                <Button onClick={(e)=>{
+                    let arr=[...modalShow]
+                    arr[text.text_id] = true
+                    setModalShow(arr)
+                }}>Show Visualization</Button> <b>  Visualization: {get_visualization(text.visualiztion_id)}</b><br/><br/>
+                <RandomVisualizationDisplayModal visualization={get_visualization(text.visualiztion_id)} show={modalShow[text.text_id]} onHide={() => {
+                    let arr=[...modalShow]
+                    arr[text.text_id] = false
+                    setModalShow(arr)
+                }} text={text.text_id} threshold={text.threshold} propertyValue={text.property_value}></RandomVisualizationDisplayModal>
+            </Col>
+        </Row>
 
     )) : null}
      </div>
