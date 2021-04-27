@@ -11,9 +11,18 @@ export function RandomVisualizationDisplayModal(props) {
     const text1 = textRepository.useGetTextWeights(id)
 
 
-    const [propertyName, setPropertyName] = useState("none");
-    const [propertyValue, setPropertyValue] = useState("none");
-    const [propertyType, setPropertyType] = useState("none");
+
+    let colR="255",colG="255",colB="255"
+    if(visualization == "Gradual Highlight" || visualization == "Highlight" ){
+        let value=props.propertyValue
+        colR = typeof value==="string" ?value.split(',')[0]:""
+        colG = typeof value==="string" ?value.split(',')[1]:""
+        colB = typeof value==="string" ?value.split(',')[2]:""
+        //setColorR("0")
+        // setColorG(color[1])
+        // setColorB(color[2])
+    }
+
 
 
 
@@ -31,13 +40,14 @@ export function RandomVisualizationDisplayModal(props) {
 
         >
             <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">Visualization
+                <Modal.Title id="contained-modal-title-vcenter">Visualization: {visualization}
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Container>
                     <Col >
-                        {text1 && text1.data ? <TextVisualization sentences={text1.data.sentences} type={visualization} /*type={type}*/ name={text1.data.name}/> : null}
+                        <p>Threshold: {props.threshold}</p><br/>
+                        {text1 && text1.data ? <TextVisualization sentences={text1.data.sentences} type={visualization} /*type={type}*/ name={text1.data.name} selectColorR={colR} selectColorG={colG} selectColorB={colB} threshold={props.threshold}/> : null}
                     </Col>
                 </Container>
             </Modal.Body>
