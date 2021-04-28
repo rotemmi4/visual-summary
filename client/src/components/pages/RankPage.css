@@ -8,7 +8,8 @@ img{
     text-align: center;
 }
 
-input[type="radio"]{
+
+.no-radio.input[type="radio"]{
     display: none;
     justify-content: center;
     align-items: center;

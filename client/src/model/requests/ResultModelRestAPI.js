@@ -35,8 +35,20 @@ function useAxiosGet(url, headers){
 }
 
 
-export function useGetTestResult(test_name){
-    const url = `http://127.0.0.1:5000/result/${test_name}`
+export function useGetTestResultSum(test_name){
+    const url = `http://127.0.0.1:5000/sumResults/${test_name}`
+    const headers = {headers: {"x-auth-token": getToken()}}
+    return useAxiosGet(url, headers, false)
+}
+
+export function useGetTestResultCount(test_name){
+    const url = `http://127.0.0.1:5000/countResults/${test_name}`
+    const headers = {headers: {"x-auth-token": getToken()}}
+    return useAxiosGet(url, headers, false)
+}
+
+export function useGetTestResultAvg(test_name){
+    const url = `http://127.0.0.1:5000/avgResults/${test_name}`
     const headers = {headers: {"x-auth-token": getToken()}}
     return useAxiosGet(url, headers, false)
 }

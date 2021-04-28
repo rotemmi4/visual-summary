@@ -10,84 +10,94 @@ export default function TestResult() {
 
     const allTests = testRepository.useGetAllTest()
     const [testName, setTestName] = useState()
-    const test_result = resultRepository.useGetTestResult(testName)
-    const [show, setShow] = useState(false);
-    const [summary, setSummary] = useState("");
+    const test_result_sum = resultRepository.useGetTestResultSum(testName)
+    const test_result_count = resultRepository.useGetTestResultCount(testName)
+    const test_result_avg = resultRepository.useGetTestResultAvg(testName)
+
 
     //CSV FILE
-    const headers= [
-        { label: "Date", key: "Timestamp" },
+    const headers_sum= [
         { label: "Student ID", key: "studentID" },
         { label: "Age", key: "studentAge" },
         { label: "Gender", key: "studentGender" },
-        { label: "Text ID", key: "text_id" },
-        { label: "Visualization", key: "type" },
-        { label: "Property Name", key: "property_name" },
-        { label: "Property Value", key: "property_value" },
-        { label: "Question ID", key: "question_id" },
-        { label: "Is Correct", key: "is_correct" },
-        { label: "Time to Answer", key: "time_to_answer" },
-        { label: "Summary", key: "Summary" }
+        { label: "Plain Text", key: "Without Visualization" },
+        // { label: "Gradual Highlight", key: "Gradual Highlight" },
+        // { label: "Highlight", key: "Highlight" },
+        { label: "Font", key: "Increased Font" },
+        // { label: "Gradual Font", key: "Gradual Font" },
+        // { label: "Summary", key: "Summary Only" },
     ];
-    const data = test_result.data
+    const data_sum = test_result_sum.data
 
-    const csvReport = {
-        data: data,
-        headers: headers,
-        filename: testName+'_Results.csv'
+    const csvReport_sum = {
+        data: data_sum,
+        headers: headers_sum,
+        filename: testName+'_Total_Answers_Time_Results.csv'
+
+
     };
+    let resultTable_sum
+    if(testName != null) {
+        resultTable_sum= <CSVLink {...csvReport_sum} target="_blank">Export to CSV For Students Total Answers Time Results</CSVLink>
+    }
 
-    let resultTable
-    if(testName != null){
-        resultTable = <div>
-            <h4>Students Results For {testName}</h4>
-            <CSVLink {...csvReport} target="_blank">Export to CSV</CSVLink><br/><br/>
-            <table className="table">
-                <thead>
-                <tr>
-                    <th scope="col">Date</th>
-                    <th scope="col">Student ID</th>
-                    <th scope="col">Age</th>
-                    <th scope="col">Gender</th>
-                    <th scope="col">Text ID</th>
-                    <th scope="col">Visualization</th>
-                    <th scope="col">Property Name</th>
-                    <th scope="col">Property Value</th>
-                    <th scope="col">Question ID</th>
-                    <th scope="col">Is Correct</th>
-                    <th scope="col">Time to Answer</th>
-                    <th scope="col">Summary</th>
-                </tr>
-                </thead>
-                <tbody>
-                {test_result && test_result.data ? test_result.data.map((result) => (
-                    <tr>
-                        <td>{result.Timestamp}</td>
-                        <td>{result.studentID}</td>
-                        <td>{result.studentAge}</td>
-                        <td>{result.studentGender}</td>
-                        <td>{result.text_id}</td>
-                        <td>{result.type}</td>
-                        <td>{result.property_name}</td>
-                        <td>{result.property_value}</td>
-                        <td>{result.question_id}</td>
-                        <td>{result.is_correct}</td>
-                        <td>{result.time_to_answer}</td>
-                        <td> <Button variant="primary" onClick={(e)=>{setShow(true);setSummary(result.Summary)}}>Show Summary</Button>
-                            <AddTextModal show={show} onHide={() => {
-                                setShow(false)
-                            }} text={summary}></AddTextModal></td>
-                    </tr>
-                )) : null}
+    //CSV FILE
+    const headers_count= [
+        { label: "Student ID", key: "studentID" },
+        { label: "Age", key: "studentAge" },
+        { label: "Gender", key: "studentGender" },
+        { label: "Plain Text", key: "Without Visualization" },
+        { label: "Gradual Highlight", key: "Gradual Highlight" },
+        { label: "Highlight", key: "Highlight" },
+        { label: "Font", key: "Increased Font" },
+        { label: "Gradual Font", key: "Gradual Font" },
+        { label: "Summary", key: "Summary Only" },
+    ];
+    const data_count = test_result_count.data
+
+    const csvReport_count = {
+        data: data_count,
+        headers: headers_count,
+        filename: testName+'_Answers_Score_Results.csv'
 
 
-                </tbody>
-            </table></div>
+    };
+    let resultTable_count
+    if(testName != null) {
+        resultTable_count = <CSVLink {...csvReport_count} target="_blank">Export to CSV For Students Answers Score Results</CSVLink>
+    }
+
+    //CSV FILE
+    const headers_avg= [
+        { label: "Student ID", key: "studentID" },
+        { label: "Age", key: "studentAge" },
+        { label: "Gender", key: "studentGender" },
+        { label: "Plain Text", key: "Without Visualization" },
+        { label: "Gradual Highlight", key: "Gradual Highlight" },
+        { label: "Highlight", key: "Highlight" },
+        { label: "Font", key: "Increased Font" },
+        { label: "Gradual Font", key: "Gradual Font" },
+        { label: "Summary", key: "Summary Only" },
+    ];
+    const data_avg = test_result_avg.data
+
+    const csvReport_avg = {
+        data: data_avg,
+        headers: headers_avg,
+        filename: testName+'_Answers_Average_Time_Results.csv'
+
+
+    };
+    let resultTable_avg
+    if(testName != null) {
+        resultTable_avg = <CSVLink {...csvReport_avg} target="_blank">Export to CSV For Students Answers Average Time Results</CSVLink>
     }
 
 
-    const test_placing_result = resultRepository.useGetTestRankingResult(testName)
-    const headers_placing= [
+
+
+    const test_result_rank = resultRepository.useGetTestRankingResult(testName)
+    const headers_rank= [
         { label: "Student ID", key: "student_id" },
         { label: "Without Visualization Rank", key: "withoutVisualization_rank" },
         { label: "Gradual Highlight Rank", key: "gradualHighlight_rank" },
@@ -103,57 +113,17 @@ export default function TestResult() {
         { label: "Summary Only Place", key: "summaryOnly_place" },
 
     ];
-    const data_placing = test_placing_result.data
+    const data_rank = test_result_rank.data
 
-    const csvReport2 = {
-        data: data_placing,
-        headers: headers_placing,
+    const csvReport_rank = {
+        data: data_rank,
+        headers: headers_rank,
         filename: testName+'_Ranking_Results.csv'
     };
 
-    let resultTable2
+    let resultTable_rank
     if(testName != null){
-        resultTable2 = <div>
-            <h4>Students Ranking Results For {testName}</h4>
-            <CSVLink {...csvReport2} target="_blank">Export to CSV For Ranking Results</CSVLink><br/><br/>
-            <table className="table">
-                <thead>
-                <tr>
-                    <th scope="col">Student ID</th>
-                    <th scope="col">Without Visualization Rank</th>
-                    <th scope="col">Gradual Highlight Rank</th>
-                    <th scope="col">Highlight Rank</th>
-                    <th scope="col">Increased Font Rank</th>
-                    <th scope="col">Gradual Font Rank</th>
-                    <th scope="col">Summary Only Rank</th>
-                    <th scope="col">Without Visualization Place</th>
-                    <th scope="col">Gradual Highlight Place</th>
-                    <th scope="col">Highlight Place</th>
-                    <th scope="col">Increased Font Place</th>
-                    <th scope="col">Gradual Font Place</th>
-                    <th scope="col">Summary Only Place</th>
-                </tr>
-                </thead>
-                <tbody>
-                {test_placing_result && test_placing_result.data ? test_placing_result.data.map((rank) => (
-                    <tr>
-                        <td>{rank.student_id}</td>
-                        <td>{rank.withoutVisualization_rank}</td>
-                        <td>{rank.gradualHighlight_rank}</td>
-                        <td>{rank.highlight_rank}</td>
-                        <td>{rank.increasedFont_rank}</td>
-                        <td>{rank.gradualFont_rank}</td>
-                        <td>{rank.summaryOnly_rank}</td>
-                        <td>{rank.WithoutVisualization_place}</td>
-                        <td>{rank.gradualHighlight_place}</td>
-                        <td>{rank.highlight_place}</td>
-                        <td>{rank.increasedFont_place}</td>
-                        <td>{rank.gradualFont_place}</td>
-                        <td>{rank.summaryOnly_place}</td>
-                    </tr>
-                )) : null}
-                </tbody>
-            </table></div>
+        resultTable_rank = <CSVLink {...csvReport_rank} target="_blank">Export to CSV For Ranking Results</CSVLink>
     }
 
 
@@ -179,15 +149,18 @@ export default function TestResult() {
                     </div>
                 </div><br/><br/>
                 <div>
-                    {resultTable}
+                    {resultTable_sum}
                 </div>
                 <div>
-                    {resultTable2}
+                    {resultTable_count}
+                </div>
+                <div>
+                    {resultTable_avg}
+                </div>
+                <div>
+                    {resultTable_rank}
                 </div>
             </Container><br/><br/>
-
-
-
         </>);
 
 

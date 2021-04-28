@@ -19,7 +19,6 @@
     "react-rangeslider": "^2.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
-    "react-split": "^2.0.11",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

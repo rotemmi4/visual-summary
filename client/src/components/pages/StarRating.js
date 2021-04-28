@@ -7,7 +7,7 @@ const StarRating = (props) =>{
     const [hover,setHover]= useState(null)
 
     return(
-        <div>
+        <div className="no-radio">
             {[...Array(10)].map((star,i) => {
                 const ratingVal = i+1;
                 return(

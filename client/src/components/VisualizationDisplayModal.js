@@ -4,11 +4,18 @@ import {TextVisualization} from "./TextVisualization";
 import * as textRepository from "../repositories/TextRepository";
 import "./Modal.css"
 import { CompactPicker   } from 'react-color'
+import {COLORS, COLORS_SIZES} from "../colors";
 
 
 //style={{position: "absolute" , left: "10px"}}
 export function VisualizationDisplayModal(props) {
   const id = props.text
+  const [palette, setPalette]= useState(COLORS['3'].Green)
+  const [paletteSize , setPaletteSize] = useState(COLORS_SIZES[1])
+  const [colors1, setColors1]= useState('Green')
+  const [colors2, setColors2]= useState('Yellow')
+  const [HighlightColor, setHighlightColor]= useState(COLORS['1'].Yellow)
+
 
   const text1 = textRepository.useGetTextWeights(id)
   const [type, setType] = useState(props.visualizationType);
@@ -18,7 +25,6 @@ export function VisualizationDisplayModal(props) {
   const [propertyValue, setPropertyValue] = useState(props.propertyValue);
   const [propertyType, setPropertyType] = useState(props.propertyType);
 
-  //להעתיק את 3 הפרמטירים לקומפוננטת אב. לשלוח בcallback שלוש פרמטרים ולפונקציית השמירה את המיזוג בין שלושת הפרמטרים של הצבעים. לשלוח מקומפוננטת אב עוד שלושה props על הצבעים.
   const [colorR,setColorR]=useState("255")
   const [colorG,setColorG]=useState("255")
   const [colorB,setColorB]=useState("255")
@@ -36,10 +42,30 @@ export function VisualizationDisplayModal(props) {
   let color = 'rgb('+colorR+','+colorG+','+colorB +')'
 
   let colorBar
-  if(propertyName == "color" ){
-    colorBar = <CompactPicker  color={color}  onChange={(color)=>{setColorR(color.rgb.r);setColorG(color.rgb.g);setColorB(color.rgb.b);setPropertyValue(colorR+','+colorG+','+colorB)}}   />
-
+  if(type == "Gradual Highlight"){
+    // colorBar = <CompactPicker  color={color}  onChange={(color)=>{setColorR(color.rgb.r);setColorG(color.rgb.g);setColorB(color.rgb.b);setPropertyValue(colorR+','+colorG+','+colorB)}}   />
+    colorBar = <div> <select value={paletteSize} onChange={(e)=>{setPaletteSize((e.target.value))
+      setPalette(COLORS[paletteSize][colors1])}}>
+      {COLORS_SIZES.map(size => (
+          <option key={size} value={size}>{size}</option>
+      ))}
+    </select>
+    <select value={colors1} onChange={(e)=>{setColors1(e.target.value)
+      setPalette(COLORS[paletteSize][colors1])}}>
+      {["Green","Yellow","Orange"].map(color => (
+          <option key={color} value={color}>{color}</option>
+      ))}
+    </select></div>
   }
+  else if(type == "Highlight"){
+    colorBar= <select value={colors2} onChange={(e)=>{setColors2(e.target.value)
+      setHighlightColor(COLORS[1][colors2])}}>
+      {["Yellow","Green"].map(color => (
+          <option key={color} value={color}>{color}</option>
+      ))}
+    </select>
+  }
+
   else {
     colorBar = <text></text>
   }
@@ -75,7 +101,7 @@ export function VisualizationDisplayModal(props) {
                 <label>Without Visualization</label>
               </div>
               <div class="form-check">
-                <input type="radio" checked={type === "Highlight" } value="Highlight"  onChange={(e)=>{setType(e.target.value); setPropertyName("color"); setPropertyValue(colorR+','+colorG+','+colorB); setPropertyType("str")}}/>
+                <input type="radio" checked={type === "Highlight" } value="Highlight"  onChange={(e)=>{setType(e.target.value);  setPropertyName("color"); setPropertyValue(colorR+','+colorG+','+colorB); setPropertyType("str")}}/>
                 <label>Highlight</label>
               </div>
               <div class="form-check">
@@ -100,7 +126,7 @@ export function VisualizationDisplayModal(props) {
               <div>{thresholdBar}</div>
             </Col>
               <Col >
-              {text1 && text1.data ? <TextVisualization sentences={text1.data.sentences} type={type} /*type={type}*/ name={text1.data.name} showBar={false} selectColorR={colorR} selectColorG={colorG} selectColorB={colorB} threshold={threshold}/> : null}
+              {text1 && text1.data ? <TextVisualization sentences={text1.data.sentences} type={type} /*type={type}*/ name={text1.data.name} showBar={false} HighlightColor={COLORS[1][colors2]} palette={COLORS[paletteSize][colors1]} selectColorR={colorR} selectColorG={colorG} selectColorB={colorB} threshold={threshold}/> : null}
               </Col>
           </Container>
 
