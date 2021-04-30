@@ -51,20 +51,20 @@ export function get_test_id(){
     return response
 }
 
-export function get_questions_and_answers(test_id) {
-    // console.log("im here")
-    const url = `http://127.0.0.1:5000/student/get_questions/${test_id}`
-    const headers = {headers: {"x-auth-token": getToken()}}
-    let response = axios.get(url, headers)
-    // console.log(response)
+export function get_questions_and_answers(text_id) {
+    console.log("im here - get_questions_and_answers1")
+    const url = `http://127.0.0.1:5000/student/get_questions/${text_id}`
+    // const headers = {headers: {"x-auth-token": getToken()}}
+    let response = axios.get(url)
     return response
 }
 
 export function send_info_on_text(results) {
-    // console.log("im here")
+    console.log("im here - send_info_on_text")
+    console.log(results)
     const url = 'http://127.0.0.1:5000/student/set_question_results'
     const body = results
-    // console.log(response)
+
     return axios.post(url, body)
 }
 

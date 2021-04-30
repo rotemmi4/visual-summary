@@ -10,11 +10,11 @@ export function TextVisualization(props){
     const showBar = props.showBar
 
     
-
     return (
         <div>
             {name ? <h3 >{name}</h3> : null}
             <TextVisualizationFactory sentences={sentences} type={type} showBar={showBar}/>
+            <br/>
         </div>
     )
 }

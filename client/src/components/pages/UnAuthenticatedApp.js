@@ -9,6 +9,7 @@ import DeveloperNavbar from "../DeveloperNavbar";
 import { StudentEntrancePage } from './StudentEntrancePage';
 import { StudentExplanationPage } from './StudentExplanationPage';
 import { StudentTestPage } from './StudentTestPage';
+import {BeforeRankingPage} from "./BeforeRankingPage";
 
 function UnAuthenticatedApp() {
 
@@ -23,6 +24,7 @@ function UnAuthenticatedApp() {
                 <Route path='/StudentEntrance' component={StudentEntrancePage} />
                 <Route path='/StudentExplanation' component={StudentExplanationPage} />
                 <Route path='/Student/Test/:id' component={StudentTestPage} />
+                <Route path='/BeforeRankingPage' component={BeforeRankingPage} />
             </Switch>
         </Router>
         </>
