@@ -93,3 +93,20 @@ export function useGetTextTotalInfo(text_id) {
     const headers = {headers: {"x-auth-token": getToken()}}
     return useAxiosGet(url, headers, false)
 }
+
+export function addRank(student_id, withoutVisualization, gradualHighlight, highlight, increasedFont,gradualFont, summaryOnly,rank_order){
+    const url = 'http://127.0.0.1:5000/rank'
+    const body = "{  \"student_id\":\"" + student_id + "\", \"withoutVisualization\":\"" + withoutVisualization + "\", \"gradualHighlight\":\"" + gradualHighlight + "\"," +
+        " \"highlight\":\"" + highlight + "\", \"increasedFont\":\"" + increasedFont + "\", \"gradualFont\":\"" + gradualFont + "\", \"summaryOnly\":\"" + summaryOnly + "\"," +
+        " \"rank_order\":\"" + rank_order + "\" }"
+    const headers = {headers : {"x-auth-token": getToken()}}
+    return axios.post(url,body,headers)
+}
+
+export function updateRank(student_id, rank_order){
+    const url = 'http://127.0.0.1:5000/updateRankOrder'
+    const body = "{  \"student_id\":\"" + student_id + "\"," + " \"rank_order\":\"" + rank_order + "\" }"
+    console.log(body)
+    //const headers = {headers : {"x-auth-token": getToken()}}
+    return axios.post(url,body)
+}

@@ -1,0 +1,16 @@
+
+img{
+    width: 300px;
+
+}
+
+.pics{
+    text-align: center;
+}
+
+
+.no-radio.input[type="radio"]{
+    display: none;
+    justify-content: center;
+    align-items: center;
+}

@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { HomePage } from './HomePage';
+import ShowTest from './ShowTest'
 import TestManagement from './TestManagement.js';
 
 
@@ -26,6 +27,8 @@ function AuthenticatedApp() {
                 <Route path='/ChooseTextsAndVisualizations' component={ChooseTestAndVisualization} />
                 <Route path='/GenerateRandomTextsAndChooseVisualizations' component={GenerateRandomTextsAndChooseVisualization} />
                 <Route path='/GenerateRandomTextsAndRandomVisualizations' component={GenerateRandomTextAndRandomVisualization} />
+                <Route path='/ShowTest' component={ShowTest} />
+
 
             </Switch>
         </>
