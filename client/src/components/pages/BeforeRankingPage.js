@@ -8,7 +8,12 @@ export function BeforeRankingPage(props){
     return(
         <Container>
             <p>
-                You have finished the part of reading!
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+
+                <h3>You have finished the part of reading!</h3>
                 <br/>
                 <br/>
                  Now you will move to ranking page and you will have to rank the visualizations.
