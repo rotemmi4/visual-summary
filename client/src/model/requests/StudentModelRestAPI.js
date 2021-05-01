@@ -94,18 +94,18 @@ export function useGetTextTotalInfo(text_id) {
     return useAxiosGet(url, headers, false)
 }
 
-export function addRank(student_id, withoutVisualization, gradualHighlight, highlight, increasedFont,gradualFont, summaryOnly,rank_order){
+export function addRank(student_id, withoutVisualization, gradualHighlight, highlight, increasedFont,gradualFont, summaryOnly){
     const url = 'http://127.0.0.1:5000/rank'
+    // const body =
     const body = "{  \"student_id\":\"" + student_id + "\", \"withoutVisualization\":\"" + withoutVisualization + "\", \"gradualHighlight\":\"" + gradualHighlight + "\"," +
-        " \"highlight\":\"" + highlight + "\", \"increasedFont\":\"" + increasedFont + "\", \"gradualFont\":\"" + gradualFont + "\", \"summaryOnly\":\"" + summaryOnly + "\"," +
-        " \"rank_order\":\"" + rank_order + "\" }"
-    const headers = {headers : {"x-auth-token": getToken()}}
-    return axios.post(url,body,headers)
+        " \"highlight\":\"" + highlight + "\", \"increasedFont\":\"" + increasedFont + "\", \"gradualFont\":\"" + gradualFont + "\", \"summaryOnly\":\"" + summaryOnly + "\" }"
+    return axios.post(url,body)
 }
 
-export function updateRank(student_id, rank_order){
+export function updateRank(student_id, firstPlace, secondPlace, thirdPlace, fourthPlace, fifthPlace, sixthPlace){
     const url = 'http://127.0.0.1:5000/updateRankOrder'
-    const body = "{  \"student_id\":\"" + student_id + "\"," + " \"rank_order\":\"" + rank_order + "\" }"
+    const body = "{  \"student_id\":\"" + student_id + "\", \"firstPlace\":\"" + firstPlace + "\", \"secondPlace\":\"" + secondPlace + "\"," +
+        " \"thirdPlace\":\"" + thirdPlace + "\", \"fourthPlace\":\"" + fourthPlace + "\", \"fifthPlace\":\"" + fifthPlace + "\", \"sixthPlace\":\"" + sixthPlace + "\" }"
     console.log(body)
     //const headers = {headers : {"x-auth-token": getToken()}}
     return axios.post(url,body)

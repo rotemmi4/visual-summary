@@ -20,10 +20,10 @@ export default function RankByOrderPage() {
         /*
            let student_id= localStorage.getItem('student_id')
         */
-        let rankName= firstPlace+":"+secondPlace+":"+thirdPlace+":"+fourthPlace+":"+fifthPlace+":"+sixthPlace;
-        let student_id=1
-        console.log(rankName)
-        updateRank(student_id,rankName)
+        // let rankName= firstPlace+":"+secondPlace+":"+thirdPlace+":"+fourthPlace+":"+fifthPlace+":"+sixthPlace;
+        let student_id="54763"
+        // console.log(rankName)
+        updateRank(student_id,firstPlace,secondPlace,thirdPlace,fourthPlace,fifthPlace,sixthPlace)
     }
 
     const setRank=()=>{
