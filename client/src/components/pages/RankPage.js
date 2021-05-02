@@ -20,6 +20,17 @@ export default function RankPage() {
         setShow(false)
     };
 
+
+    const saveRank = () => {
+
+        // let student_id= localStorage.getItem('student_id')
+
+        let student_id="54763"
+        // let rank_order="1"
+        addRank(student_id, textRank, GhighLightRank, highLightRank, pontRank,GpontRank, sammarytRank)
+        // handleShow()
+    }
+
     const handleShow = () => setShow(true);
 
     let callbackFunction = (propRank,type) => {
@@ -103,15 +114,13 @@ export default function RankPage() {
 
 
 
-                <Button variant="primary" onClick={(e)=>{
-/*
-                    let student_id= localStorage.getItem('student_id')
-*/
-                    let student_id="2"
-                    let rank_order="1"
-                    addRank(student_id, textRank, GhighLightRank, highLightRank, pontRank,GpontRank, sammarytRank,rank_order)
-                    handleShow()
-                }}>Save</Button><br/>
+                {/*<Button variant="primary" onClick={(e)=>{*/}
+                {/*    let student_id="12213"*/}
+                {/*    let rank_order="1"*/}
+                {/*    addRank(student_id, textRank, GhighLightRank, highLightRank, pontRank,GpontRank, sammarytRank,rank_order)*/}
+                {/*    handleShow()*/}
+                {/*}}>Save</Button>*/}
+                <br/>
 
                 <Modal
                     show={show}
@@ -135,7 +144,7 @@ export default function RankPage() {
 
                 <Row className="justify-content-center align-items-center">
                     <Link to={"/RankByOrder"}>
-                        <Button variant="outline-success" block size="lg">Next</Button>
+                        <Button variant="outline-success" block size="lg" onClick={saveRank}>Next</Button>
                     </Link><br/><br/><br/><br/><br/>
                 </Row>
 

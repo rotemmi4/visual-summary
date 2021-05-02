@@ -2,16 +2,20 @@ import {Button, Container} from 'react-bootstrap'
 import React, { useEffect, useState }  from "react";
 import { get_questions_and_answers, send_info_on_text } from "../model/requests/StudentModelRestAPI";
 import "../Questions.css"
+import {Link} from "react-router-dom";
 
 
 export function StudentQuestions(props) {
 
     const textID = props.text_id
+    const test_name = props.test_name
+    // const lastText = props.lastTest
     const [timer, setTimer] = useState(new Date())
     const [results,setResults] = useState([])
     const [allQuestions, setAllQuestions] = useState([])
     useEffect(() => {
         get_questions_and_answers(textID).then(response => {
+            // console.log(response.data)
             setAllQuestions(response.data)
             setTimer(new Date())
         })
@@ -21,6 +25,7 @@ export function StudentQuestions(props) {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [showScore, setShowScore] = useState(false);
     const [score, setScore] = useState(0);
+    const lastText = props.lastText
 
     const handleAnswerOptionClick = (isCorrect) => {
         if (isCorrect) {
@@ -32,8 +37,10 @@ export function StudentQuestions(props) {
         time = time - timer;
         time /= 1000;
         dict['time'] = time;
-        dict['question_id'] = allQuestions[currentQuestionIndex].number_id
+
+        dict['question_id'] = allQuestions[currentQuestionIndex].question_id
         dict['student_id'] = localStorage.getItem('student_id');
+        dict['test_name'] = test_name;
         let newList = results;
         newList.push(dict)
         setResults(newList)
@@ -43,14 +50,10 @@ export function StudentQuestions(props) {
         if (nextQuestion < allQuestions.length) {
             setCurrentQuestionIndex(nextQuestion);
         } else {
-            //save result to DB
-            // send results by post method
-            // move to next text
-
-            console.log(results);
             setTimer(new Date())
             setShowScore(true);
-            send_info_on_text(results);
+            send_info_on_text(dict);
+
         }
     };
 
@@ -63,7 +66,14 @@ export function StudentQuestions(props) {
                 <div className='app_question'>
                     {showScore ? (
                         <div className='score-section'>
-                            <Button variant="warning" >You have finished this text. Click on me to continue</Button>
+                            {lastText  ?
+                                (<Link to={"/BeforeRankingPage"}>
+                                     <button type="button">
+                                          Move to rank!
+                                     </button>
+                                 </Link>) :
+                                (<Button variant="warning" onClick={props.moveToText}>You have finished this text. Click on me to continue</Button>)}
+
                         </div>
                     ) : (
                         <>
@@ -75,13 +85,14 @@ export function StudentQuestions(props) {
                             </div>
                             <div className='answer-section'>
                                 {allQuestions[currentQuestionIndex].answer_options.map((answer_options) => (
-                                    <button className="button_question" onClick={() => handleAnswerOptionClick(answer_options.is_currect)}>{answer_options.answer_content}</button>
+                                    <button className="button_question" onClick={() => handleAnswerOptionClick(answer_options.is_correct)}>{answer_options.answer_content}</button>
                                 ))}
                             </div>
                         </>
                     )}
                 </div>
     }
+
 
 
     let clear_question = () => {
@@ -95,10 +106,12 @@ export function StudentQuestions(props) {
                 {content}
             </div>
 
-            <Button variant="primary" onClick={clear_question}>Clear! (only for now) </Button>
+            {/*<Button variant="primary" onClick={props.moveToText}> Move to text </Button>*/}
+
         </Container>
 
     )
 
+    // <Link to={"/BeforeRankingPage"}> Move to ranking page. </Link>
 
 }

@@ -10,12 +10,13 @@ export function TextVisualization(props){
     const name = props.name
     const showBar = props.showBar
 
-    
 
     return (
         <div>
             {name ? <h3 >{name}</h3> : null}
             <TextVisualizationFactory sentences={sentences} type={type} palette={props.palette} HighlightColor={props.HighlightColor} selectColorR={props.selectColorR} selectColorG={props.selectColorG} selectColorB={props.selectColorB} showBar={showBar} threshold={props.threshold}/>
+            {/*<TextVisualizationFactory sentences={sentences} type={type} showBar={showBar}/>*/}
+            <br/>
         </div>
     )
 }

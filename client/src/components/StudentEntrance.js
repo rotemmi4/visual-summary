@@ -20,7 +20,7 @@ export function StudentEntrance(props){
 
               <Form.Group >
                 <Form.Label>Student Name</Form.Label>
-                <Form.Control placeholder="Name..." name="studentName" />
+                <Form.Control placeholder="Name..." name="studentName" onChange={props.handleInputChange}/>
               </Form.Group>
 
               <Form.Group >

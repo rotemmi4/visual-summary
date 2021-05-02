@@ -51,20 +51,20 @@ export function get_test_id(){
     return response
 }
 
-export function get_questions_and_answers(test_id) {
-    // console.log("im here")
-    const url = `http://127.0.0.1:5000/student/get_questions/${test_id}`
-    const headers = {headers: {"x-auth-token": getToken()}}
-    let response = axios.get(url, headers)
-    // console.log(response)
+export function get_questions_and_answers(text_id) {
+    console.log("im here - get_questions_and_answers1")
+    const url = `http://127.0.0.1:5000/student/get_questions/${text_id}`
+    // const headers = {headers: {"x-auth-token": getToken()}}
+    let response = axios.get(url)
     return response
 }
 
 export function send_info_on_text(results) {
-    // console.log("im here")
+    console.log("im here - send_info_on_text")
+    console.log(results)
     const url = 'http://127.0.0.1:5000/student/set_question_results'
     const body = results
-    // console.log(response)
+
     return axios.post(url, body)
 }
 
@@ -94,18 +94,28 @@ export function useGetTextTotalInfo(text_id) {
     return useAxiosGet(url, headers, false)
 }
 
-export function addRank(student_id, withoutVisualization, gradualHighlight, highlight, increasedFont,gradualFont, summaryOnly,rank_order){
+export function addRank(student_id, withoutVisualization, gradualHighlight, highlight, increasedFont,gradualFont, summaryOnly){
     const url = 'http://127.0.0.1:5000/rank'
+    // const body =
     const body = "{  \"student_id\":\"" + student_id + "\", \"withoutVisualization\":\"" + withoutVisualization + "\", \"gradualHighlight\":\"" + gradualHighlight + "\"," +
-        " \"highlight\":\"" + highlight + "\", \"increasedFont\":\"" + increasedFont + "\", \"gradualFont\":\"" + gradualFont + "\", \"summaryOnly\":\"" + summaryOnly + "\"," +
-        " \"rank_order\":\"" + rank_order + "\" }"
-    const headers = {headers : {"x-auth-token": getToken()}}
-    return axios.post(url,body,headers)
+        " \"highlight\":\"" + highlight + "\", \"increasedFont\":\"" + increasedFont + "\", \"gradualFont\":\"" + gradualFont + "\", \"summaryOnly\":\"" + summaryOnly + "\" }"
+    return axios.post(url,body)
 }
 
-export function updateRank(student_id, rank_order){
+export function updateRank(student_id, firstPlace, secondPlace, thirdPlace, fourthPlace, fifthPlace, sixthPlace){
     const url = 'http://127.0.0.1:5000/updateRankOrder'
-    const body = "{  \"student_id\":\"" + student_id + "\"," + " \"rank_order\":\"" + rank_order + "\" }"
+    const body = "{  \"student_id\":\"" + student_id + "\", \"firstPlace\":\"" + firstPlace + "\", \"secondPlace\":\"" + secondPlace + "\"," +
+        " \"thirdPlace\":\"" + thirdPlace + "\", \"fourthPlace\":\"" + fourthPlace + "\", \"fifthPlace\":\"" + fifthPlace + "\", \"sixthPlace\":\"" + sixthPlace + "\" }"
+    // console.log(body)
+    //const headers = {headers : {"x-auth-token": getToken()}}
+    return axios.post(url,body)
+}
+
+
+
+export function saveStudentSummary(student_id,text_id,summary){
+    const url = 'http://127.0.0.1:5000/saveSummary'
+    const body = "{  \"student_id\":\"" + student_id + "\", \"text_id\":\"" + text_id + "\", \"summary\":\"" + summary + "\" }"
     console.log(body)
     //const headers = {headers : {"x-auth-token": getToken()}}
     return axios.post(url,body)
