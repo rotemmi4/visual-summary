@@ -1,5 +1,7 @@
 import React, { useState} from "react";
 import {Container, Form} from 'react-bootstrap'
+import {saveStudentSummary} from "../model/requests/StudentModelRestAPI";
+import { Button } from 'react-bootstrap'
 
 
 
@@ -9,7 +11,7 @@ export function StudentSummary(props){
     const text_id = props.text_id;
     const text = props.text;
     const text_type = props.type;
-    const student_id = props.student_id;
+    let student_id= localStorage.getItem('student_id')
 
     // this.state = {value: ''};
     // this.handleChange = this.handleChange.bind(this);
@@ -18,10 +20,7 @@ export function StudentSummary(props){
     const set_student_summary = () => {
         // Send this to DB
         console.log(textValue);
-        // console.log(text_id);
-        // console.log(text);
-        // console.log(text_type);
-        // console.log(student_id);
+        saveStudentSummary(student_id,text_id,textValue);
     }
 
     function handleChange(event) {
@@ -42,7 +41,7 @@ export function StudentSummary(props){
                 </Form.Group>
             </Form>
             <br/>
-            <button variant="outline-success" onClick={() => {set_student_summary(); props.moveToQuestions();}}>Submit</button>
+            <Button variant="outline-success" onClick={() => {set_student_summary(); props.moveToQuestions();}}>Submit</Button>
         </Container>
 
     )

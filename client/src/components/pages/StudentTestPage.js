@@ -13,6 +13,7 @@ import * as StudentModelRestAPI from "../../model/requests/StudentModelRestAPI";
 
 
 
+
 export function StudentTestPage(props){
 
     const testID = props.match.params.id;
@@ -91,7 +92,7 @@ export function StudentTestPage(props){
         text = <TextVisualizationForStudent className="mt-5" moveToQuestions={moveToSummary} sentences={arrOfAllTexts[textNumberIndex].sentences} type={arrOfAllTexts[textNumberIndex].type} showBar={false} name={arrOfAllTexts[textNumberIndex].name}/>
     }
 
-    const summary = <StudentSummary moveToQuestions={moveToQuestions}/>
+    const summary = <StudentSummary moveToQuestions={moveToQuestions} text_id={allTextsIDs[textNumberIndex]}/>
 
     const questions = <Container> <StudentQuestions test_name={testID} text_id={allTextsIDs[textNumberIndex]} moveToText={moveToText} lastText={lastText}/> </Container>
 
@@ -105,9 +106,9 @@ export function StudentTestPage(props){
             {showQuestions  ? (<div> {questions} </div>) : (<></>)}
 
             {showRanking ? ( <Link to={"/BeforeRankingPage"}>
-                                     <button type="button">
-                                          Move to rank!
-                                     </button>
+                                     <Button type="button">
+                                          You finished the reading!<br/> Click to continue.
+                                     </Button>
                                  </Link>) :(<></>)}
         </Container>
 

@@ -11,7 +11,8 @@ export function StudentEntrancePage(){
     const [studentInfo, setStudentInfo] = useState({
         studentID: "",
         studentAge: "",
-        studentGender: "Male"
+        studentGender: "Male",
+        studentName: ""
     })
 
     const handleInputChange = (event) => {

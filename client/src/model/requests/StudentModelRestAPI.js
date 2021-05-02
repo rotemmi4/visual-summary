@@ -106,6 +106,16 @@ export function updateRank(student_id, firstPlace, secondPlace, thirdPlace, four
     const url = 'http://127.0.0.1:5000/updateRankOrder'
     const body = "{  \"student_id\":\"" + student_id + "\", \"firstPlace\":\"" + firstPlace + "\", \"secondPlace\":\"" + secondPlace + "\"," +
         " \"thirdPlace\":\"" + thirdPlace + "\", \"fourthPlace\":\"" + fourthPlace + "\", \"fifthPlace\":\"" + fifthPlace + "\", \"sixthPlace\":\"" + sixthPlace + "\" }"
+    // console.log(body)
+    //const headers = {headers : {"x-auth-token": getToken()}}
+    return axios.post(url,body)
+}
+
+
+
+export function saveStudentSummary(student_id,text_id,summary){
+    const url = 'http://127.0.0.1:5000/saveSummary'
+    const body = "{  \"student_id\":\"" + student_id + "\", \"text_id\":\"" + text_id + "\", \"summary\":\"" + summary + "\" }"
     console.log(body)
     //const headers = {headers : {"x-auth-token": getToken()}}
     return axios.post(url,body)
