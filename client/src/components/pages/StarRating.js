@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {FaStar} from "react-icons/all";
-import './HomePage.css';
+import './RankPage.css';
+
 
 const StarRating = (props) =>{
     const [rating,setRaing]= useState(null)

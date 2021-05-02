@@ -126,9 +126,9 @@ export default function RankByOrderPage() {
                 </select><br/><br/><br/>
 
 
-                {/*<Link to={"/Done"}>*/}
+                <Link to={"/Done"}>
                     <Button variant="primary" onClick={saveFunc}>Save</Button><br/><br/><br/><br/><br/>
-                {/*</Link>*/}
+                </Link>
 
             </div>
 
