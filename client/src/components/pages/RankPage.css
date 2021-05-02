@@ -9,8 +9,11 @@ img{
 }
 
 
-.no-radio.input[type="radio"]{
+input[type="radio"]{
     display: none;
     justify-content: center;
     align-items: center;
 }
+
+
+
