@@ -9,7 +9,7 @@ img{
 }
 
 
-input[type="radio"]{
+.no-radio.input[type="radio"]{
     display: none;
     justify-content: center;
     align-items: center;
