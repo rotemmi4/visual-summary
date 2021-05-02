@@ -21,11 +21,11 @@ export default function TestResult() {
         { label: "Age", key: "studentAge" },
         { label: "Gender", key: "studentGender" },
         { label: "Plain Text", key: "Without Visualization" },
-        // { label: "Gradual Highlight", key: "Gradual Highlight" },
-        // { label: "Highlight", key: "Highlight" },
+        { label: "Gradual Highlight", key: "Gradual Highlight" },
+        { label: "Highlight", key: "Highlight" },
         { label: "Font", key: "Increased Font" },
-        // { label: "Gradual Font", key: "Gradual Font" },
-        // { label: "Summary", key: "Summary Only" },
+        { label: "Gradual Font", key: "Gradual Font" },
+        { label: "Summary", key: "Summary Only" },
     ];
     const data_sum = test_result_sum.data
 
@@ -84,13 +84,13 @@ export default function TestResult() {
     const csvReport_avg = {
         data: data_avg,
         headers: headers_avg,
-        filename: testName+'_Answers_Average_Time_Results.csv'
+        filename: testName+'_Average_Answers_Time_Results.csv'
 
 
     };
     let resultTable_avg
     if(testName != null) {
-        resultTable_avg = <CSVLink {...csvReport_avg} target="_blank">Export to CSV For Students Answers Average Time Results</CSVLink>
+        resultTable_avg = <CSVLink {...csvReport_avg} target="_blank">Export to CSV For Students Average Answers Time Results</CSVLink>
     }
 
 
