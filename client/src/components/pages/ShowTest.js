@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import {useParams, useLocation} from "react-router-dom";
-import { Button, Col, Container, Row } from 'react-bootstrap';
-import { useAuth } from '../../model/context/auth_context';
-import * as textRepository from "../../repositories/TextRepository";
+import React, {  useState } from 'react';
+import { useLocation} from "react-router-dom";
+import { Button, Col,  Row } from 'react-bootstrap';
 import * as testRepository from "../../repositories/TestRepository";
 import {RandomVisualizationDisplayModal} from "../RandomVisualizationDispalyModal";
 

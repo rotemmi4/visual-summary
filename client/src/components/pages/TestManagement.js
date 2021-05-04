@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Col, Container, Row } from 'react-bootstrap';
+import React, {  } from 'react';
+import { Container } from 'react-bootstrap';
 import {Link, useParams} from 'react-router-dom';
 import { useAuth } from '../../model/context/auth_context';
-import * as textRepository from "../../repositories/TextRepository";
-import { VisualizationDisplayModal } from '../VisualizationDisplayModal';
 import {TestRow} from "../TestRow";
 import * as testRepository from "../../repositories/TestRepository";
 

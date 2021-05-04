@@ -1,10 +1,9 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {Switch, Route } from 'react-router-dom';
 import { HomePage } from './HomePage';
 import TestManagement from './TestManagement';
-import { useAuth } from '../../model/context/auth_context';
 import DeveloperNavbar from '../DeveloperNavbar';
 import CreateNewTestOptions from "./CreateNewTestOptions";
 import ChooseTestAndVisualization from "./ChooseTestAndVisualization";
@@ -15,7 +14,6 @@ import DeleteText from "./DeleteTextPage"
 import AddQuestion from "./AddQuestion";
 import DeleteQuestion from "./DeleteQuestion";
 import TestResult from "./TestResult"
-import RankPage from "./RankPage";
 import ShowTest from './ShowTest'
 
 function AuthenticatedApp() {

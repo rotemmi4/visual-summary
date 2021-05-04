@@ -1,9 +1,6 @@
-import React, {useState} from 'react'
-import {Button, Container, Modal, Row, Col} from 'react-bootstrap';
+import React, {} from 'react'
+import {Button, Modal} from 'react-bootstrap';
 import * as testRepository from "../repositories/TestRepository";
-// import {TextVisualization} from "./TextVisualization";
-// import * as textRepository from "../repositories/TextRepository";
-// import "./Modal.css"
 
 
 //style={{position: "absolute" , left: "10px"}}

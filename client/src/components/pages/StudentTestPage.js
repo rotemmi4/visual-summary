@@ -1,12 +1,8 @@
 import {Button, Container} from 'react-bootstrap'
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {StudentQuestions} from "../StudentQuestions"
 import {Link} from "react-router-dom";
-import {
-    get_text_ids_by_test_id,
-    get_type_by_text_id, useGetTextWeightsStudent
-} from "../../model/requests/StudentModelRestAPI";
-import * as textModelRestAPI from "../../model/requests/TextModelRestAPI";
+import {get_text_ids_by_test_id} from "../../model/requests/StudentModelRestAPI";
 import {TextVisualizationForStudent} from "../TextVisualizationForStudent";
 import {StudentSummary} from "../StudentSummary";
 import * as StudentModelRestAPI from "../../model/requests/StudentModelRestAPI";

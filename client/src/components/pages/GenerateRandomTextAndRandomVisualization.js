@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import {useParams, useLocation} from "react-router-dom";
+import React, { useState } from 'react';
+import { useLocation} from "react-router-dom";
 import * as textRepository from "../../repositories/TextRepository";
 import {Button, Col, Container, Row} from "react-bootstrap";
-import {VisualizationDisplayModal} from "../VisualizationDisplayModal";
 import {RandomVisualizationDisplayModal} from "../RandomVisualizationDispalyModal";
 import * as testRepository from "../../repositories/TestRepository";
 

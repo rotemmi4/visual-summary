@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {Button, Col, Container, Modal, Row} from 'react-bootstrap';
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import {deleteText} from "../../model/requests/TextModelRestAPI";
 import * as textRepository from "../../repositories/TextRepository";
 import {TextDisplayModal} from "../TextDisplayModel";

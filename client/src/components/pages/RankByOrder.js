@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import {Button, Col, Container, Row} from 'react-bootstrap';
+import {Button, Container, Row} from 'react-bootstrap';
 import './RankPage.css';
-import {addRank, updateRank,} from "../../model/requests/StudentModelRestAPI";
+import {updateRank,} from "../../model/requests/StudentModelRestAPI";
 import {Link} from "react-router-dom";
 
 

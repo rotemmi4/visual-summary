@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Nav, Navbar, NavDropdown } from 'react-bootstrap'
+import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../model/context/auth_context'
 

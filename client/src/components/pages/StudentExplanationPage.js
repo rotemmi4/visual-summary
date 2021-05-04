@@ -1,9 +1,7 @@
 import { Container,Card,Button } from 'react-bootstrap'
 import {Link} from "react-router-dom";
-import {set_student_info} from "../../model/requests/StudentModelRestAPI";
 import {useState} from "react";
 import { get_test_id } from "../../model/requests/StudentModelRestAPI";
-import { useAxiosGet } from "../../model/requests/StudentModelRestAPI"
 
 /**
  * Change this for manual test!

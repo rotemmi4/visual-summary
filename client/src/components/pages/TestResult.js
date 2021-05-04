@@ -1,9 +1,7 @@
 import React, {useState} from 'react'
-import {Button, Container, Form, Modal} from "react-bootstrap";
-import {TextDisplayModal} from "../TextDisplayModel";
+import {Container, Form} from "react-bootstrap";
 import * as testRepository from "../../repositories/TestRepository";
 import * as resultRepository from "../../repositories/ResultRepository";
-import {AddTextModal} from "../AddTextModal";
 import {CSVLink} from "react-csv";
 
 export default function TestResult() {

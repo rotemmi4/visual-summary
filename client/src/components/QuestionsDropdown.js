@@ -1,7 +1,4 @@
-import React, {useState} from 'react'
-import { TextVisualizationFactory } from './TextVisualizationFactory'
-import {Button} from "react-bootstrap";
-import {deleteQuestion} from "../model/requests/TextModelRestAPI";
+import React, {} from 'react'
 import * as textRepository from "../repositories/TextRepository";
 
 

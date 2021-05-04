@@ -1,9 +1,8 @@
-import React, {useEffect, useState} from 'react';
-import {Button, Col, Container, Form, Modal, Row} from 'react-bootstrap';
-import axios from "axios";
+import React, {useState} from 'react';
+import {Button, Container, Form, Modal, Row} from 'react-bootstrap';
 import * as textRepository from "../../repositories/TextRepository";
 import {TextDisplayModal} from "../TextDisplayModel";
-import {addQuestion, addAnswers} from "../../model/requests/TextModelRestAPI";
+import {addQuestion} from "../../model/requests/TextModelRestAPI";
 
 
 export default function AddQuestion() {

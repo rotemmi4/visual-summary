@@ -1,6 +1,6 @@
 import "./Modal.css"
 import * as textRepository from "../repositories/TextRepository";
-import React, {useState} from "react";
+import React, {} from "react";
 import {Button, Col, Container, Modal} from "react-bootstrap";
 import {TextVisualization} from "./TextVisualization";
 

@@ -1,11 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Button, Col, Container, Modal, Row} from 'react-bootstrap';
 import { useForm } from "react-hook-form";
-import axios from "axios";
-import {deleteQuestion, deleteText} from "../../model/requests/TextModelRestAPI";
+import {deleteQuestion} from "../../model/requests/TextModelRestAPI";
 import * as textRepository from "../../repositories/TextRepository";
 import {TextDisplayModal} from "../TextDisplayModel";
-import {useParams} from "react-router-dom";
 import {QuestionsDropdown} from "../QuestionsDropdown";
 import {DeleteQuestionModal} from "../DeleteQuestionModal";
 

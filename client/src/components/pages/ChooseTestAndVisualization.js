@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import {Link, useParams, useLocation} from "react-router-dom";
+import React, { useState } from 'react';
+import { useParams, useLocation} from "react-router-dom";
 import * as textRepository from "../../repositories/TextRepository";
 import * as testRepository from "../../repositories/TestRepository"
 import {Button, Col, Container, Row} from "react-bootstrap";
@@ -72,11 +72,12 @@ export default function ChooseTestAndVisualization(props) {
                                 dropdown.map((value, index) => {
                                     return (
                                         <>
-                                            <select value={dropdown[index]} onChange={(e) => {
+                                            <select defaultValue={-1} onChange={(e) => {
                                                 let arr = [...dropdown]
                                                 arr[index] = parseInt(e.target.value)
                                                 setDropdown(arr)
                                             }}>
+                                                <option disabled value={-1} hidden> -- select an option -- </option>
                                                 {texts && texts.data ? texts.data.map(text => (
                                                     <option value={text.id}>{text.name}</option>
                                                 )) : null}

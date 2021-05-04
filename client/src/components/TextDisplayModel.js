@@ -5,7 +5,6 @@ import * as textRepository from "../repositories/TextRepository";
 import "./Modal.css"
 
 
-//style={{position: "absolute" , left: "10px"}}
 export function TextDisplayModal(props) {
     const id = props.text
 

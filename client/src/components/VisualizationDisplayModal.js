@@ -3,11 +3,9 @@ import {Button, Container, Modal, Row, Col, Form} from 'react-bootstrap';
 import {TextVisualization} from "./TextVisualization";
 import * as textRepository from "../repositories/TextRepository";
 import "./Modal.css"
-import { CompactPicker   } from 'react-color'
 import {COLORS, COLORS_SIZES} from "../colors";
 
 
-//style={{position: "absolute" , left: "10px"}}
 export function VisualizationDisplayModal(props) {
   const id = props.text
   const [palette, setPalette]= useState(COLORS['3'].Green)

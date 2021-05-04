@@ -1,13 +1,6 @@
-  
-  h1 {
+    h1 {
     font-size: 100px;
   }
-
-
-
-
-
-
 
   img{
     width: 500px;
@@ -17,8 +10,6 @@
   .pics{
     text-align: center;
   }
-
-
 
   .slider{
     position: relative;

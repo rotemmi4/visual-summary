@@ -1,5 +1,4 @@
-import React, {useState} from 'react'
-import {Form} from "react-bootstrap";
+import React, {} from 'react'
 
 
 export function SummaryOnlyVisualization(props){

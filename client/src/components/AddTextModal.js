@@ -1,7 +1,5 @@
-import React, {useState} from 'react'
+import React, {} from 'react'
 import {Button, Container, Modal, Row, Col} from 'react-bootstrap';
-import {TextVisualization} from "./TextVisualization";
-import * as textRepository from "../repositories/TextRepository";
 import "./Modal.css"
 
 
