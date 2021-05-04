@@ -3,6 +3,7 @@ import * as textRepository from "../repositories/TextRepository";
 import React, {useState} from "react";
 import {Button, Col, Container, Modal} from "react-bootstrap";
 import {TextVisualization} from "./TextVisualization";
+import {COLORS, COLORS_SIZES} from "../colors";
 
 
 export function RandomVisualizationDisplayModal(props) {
@@ -13,14 +14,24 @@ export function RandomVisualizationDisplayModal(props) {
 
 
     let colR="255",colG="255",colB="255"
+    // if(visualization == "Gradual Highlight" || visualization == "Highlight" ){
+    //     let value=props.propertyValue
+    //     colR = typeof value==="string" ?value.split(',')[0]:""
+    //     colG = typeof value==="string" ?value.split(',')[1]:""
+    //     colB = typeof value==="string" ?value.split(',')[2]:""
+    //     //setColorR("0")
+    //     // setColorG(color[1])
+    //     // setColorB(color[2])
+    // }
+    let color='Yellow',size='3'
     if(visualization == "Gradual Highlight" || visualization == "Highlight" ){
         let value=props.propertyValue
-        colR = typeof value==="string" ?value.split(',')[0]:""
-        colG = typeof value==="string" ?value.split(',')[1]:""
-        colB = typeof value==="string" ?value.split(',')[2]:""
-        //setColorR("0")
-        // setColorG(color[1])
-        // setColorB(color[2])
+        size = typeof value==="string" ?value.split(',')[0]:""
+        color = typeof value==="string" ?value.split(',')[1]:""
+        // console.log(COLORS[size][color])
+        // console.log(size)
+        // console.log(color)
+        // console.log(COLORS[paletteSize][color])
     }
 
 
@@ -47,7 +58,7 @@ export function RandomVisualizationDisplayModal(props) {
                 <Container>
                     <Col >
                         <p>Threshold: {props.threshold}</p><br/>
-                        {text1 && text1.data ? <TextVisualization sentences={text1.data.sentences} type={visualization} /*type={type}*/ name={text1.data.name} selectColorR={colR} selectColorG={colG} selectColorB={colB} threshold={props.threshold}/> : null}
+                        {text1 && text1.data ? <TextVisualization sentences={text1.data.sentences} type={visualization} /*type={type}*/ name={text1.data.name} HighlightColor={COLORS[1][color]} palette={COLORS[size][color]}  selectColorR={colR} selectColorG={colG} selectColorB={colB}  threshold={props.threshold}/> : null}
                     </Col>
                 </Container>
             </Modal.Body>
