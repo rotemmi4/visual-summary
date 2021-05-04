@@ -29,28 +29,39 @@ export function VisualizationDisplayModal(props) {
   const [colorG,setColorG]=useState("255")
   const [colorB,setColorB]=useState("255")
 
-  let onButtonClick = function(event){
-    if(propertyName == "color"){
-      props.parentCallback(propertyName,""+colorR+','+colorG+','+colorB+"",propertyType,type,id,props.index,threshold)
+  const [colorPalette,setColorPalette]=useState("Yellow")
+  const [sizePalette,setSizePalette]=useState('3')
 
+
+  let onButtonClick = function(event){
+    if(type == "Gradual Highlight"){
+      props.parentCallback(propertyName,"'"+ sizePalette+"'"+","+"'"+colorPalette+"'"+"",propertyType,type,id,props.index,threshold)
+
+    }
+    else if(type == "Highlight"){
+      props.parentCallback(propertyName,"'1',"+"'"+colorPalette+"'",propertyType,type,id,props.index,threshold)
     }
     else {props.parentCallback(propertyName,propertyValue,propertyType,type,id,props.index,threshold)}
 
     // textRepository.save(type,id,propertyName,propertyValue,propertyType)
     props.onHide()
   }
+
+
   let color = 'rgb('+colorR+','+colorG+','+colorB +')'
 
   let colorBar
   if(type == "Gradual Highlight"){
     // colorBar = <CompactPicker  color={color}  onChange={(color)=>{setColorR(color.rgb.r);setColorG(color.rgb.g);setColorB(color.rgb.b);setPropertyValue(colorR+','+colorG+','+colorB)}}   />
     colorBar = <div> <select value={paletteSize} onChange={(e)=>{setPaletteSize((e.target.value))
+      setSizePalette(""+e.target.value+"")
       setPalette(COLORS[paletteSize][colors1])}}>
       {COLORS_SIZES.map(size => (
           <option key={size} value={size}>{size}</option>
       ))}
     </select>
     <select value={colors1} onChange={(e)=>{setColors1(e.target.value)
+      setColorPalette(""+e.target.value+"")
       setPalette(COLORS[paletteSize][colors1])}}>
       {["Green","Yellow","Orange"].map(color => (
           <option key={color} value={color}>{color}</option>
@@ -59,6 +70,7 @@ export function VisualizationDisplayModal(props) {
   }
   else if(type == "Highlight"){
     colorBar= <select value={colors2} onChange={(e)=>{setColors2(e.target.value)
+      setColorPalette(""+e.target.value+"")
       setHighlightColor(COLORS[1][colors2])}}>
       {["Yellow","Green"].map(color => (
           <option key={color} value={color}>{color}</option>
@@ -121,6 +133,7 @@ export function VisualizationDisplayModal(props) {
                 <label>Summary Only</label>
               </div>
               </Col >
+            <Col>{colorPalette}</Col>
             <Col>
               <div >{colorBar}</div>
               <div>{thresholdBar}</div>
