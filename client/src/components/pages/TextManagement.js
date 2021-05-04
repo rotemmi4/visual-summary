@@ -17,9 +17,10 @@ export default function TextManagement() {
     const [show, setShow] = useState(false);
 
     const handleClose = () => {
-        setShow(false)
+        setModalShow(false)
+
     };
-    const handleShow = () => setShow(true);
+    const handleShow = () => setModalShow(true);
 
 
     const onChange = (e) => {
@@ -66,6 +67,25 @@ export default function TextManagement() {
                                     handleShow()
                                 }}>Save</Button>
 
+
+                                <Modal
+                                    show={modalShow}
+                                    onHide={handleClose}
+                                    backdrop="static"
+                                    keyboard={false}
+                                >
+                                    <Modal.Header closeButton>
+                                        <Modal.Title>add text</Modal.Title>
+                                    </Modal.Header>
+                                    <Modal.Body>
+                                        text added!
+                                    </Modal.Body>
+                                    <Modal.Footer>
+                                        <Button variant="secondary" onClick={handleClose}>
+                                            Close
+                                        </Button>
+                                    </Modal.Footer>
+                                </Modal>
 
 
                             </form>
