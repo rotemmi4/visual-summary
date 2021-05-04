@@ -133,7 +133,6 @@ export function VisualizationDisplayModal(props) {
                 <label>Summary Only</label>
               </div>
               </Col >
-            <Col>{colorPalette}</Col>
             <Col>
               <div >{colorBar}</div>
               <div>{thresholdBar}</div>
