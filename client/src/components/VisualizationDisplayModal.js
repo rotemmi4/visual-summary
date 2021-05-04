@@ -33,11 +33,11 @@ export function VisualizationDisplayModal(props) {
 
   let onButtonClick = function(event){
     if(type == "Gradual Highlight"){
-      props.parentCallback(propertyName,"'"+ sizePalette+"'"+","+"'"+colorPalette+"'"+"",propertyType,type,id,props.index,threshold)
+      props.parentCallback(propertyName, sizePalette+","+colorPalette+"",propertyType,type,id,props.index,threshold)
 
     }
     else if(type == "Highlight"){
-      props.parentCallback(propertyName,"'1',"+"'"+colorPalette+"'",propertyType,type,id,props.index,threshold)
+      props.parentCallback(propertyName,"1,"+colorPalette,propertyType,type,id,props.index,threshold)
     }
     else {props.parentCallback(propertyName,propertyValue,propertyType,type,id,props.index,threshold)}
 
@@ -131,7 +131,6 @@ export function VisualizationDisplayModal(props) {
                 <label>Summary Only</label>
               </div>
               </Col >
-            <Col>{colorPalette}</Col>
             <Col>
               <div >{colorBar}</div>
               <div>{thresholdBar}</div>
