@@ -48,6 +48,7 @@ export function StudentQuestions(props) {
         setTimer(new Date())
         const nextQuestion = currentQuestionIndex + 1;
         if (nextQuestion < allQuestions.length) {
+            send_info_on_text(dict);
             setCurrentQuestionIndex(nextQuestion);
         } else {
             setTimer(new Date())

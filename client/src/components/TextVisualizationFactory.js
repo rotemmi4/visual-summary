@@ -13,7 +13,7 @@ export function TextVisualizationFactory(props){
    
     const type = props.type
     const showBar = props.showBar
-    const threshold=props.threshold
+    const threshold = props.threshold
     if(type == "Without Visualization"){
         return <WithOutVisualization sentences={props.sentences}/>
     }

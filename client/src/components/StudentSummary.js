@@ -13,13 +13,10 @@ export function StudentSummary(props){
     const text_type = props.type;
     let student_id= localStorage.getItem('student_id')
 
-    // this.state = {value: ''};
-    // this.handleChange = this.handleChange.bind(this);
     const [textValue,setTextValue] = useState("");
 
     const set_student_summary = () => {
         // Send this to DB
-        console.log(textValue);
         saveStudentSummary(student_id,text_id,textValue);
     }
 
@@ -36,8 +33,8 @@ export function StudentSummary(props){
             <br/>
             <Form>
                 <Form.Group controlId="ControlTextarea">
-                    <Form.Label>Now you will need to summarize the text you have read, Please write the summary in english.</Form.Label>
-                    <Form.Control as="textarea" rows={10} value={textValue} onChange={handleChange} />
+                    <Form.Label><b>Now you will need to summarize the text you have read, Please write the summary in english</b> <br/> *Max length - 500 characters.</Form.Label>
+                    <Form.Control as="textarea" maxLength={500} rows={10} value={textValue} onChange={handleChange} />
                 </Form.Group>
             </Form>
             <br/>
