@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Button, Container, Form, Modal, Row} from 'react-bootstrap';
+import {Button, Container, Form, Modal} from 'react-bootstrap';
 import * as textRepository from "../../repositories/TextRepository";
 import {TextDisplayModal} from "../TextDisplayModel";
 import {addQuestion} from "../../model/requests/TextModelRestAPI";

@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import {Button, Col, Container, Form, Modal, Row} from 'react-bootstrap';
-import { useForm } from "react-hook-form";
-import {deleteQuestion, deleteText} from "../../model/requests/TextModelRestAPI";
+import {Button, Container, Form, Modal} from 'react-bootstrap';
+import {deleteText} from "../../model/requests/TextModelRestAPI";
 import * as textRepository from "../../repositories/TextRepository";
 import {TextDisplayModal} from "../TextDisplayModel";
-import {QuestionsDropdown} from "../QuestionsDropdown";
 
 
 export default function DeleteText() {

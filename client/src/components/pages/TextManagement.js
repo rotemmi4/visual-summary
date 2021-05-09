@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import {Button, Col, Container, Modal, Row} from 'react-bootstrap';
-import { useForm } from "react-hook-form";
+import {Button, Container, Modal, Form} from 'react-bootstrap';
 import {uploadText} from "../../model/requests/TextModelRestAPI";
 import { AddTextModal } from '../AddTextModal';
 
@@ -8,11 +7,9 @@ import { AddTextModal } from '../AddTextModal';
 
 export default function TextManagement() {
 
-    const[flag, setFlag]= useState(false)
-    const {register, handleSubmit} = useForm();
-    const[content, setContent]= useState("");
-    const[name, setName]= useState("");
-    const [modalShow,setModalShow] = useState([false])
+    const [content, setContent]= useState("");
+    const [name, setName]= useState("");
+    const [modalShow,setModalShow] = useState(false)
     const [show, setShow] = useState(false);
 
     const handleClose = () => {
@@ -35,11 +32,8 @@ export default function TextManagement() {
         <>
             <Container>
                 <h2 className="mb-3 text-left">Upload Text</h2> <br/><br/>
-                <Row className="justify-content-center">
-                    <Col></Col>
-                    <Col xs="9">
                         <div>
-                            <form onSubmit={handleSubmit(onsubmit)}>
+                            <Form>
                               <h4 className="mb-3 text-left">Text Name:</h4>
                                <p><input type='text' placeholder='enter text name' name= 'name' onChange={(e)=>{
 
@@ -57,16 +51,10 @@ export default function TextManagement() {
                                 <AddTextModal show={show} onHide={() => {
                                     setShow(false)
                                 }} text={content}></AddTextModal><br/><br/>
-
-
-
                                 <Button variant="primary" onClick={(e)=>{
-
                                     uploadText(name, content)
                                     handleShow()
                                 }}>Save</Button>
-
-
                                 <Modal
                                     show={modalShow}
                                     onHide={handleClose}
@@ -85,13 +73,8 @@ export default function TextManagement() {
                                         </Button>
                                     </Modal.Footer>
                                 </Modal>
-
-
-                            </form>
+                            </Form>
                         </div>
-                    </Col>
-                    <Col></Col>
-                </Row>
             </Container>
         </>);
 }
