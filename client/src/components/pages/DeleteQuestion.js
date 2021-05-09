@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Button, Col, Container, Modal, Row} from 'react-bootstrap';
+import {Button, Col, Container, Row} from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import {deleteQuestion} from "../../model/requests/TextModelRestAPI";
 import * as textRepository from "../../repositories/TextRepository";
