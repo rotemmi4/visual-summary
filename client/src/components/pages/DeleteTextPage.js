@@ -1,21 +1,17 @@
 import React, { useState } from 'react';
-import {Button, Col, Container, Modal, Row} from 'react-bootstrap';
+import {Button, Col, Container, Form, Modal, Row} from 'react-bootstrap';
 import { useForm } from "react-hook-form";
-import {deleteText} from "../../model/requests/TextModelRestAPI";
+import {deleteQuestion, deleteText} from "../../model/requests/TextModelRestAPI";
 import * as textRepository from "../../repositories/TextRepository";
 import {TextDisplayModal} from "../TextDisplayModel";
+import {QuestionsDropdown} from "../QuestionsDropdown";
 
 
 export default function DeleteText() {
 
-    const {register, handleSubmit} = useForm();
-    const[content, setContent]= useState("");
-
-    const [dropdown, setDropdown] = useState([0]);
+    const [textId, setTextId] = useState()
+    const [modalShow,setModalShow] = useState(false)
     const texts = textRepository.useGetAllText()
-    const [modalShow,setModalShow] = useState([false])
-    const [arr,setArr] = useState([0])
-
     const [show, setShow] = useState(false);
     const reload=()=>window.location.reload();
 
@@ -29,78 +25,59 @@ export default function DeleteText() {
         <>
             <Container>
                 <h2 className="mb-3 text-left">Delete Text</h2> <br/><br/>
-                <Row className="justify-content-center">
-                    <Col></Col>
-                    <Col xs="9">
                         <div>
-                            <form onSubmit={handleSubmit(onsubmit)}>
+                            <Form>
                                 <h4 className="mb-3 text-left">Choose Text Name:</h4> <br/><br/>
+                                { texts && texts.data ?
+                                    <div>
+                                        <select defaultValue={-1} onChange={(e)=>{
+                                            setTextId(parseInt(e.target.value))
+                                        }}>
+                                            <option disabled value={-1} hidden> -- select an option -- </option>
+                                            {texts.data.map(text => (
+                                                <option key={text.id} value={text.id}>{text.name}</option>
+                                            ))}
+                                        </select> {'    '}
+                                        {textId ?
+                                            <>
+                                                <Button onClick={(e) => {
+                                                    setModalShow(true)
+                                                }}>
+                                                    Show Text
+                                                </Button><br/><br/>
+                                                <TextDisplayModal show={modalShow} onHide={() => {setModalShow(false)}} text={textId}></TextDisplayModal>
+                                            </> : null }
+                                    </div> : null }
+                                {textId  ?
+                                    <div>
+                                            <Button onClick={(e)=>{
+                                                deleteText(textId)
+                                                setShow(true)
+                                            }}>
+                                                Delete
+                                            </Button>
+                                        </div> : null}
 
-                                <div>
-                                    {
-                                        dropdown.map((value, index) => {
-                                            return (
-                                                <>
-                                                    <select value={dropdown[index]} onChange={(e)=>{
-                                                        setArr([...dropdown])
-                                                        arr[index] = parseInt(e.target.value)
-                                                        setDropdown(arr)
-                                                    }}>
-                                                        {texts && texts.data ? texts.data.map(text => (
-                                                            <option value={text.id}>{text.name}</option>
-                                                        )) : null}
-                                                    </select> {'    '}<Button onClick={(e)=>{
-                                                    setArr([...dropdown])
-                                                    arr[index] = true
-                                                    setModalShow(arr)
-                                                }}>Show Text</Button><br/><br/>
-
-                                                    <TextDisplayModal show={modalShow[index]} onHide={() => {
-                                                        setArr([...dropdown])
-                                                        arr[index] = false
-                                                        setModalShow(arr)
-                                                    }} text={dropdown[index]}></TextDisplayModal>
-
-                                                    <Button variant="primary" onClick={(e)=>{
-
-                                                        deleteText(arr)
-                                                        handleShow()
-                                                    }}>Delete</Button>
-
-                                                    <Modal
-                                                        show={show}
-                                                        onHide={handleClose}
-                                                        backdrop="static"
-                                                        keyboard={false}
-                                                    >
-                                                        <Modal.Header closeButton>
-                                                            <Modal.Title>Modal title</Modal.Title>
-                                                        </Modal.Header>
-                                                        <Modal.Body>
-                                                            text deleted!
-                                                        </Modal.Body>
-                                                        <Modal.Footer>
-                                                            <Button variant="secondary" onClick={handleClose}>
-                                                                Close
-                                                            </Button>
-                                                        </Modal.Footer>
-                                                    </Modal>
-
-                                                </>
-                                            )
-                                        })
-
-                                    }
-                                </div>
-
-
-
-
-                            </form>
+                                    <Modal
+                                        show={show}
+                                        onHide={handleClose}
+                                        backdrop="static"
+                                        keyboard={false}
+                                    >
+                                        <Modal.Header closeButton>
+                                            <Modal.Title>Modal title</Modal.Title>
+                                        </Modal.Header>
+                                        <Modal.Body>
+                                            text deleted!
+                                        </Modal.Body>
+                                        <Modal.Footer>
+                                            <Button variant="secondary" onClick={handleClose}>
+                                                Close
+                                            </Button>
+                                        </Modal.Footer>
+                                    </Modal>
+                            </Form>
                         </div>
-                    </Col>
-                    <Col></Col>
-                </Row>
             </Container>
         </>);
 }

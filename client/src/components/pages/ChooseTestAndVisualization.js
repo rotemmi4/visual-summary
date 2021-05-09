@@ -72,7 +72,7 @@ export default function ChooseTestAndVisualization(props) {
                                 dropdown.map((value, index) => {
                                     return (
                                         <>
-                                            <select defaultValue={-1} onChange={(e) => {
+                                            <select defaultValue={-1}ט onChange={(e) => {
                                                 let arr = [...dropdown]
                                                 arr[index] = parseInt(e.target.value)
                                                 setDropdown(arr)
