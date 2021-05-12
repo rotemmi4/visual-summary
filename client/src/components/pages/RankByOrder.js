@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import {Button, Container, Row} from 'react-bootstrap';
+import {Button, Col, Container, Row} from 'react-bootstrap';
 import './RankPage.css';
 import {updateRank,} from "../../model/requests/StudentModelRestAPI";
 import {Link} from "react-router-dom";
+import StarRating from "./StarRating";
 
 
 export default function RankByOrderPage() {
@@ -14,21 +15,41 @@ export default function RankByOrderPage() {
     const [fifthPlace, setFifthPlace] = useState("")
     const [sixthPlace, setSixthPlace] = useState("")
 
-    const [rank_order, setRankOrder] = useState("")
+
 
     const saveFunc= ()=> {
         /*
            let student_id= localStorage.getItem('student_id')
         */
         // let rankName= firstPlace+":"+secondPlace+":"+thirdPlace+":"+fourthPlace+":"+fifthPlace+":"+sixthPlace;
+
         let student_id="54763"
-        // console.log(rankName)
+
         updateRank(student_id,firstPlace,secondPlace,thirdPlace,fourthPlace,fifthPlace,sixthPlace)
     }
 
-    const setRank=()=>{
-        setRankOrder(firstPlace+","+secondPlace+","+thirdPlace+","+fourthPlace+","+fifthPlace+","+sixthPlace)
+
+    let updateFunction = (prop,place) => {
+        if (place == "first" ){
+            setFirstPlace(prop)
+        }
+        if (place == "Second" ){
+            setSecondPlace(prop)
+        }
+        if (place == "Third" ){
+            setThirdPlace(prop)
+        }
+        if (place == "Fourth" ){
+            setFourthPlace(prop)
+        }
+        if (place == "Fifth" ){
+            setFifthPlace(prop)
+        }
+        if (place == "Sixth" ){
+            setSixthPlace(prop)
+        }
     }
+
 
     return (
 
@@ -41,94 +62,125 @@ export default function RankByOrderPage() {
 
             <div className="byorder">
 
-                First Place:
-                <select className="custom-select" onChange={(e)=>{
-                    const selectedOne=e.target.value;
-                    setFirstPlace(selectedOne)
-                }}>
-                    <option value="chooseVisualization">Choose Visualization</option>
-                    <option value="withoutVisualization">Without Visualization</option>
-                    <option value="gradualHighlight">Gradual Highlight</option>
-                    <option value="highlight">Highlight</option>
-                    <option value="increasedFont">Increased Font</option>
-                    <option value="gradualFont">Gradual Font</option>
-                    <option value="summaryOnly">Summary Only</option>
-                </select>
-
-                Second Place:
-                <select className="custom-select" onChange={(e)=>{
-                    const selectedTwo=e.target.value;
-                    setSecondPlace(selectedTwo)
-                }}>
-                    <option value="chooseVisualization">Choose Visualization</option>
-                    <option value="withoutVisualization">Without Visualization</option>
-                    <option value="gradualHighlight">Gradual Highlight</option>
-                    <option value="highlight">Highlight</option>
-                    <option value="increasedFont">Increased Font</option>
-                    <option value="gradualFont">Gradual Font</option>
-                    <option value="summaryOnly">Summary Only</option>
-                </select>
-
-                Third Place:
-                <select className="custom-select" onChange={(e)=>{
-                    const selectedThird=e.target.value;
-                    setThirdPlace(selectedThird)
-                }}>
-                    <option value="chooseVisualization">Choose Visualization</option>
-                    <option value="withoutVisualization">Without Visualization</option>
-                    <option value="gradualHighlight">Gradual Highlight</option>
-                    <option value="highlight">Highlight</option>
-                    <option value="increasedFont">Increased Font</option>
-                    <option value="gradualFont">Gradual Font</option>
-                    <option value="summaryOnly">Summary Only</option>
-                </select>
-
-                Fourth Place:
-                <select className="custom-select" onChange={(e)=>{
-                    const selectedFourth=e.target.value;
-                    setFourthPlace(selectedFourth)
-                }}>
-                    <option value="chooseVisualization">Choose Visualization</option>
-                    <option value="withoutVisualization">Without Visualization</option>
-                    <option value="gradualHighlight">Gradual Highlight</option>
-                    <option value="highlight">Highlight</option>
-                    <option value="increasedFont">Increased Font</option>
-                    <option value="gradualFont">Gradual Font</option>
-                    <option value="summaryOnly">Summary Only</option>
-                </select>
-
-                Fifth Place:
-                <select className="custom-select" onChange={(e)=>{
-                    const selectedFifth=e.target.value;
-                    setFifthPlace(selectedFifth)
-                }}>
-                    <option value="chooseVisualization">Choose Visualization</option>
-                    <option value="withoutVisualization">Without Visualization</option>
-                    <option value="gradualHighlight">Gradual Highlight</option>
-                    <option value="highlight">Highlight</option>
-                    <option value="increasedFont">Increased Font</option>
-                    <option value="gradualFont">Gradual Font</option>
-                    <option value="summaryOnly">Summary Only</option>
-                </select>
-
-                Sixth Place:
-                <select className="custom-select" onChange={(e)=>{
-                    const selectedSixth=e.target.value;
-                    setSixthPlace(selectedSixth)
-                }}>
-                    <option value="chooseVisualization">Choose Visualization</option>
-                    <option value="withoutVisualization">Without Visualization</option>
-                    <option value="gradualHighlight">Gradual Highlight</option>
-                    <option value="highlight">Highlight</option>
-                    <option value="increasedFont">Increased Font</option>
-                    <option value="gradualFont">Gradual Font</option>
-                    <option value="summaryOnly">Summary Only</option>
-                </select><br/><br/><br/>
+                <Row>
+                    <Col>
+                        <h3 className="block">Highlight</h3>
+                        <img src={"/images/highlight.PNG"} alt=""/><br/><br/><br/>
+                        <select className="custom-select" onChange={(e)=>{
+                            const selectedHighlight=e.target.value;
+                            updateFunction("Highlight",selectedHighlight)
+                        }}>
+                            <option value="Choose">Choose a Place</option>
+                            <option value="first">1st Place</option>
+                            <option value="Second">2st Place</option>
+                            <option value="Third">3st Place</option>
+                            <option value="Fourth">4th Place</option>
+                            <option value="Fifth">5th Place</option>
+                            <option value="Sixth">6th Place</option>
+                        </select><br/><br/><br/><br/>
+                    </Col>
 
 
-                <Link to={"/Done"}>
-                    <Button variant="primary" onClick={saveFunc}>Save</Button><br/><br/><br/><br/><br/>
-                </Link>
+                    <Col>
+                        <h3 className="block">Gradual Highlight</h3>
+                        <img src={"/images/gradualHighlight.PNG"} alt=""/><br/><br/><br/>
+                        <select className="custom-select" onChange={(e)=>{
+                            const selectedGradualHighlight=e.target.value;
+                            updateFunction("Gradual Highlight",selectedGradualHighlight)
+                        }}>
+                            <option value="Choose">Choose a Place</option>
+                            <option value="first">1st Place</option>
+                            <option value="Second">2st Place</option>
+                            <option value="Third">3st Place</option>
+                            <option value="Fourth">4th Place</option>
+                            <option value="Fifth">5th Place</option>
+                            <option value="Sixth">6th Place</option>
+                        </select>
+                    </Col>
+
+                    <Col>
+                        <h3 className="block">Increased Font</h3>
+                        <img src={"/images/Increased Font.PNG"} alt=""/><br/><br/>
+                        <select className="custom-select" onChange={(e)=>{
+                            const selectedIncreasedFont=e.target.value;
+                            updateFunction("Increased Font",selectedIncreasedFont)
+                        }}>
+                            <option value="Choose">Choose a Place</option>
+                            <option value="first">1st Place</option>
+                            <option value="Second">2st Place</option>
+                            <option value="Third">3st Place</option>
+                            <option value="Fourth">4th Place</option>
+                            <option value="Fifth">5th Place</option>
+                            <option value="Sixth">6th Place</option>
+                        </select>
+
+                    </Col>
+
+
+                </Row>
+
+                <Row>
+                    <Col>
+                        <h3 className="block">Gradual Font</h3>
+                        <img src={"/images/Gradual Font.PNG"} alt=""/><br/><br/>
+                        <select className="custom-select" onChange={(e)=>{
+                            const selectedGradualFont=e.target.value;
+                            updateFunction("Gradual Font",selectedGradualFont)
+                        }}>
+                            <option value="Choose">Choose a Place</option>
+                            <option value="first">1st Place</option>
+                            <option value="Second">2st Place</option>
+                            <option value="Third">3st Place</option>
+                            <option value="Fourth">4th Place</option>
+                            <option value="Fifth">5th Place</option>
+                            <option value="Sixth">6th Place</option>
+                        </select>
+
+                    </Col>
+
+                    <Col>
+                        <h3 className="block">Summary</h3>
+                        <img src={"/images/sammary.PNG"} alt=""/><br/><br/><br/><br/><br/><br/>
+                        <select className="custom-select" onChange={(e)=>{
+                            const selectedSummary=e.target.value;
+                            updateFunction("Summary",selectedSummary)
+                        }}>
+                            <option value="Choose">Choose a Place</option>
+                            <option value="first">1st Place</option>
+                            <option value="Second">2st Place</option>
+                            <option value="Third">3st Place</option>
+                            <option value="Fourth">4th Place</option>
+                            <option value="Fifth">5th Place</option>
+                            <option value="Sixth">6th Place</option>
+                        </select>
+                    </Col>
+
+                    <Col>
+                        <h3 className="block">Without Visualization</h3>
+                        <img src={"/images/withoutVisu.PNG"} alt=""/><br/><br/><br/>
+                        <select className="custom-select" onChange={(e)=>{
+                            const selectedWithoutVisualization=e.target.value;
+                            updateFunction("Without Visualization",selectedWithoutVisualization)
+                        }}>
+                            <option value="Choose">Choose a Place</option>
+                            <option value="first">1st Place</option>
+                            <option value="Second">2st Place</option>
+                            <option value="Third">3st Place</option>
+                            <option value="Fourth">4th Place</option>
+                            <option value="Fifth">5th Place</option>
+                            <option value="Sixth">6th Place</option>
+                        </select>
+
+                    </Col>
+                </Row><br/>
+
+
+                <Row className="justify-content-center align-items-center">
+                    <Link to={"/Done"}>
+                        <Button variant="primary" onClick={saveFunc}>Save</Button><br/><br/><br/><br/><br/>
+                    </Link>
+                </Row>
+
 
             </div>
 
