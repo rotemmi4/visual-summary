@@ -8,8 +8,12 @@ img{
 }
 
 
-input[type="radio"]{
+/*.input[type="radio"]{*/
+/*    display: none;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*}*/
+
+.rate {
     display: none;
-    justify-content: center;
-    align-items: center;
 }

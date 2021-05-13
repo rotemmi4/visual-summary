@@ -4,7 +4,7 @@ import './RankPage.css';
 
 
 const StarRating = (props) =>{
-    const [rating,setRaing]= useState(null)
+    const [rating,setRating]= useState(null)
     const [hover,setHover]= useState(null)
 
     return(
@@ -12,14 +12,15 @@ const StarRating = (props) =>{
             {[...Array(10)].map((star,i) => {
                 const ratingVal = i+1;
                 return(
-                    <label>
+                    <label className="rated">
+                        <div className="rate">
                         <input
                             type="radio"
                             name="rating"
                             value={ratingVal}
-                            onClick={() => {setRaing(ratingVal); props.parentCallback(ratingVal,props.type)}}
-
+                            onClick={() => {setRating(ratingVal); props.parentCallback(ratingVal,props.type)}}
                         />
+                     </div>
                         <FaStar
                             className="star"
                             color={ratingVal <= (hover || rating ) ? "#ffc107" : "#e4e5e9"}
@@ -27,18 +28,13 @@ const StarRating = (props) =>{
                             onMouseEnter={()=> setHover(ratingVal)}
                             onMouseLeave={()=> setHover(null)}
                             // onChange={(e)=>props.callback(ratingVal,props.type)}
-
                         />
                     </label>
                 );
-
-
             })}
-
             <p>
                  {rating}
             </p>
-
         </div>
     );
 };

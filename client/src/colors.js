@@ -1,11 +1,11 @@
 export const COLORS = {
     '1':{
-        Yellow:['#ffff1a'],
+        Yellow:['#FFE83B'],
         Green:['#31a354']
     },
     '3':{
         Green:['#f7fcb9','#addd8e','#31a354'],
-        Yellow:['#ffffff','#ffff1a', '#fcdc00'],
+        Yellow:['#ffffff','#ffff1a', '#ffe83b'],
         Orange:['#fff7bc','#fec44f','#d95f0e']
     },
     '4':{
