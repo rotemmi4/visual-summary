@@ -64,6 +64,24 @@ export default function RankByOrderPage() {
 
                 <Row>
                     <Col>
+                        <h3 className="block">Original Text</h3>
+                        <img src={"/images/withoutVisu.PNG"} alt=""/><br/><br/><br/>
+                        <select className="custom-select" onChange={(e)=>{
+                            const selectedWithoutVisualization=e.target.value;
+                            updateFunction("Without Visualization",selectedWithoutVisualization)
+                        }}>
+                            <option value="Choose">Choose a Place</option>
+                            <option value="first">1st Place</option>
+                            <option value="Second">2st Place</option>
+                            <option value="Third">3st Place</option>
+                            <option value="Fourth">4th Place</option>
+                            <option value="Fifth">5th Place</option>
+                            <option value="Sixth">6th Place</option>
+                        </select>
+
+                    </Col>
+
+                    <Col>
                         <h3 className="block">Highlight</h3>
                         <img src={"/images/highlight.PNG"} alt=""/><br/><br/><br/>
                         <select className="custom-select" onChange={(e)=>{
@@ -82,24 +100,7 @@ export default function RankByOrderPage() {
 
 
                     <Col>
-                        <h3 className="block">Gradual Highlight</h3>
-                        <img src={"/images/gradualHighlight.PNG"} alt=""/><br/><br/><br/>
-                        <select className="custom-select" onChange={(e)=>{
-                            const selectedGradualHighlight=e.target.value;
-                            updateFunction("Gradual Highlight",selectedGradualHighlight)
-                        }}>
-                            <option value="Choose">Choose a Place</option>
-                            <option value="first">1st Place</option>
-                            <option value="Second">2st Place</option>
-                            <option value="Third">3st Place</option>
-                            <option value="Fourth">4th Place</option>
-                            <option value="Fifth">5th Place</option>
-                            <option value="Sixth">6th Place</option>
-                        </select>
-                    </Col>
-
-                    <Col>
-                        <h3 className="block">Increased Font</h3>
+                        <h3 className="block">Font</h3>
                         <img src={"/images/Increased Font.PNG"} alt=""/><br/><br/>
                         <select className="custom-select" onChange={(e)=>{
                             const selectedIncreasedFont=e.target.value;
@@ -120,23 +121,6 @@ export default function RankByOrderPage() {
                 </Row>
 
                 <Row>
-                    <Col>
-                        <h3 className="block">Gradual Font</h3>
-                        <img src={"/images/Gradual Font.PNG"} alt=""/><br/><br/>
-                        <select className="custom-select" onChange={(e)=>{
-                            const selectedGradualFont=e.target.value;
-                            updateFunction("Gradual Font",selectedGradualFont)
-                        }}>
-                            <option value="Choose">Choose a Place</option>
-                            <option value="first">1st Place</option>
-                            <option value="Second">2st Place</option>
-                            <option value="Third">3st Place</option>
-                            <option value="Fourth">4th Place</option>
-                            <option value="Fifth">5th Place</option>
-                            <option value="Sixth">6th Place</option>
-                        </select>
-
-                    </Col>
 
                     <Col>
                         <h3 className="block">Summary</h3>
@@ -156,11 +140,28 @@ export default function RankByOrderPage() {
                     </Col>
 
                     <Col>
-                        <h3 className="block">Without Visualization</h3>
-                        <img src={"/images/withoutVisu.PNG"} alt=""/><br/><br/><br/>
+                        <h3 className="block">Gradual Highlight</h3>
+                        <img src={"/images/gradualHighlight.PNG"} alt=""/><br/><br/><br/>
                         <select className="custom-select" onChange={(e)=>{
-                            const selectedWithoutVisualization=e.target.value;
-                            updateFunction("Without Visualization",selectedWithoutVisualization)
+                            const selectedGradualHighlight=e.target.value;
+                            updateFunction("Gradual Highlight",selectedGradualHighlight)
+                        }}>
+                            <option value="Choose">Choose a Place</option>
+                            <option value="first">1st Place</option>
+                            <option value="Second">2st Place</option>
+                            <option value="Third">3st Place</option>
+                            <option value="Fourth">4th Place</option>
+                            <option value="Fifth">5th Place</option>
+                            <option value="Sixth">6th Place</option>
+                        </select>
+                    </Col>
+
+                    <Col>
+                        <h3 className="block">Gradual Font</h3>
+                        <img src={"/images/Gradual Font.PNG"} alt=""/><br/><br/>
+                        <select className="custom-select" onChange={(e)=>{
+                            const selectedGradualFont=e.target.value;
+                            updateFunction("Gradual Font",selectedGradualFont)
                         }}>
                             <option value="Choose">Choose a Place</option>
                             <option value="first">1st Place</option>
@@ -172,6 +173,10 @@ export default function RankByOrderPage() {
                         </select>
 
                     </Col>
+
+
+
+
                 </Row><br/>
 
 
