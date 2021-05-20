@@ -60,7 +60,7 @@ export default function RankPage() {
 
             <Row className="mb-3 justify-content-center align-items-center">
                 <h2 className="block">Please rank the visualizations</h2>
-                <h4 className="block">How effective was the visualizations in summarizing the text and answering the questions?</h4>
+                <h4 className="block">How effective was the visualizations in summarizing the texts and answering the questions?</h4>
 
             </Row>
 

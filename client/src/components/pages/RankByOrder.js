@@ -8,13 +8,21 @@ import StarRating from "./StarRating";
 
 export default function RankByOrderPage() {
 
+/*
     const [firstPlace, setFirstPlace] = useState("")
     const [secondPlace, setSecondPlace] = useState("")
     const [thirdPlace, setThirdPlace] = useState("")
     const [fourthPlace, setFourthPlace] = useState("")
     const [fifthPlace, setFifthPlace] = useState("")
     const [sixthPlace, setSixthPlace] = useState("")
+*/
 
+    const [WithoutVisualization, setWithoutVisualization] = useState("")
+    const [Highlight, setHighlight] = useState("")
+    const [Font, setFont] = useState("")
+    const [Summary, setSummary] = useState("")
+    const [GradualHighlight, setGradualHighlight] = useState("")
+    const [GradualFont, setGradualFont] = useState("")
 
 
     const saveFunc= ()=> {
@@ -25,11 +33,11 @@ export default function RankByOrderPage() {
 
         let student_id="54763"
 
-        updateRank(student_id,firstPlace,secondPlace,thirdPlace,fourthPlace,fifthPlace,sixthPlace)
+        updateRank(student_id,WithoutVisualization,Highlight,Font,Summary,GradualHighlight,GradualFont)
     }
 
 
-    let updateFunction = (prop,place) => {
+/*    let updateFunction = (prop,place) => {
         if (place == "first" ){
             setFirstPlace(prop)
         }
@@ -48,7 +56,9 @@ export default function RankByOrderPage() {
         if (place == "Sixth" ){
             setSixthPlace(prop)
         }
-    }
+    }*/
+
+
 
 
     return (
@@ -65,36 +75,39 @@ export default function RankByOrderPage() {
                 <Row>
                     <Col>
                         <h3 className="block">Original Text</h3>
-                        <img src={"/images/withoutVisu.PNG"} alt=""/><br/><br/><br/>
+                        <img src={"/images/withoutVisu.PNG"} alt=""/><br/><br/>
                         <select className="custom-select" onChange={(e)=>{
                             const selectedWithoutVisualization=e.target.value;
-                            updateFunction("Without Visualization",selectedWithoutVisualization)
+                            setWithoutVisualization(selectedWithoutVisualization)
+/*                            updateFunction("Without Visualization",selectedWithoutVisualization)*/
+
                         }}>
                             <option value="Choose">Choose a Place</option>
-                            <option value="first">1st Place</option>
-                            <option value="Second">2st Place</option>
-                            <option value="Third">3st Place</option>
-                            <option value="Fourth">4th Place</option>
-                            <option value="Fifth">5th Place</option>
-                            <option value="Sixth">6th Place</option>
+                            <option value="1">1st Place</option>
+                            <option value="2">2nd Place</option>
+                            <option value="3">3rd Place</option>
+                            <option value="4">4th Place</option>
+                            <option value="5">5th Place</option>
+                            <option value="6">6th Place</option>
                         </select>
 
                     </Col>
 
                     <Col>
                         <h3 className="block">Highlight</h3>
-                        <img src={"/images/highlight.PNG"} alt=""/><br/><br/><br/>
+                        <img src={"/images/highlight.PNG"} alt=""/><br/><br/>
                         <select className="custom-select" onChange={(e)=>{
                             const selectedHighlight=e.target.value;
-                            updateFunction("Highlight",selectedHighlight)
+                            setHighlight(selectedHighlight)
+                            // updateFunction("Highlight",selectedHighlight)
                         }}>
                             <option value="Choose">Choose a Place</option>
-                            <option value="first">1st Place</option>
-                            <option value="Second">2st Place</option>
-                            <option value="Third">3st Place</option>
-                            <option value="Fourth">4th Place</option>
-                            <option value="Fifth">5th Place</option>
-                            <option value="Sixth">6th Place</option>
+                            <option value="1">1st Place</option>
+                            <option value="2">2nd Place</option>
+                            <option value="3">3rd Place</option>
+                            <option value="4">4th Place</option>
+                            <option value="5">5th Place</option>
+                            <option value="6">6th Place</option>
                         </select><br/><br/><br/><br/>
                     </Col>
 
@@ -104,15 +117,16 @@ export default function RankByOrderPage() {
                         <img src={"/images/Increased Font.PNG"} alt=""/><br/><br/>
                         <select className="custom-select" onChange={(e)=>{
                             const selectedIncreasedFont=e.target.value;
-                            updateFunction("Increased Font",selectedIncreasedFont)
+                            setFont(selectedIncreasedFont)
+                            // updateFunction("Increased Font",selectedIncreasedFont)
                         }}>
                             <option value="Choose">Choose a Place</option>
-                            <option value="first">1st Place</option>
-                            <option value="Second">2st Place</option>
-                            <option value="Third">3st Place</option>
-                            <option value="Fourth">4th Place</option>
-                            <option value="Fifth">5th Place</option>
-                            <option value="Sixth">6th Place</option>
+                            <option value="1">1st Place</option>
+                            <option value="2">2nd Place</option>
+                            <option value="3">3rd Place</option>
+                            <option value="4">4th Place</option>
+                            <option value="5">5th Place</option>
+                            <option value="6">6th Place</option>
                         </select>
 
                     </Col>
@@ -124,35 +138,37 @@ export default function RankByOrderPage() {
 
                     <Col>
                         <h3 className="block">Summary</h3>
-                        <img src={"/images/sammary.PNG"} alt=""/><br/><br/><br/><br/><br/><br/>
+                        <img src={"/images/sammary.PNG"} alt=""/><br/><br/>
                         <select className="custom-select" onChange={(e)=>{
                             const selectedSummary=e.target.value;
-                            updateFunction("Summary",selectedSummary)
+                            setSummary(selectedSummary)
+                            //updateFunction("Summary",selectedSummary)
                         }}>
                             <option value="Choose">Choose a Place</option>
-                            <option value="first">1st Place</option>
-                            <option value="Second">2st Place</option>
-                            <option value="Third">3st Place</option>
-                            <option value="Fourth">4th Place</option>
-                            <option value="Fifth">5th Place</option>
-                            <option value="Sixth">6th Place</option>
+                            <option value="1">1st Place</option>
+                            <option value="2">2nd Place</option>
+                            <option value="3">3rd Place</option>
+                            <option value="4">4th Place</option>
+                            <option value="5">5th Place</option>
+                            <option value="6">6th Place</option>
                         </select>
                     </Col>
 
                     <Col>
                         <h3 className="block">Gradual Highlight</h3>
-                        <img src={"/images/gradualHighlight.PNG"} alt=""/><br/><br/><br/>
+                        <img src={"/images/gradualHighlight.PNG"} alt=""/><br/><br/>
                         <select className="custom-select" onChange={(e)=>{
                             const selectedGradualHighlight=e.target.value;
-                            updateFunction("Gradual Highlight",selectedGradualHighlight)
+                            setGradualHighlight(selectedGradualHighlight)
+                            //updateFunction("Gradual Highlight",selectedGradualHighlight)
                         }}>
                             <option value="Choose">Choose a Place</option>
-                            <option value="first">1st Place</option>
-                            <option value="Second">2st Place</option>
-                            <option value="Third">3st Place</option>
-                            <option value="Fourth">4th Place</option>
-                            <option value="Fifth">5th Place</option>
-                            <option value="Sixth">6th Place</option>
+                            <option value="1">1st Place</option>
+                            <option value="2">2nd Place</option>
+                            <option value="3">3rd Place</option>
+                            <option value="4">4th Place</option>
+                            <option value="5">5th Place</option>
+                            <option value="6">6th Place</option>
                         </select>
                     </Col>
 
@@ -161,15 +177,16 @@ export default function RankByOrderPage() {
                         <img src={"/images/Gradual Font.PNG"} alt=""/><br/><br/>
                         <select className="custom-select" onChange={(e)=>{
                             const selectedGradualFont=e.target.value;
-                            updateFunction("Gradual Font",selectedGradualFont)
+                            setGradualFont(selectedGradualFont)
+                            //updateFunction("Gradual Font",selectedGradualFont)
                         }}>
                             <option value="Choose">Choose a Place</option>
-                            <option value="first">1st Place</option>
-                            <option value="Second">2st Place</option>
-                            <option value="Third">3st Place</option>
-                            <option value="Fourth">4th Place</option>
-                            <option value="Fifth">5th Place</option>
-                            <option value="Sixth">6th Place</option>
+                            <option value="1">1st Place</option>
+                            <option value="2">2nd Place</option>
+                            <option value="3">3rd Place</option>
+                            <option value="4">4th Place</option>
+                            <option value="5">5th Place</option>
+                            <option value="6">6th Place</option>
                         </select>
 
                     </Col>
@@ -182,7 +199,7 @@ export default function RankByOrderPage() {
 
                 <Row className="justify-content-center align-items-center">
                     <Link to={"/Done"}>
-                        <Button variant="primary" onClick={saveFunc}>Save</Button><br/><br/><br/><br/><br/>
+                        <Button variant="outline-success" onClick={saveFunc}>Save</Button><br/><br/><br/><br/><br/>
                     </Link>
                 </Row>
 
