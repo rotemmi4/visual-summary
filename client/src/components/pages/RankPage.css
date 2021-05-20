@@ -8,11 +8,21 @@ img{
 }
 
 
-.no-radio.input[type="radio"]{
+/*.input[type="radio"]{*/
+/*    display: none;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*}*/
+
+input[type="radio"]{
     display: none;
     justify-content: center;
     align-items: center;
 }
 
-
-
+.saveButton{
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}

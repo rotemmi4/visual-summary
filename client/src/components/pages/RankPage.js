@@ -60,6 +60,8 @@ export default function RankPage() {
 
             <Row className="mb-3 justify-content-center align-items-center">
                 <h2 className="block">Please rank the visualizations</h2>
+                <h4 className="block">How effective was the visualizations in summarizing the texts and answering the questions?</h4>
+
             </Row>
 
 
@@ -68,10 +70,33 @@ export default function RankPage() {
                 <Row>
 
                     <Col>
+                        <h3 className="block">Original Text</h3>
+                        <img src={"/images/withoutVisu.PNG"} alt=""/>
+                        <StarRating type={"withoutvisualization"} parentCallback={callbackFunction}></StarRating>
+                    </Col>
+
+                    <Col>
                         <h3 className="block">Highlight</h3>
                         <img src={"/images/highlight.PNG"} alt=""/>
                         <StarRating type={"highligth"} parentCallback={callbackFunction}></StarRating>
 
+                    </Col>
+
+                    <Col>
+                        <h3 className="block">Font</h3>
+                        <img src={"/images/Increased Font.PNG"} alt=""/>
+                        <StarRating type={"increasedfont"} parentCallback={callbackFunction}></StarRating>
+
+                    </Col>
+
+                </Row>
+
+                <Row>
+
+                    <Col>
+                        <h3 className="block">Summary</h3>
+                        <img src={"/images/sammary.PNG"} alt=""/><br/><br/>
+                        <StarRating type={"sammary"} parentCallback={callbackFunction}></StarRating>
                     </Col>
 
                     <Col>
@@ -82,34 +107,15 @@ export default function RankPage() {
                     </Col>
 
                     <Col>
-                        <h3 className="block">Increased Font</h3>
-                        <img src={"/images/Increased Font.PNG"} alt=""/>
-                        <StarRating type={"increasedfont"} parentCallback={callbackFunction}></StarRating>
-
-                    </Col>
-
-
-                </Row>
-
-                <Row>
-                    <Col>
                         <h3 className="block">Gradual Font</h3>
                         <img src={"/images/Gradual Font.PNG"} alt=""/>
                         <StarRating type={"gradualfont"} parentCallback={callbackFunction}></StarRating>
 
                      </Col>
 
-                    <Col>
-                        <h3 className="block">Summary</h3>
-                        <img src={"/images/sammary.PNG"} alt=""/><br/><br/>
-                        <StarRating type={"sammary"} parentCallback={callbackFunction}></StarRating>
-                    </Col>
 
-                    <Col>
-                        <h3 className="block">Without Visualization</h3>
-                        <img src={"/images/withoutVisu.PNG"} alt=""/>
-                        <StarRating type={"withoutvisualization"} parentCallback={callbackFunction}></StarRating>
-                    </Col>
+
+
                 </Row>
 
 
