@@ -31,7 +31,7 @@ export function StudentExplanationPage(){
     if(studentTestID != ""){
         find_test=
             <div>
-                <Link to={`/Student/Test/${studentTestID}`} >
+                <Link to={`/Student/Test/${studentTestID}isbefore`} >
                       <Button variant="primary" >
                           Start the test!
                       </Button>

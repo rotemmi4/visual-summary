@@ -131,3 +131,13 @@ export function saveStudentSummary(student_id,text_id,summary, readingTime, summ
     //const headers = {headers : {"x-auth-token": getToken()}}
     return axios.post(url,body)
 }
+
+
+export function getTestGlobalInfo(test_id) {
+    // const to_send = test_id + "is" + set_place
+    const url = `http://127.0.0.1:5000/getTestGlobalInfo/${test_id}`
+    let response = axios.get(url)
+    // console.log("get_text_ids_by_test_id!!")
+    // console.log(response)
+    return response
+}

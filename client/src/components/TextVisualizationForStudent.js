@@ -91,7 +91,7 @@ export function TextVisualizationForStudent(props){
                                       type={type}
                                       showBar={showBar}
                                       threshold={props.threshold}
-                                      HiglightColor={props.HighlightColor}
+                                      HighlightColor={props.HighlightColor}
                                       palette={props.palette}
                                       selectColorR={255}
                                       selectColorG={255}
