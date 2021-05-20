@@ -64,7 +64,7 @@ export function StudentQuestions(props) {
     if(allQuestions.length > 0)
     {
         content =
-                <div className='app_question'>
+                <div className='app_question' style={{overflowY:"auto",width:"95%"}}>
                     {showScore ? (
                         <div className='score-section'>
                             {lastText  ?

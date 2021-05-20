@@ -6,6 +6,8 @@ import {get_text_ids_and_info_by_test_id, get_text_ids_by_test_id} from "../../m
 import {TextVisualizationForStudent} from "../TextVisualizationForStudent";
 import {StudentSummary} from "../StudentSummary";
 import * as StudentModelRestAPI from "../../model/requests/StudentModelRestAPI";
+import {COLORS} from "../../colors";
+import "./StudentTestPage.css"
 
 
 
@@ -21,8 +23,15 @@ export function StudentTestPage(props){
     const [showQuestions, setShowQuestions] = useState(false)
     const [showRanking, setShowRanking] = useState(false)
 
+    const [newText, setNewText] = useState(true)
+    const [summaryTimer, setSummaryTimer] = useState(new Date())
+    const [readingTimer, setReadingTimer] = useState(0.0)
+
+
     const [textNumberIndex, setTextNumberIndex] = useState(0);
+    // const [readingTime, setReadingTime] = useState("0");
     let lastText = false;
+    // let readingTime;
 
     let colR="255",colG="255",colB="255"
 
@@ -32,6 +41,9 @@ export function StudentTestPage(props){
         get_text_ids_and_info_by_test_id(testID).then(response => {
             let arr_ids = [];
             let arrInfoOnText = [];
+            // print response!
+            // console.log("response.data");
+            // console.log(response.data);
             for(let i=0; i<response.data.length; i++){
                 let temp = {};
                 temp["name"] = response.data[i]["name"];
@@ -42,8 +54,8 @@ export function StudentTestPage(props){
                 temp["text_id"] = response.data[i]["text_id"];
                 temp["threshold"] = response.data[i]["threshold"];
                 temp["visualiztion_id"] = response.data[i]["visualiztion_id"];
-                temp["size"] = "";
-                temp["color"] = "";
+                temp["size"] = "3";
+                temp["color"] = "Yellow";
                 try{
                     if(temp["property_value"].split(',').length > 1)
                     {
@@ -60,7 +72,7 @@ export function StudentTestPage(props){
         });
     },[]);
 
-
+    let text_num = 8;
     const text1 = StudentModelRestAPI.useGetTextTotalInfo(allTextsIDs[0]);
     const text2 = StudentModelRestAPI.useGetTextTotalInfo(allTextsIDs[1]);
     const text3 = StudentModelRestAPI.useGetTextTotalInfo(allTextsIDs[2]);
@@ -83,7 +95,7 @@ export function StudentTestPage(props){
 
 
     const arrOfAllTexts = {};
-    let text_num = 8;
+
     if( text1.data && text2.data && text3.data && text4.data && text5.data && text6.data && text7.data && text8.data &&
         text1.data.length > 0 && text2.data.length > 0 && text3.data.length > 0
         && text4.data.length > 0 && text5.data.length > 0 && text6.data.length > 0 && text7.data.length > 0
@@ -98,29 +110,37 @@ export function StudentTestPage(props){
             arrOfAllTexts[i]["size"] = allTextsIDsInfo[i]["size"]
             arrOfAllTexts[i]["property_name"] = allTextsIDsInfo[i]["property_name"]
         }
-        // console.log(arrOfAllTexts);
+        console.log(arrOfAllTexts);
     }
 
 
     const moveToQuestions = ()=> {
 
-        setShowSummary(false);
+        // setShowSummary(false);
+        setNewText(false);
         setShowQuestions(true);
         if(textNumberIndex === (arrOfAllTexts.length -1))
         {
             lastText = true;
         }
     }
-    const moveToSummary = ()=> {
-        setShowText(false);
+    const moveToSummary = (startReadingTime)=> {
+        // setShowText(false);
+        let readingTime1 = new Date();
+        readingTime1 = readingTime1 - startReadingTime;
+        readingTime1 /= 1000;
+        readingTime1 += TIME_FOR_READING;
+        setReadingTimer(readingTime1);
+
+        setNewText(false);
         setShowSummary(true);
     }
     let moveToRankBtn = null;
     const moveToText = ()=> {
-        // console.log("textNumberIndex -> " + textNumberIndex);
-        // console.log("allTextsIDs -> " + allTextsIDs);
+
         if(textNumberIndex < allTextsIDs.length -1)
         {
+            setNewText(true);
             setTextNumberIndex(textNumberIndex +1);
             setShowText(true);
             setShowQuestions(false);
@@ -141,22 +161,31 @@ export function StudentTestPage(props){
 
     if(Object.keys(arrOfAllTexts).length === 8 && showText){
         text = <TextVisualizationForStudent className="mt-5"
-                                            moveToQuestions={moveToSummary}
+                                            moveToSummary={moveToSummary}
                                             sentences={arrOfAllTexts[textNumberIndex].sentences}
                                             type={arrOfAllTexts[textNumberIndex].type} showBar={false}
-                                            name={arrOfAllTexts[textNumberIndex].name}/>
+                                            name={arrOfAllTexts[textNumberIndex].name}
+                                            HighlightColor={COLORS[1][arrOfAllTexts[textNumberIndex].color]}
+                                            palette={COLORS[arrOfAllTexts[textNumberIndex]['size']][arrOfAllTexts[textNumberIndex]['color']]}
+                                            selectColorR={255}
+                                            selectColorG={255}
+                                            selectColorB={255}
+                                            threshold={arrOfAllTexts[textNumberIndex].threshold}
+                                            readingTime={new Date()}
+                                            TIME_FOR_READING={TIME_FOR_READING}
+                                            newText={newText}/>
     }
 
-    const summary = <StudentSummary moveToQuestions={moveToQuestions} text_id={allTextsIDs[textNumberIndex]}/>
+    const summary = <StudentSummary moveToQuestions={moveToQuestions} text_id={allTextsIDs[textNumberIndex]} readingTime={readingTimer} />
 
     const questions = <Container> <StudentQuestions test_name={testID} text_id={allTextsIDs[textNumberIndex]} moveToText={moveToText} lastText={lastText}/> </Container>
 
 
     return (
-        <Container >
+        <Container className='rowC'>
             {showText ? (<div>{text}</div>) : (<></>)}
 
-            {showSummary && !showQuestions && !showText? (<div> {summary} </div>) : (<></>)}
+            {showSummary && !showQuestions ? (<div> {summary} </div>) : (<></>)}
 
             {showQuestions  ? (<div> {questions} </div>) : (<></>)}
 

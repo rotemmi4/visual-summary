@@ -11,13 +11,17 @@ export function StudentSummary(props){
     const text_id = props.text_id;
     const text = props.text;
     const text_type = props.type;
-    let student_id= localStorage.getItem('student_id')
+    let student_id= localStorage.getItem('student_id');
+    const readingTime = props.readingTime;
+    const startSummary = new Date();
 
     const [textValue,setTextValue] = useState("");
 
     const set_student_summary = () => {
-        // Send this to DB
-        saveStudentSummary(student_id,text_id,textValue);
+        let endTimeSummary = new Date();
+        endTimeSummary = endTimeSummary - startSummary;
+        endTimeSummary /= 1000;
+        saveStudentSummary(student_id,text_id,textValue, readingTime, endTimeSummary);
     }
 
     function handleChange(event) {
@@ -26,7 +30,7 @@ export function StudentSummary(props){
 
 
     return (
-        <Container style={{textAlign: 'center'}}>
+        <Container style={{overflowY:"auto" ,textAlign: 'center'}}>
             <h1>Summary</h1>
             <br/>
             <br/>

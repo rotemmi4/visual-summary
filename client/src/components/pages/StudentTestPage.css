@@ -1,0 +1,5 @@
+.rowC{
+    display:flex;
+    flex-direction:row;
+    /*background-color: #2f922f;*/
+}
