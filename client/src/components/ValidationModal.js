@@ -4,8 +4,8 @@ import "./Modal.css"
 
 
 //style={{position: "absolute" , left: "10px"}}
-export function AddTextModal(props) {
-    const text_content = props.text
+export function ValidationModal(props) {
+    const text = props.text
 
 
 
@@ -17,16 +17,17 @@ export function AddTextModal(props) {
             dialogClassName="my-modal"
         >
             <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
+                <Modal.Title id="contained-modal-title-vcenter">Validation
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <text style={{whiteSpace: "pre-line"}} >{text_content}</text>
-                {/*<Container>*/}
-                {/*    <Col >*/}
-                {/*        {text_content}*/}
-                {/*    </Col>*/}
-                {/*</Container>*/}
+
+                <Container>
+                    <Col >
+                        <text>The Test Don't Save!</text><br/>
+                        <text style={{whiteSpace: "pre-line"}} >The Reason: {text}</text>
+                    </Col>
+                </Container>
             </Modal.Body>
             <Modal.Footer>
                 <Button onClick={props.onHide}>Close</Button>
