@@ -15,6 +15,7 @@ export default function RankPage() {
     const [sammarytRank, setSammarytRank] = useState(1)
     const [textRank, setTextRank] = useState(1)
     const [show, setShow] = useState(false);
+    const textId = localStorage.getItem("testIDFull").split("is")[0]
 
     const handleClose = () => {
         setShow(false)
@@ -23,11 +24,9 @@ export default function RankPage() {
 
     const saveRank = () => {
 
-        // let student_id= localStorage.getItem('student_id')
+        let student_id= localStorage.getItem('student_id')
 
-        let student_id="54763"
-        // let rank_order="1"
-        addRank(student_id, textRank, GhighLightRank, highLightRank, pontRank,GpontRank, sammarytRank)
+        addRank(student_id, textRank, GhighLightRank, highLightRank, pontRank,GpontRank, sammarytRank,textId)
         // handleShow()
     }
 

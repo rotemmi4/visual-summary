@@ -52,7 +52,7 @@ export function get_test_id(){
 }
 
 export function get_questions_and_answers(text_id) {
-    console.log("im here - get_questions_and_answers1")
+    // console.log("im here - get_questions_and_answers1")
     const url = `http://127.0.0.1:5000/student/get_questions/${text_id}`
     // const headers = {headers: {"x-auth-token": getToken()}}
     let response = axios.get(url)
@@ -60,8 +60,8 @@ export function get_questions_and_answers(text_id) {
 }
 
 export function send_info_on_text(results) {
-    console.log("im here - send_info_on_text")
-    console.log(results)
+    // console.log("im here - send_info_on_text")
+    // console.log(results)
     const url = 'http://127.0.0.1:5000/student/set_question_results'
     const body = results
 
@@ -105,10 +105,10 @@ export function useGetTextTotalInfo(text_id) {
     return useAxiosGet(url, headers, false)
 }
 
-export function addRank(student_id, withoutVisualization, gradualHighlight, highlight, increasedFont,gradualFont, summaryOnly){
+export function addRank(student_id, withoutVisualization, gradualHighlight, highlight, increasedFont,gradualFont, summaryOnly, textId){
     const url = 'http://127.0.0.1:5000/rank'
     const body = "{  \"student_id\":\"" + student_id + "\", \"withoutVisualization\":\"" + withoutVisualization + "\", \"gradualHighlight\":\"" + gradualHighlight + "\"," +
-        " \"highlight\":\"" + highlight + "\", \"increasedFont\":\"" + increasedFont + "\", \"gradualFont\":\"" + gradualFont + "\", \"summaryOnly\":\"" + summaryOnly + "\" }"
+        " \"highlight\":\"" + highlight + "\", \"increasedFont\":\"" + increasedFont + "\", \"gradualFont\":\"" + gradualFont + "\", \"summaryOnly\":\"" + summaryOnly + "\" , \"textId\":\"" + textId + "\" }"
     return axios.post(url,body)
 }
 
@@ -117,7 +117,7 @@ export function updateRank(student_id, WithoutVisualization_place ,highlight_pla
     const body = "{  \"student_id\":\"" + student_id + "\", \"WithoutVisualization_place\":\"" + WithoutVisualization_place + "\", \"gradualHighlight_place\":\"" + gradualHighlight_place + "\"," +
         " \"highlight_place\":\"" + highlight_place + "\", \"increasedFont_place\":\"" + increasedFont_place + "\", \"gradualFont_place\":\"" + gradualFont_place + "\"," +
         " \"summaryOnly_place\":\"" + summaryOnly_place + "\" }"
-    console.log(body)
+    // console.log(body)
     //const headers = {headers : {"x-auth-token": getToken()}}
     return axios.post(url,body)
 }

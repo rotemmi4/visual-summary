@@ -7,11 +7,15 @@ import {Link} from "react-router-dom";
 
 export function StudentQuestions(props) {
 
-    const textID = props.text_id
-    const test_name = props.test_name
+    const textID = props.text_id;
+    const test_name = props.test_name;
+    const full_test_name = props.full_test_name;
     // const lastText = props.lastTest
-    const [timer, setTimer] = useState(new Date())
-    const [results,setResults] = useState([])
+    const [timer, setTimer] = useState(new Date());
+    // const [firstTime, setFirstTime] = useState(true);
+    // const [move_to, setMove_to] = useState("BeforeRankingPage");
+    // const [text_move_to, setText_move_to] = useState("Move to rank!");
+    const [results,setResults] = useState([]);
     const [allQuestions, setAllQuestions] = useState([])
     useEffect(() => {
         get_questions_and_answers(textID).then(response => {
@@ -21,6 +25,15 @@ export function StudentQuestions(props) {
         })
     },[])
 
+    // let move_to = "BeforeRankingPage"
+    // let text_move_to = "Move to rank!"
+    // if(full_test_name.includes("after") && firstTime) {
+    //     setMove_to("Done");
+    //     setText_move_to("Finish!");
+    //     setFirstTime(false);
+    //     // move_to = "Done"
+    //     // text_move_to = "Finish!"
+    // }
 
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [showScore, setShowScore] = useState(false);
@@ -70,7 +83,8 @@ export function StudentQuestions(props) {
                             {lastText  ?
                                 (<Link to={"/BeforeRankingPage"}>
                                      <button type="button">
-                                          Move to rank!
+                                         {/*{props.text_move_to}*/}
+                                         Click here to continue to next step!
                                      </button>
                                  </Link>) :
                                 (<Button variant="warning" onClick={props.moveToText}>You have finished this text. Click on me to continue</Button>)}

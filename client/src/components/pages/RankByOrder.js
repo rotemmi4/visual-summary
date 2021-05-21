@@ -16,7 +16,8 @@ export default function RankByOrderPage() {
     const [fifthPlace, setFifthPlace] = useState("")
     const [sixthPlace, setSixthPlace] = useState("")
 */
-
+    const textId = localStorage.getItem("testIDFull").split("is")[0]
+    const fullTextId = textId + "isafter";
     const [WithoutVisualization, setWithoutVisualization] = useState("")
     const [Highlight, setHighlight] = useState("")
     const [Font, setFont] = useState("")
@@ -25,13 +26,12 @@ export default function RankByOrderPage() {
     const [GradualFont, setGradualFont] = useState("")
 
 
-    const saveFunc= ()=> {
-        /*
-           let student_id= localStorage.getItem('student_id')
-        */
-        // let rankName= firstPlace+":"+secondPlace+":"+thirdPlace+":"+fourthPlace+":"+fifthPlace+":"+sixthPlace;
 
-        let student_id="54763"
+    const saveFunc= ()=> {
+
+        let student_id= localStorage.getItem('student_id')
+
+        // let rankName= firstPlace+":"+secondPlace+":"+thirdPlace+":"+fourthPlace+":"+fifthPlace+":"+sixthPlace;
 
         updateRank(student_id,WithoutVisualization,Highlight,Font,Summary,GradualHighlight,GradualFont)
     }
@@ -198,7 +198,10 @@ export default function RankByOrderPage() {
 
 
                 <Row className="justify-content-center align-items-center">
-                    <Link to={"/Done"}>
+                    {/*<Link to={"/Done"}>*/}
+                    {/*    <Button variant="outline-success" onClick={saveFunc}>Save</Button><br/><br/><br/><br/><br/>*/}
+                    {/*</Link>*/}
+                    <Link to={`/Student/Test/${fullTextId}`}>
                         <Button variant="outline-success" onClick={saveFunc}>Save</Button><br/><br/><br/><br/><br/>
                     </Link>
                 </Row>
