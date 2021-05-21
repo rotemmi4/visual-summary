@@ -58,17 +58,17 @@ export default function ChooseTestAndVisualization(props) {
     }
 
     let saveFullTest = function (event) {
-        // if(!set_validation_texts() ){
-        //     console.log("Text can be in Test only one time.")
-        //     setModalInformation("Text can be in Test only one time")
-        //     setShow(true)
-        // }
-        // else if(!(set_validation_visualization(0) && set_validation_visualization(1) && set_validation_visualization(1))){
-        //     console.log("Visualization can be in Set only one time")
-        //     setModalInformation("Visualization can be in Set only one time")
-        //     setShow(true)
-        // }
-        // else{
+        if(!set_validation_texts() ){
+            console.log("Text can be in Test only one time.")
+            setModalInformation("Text can be in Test only one time")
+            setShow(true)
+        }
+        else if(!(set_validation_visualization(0) && set_validation_visualization(1) && set_validation_visualization(1))){
+            console.log("Visualization can be in Set only one time")
+            setModalInformation("Visualization can be in Set only one time")
+            setShow(true)
+        }
+        else{
             testRepository.saveTest(testName, "Choose Tests And Visualizations")
             for (let i = 0; i < 6; i++) {
                 textRepository.save(visualizationType[i], selectedTexts[i], propertyName[i], propertyValue[i], propertyType[i], testName,thresholdTexts[i],1)
@@ -79,13 +79,13 @@ export default function ChooseTestAndVisualization(props) {
             for (let i = 12; i < 18; i++) {
                 textRepository.save(visualizationType[i], selectedTexts[i], propertyName[i], propertyValue[i], propertyType[i], testName,thresholdTexts[i],3)
             }
-        // }
+        }
 
     }
 
     //VALIDATION
     let set_validation_texts=function (){
-        if(new Set(dropdown1,dropdown2,dropdown3).size !== 18)
+        if(new Set(selectedTexts).size !== 18)
             return false
         else
             return true
