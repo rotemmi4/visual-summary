@@ -4,6 +4,7 @@ import * as textRepository from "../../repositories/TextRepository";
 import {Button, Col, Container, Row} from "react-bootstrap";
 import {VisualizationDisplayModal} from "../VisualizationDisplayModal";
 import * as testRepository from "../../repositories/TestRepository";
+import {ValidationModal} from "../ValidationModal";
 
 
 export default function GenerateRandomTextAndChooseVisualization() {
@@ -12,19 +13,20 @@ export default function GenerateRandomTextAndChooseVisualization() {
     let testName = location.state.testName
     const { id } = useParams()
     const textById = textRepository.useGetTextById(id)
-    const [modalShow,setModalShow] = useState([false,false,false,false,false,false,false,false,false,false])
+    const [modalShow,setModalShow] = useState([false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false])
 
     const size = 10
-    const [dropdown, setDropdown] = useState([0,0,0,0,0,0,0,0,0,0]);
+    const [show,setShow]=useState(false)
+    const [modalInformation,setModalInformation]=useState("")
 
 
     const texts = textRepository.useRandomText()
-    const [propertyName,setPropertyName] = useState(["none","none","none","none","none","none","none","none","none","none","none","none"])
-    const [propertyValue,setPropertyValue] = useState(["none","none","none","none","none","none","none","none","none","none","none","none"])
-    const [propertyType,setPropertyType] = useState(["none","none","none","none","none","none","none","none","none","none","none","none"])
-    const [visualizationType,setVisualizationType] = useState(["Without Visualization", "Without Visualization", "Without Visualization", "Without Visualization", "Without Visualization", "Without Visualization", "Without Visualization", "Without Visualization", "Without Visualization", "Without Visualization","Without Visualization", "Without Visualization"])
-    const [thresholdTexts, setThreshold] = useState([0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5])
-    const [selectedTexts,setSelectedTexts] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
+    const [propertyName,setPropertyName] = useState(["none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none"])
+    const [propertyValue,setPropertyValue] = useState(["none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none"])
+    const [propertyType,setPropertyType] = useState(["none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none"])
+    const [visualizationType,setVisualizationType] = useState(["Without Visualization", "Without Visualization", "Without Visualization", "Without Visualization", "Without Visualization", "Without Visualization", "Without Visualization", "Without Visualization", "Without Visualization", "Without Visualization","Without Visualization", "Without Visualization", "Without Visualization", "Without Visualization", "Without Visualization", "Without Visualization","Without Visualization", "Without Visualization"])
+    const [thresholdTexts, setThreshold] = useState([0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5])
+    const [selectedTexts,setSelectedTexts] = useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
     let callbackFunction = (propName,propValue,propType,visualType,textID,index,thresh) => {
 
         let newPropertyName = [...propertyName]
@@ -51,11 +53,31 @@ export default function GenerateRandomTextAndChooseVisualization() {
         newThresholdTexts[index] = thresh
         setThreshold(newThresholdTexts)
     }
-
+    //VALIDATION
+    let set_validation_visualization=function (index){
+        if(new Set(visualizationType[0+index],visualizationType[1+index],visualizationType[2+index],visualizationType[3+index],visualizationType[4+index],visualizationType[5+index]).size !== 6)
+            return false
+        else
+            return true
+    }
     let saveFullTest = function(event){
-        testRepository.saveTest(testName,"Generate Random Texts And Choose Visualizations")
-        for (let i = 0; i < 12; i++) {
-            textRepository.save(visualizationType[i],selectedTexts[i],propertyName[i],propertyValue[i],propertyType[i],testName,thresholdTexts[i])
+
+        if(!(set_validation_visualization(0) && set_validation_visualization(1) && set_validation_visualization(1))){
+            console.log("Visualization can be in Set only one time")
+            setModalInformation("Visualization can be in Set only one time")
+            setShow(true)
+        }
+        else{
+            testRepository.saveTest(testName,"Generate Random Texts And Choose Visualizations")
+            for (let i = 0; i < 6; i++) {
+                textRepository.save(visualizationType[i], selectedTexts[i], propertyName[i], propertyValue[i], propertyType[i], testName,thresholdTexts[i],1)
+            }
+            for (let i = 6; i < 12; i++) {
+                textRepository.save(visualizationType[i], selectedTexts[i], propertyName[i], propertyValue[i], propertyType[i], testName,thresholdTexts[i],2)
+            }
+            for (let i = 12; i < 18; i++) {
+                textRepository.save(visualizationType[i], selectedTexts[i], propertyName[i], propertyValue[i], propertyType[i], testName,thresholdTexts[i],3)
+            }
         }
 
 
@@ -90,6 +112,9 @@ export default function GenerateRandomTextAndChooseVisualization() {
 
                 )) : null}
                 <Button className="btn btn-primary" onClick={saveFullTest}>SAVE TEST</Button><br/><br/><br/>
+                <ValidationModal show={show} onHide={() => {
+                    setShow(false)
+                }} text={modalInformation}></ValidationModal>
             </Container>
         </>);
 }
