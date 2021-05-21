@@ -59,9 +59,9 @@ export function useGetQuestionId(){
 }
 
 
- export function saveVisualizationForText(type,textID,propertyName,propertyValue,propertyType,testName,threshold){
+ export function saveVisualizationForText(type,textID,propertyName,propertyValue,propertyType,testName,threshold,setNum){
      const url = 'http://127.0.0.1:5000/saveVisu'
-     const body = "{ \"testName\":"+"\"" +testName+"\"" +", \"textID\":" + textID + ", \"visualizationType\": \"" + type + "\", \"propName\": \"" + propertyName + "\", \"propVal\": \"" + propertyValue + "\" , \"propType\":\"" + propertyType + "\", \"threshold\":"+threshold+" }"
+     const body = "{ \"testName\":"+"\"" +testName+"\"" +", \"textID\":" + textID + ", \"visualizationType\": \"" + type + "\", \"propName\": \"" + propertyName + "\", \"propVal\": \"" + propertyValue + "\" , \"propType\":\"" + propertyType + "\", \"threshold\":"+threshold+",\"setNum\":"+setNum+" }"
      const headers = {headers : {"x-auth-token": getToken()}}
      return axios.post(url,body,headers)
  }

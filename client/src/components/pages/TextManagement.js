@@ -22,7 +22,7 @@ export default function TextManagement() {
     const onChange = (e) => {
         const file = e.target.files[0];
         file.text().then( filetext => {
-            setContent(filetext.replace(/(\r\n|\n|\r)/gm, " "));
+            setContent(filetext);
         }).catch( (e) => {
             console.log("")
         })
