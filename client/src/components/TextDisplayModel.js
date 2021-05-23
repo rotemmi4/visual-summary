@@ -35,6 +35,7 @@ export function TextDisplayModal(props) {
                 <Container>
                     <Col >
                         {text1 && text1.data ? <TextVisualization sentences={text1.data.sentences} type={type} /*type={type}*/ name={text1.data.name} showBar={true}/> : null}
+
                     </Col>
                 </Container>
             </Modal.Body>

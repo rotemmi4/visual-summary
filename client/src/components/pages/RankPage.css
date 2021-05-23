@@ -14,11 +14,13 @@ img{
 /*    align-items: center;*/
 /*}*/
 
+/*
 input[type="radio"]{
     display: none;
     justify-content: center;
     align-items: center;
 }
+*/
 
 .saveButton{
     align-content: center;
