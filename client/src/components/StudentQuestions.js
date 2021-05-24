@@ -19,7 +19,6 @@ export function StudentQuestions(props) {
     const [allQuestions, setAllQuestions] = useState([])
     useEffect(() => {
         get_questions_and_answers(textID).then(response => {
-            // console.log(response.data)
             setAllQuestions(response.data)
             setTimer(new Date())
         })
@@ -36,7 +35,7 @@ export function StudentQuestions(props) {
     let correct = false;
 
     const handleAnswerOptionClick = (isCorrect) => {
-        console.log("correct -> " + correct);
+        // console.log("correct -> " + correct);
         if (isCorrect) {
             setScore(score + 1);
         }
