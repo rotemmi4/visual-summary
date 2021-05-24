@@ -11,19 +11,34 @@ export default function TestResult() {
     const test_result_sum = resultRepository.useGetTestResultSum(testName)
     const test_result_count = resultRepository.useGetTestResultCount(testName)
     const test_result_avg = resultRepository.useGetTestResultAvg(testName)
-
+    const test_result_reading_time = resultRepository.useGetTestResultReadingTime(testName)
 
     //CSV FILE
     const headers_sum= [
         { label: "Student ID", key: "studentID" },
         { label: "Age", key: "studentAge" },
         { label: "Gender", key: "studentGender" },
-        { label: "Plain Text", key: "Without Visualization" },
-        { label: "Gradual Highlight", key: "Gradual Highlight" },
-        { label: "Highlight", key: "Highlight" },
-        { label: "Font", key: "Increased Font" },
-        { label: "Gradual Font", key: "Gradual Font" },
-        { label: "Summary", key: "Summary Only" },
+
+        { label: "Set1_Plain_Text", key: "Without Visualization_set1" },
+        { label: "Set1_Gradual_Highlight", key: "Gradual Highlight_set1" },
+        { label: "Set1_Highlight", key: "Highlight_set1" },
+        { label: "Set1_Font", key: "Increased Font_set1" },
+        { label: "Set1_Gradual_Font", key: "Gradual Font_set1" },
+        { label: "Set1_Summary", key: "Summary Only_set1" },
+
+        { label: "Set2_Plain_Text", key: "Without Visualization_set2" },
+        { label: "Set2_Gradual_Highlight", key: "Gradual Highlight_set2" },
+        { label: "Set2_Highlight", key: "Highlight_set2" },
+        { label: "Set2_Font", key: "Increased Font_set2" },
+        { label: "Set2_Gradual_Font", key: "Gradual Font_set2" },
+        { label: "Set2_Summary", key: "Summary Only_set2" },
+
+        { label: "Set3_Plain_Text", key: "Without Visualization_set3" },
+        { label: "Set3_Gradual_Highlight", key: "Gradual Highlight_set3" },
+        { label: "Set3_Highlight", key: "Highlight_set3" },
+        { label: "Set3_Font", key: "Increased Font_set3" },
+        { label: "Set3_Gradual_Font", key: "Gradual Font_set3" },
+        { label: "Set3_Summary", key: "Summary Only_set3" },
     ];
     const data_sum = test_result_sum.data
 
@@ -44,12 +59,27 @@ export default function TestResult() {
         { label: "Student ID", key: "studentID" },
         { label: "Age", key: "studentAge" },
         { label: "Gender", key: "studentGender" },
-        { label: "Plain Text", key: "Without Visualization" },
-        { label: "Gradual Highlight", key: "Gradual Highlight" },
-        { label: "Highlight", key: "Highlight" },
-        { label: "Font", key: "Increased Font" },
-        { label: "Gradual Font", key: "Gradual Font" },
-        { label: "Summary", key: "Summary Only" },
+
+        { label: "Set1_Plain_Text", key: "Without Visualization_set1" },
+        { label: "Set1_Gradual_Highlight", key: "Gradual Highlight_set1" },
+        { label: "Set1_Highlight", key: "Highlight_set1" },
+        { label: "Set1_Font", key: "Increased Font_set1" },
+        { label: "Set1_Gradual_Font", key: "Gradual Font_set1" },
+        { label: "Set1_Summary", key: "Summary Only_set1" },
+
+        { label: "Set2_Plain_Text", key: "Without Visualization_set2" },
+        { label: "Set2_Gradual_Highlight", key: "Gradual Highlight_set2" },
+        { label: "Set2_Highlight", key: "Highlight_set2" },
+        { label: "Set2_Font", key: "Increased Font_set2" },
+        { label: "Set2_Gradual_Font", key: "Gradual Font_set2" },
+        { label: "Set2_Summary", key: "Summary Only_set2" },
+
+        { label: "Set3_Plain_Text", key: "Without Visualization_set3" },
+        { label: "Set3_Gradual_Highlight", key: "Gradual Highlight_set3" },
+        { label: "Set3_Highlight", key: "Highlight_set3" },
+        { label: "Set3_Font", key: "Increased Font_set3" },
+        { label: "Set3_Gradual_Font", key: "Gradual Font_set3" },
+        { label: "Set3_Summary", key: "Summary Only_set3" },
     ];
     const data_count = test_result_count.data
 
@@ -70,12 +100,27 @@ export default function TestResult() {
         { label: "Student ID", key: "studentID" },
         { label: "Age", key: "studentAge" },
         { label: "Gender", key: "studentGender" },
-        { label: "Plain Text", key: "Without Visualization" },
-        { label: "Gradual Highlight", key: "Gradual Highlight" },
-        { label: "Highlight", key: "Highlight" },
-        { label: "Font", key: "Increased Font" },
-        { label: "Gradual Font", key: "Gradual Font" },
-        { label: "Summary", key: "Summary Only" },
+
+        { label: "Set1_Plain_Text", key: "Without Visualization_set1" },
+        { label: "Set1_Gradual_Highlight", key: "Gradual Highlight_set1" },
+        { label: "Set1_Highlight", key: "Highlight_set1" },
+        { label: "Set1_Font", key: "Increased Font_set1" },
+        { label: "Set1_Gradual_Font", key: "Gradual Font_set1" },
+        { label: "Set1_Summary", key: "Summary Only_set1" },
+
+        { label: "Set2_Plain_Text", key: "Without Visualization_set2" },
+        { label: "Set2_Gradual_Highlight", key: "Gradual Highlight_set2" },
+        { label: "Set2_Highlight", key: "Highlight_set2" },
+        { label: "Set2_Font", key: "Increased Font_set2" },
+        { label: "Set2_Gradual_Font", key: "Gradual Font_set2" },
+        { label: "Set2_Summary", key: "Summary Only_set2" },
+
+        { label: "Set3_Plain_Text", key: "Without Visualization_set3" },
+        { label: "Set3_Gradual_Highlight", key: "Gradual Highlight_set3" },
+        { label: "Set3_Highlight", key: "Highlight_set3" },
+        { label: "Set3_Font", key: "Increased Font_set3" },
+        { label: "Set3_Gradual_Font", key: "Gradual Font_set3" },
+        { label: "Set3_Summary", key: "Summary Only_set3" },
     ];
     const data_avg = test_result_avg.data
 
@@ -91,6 +136,48 @@ export default function TestResult() {
         resultTable_avg = <CSVLink {...csvReport_avg} target="_blank">Export to CSV For Students Average Answers Time Results</CSVLink>
     }
 
+
+
+    //CSV FILE
+    const headers_reading_time= [
+        { label: "Student ID", key: "studentID" },
+        { label: "Age", key: "studentAge" },
+        { label: "Gender", key: "studentGender" },
+
+        { label: "Set1_Plain_Text", key: "Without Visualization_set1" },
+        { label: "Set1_Gradual_Highlight", key: "Gradual Highlight_set1" },
+        { label: "Set1_Highlight", key: "Highlight_set1" },
+        { label: "Set1_Font", key: "Increased Font_set1" },
+        { label: "Set1_Gradual_Font", key: "Gradual Font_set1" },
+        { label: "Set1_Summary", key: "Summary Only_set1" },
+
+        { label: "Set2_Plain_Text", key: "Without Visualization_set2" },
+        { label: "Set2_Gradual_Highlight", key: "Gradual Highlight_set2" },
+        { label: "Set2_Highlight", key: "Highlight_set2" },
+        { label: "Set2_Font", key: "Increased Font_set2" },
+        { label: "Set2_Gradual_Font", key: "Gradual Font_set2" },
+        { label: "Set2_Summary", key: "Summary Only_set2" },
+
+        { label: "Set3_Plain_Text", key: "Without Visualization_set3" },
+        { label: "Set3_Gradual_Highlight", key: "Gradual Highlight_set3" },
+        { label: "Set3_Highlight", key: "Highlight_set3" },
+        { label: "Set3_Font", key: "Increased Font_set3" },
+        { label: "Set3_Gradual_Font", key: "Gradual Font_set3" },
+        { label: "Set3_Summary", key: "Summary Only_set3" },
+    ];
+    const data_reading_time = test_result_reading_time.data
+
+    const csvReport_reading_time = {
+        data: data_reading_time,
+        headers: headers_reading_time,
+        filename: testName+'_Text_Reading_Time_Results.csv'
+
+
+    };
+    let resultTable_reading_time
+    if(testName != null) {
+        resultTable_reading_time = <CSVLink {...csvReport_reading_time} target="_blank">Export to CSV For Students Text Reading Time Results</CSVLink>
+    }
 
 
 
@@ -154,6 +241,9 @@ export default function TestResult() {
                 </div>
                 <div>
                     {resultTable_avg}
+                </div>
+                <div>
+                    {resultTable_reading_time}
                 </div>
                 <div>
                     {resultTable_rank}

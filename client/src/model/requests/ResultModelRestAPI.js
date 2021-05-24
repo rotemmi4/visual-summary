@@ -58,3 +58,9 @@ export function useGetTestRankingResult(test_name){
     const headers = {headers: {"x-auth-token": getToken()}}
     return useAxiosGet(url, headers, false)
 }
+
+export function useGetTestResultReadingTime(test_name){
+    const url = `http://127.0.0.1:5000/readingResults/${test_name}`
+    const headers = {headers: {"x-auth-token": getToken()}}
+    return useAxiosGet(url, headers, false)
+}

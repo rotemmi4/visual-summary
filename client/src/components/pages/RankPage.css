@@ -14,7 +14,7 @@ img{
 /*    align-items: center;*/
 /*}*/
 
-input[type="radio"]{
+input[type="no-radio"]{
     display: none;
     justify-content: center;
     align-items: center;

@@ -63,11 +63,11 @@ export default function ChooseTestAndVisualization(props) {
             setModalInformation("Text can be in Test only one time")
             setShow(true)
         }
-        else if(!(set_validation_visualization(0) && set_validation_visualization(1) && set_validation_visualization(1))){
-            console.log("Visualization can be in Set only one time")
-            setModalInformation("Visualization can be in Set only one time")
-            setShow(true)
-        }
+        // else if(!(set_validation_visualization(0) && set_validation_visualization(1) && set_validation_visualization(1))){
+        //     console.log("Visualization can be in Set only one time")
+        //     setModalInformation("Visualization can be in Set only one time")
+        //     setShow(true)
+        // }
         else{
             testRepository.saveTest(testName, "Choose Tests And Visualizations")
             for (let i = 0; i < 6; i++) {
