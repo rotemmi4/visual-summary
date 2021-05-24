@@ -11,10 +11,10 @@ export default function TextManagement() {
     const [name, setName]= useState("");
     const [modalShow,setModalShow] = useState(false)
     const [show, setShow] = useState(false);
-
+    const reload=()=>window.location.reload();
     const handleClose = () => {
         setModalShow(false)
-
+        reload();
     };
     const handleShow = () => setModalShow(true);
 
