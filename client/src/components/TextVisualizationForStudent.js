@@ -77,7 +77,7 @@ export function TextVisualizationForStudent(props){
 
 
     return (
-        <div style={{overflow: "auto", height: "700px"}}>
+        <div style={{overflow: "auto", height: "700px", width:"100%"}}>
         {/*<div style={{overflow: "auto", height: "700px", width: "45%"}}>*/}
 
             {/*<div> <span id={"maybeCount"}/>  </div>*/}

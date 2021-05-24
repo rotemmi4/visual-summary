@@ -30,19 +30,21 @@ export function StudentSummary(props){
 
 
     return (
-        <Container style={{overflowY:"auto" ,textAlign: 'center'}}>
+        <Container style={{overflowY:"auto" ,textAlign: 'center', width:"120%"}}>
             <h1>Summary</h1>
             <br/>
-            <br/>
-            <br/>
+
             <Form>
                 <Form.Group controlId="ControlTextarea">
-                    <Form.Label><b>Now you will need to summarize the text you have read, Please write the summary in english</b> <br/> *Max length - 500 characters.</Form.Label>
-                    <Form.Control as="textarea" maxLength={500} rows={10} value={textValue} onChange={handleChange} />
+                    <Form.Label><b>Now you will need to summarize the text you have read, Please write the summary in english</b> <br/> *Max length - 600 characters.</Form.Label>
+                    <Form.Control style={{width:"100%"}} as="textarea" maxLength={600} rows={18} value={textValue} onChange={handleChange} />
                 </Form.Group>
             </Form>
             <br/>
+
             <Button variant="outline-success" onClick={() => {set_student_summary(); props.moveToQuestions();}}>Submit</Button>
+            <br/>
+            <br/>
         </Container>
 
     )

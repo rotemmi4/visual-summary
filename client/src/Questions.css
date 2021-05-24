@@ -91,13 +91,13 @@
   background-color: #ff3333;
 }
 
-.button_question:hover {
+.button_question:focus {
   background-color: #555e7d;
 }
 
-.button_question:focus {
-  outline: none;
-}
+/*.button_question:focus {*/
+/*  outline: none;*/
+/*}*/
 
 .button_question svg {
   margin-right: 5px;
