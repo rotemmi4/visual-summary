@@ -51,7 +51,7 @@ export function TextVisualizationForStudent(props){
     const timer = () => {
         let counter = TIME_FOR_READING;
         timer1 = setInterval(function() {
-            console.log(counter);
+            // console.log(counter);
             counter--;
             if (counter < 0  ) {
                 try{

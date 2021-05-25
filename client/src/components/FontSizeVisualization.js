@@ -16,7 +16,7 @@ export function FontSizeVisualization(props){
 
             <br/>
             {sentences.map(sentence => (
-                sentence.weight > threshold ? <span style={{whiteSpace: "pre-line",'font-size': '150%' }}>{sentence.content}</span> : <span >{sentence.content}</span>
+                sentence.weight > threshold ? <span style={{whiteSpace: "pre-line",'font-size': '150%' }}>{sentence.content} </span> : <span >{sentence.content} </span>
             ))}
         </>
     )

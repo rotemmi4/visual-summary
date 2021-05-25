@@ -7,7 +7,7 @@ export function GradualFontVisualization(props){
 
     return (
         sentences.map(sentence => (
-            <span style={{whiteSpace: "pre-line" ,'font-size': + ((100 * sentence.weight) + 60) + '%'}}>{sentence.content}</span>
+            <span style={{whiteSpace: "pre-line" ,'font-size': + ((100 * sentence.weight) + 60) + '%'}}>{sentence.content} </span>
         ))
     )
 }
