@@ -180,3 +180,39 @@ export function useGetTestResultReadingTime(test_name){
 
     return test
 }
+
+export function useGetTestResultSummaryTime(test_name){
+
+    const [test, setTest] = useState({
+        loading: false,
+        data: [],
+        error: false
+    })
+
+    const testResults = ResultModelRestAPI.useGetTestResultSummaryTime(test_name)
+
+
+    useEffect( () => {
+        setTest({
+            loading: true,
+            data: [],
+            error: false
+        })
+        if(!testResults.error && !testResults.loading && testResults.data != null){
+            setTest({
+                loading: false,
+                data: testResults.data,
+                error: false
+            })
+        }
+        else {
+            setTest({
+                loading: false,
+                data: [],
+                error: true
+            })
+        }
+    },[testResults.data])
+
+    return test
+}

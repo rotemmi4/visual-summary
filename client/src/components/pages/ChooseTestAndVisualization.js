@@ -6,6 +6,7 @@ import {Button, Col, Container, Row} from "react-bootstrap";
 import {VisualizationDisplayModal} from "../VisualizationDisplayModal";
 import {AddTextModal} from "../AddTextModal";
 import {ValidationModal} from "../ValidationModal";
+import {DeleteQuestionModal} from "../DeleteQuestionModal";
 
 export default function ChooseTestAndVisualization(props) {
 
@@ -29,6 +30,15 @@ export default function ChooseTestAndVisualization(props) {
 
     const [show,setShow]=useState(false)
     const [modalInformation,setModalInformation]=useState("")
+
+    const reload=()=>window.location.reload();
+
+    const handleClose = () => {
+        setShow(false)
+        reload();
+    };
+
+    const handleShow = () => setShow(true);
 
     let callbackFunction = (propName, propValue, propType, visualType, textID, index,thresh) => {
 
@@ -57,29 +67,34 @@ export default function ChooseTestAndVisualization(props) {
         setThreshold(newThresholdTexts)
     }
 
+    // let saveFullTest = function (event) {
+    //     // if(!set_validation_texts() ){
+    //     //     console.log("Text can be in Test only one time.")
+    //     //     setModalInformation("Text can be in Test only one time")
+    //     //     setShow(true)
+    //     // }
+    //     // else if(!(set_validation_visualization(0) && set_validation_visualization(1) && set_validation_visualization(1))){
+    //     //     console.log("Visualization can be in Set only one time")
+    //     //     setModalInformation("Visualization can be in Set only one time")
+    //     //     setShow(true)
+    //     // }
+    //     // else{
+    //         testRepository.saveTest(testName, "Choose Tests And Visualizations")
+    //         for (let i = 0; i < 6; i++) {
+    //             textRepository.save(visualizationType[i], selectedTexts[i], propertyName[i], propertyValue[i], propertyType[i], testName,thresholdTexts[i],1)
+    //         }
+    //         for (let i = 6; i < 12; i++) {
+    //             textRepository.save(visualizationType[i], selectedTexts[i], propertyName[i], propertyValue[i], propertyType[i], testName,thresholdTexts[i],2)
+    //         }
+    //         for (let i = 12; i < 18; i++) {
+    //             textRepository.save(visualizationType[i], selectedTexts[i], propertyName[i], propertyValue[i], propertyType[i], testName,thresholdTexts[i],3)
+    //         }
+    //     // }
+    //
+    // }
+
     let saveFullTest = function (event) {
-        if(!set_validation_texts() ){
-            console.log("Text can be in Test only one time.")
-            setModalInformation("Text can be in Test only one time")
-            setShow(true)
-        }
-        // else if(!(set_validation_visualization(0) && set_validation_visualization(1) && set_validation_visualization(1))){
-        //     console.log("Visualization can be in Set only one time")
-        //     setModalInformation("Visualization can be in Set only one time")
-        //     setShow(true)
-        // }
-        else{
-            testRepository.saveTest(testName, "Choose Tests And Visualizations")
-            for (let i = 0; i < 6; i++) {
-                textRepository.save(visualizationType[i], selectedTexts[i], propertyName[i], propertyValue[i], propertyType[i], testName,thresholdTexts[i],1)
-            }
-            for (let i = 6; i < 12; i++) {
-                textRepository.save(visualizationType[i], selectedTexts[i], propertyName[i], propertyValue[i], propertyType[i], testName,thresholdTexts[i],2)
-            }
-            for (let i = 12; i < 18; i++) {
-                textRepository.save(visualizationType[i], selectedTexts[i], propertyName[i], propertyValue[i], propertyType[i], testName,thresholdTexts[i],3)
-            }
-        }
+        setShow(true)
 
     }
 
@@ -223,9 +238,9 @@ export default function ChooseTestAndVisualization(props) {
                     <Col></Col>
                 </Row>
                 <Button className="btn btn-primary" onClick={saveFullTest}>SAVE TEST</Button><br/><br/><br/>
-                <ValidationModal show={show} onHide={() => {
-                    setShow(false)
-                }} text={modalInformation}></ValidationModal>
+                <ValidationModal show={show} handleClose={handleClose}
+                 text={modalInformation}></ValidationModal>
+
             </Container>
         </>);
 };

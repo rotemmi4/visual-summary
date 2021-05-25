@@ -1,7 +1,7 @@
 export const COLORS = {
     '1':{
         Yellow:['#FFE83B'],
-        Green:['#31a354']
+        Green:['#8be7a8']
     },
     '3':{
         Green:['#f7fcb9','#addd8e','#31a354'],
@@ -9,7 +9,8 @@ export const COLORS = {
         Orange:['#fff7bc','#fec44f','#d95f0e']
     },
     '4':{
-        Green:['#ffffff','#f7fcb9','#addd8e','#31a354'],
+        // Green:['#ffffff','#ffffd1','#8bc48c','#759f80'],
+        Green:['#ffffff','#f3ffcd','#a7ef85','#29c869'],
         Yellow:['#ffffff','#fff176', '#ffff1a', '#fcdc00'],
         Orange:['#ffffff','#fff7bc','#fec44f','#d95f0e']
     },
