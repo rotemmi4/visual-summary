@@ -19,28 +19,23 @@ export function StudentQuestions(props) {
     const [allQuestions, setAllQuestions] = useState([])
     useEffect(() => {
         get_questions_and_answers(textID).then(response => {
-            // console.log(response.data)
             setAllQuestions(response.data)
             setTimer(new Date())
         })
     },[])
 
-    // let move_to = "BeforeRankingPage"
-    // let text_move_to = "Move to rank!"
-    // if(full_test_name.includes("after") && firstTime) {
-    //     setMove_to("Done");
-    //     setText_move_to("Finish!");
-    //     setFirstTime(false);
-    //     // move_to = "Done"
-    //     // text_move_to = "Finish!"
-    // }
 
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [showScore, setShowScore] = useState(false);
     const [score, setScore] = useState(0);
     const lastText = props.lastText
 
+
+    // const [isCorrect, setIsCorrect] = useState(false);
+    let correct = false;
+
     const handleAnswerOptionClick = (isCorrect) => {
+        // console.log("correct -> " + correct);
         if (isCorrect) {
             setScore(score + 1);
         }
@@ -50,7 +45,6 @@ export function StudentQuestions(props) {
         time = time - timer;
         time /= 1000;
         dict['time'] = time;
-
         dict['question_id'] = allQuestions[currentQuestionIndex].question_id
         dict['student_id'] = localStorage.getItem('student_id');
         dict['test_name'] = test_name;
@@ -100,8 +94,11 @@ export function StudentQuestions(props) {
                             </div>
                             <div className='answer-section'>
                                 {allQuestions[currentQuestionIndex].answer_options.map((answer_options) => (
-                                    <button className="button_question" onClick={() => handleAnswerOptionClick(answer_options.is_correct)}>{answer_options.answer_content}</button>
+                                    <button className="button_question" onClick={()=>{correct = answer_options.is_correct}}>{answer_options.answer_content}</button>
+                                    // <button className="button_question" onClick={() => handleAnswerOptionClick(answer_options.is_correct)}>{answer_options.answer_content}</button>
                                 ))}
+                                <br/>
+                                <button onClick={() => handleAnswerOptionClick(correct)}>Next</button>
                             </div>
                         </>
                     )}
