@@ -9,8 +9,8 @@ export const COLORS = {
         Orange:['#fff7bc','#fec44f','#d95f0e']
     },
     '4':{
-        // Green:['#ffffff','#ffffcc','#78c679','#31a354'],
-        Green:['#ffffff','#f6f8de','#c7ecb8','#8be7a8'],
+        // Green:['#ffffff','#ffffd1','#8bc48c','#759f80'],
+        Green:['#ffffff','#f3ffcd','#a7ef85','#29c869'],
         Yellow:['#ffffff','#fff176', '#ffff1a', '#fcdc00'],
         Orange:['#ffffff','#fff7bc','#fec44f','#d95f0e']
     },
