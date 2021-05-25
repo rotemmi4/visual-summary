@@ -12,30 +12,33 @@ export default function TestResult() {
     const test_result_count = resultRepository.useGetTestResultCount(testName)
     const test_result_avg = resultRepository.useGetTestResultAvg(testName)
     const test_result_reading_time = resultRepository.useGetTestResultReadingTime(testName)
+    const test_result_summary_time = resultRepository.useGetTestResultSummaryTime(testName)
+
 
     //CSV FILE
     const headers_sum= [
         { label: "Student ID", key: "studentID" },
+        { label: "Student Name", key: "name" },
         { label: "Age", key: "studentAge" },
         { label: "Gender", key: "studentGender" },
 
         { label: "Set1_Plain_Text", key: "Without Visualization_set1" },
-        { label: "Set1_Gradual_Highlight", key: "Gradual Highlight_set1" },
         { label: "Set1_Highlight", key: "Highlight_set1" },
+        { label: "Set1_Gradual_Highlight", key: "Gradual Highlight_set1" },
         { label: "Set1_Font", key: "Increased Font_set1" },
         { label: "Set1_Gradual_Font", key: "Gradual Font_set1" },
         { label: "Set1_Summary", key: "Summary Only_set1" },
 
         { label: "Set2_Plain_Text", key: "Without Visualization_set2" },
-        { label: "Set2_Gradual_Highlight", key: "Gradual Highlight_set2" },
         { label: "Set2_Highlight", key: "Highlight_set2" },
+        { label: "Set2_Gradual_Highlight", key: "Gradual Highlight_set2" },
         { label: "Set2_Font", key: "Increased Font_set2" },
         { label: "Set2_Gradual_Font", key: "Gradual Font_set2" },
         { label: "Set2_Summary", key: "Summary Only_set2" },
 
         { label: "Set3_Plain_Text", key: "Without Visualization_set3" },
-        { label: "Set3_Gradual_Highlight", key: "Gradual Highlight_set3" },
         { label: "Set3_Highlight", key: "Highlight_set3" },
+        { label: "Set3_Gradual_Highlight", key: "Gradual Highlight_set3" },
         { label: "Set3_Font", key: "Increased Font_set3" },
         { label: "Set3_Gradual_Font", key: "Gradual Font_set3" },
         { label: "Set3_Summary", key: "Summary Only_set3" },
@@ -57,26 +60,27 @@ export default function TestResult() {
     //CSV FILE
     const headers_count= [
         { label: "Student ID", key: "studentID" },
+        { label: "Student Name", key: "name" },
         { label: "Age", key: "studentAge" },
         { label: "Gender", key: "studentGender" },
 
         { label: "Set1_Plain_Text", key: "Without Visualization_set1" },
-        { label: "Set1_Gradual_Highlight", key: "Gradual Highlight_set1" },
         { label: "Set1_Highlight", key: "Highlight_set1" },
+        { label: "Set1_Gradual_Highlight", key: "Gradual Highlight_set1" },
         { label: "Set1_Font", key: "Increased Font_set1" },
         { label: "Set1_Gradual_Font", key: "Gradual Font_set1" },
         { label: "Set1_Summary", key: "Summary Only_set1" },
 
         { label: "Set2_Plain_Text", key: "Without Visualization_set2" },
-        { label: "Set2_Gradual_Highlight", key: "Gradual Highlight_set2" },
         { label: "Set2_Highlight", key: "Highlight_set2" },
+        { label: "Set2_Gradual_Highlight", key: "Gradual Highlight_set2" },
         { label: "Set2_Font", key: "Increased Font_set2" },
         { label: "Set2_Gradual_Font", key: "Gradual Font_set2" },
         { label: "Set2_Summary", key: "Summary Only_set2" },
 
         { label: "Set3_Plain_Text", key: "Without Visualization_set3" },
-        { label: "Set3_Gradual_Highlight", key: "Gradual Highlight_set3" },
         { label: "Set3_Highlight", key: "Highlight_set3" },
+        { label: "Set3_Gradual_Highlight", key: "Gradual Highlight_set3" },
         { label: "Set3_Font", key: "Increased Font_set3" },
         { label: "Set3_Gradual_Font", key: "Gradual Font_set3" },
         { label: "Set3_Summary", key: "Summary Only_set3" },
@@ -98,26 +102,27 @@ export default function TestResult() {
     //CSV FILE
     const headers_avg= [
         { label: "Student ID", key: "studentID" },
+        { label: "Student Name", key: "name" },
         { label: "Age", key: "studentAge" },
         { label: "Gender", key: "studentGender" },
 
         { label: "Set1_Plain_Text", key: "Without Visualization_set1" },
-        { label: "Set1_Gradual_Highlight", key: "Gradual Highlight_set1" },
         { label: "Set1_Highlight", key: "Highlight_set1" },
+        { label: "Set1_Gradual_Highlight", key: "Gradual Highlight_set1" },
         { label: "Set1_Font", key: "Increased Font_set1" },
         { label: "Set1_Gradual_Font", key: "Gradual Font_set1" },
         { label: "Set1_Summary", key: "Summary Only_set1" },
 
         { label: "Set2_Plain_Text", key: "Without Visualization_set2" },
-        { label: "Set2_Gradual_Highlight", key: "Gradual Highlight_set2" },
         { label: "Set2_Highlight", key: "Highlight_set2" },
+        { label: "Set2_Gradual_Highlight", key: "Gradual Highlight_set2" },
         { label: "Set2_Font", key: "Increased Font_set2" },
         { label: "Set2_Gradual_Font", key: "Gradual Font_set2" },
         { label: "Set2_Summary", key: "Summary Only_set2" },
 
         { label: "Set3_Plain_Text", key: "Without Visualization_set3" },
-        { label: "Set3_Gradual_Highlight", key: "Gradual Highlight_set3" },
         { label: "Set3_Highlight", key: "Highlight_set3" },
+        { label: "Set3_Gradual_Highlight", key: "Gradual Highlight_set3" },
         { label: "Set3_Font", key: "Increased Font_set3" },
         { label: "Set3_Gradual_Font", key: "Gradual Font_set3" },
         { label: "Set3_Summary", key: "Summary Only_set3" },
@@ -141,26 +146,27 @@ export default function TestResult() {
     //CSV FILE
     const headers_reading_time= [
         { label: "Student ID", key: "studentID" },
+        { label: "Student Name", key: "name" },
         { label: "Age", key: "studentAge" },
         { label: "Gender", key: "studentGender" },
 
         { label: "Set1_Plain_Text", key: "Without Visualization_set1" },
-        { label: "Set1_Gradual_Highlight", key: "Gradual Highlight_set1" },
         { label: "Set1_Highlight", key: "Highlight_set1" },
+        { label: "Set1_Gradual_Highlight", key: "Gradual Highlight_set1" },
         { label: "Set1_Font", key: "Increased Font_set1" },
         { label: "Set1_Gradual_Font", key: "Gradual Font_set1" },
         { label: "Set1_Summary", key: "Summary Only_set1" },
 
         { label: "Set2_Plain_Text", key: "Without Visualization_set2" },
-        { label: "Set2_Gradual_Highlight", key: "Gradual Highlight_set2" },
         { label: "Set2_Highlight", key: "Highlight_set2" },
+        { label: "Set2_Gradual_Highlight", key: "Gradual Highlight_set2" },
         { label: "Set2_Font", key: "Increased Font_set2" },
         { label: "Set2_Gradual_Font", key: "Gradual Font_set2" },
         { label: "Set2_Summary", key: "Summary Only_set2" },
 
         { label: "Set3_Plain_Text", key: "Without Visualization_set3" },
-        { label: "Set3_Gradual_Highlight", key: "Gradual Highlight_set3" },
         { label: "Set3_Highlight", key: "Highlight_set3" },
+        { label: "Set3_Gradual_Highlight", key: "Gradual Highlight_set3" },
         { label: "Set3_Font", key: "Increased Font_set3" },
         { label: "Set3_Gradual_Font", key: "Gradual Font_set3" },
         { label: "Set3_Summary", key: "Summary Only_set3" },
@@ -180,20 +186,65 @@ export default function TestResult() {
     }
 
 
+    //CSV FILE
+    const headers_summary_time= [
+        { label: "Student ID", key: "studentID" },
+        { label: "Student Name", key: "name" },
+        { label: "Age", key: "studentAge" },
+        { label: "Gender", key: "studentGender" },
+
+        { label: "Set1_Plain_Text", key: "Without Visualization_set1" },
+        { label: "Set1_Highlight", key: "Highlight_set1" },
+        { label: "Set1_Gradual_Highlight", key: "Gradual Highlight_set1" },
+        { label: "Set1_Font", key: "Increased Font_set1" },
+        { label: "Set1_Gradual_Font", key: "Gradual Font_set1" },
+        { label: "Set1_Summary", key: "Summary Only_set1" },
+
+        { label: "Set2_Plain_Text", key: "Without Visualization_set2" },
+        { label: "Set2_Highlight", key: "Highlight_set2" },
+        { label: "Set2_Gradual_Highlight", key: "Gradual Highlight_set2" },
+        { label: "Set2_Font", key: "Increased Font_set2" },
+        { label: "Set2_Gradual_Font", key: "Gradual Font_set2" },
+        { label: "Set2_Summary", key: "Summary Only_set2" },
+
+        { label: "Set3_Plain_Text", key: "Without Visualization_set3" },
+        { label: "Set3_Highlight", key: "Highlight_set3" },
+        { label: "Set3_Gradual_Highlight", key: "Gradual Highlight_set3" },
+        { label: "Set3_Font", key: "Increased Font_set3" },
+        { label: "Set3_Gradual_Font", key: "Gradual Font_set3" },
+        { label: "Set3_Summary", key: "Summary Only_set3" },
+    ];
+    const data_summary_time = test_result_summary_time.data
+
+    const csvReport_summary_time = {
+        data: data_summary_time,
+        headers: headers_summary_time,
+        filename: testName+'_Students_Summary_Time_Results.csv'
+
+
+    };
+    let resultTable_summary_time
+    if(testName != null) {
+        resultTable_summary_time = <CSVLink {...csvReport_summary_time} target="_blank">Export to CSV For Students Summary Time Results</CSVLink>
+    }
+
 
     const test_result_rank = resultRepository.useGetTestRankingResult(testName)
     const headers_rank= [
         { label: "Student ID", key: "student_id" },
-        { label: "Without Visualization Rank", key: "withoutVisualization_rank" },
-        { label: "Gradual Highlight Rank", key: "gradualHighlight_rank" },
+        { label: "Student Name", key: "name" },
+        { label: "Age", key: "studentAge" },
+        { label: "Gender", key: "studentGender" },
+        { label: "Plain Text Rank", key: "withoutVisualization_rank" },
         { label: "Highlight Rank", key: "highlight_rank" },
-        { label: "Increased Font Rank", key: "increasedFont_rank" },
+        { label: "Gradual Highlight Rank", key: "gradualHighlight_rank" },
+        { label: "Font Rank", key: "increasedFont_rank" },
         { label: "Gradual Font Rank", key: "gradualFont_rank" },
         { label: "Summary Only Rank", key: "summaryOnly_rank" },
-        { label: "Without Visualization Place", key: "withoutVisualization_place" },
-        { label: "Gradual Highlight Place", key: "gradualHighlight_place" },
+        { label: "Without Visualization Place", key: "WithoutVisualization_place" },
         { label: "Highlight Place", key: "highlight_place" },
-        { label: "Increased Font Place", key: "increasedFont_place" },
+        { label: "Gradual Highlight Place", key: "gradualHighlight_place" },
+        { label: "Font Place", key: "increasedFont_place" },
         { label: "Gradual Font Place", key: "gradualFont_place" },
         { label: "Summary Only Place", key: "summaryOnly_place" },
 
@@ -244,6 +295,9 @@ export default function TestResult() {
                 </div>
                 <div>
                     {resultTable_reading_time}
+                </div>
+                <div>
+                    {resultTable_summary_time}
                 </div>
                 <div>
                     {resultTable_rank}
