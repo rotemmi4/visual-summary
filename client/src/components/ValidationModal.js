@@ -26,11 +26,11 @@ export function ValidationModal(props) {
             <Modal.Body>
 
                 <Container>
-                    {/*<Col >*/}
-                    {/*    <text>The Test Don't Save!</text><br/>*/}
-                    {/*    <text style={{whiteSpace: "pre-line"}} >The Reason: {text}</text>*/}
-                    {/*</Col>*/}
-                    <Col><text>The Test Saved!</text></Col>
+                    <Col >
+                        <text>The Test Don't Save!</text><br/>
+                        <text style={{whiteSpace: "pre-line"}} >The Reason: {text}</text>
+                    </Col>
+                    {/*<Col><text>The Test Saved!</text></Col>*/}
                 </Container>
             </Modal.Body>
             <Modal.Footer>

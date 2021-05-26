@@ -35,7 +35,7 @@ export default function ChooseTestAndVisualization(props) {
 
     const handleClose = () => {
         setShow(false)
-        reload();
+        // reload();
     };
 
     const handleShow = () => setShow(true);
@@ -67,36 +67,36 @@ export default function ChooseTestAndVisualization(props) {
         setThreshold(newThresholdTexts)
     }
 
-    // let saveFullTest = function (event) {
-    //     // if(!set_validation_texts() ){
-    //     //     console.log("Text can be in Test only one time.")
-    //     //     setModalInformation("Text can be in Test only one time")
-    //     //     setShow(true)
-    //     // }
-    //     // else if(!(set_validation_visualization(0) && set_validation_visualization(1) && set_validation_visualization(1))){
-    //     //     console.log("Visualization can be in Set only one time")
-    //     //     setModalInformation("Visualization can be in Set only one time")
-    //     //     setShow(true)
-    //     // }
-    //     // else{
-    //         testRepository.saveTest(testName, "Choose Tests And Visualizations")
-    //         for (let i = 0; i < 6; i++) {
-    //             textRepository.save(visualizationType[i], selectedTexts[i], propertyName[i], propertyValue[i], propertyType[i], testName,thresholdTexts[i],1)
-    //         }
-    //         for (let i = 6; i < 12; i++) {
-    //             textRepository.save(visualizationType[i], selectedTexts[i], propertyName[i], propertyValue[i], propertyType[i], testName,thresholdTexts[i],2)
-    //         }
-    //         for (let i = 12; i < 18; i++) {
-    //             textRepository.save(visualizationType[i], selectedTexts[i], propertyName[i], propertyValue[i], propertyType[i], testName,thresholdTexts[i],3)
-    //         }
-    //     // }
-    //
-    // }
-
-    let saveFullTest = function (event) {
-        setShow(true)
+    async function saveFullTest(event) {
+        if(!set_validation_texts() ){
+            console.log("Text can be in Test only one time.")
+            setModalInformation("Text can be in Test only one time")
+            setShow(true)
+        }
+        // if(!(set_validation_visualization(0) && set_validation_visualization(1) && set_validation_visualization(2))){
+        //     console.log("Visualization can be in Set only one time")
+        //     setModalInformation("Visualization can be in Set only one time")
+        //     setShow(true)
+        // }
+        else{
+            testRepository.saveTest(testName, "Choose Tests And Visualizations")
+            for (let i = 0; i < 6; i++) {
+                textRepository.save(visualizationType[i], selectedTexts[i], propertyName[i], propertyValue[i], propertyType[i], testName,thresholdTexts[i],1)
+            }
+            for (let i = 6; i < 12; i++) {
+                textRepository.save(visualizationType[i], selectedTexts[i], propertyName[i], propertyValue[i], propertyType[i], testName,thresholdTexts[i],2)
+            }
+            for (let i = 12; i < 18; i++) {
+                textRepository.save(visualizationType[i], selectedTexts[i], propertyName[i], propertyValue[i], propertyType[i], testName,thresholdTexts[i],3)
+            }
+        }
 
     }
+
+    // let saveFullTest = function (event) {
+    //     setShow(true)
+    //
+    // }
 
     //VALIDATION
     let set_validation_texts=function (){
