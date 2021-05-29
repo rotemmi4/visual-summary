@@ -24,7 +24,7 @@ export function TextVisualizationFactory(props){
     else if (type == "Highlight"){
         return <HighlightVisualization sentences={props.sentences} HighlightColor={props.HighlightColor} selectColorR={props.selectColorR} selectColorG={props.selectColorG} selectColorB={props.selectColorB} threshold={threshold} />
     }
-    else if (type == "Increased Font"){
+    else if (type == "Font"){
         return <FontSizeVisualization sentences={props.sentences} threshold={threshold}/>
     }
     else if (type == "Gradual Font"){

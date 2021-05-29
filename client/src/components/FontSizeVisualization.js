@@ -1,4 +1,5 @@
 import React, {} from 'react'
+import {Container} from "react-bootstrap";
 
 
 export function FontSizeVisualization(props){
@@ -13,10 +14,8 @@ export function FontSizeVisualization(props){
 
     return (
         <>
-
-            <br/>
             {sentences.map(sentence => (
-                sentence.weight > threshold ? <span style={{whiteSpace: "pre-line",'font-size': '150%' }}>{sentence.content} </span> : <span >{sentence.content} </span>
+                sentence.weight > threshold ? <span style={{whiteSpace: "pre-line",'font-size': '150%' }}>{sentence.content} </span> : <span style={{whiteSpace: "pre-line"}}>{sentence.content} </span>
             ))}
         </>
     )

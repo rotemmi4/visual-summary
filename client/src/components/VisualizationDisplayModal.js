@@ -81,7 +81,7 @@ export function VisualizationDisplayModal(props) {
   }
 
   let thresholdBar
-    if(type == "Highlight" || type == "Increased Font" || type == "Summary Only" ){
+    if(type == "Highlight" || type == "Font" || type == "Summary Only" ){
         thresholdBar = <div><Form.Control  type="range" onChange={(e)=>{setThreshold(e.target.value / 100 )}}/>
             <p>Threshold: {threshold}</p></div>
     }
@@ -119,8 +119,8 @@ export function VisualizationDisplayModal(props) {
                 <label>Gradual Highlight</label>
               </div>
               <div class="form-check">
-                <input type="radio" checked={type === "Increased Font"} value="Increased Font" onChange={(e)=>{setType(e.target.value);setPropertyName("font"); setPropertyValue("18"); setPropertyType("int") }}/>
-                <label>Increased Font</label>
+                <input type="radio" checked={type === "Font"} value="Font" onChange={(e)=>{setType(e.target.value);setPropertyName("font"); setPropertyValue("18"); setPropertyType("int") }}/>
+                <label>Font</label>
               </div>
               <div class="form-check">
                 <input type="radio" checked={type === "Gradual Font"} value="Gradual Font" onChange={(e)=>{setType(e.target.value); setPropertyName("font"); setPropertyValue("18"); setPropertyType("int") ;setThreshold(0.5)}}/>

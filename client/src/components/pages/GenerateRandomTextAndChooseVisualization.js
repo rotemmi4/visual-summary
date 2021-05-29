@@ -67,31 +67,31 @@ export default function GenerateRandomTextAndChooseVisualization() {
         else
             return true
     }
-    // let saveFullTest = function(event){
+    let saveFullTest = function(event) {
+
+        // if (!(set_validation_visualization(0) && set_validation_visualization(1) && set_validation_visualization(1))) {
+        //     console.log("Visualization can be in Set only one time")
+        //     setModalInformation("Visualization can be in Set only one time")
+        //     setShow(true)
+        // } else {
+            testRepository.saveTest(testName, "Generate Random Texts And Choose Visualizations")
+            for (let i = 0; i < 6; i++) {
+                textRepository.save(visualizationType[i], selectedTexts[i], propertyName[i], propertyValue[i], propertyType[i], testName, thresholdTexts[i], 1)
+            }
+            for (let i = 6; i < 12; i++) {
+                textRepository.save(visualizationType[i], selectedTexts[i], propertyName[i], propertyValue[i], propertyType[i], testName, thresholdTexts[i], 2)
+            }
+            for (let i = 12; i < 18; i++) {
+                textRepository.save(visualizationType[i], selectedTexts[i], propertyName[i], propertyValue[i], propertyType[i], testName, thresholdTexts[i], 3)
+            }
+        // }
+    }
+
+
     //
-    //     if(!(set_validation_visualization(0) && set_validation_visualization(1) && set_validation_visualization(1))){
-    //         console.log("Visualization can be in Set only one time")
-    //         setModalInformation("Visualization can be in Set only one time")
-    //         setShow(true)
+    // let saveFullTest = function(event){
+    //     setShow(true)
     //     }
-    //     else{
-    //         testRepository.saveTest(testName,"Generate Random Texts And Choose Visualizations")
-    //         for (let i = 0; i < 6; i++) {
-    //             textRepository.save(visualizationType[i], selectedTexts[i], propertyName[i], propertyValue[i], propertyType[i], testName,thresholdTexts[i],1)
-    //         }
-    //         for (let i = 6; i < 12; i++) {
-    //             textRepository.save(visualizationType[i], selectedTexts[i], propertyName[i], propertyValue[i], propertyType[i], testName,thresholdTexts[i],2)
-    //         }
-    //         for (let i = 12; i < 18; i++) {
-    //             textRepository.save(visualizationType[i], selectedTexts[i], propertyName[i], propertyValue[i], propertyType[i], testName,thresholdTexts[i],3)
-    //         }
-    //     }
-
-// }
-
-    let saveFullTest = function(event){
-        setShow(true)
-        }
 
 
         // textRepository.save(type,id,propertyName,propertyValue,propertyType)
@@ -102,7 +102,9 @@ export default function GenerateRandomTextAndChooseVisualization() {
             <Container>
                 <h2 className="mb-3 text-left">Test: {testName}</h2><br/>
                 <h4>Generate Random Texts And Choose Visualizations</h4><br/>
-                {texts && texts.data ? texts.data.map((text,index) => (
+                {texts && texts.data  ? texts.data.map((text,index) => (
+                    <div>
+                    <text>Set {text.set}</text>
                     <Row className="justify-content-center">
                         <Col>
                             <p>{text.name}</p>
@@ -121,7 +123,9 @@ export default function GenerateRandomTextAndChooseVisualization() {
                                visualizationType={visualizationType[index]} threshold={thresholdTexts[index]}
                                propertyName={propertyName[index]} propertyValue={propertyValue[index]} propertyType={propertyType[index]}></VisualizationDisplayModal>
                         </Col>
+
                     </Row>
+                    </div>
 
                 )) : null}
                 <Button className="btn btn-primary" onClick={saveFullTest}>SAVE TEST</Button><br/><br/><br/>
