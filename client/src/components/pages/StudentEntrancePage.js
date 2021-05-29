@@ -12,7 +12,8 @@ export function StudentEntrancePage(){
         studentID: "",
         studentAge: "",
         studentGender: "Male",
-        studentName: ""
+        studentName: "",
+        studentDivision: ""
     })
 
     const handleInputChange = (event) => {

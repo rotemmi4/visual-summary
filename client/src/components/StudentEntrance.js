@@ -33,6 +33,13 @@ export function StudentEntrance(props){
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
               </Form.Control>
+                <br/>
+              <Form.Label>Student Division</Form.Label>
+              <Form.Control as="select"  name="studentDivision" onChange={props.handleInputChange}>
+                <option value="Software and Information Systems Engineering">Software and Information Systems Engineering</option>
+                <option value="Software Engineering">Software Engineering</option>
+                  <option value="Other">Other</option>
+              </Form.Control>
 
               <br/>
               <Link to={"/StudentExplanation"}>
