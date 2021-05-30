@@ -37,7 +37,7 @@ export function StudentSummary(props){
             <Form>
                 <Form.Group controlId="ControlTextarea">
                     <Form.Label><b>Now you will need to summarize the text you have read, Please write the summary in english</b> <br/> *Max length - 600 characters.</Form.Label>
-                    <Form.Control style={{width:"100%"}} as="textarea" maxLength={600} rows={18} value={textValue} onChange={handleChange} />
+                    <Form.Control style={{width:"100%"}} as="textarea" maxLength={850} rows={18} value={textValue} onChange={handleChange} />
                 </Form.Group>
             </Form>
             <br/>

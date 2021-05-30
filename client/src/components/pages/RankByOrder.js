@@ -197,19 +197,21 @@ export default function RankByOrderPage() {
                 </Row><br/>
 
 
-                <Row className="justify-content-center align-items-center">
-                    {/*<Link to={"/Done"}>*/}
-                    {/*    <Button variant="outline-success" onClick={saveFunc}>Save</Button><br/><br/><br/><br/><br/>*/}
-                    {/*</Link>*/}
-                    <Link to={`/Student/Test/${fullTextId}`}>
-                        <Button variant="outline-success" onClick={saveFunc}>Save</Button><br/><br/><br/><br/><br/>
-                    </Link>
-                </Row>
+            </div>
 
-
+            <div className="saveMe">
+                {/*<Link to={"/Done"}>*/}
+                {/*    <Button variant="outline-success" onClick={saveFunc}>Save</Button><br/><br/><br/><br/><br/>*/}
+                {/*</Link>*/}
+                <Link to={`/Student/Test/${fullTextId}`}>
+                    <Button variant="outline-success" size="lg" onClick={saveFunc}>Save</Button><br/><br/><br/><br/><br/>
+                </Link>
             </div>
 
         </Container>
+
+
+
     )
 
 }

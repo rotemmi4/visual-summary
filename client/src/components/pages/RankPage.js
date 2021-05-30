@@ -94,7 +94,7 @@ export default function RankPage() {
 
                     <Col>
                         <h3 className="block">Summary</h3>
-                        <img src={"/images/sammary.PNG"} alt=""/><br/><br/>
+                        <img src={"/images/sammary.PNG"} alt=""/><br/>
                         <StarRating type={"sammary"} parentCallback={callbackFunction}></StarRating>
                     </Col>
 

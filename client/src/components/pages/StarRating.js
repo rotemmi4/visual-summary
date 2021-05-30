@@ -15,7 +15,7 @@ const StarRating = (props) =>{
                     <label className="rated">
                         <div className="rate">
                         <input
-                            type="radio"
+                            type="no-radio"
                             name="rating"
                             value={ratingVal}
                             onClick={() => {setRating(ratingVal); props.parentCallback(ratingVal,props.type)}}
