@@ -2,14 +2,10 @@ import {Button, Container} from 'react-bootstrap'
 import React, {useEffect, useState} from "react";
 import {StudentQuestions} from "../StudentQuestions"
 import {Link} from "react-router-dom";
-import {
-    get_text_ids_and_info_by_test_id,
-    get_text_ids_by_test_id,
-    getTestGlobalInfo
-} from "../../model/requests/StudentModelRestAPI";
+import {getTestGlobalInfo} from "../../model/requests/StudentModelRestAPI";
 import {TextVisualizationForStudent} from "../TextVisualizationForStudent";
 import {StudentSummary} from "../StudentSummary";
-import * as StudentModelRestAPI from "../../model/requests/StudentModelRestAPI";
+import {StudentBreak} from "../StudentBreak";
 import {COLORS} from "../../colors";
 import "./StudentTestPage.css"
 
@@ -22,16 +18,15 @@ export function StudentTestPage(props){
     const testID = testIDFull.split("is")[0];
     localStorage.setItem('test_id', testID);
     localStorage.setItem('testIDFull', testIDFull);
-    const NUMBER_OF_TEXTS = 2;
     const TIME_FOR_READING = 5; // 5 Seconds ! we need 5 * 60 => 5 Minutes!
 
     const [showText, setShowText] = useState(true)
     const [showSummary, setShowSummary] = useState(false)
     const [showQuestions, setShowQuestions] = useState(false)
     const [showRanking, setShowRanking] = useState(false)
+    const [showBreak, setShowBreak] = useState(false)
 
     const [newText, setNewText] = useState(true)
-    const [summaryTimer, setSummaryTimer] = useState(new Date())
     const [readingTimer, setReadingTimer] = useState(0.0)
 
 
@@ -105,8 +100,16 @@ export function StudentTestPage(props){
     }
 
     const moveToText = ()=> {
-        if(textNumberIndex < finalTexts.length -1)
+        if(textNumberIndex === 5 && testIDFull.split("is")[1] === "before")
         {
+            setShowBreak(true)
+            setShowText(false)
+            setShowQuestions(false)
+            setShowSummary(false)
+        }
+        else if(textNumberIndex < finalTexts.length -1)
+        {
+
             setNewText(true);
             setTextNumberIndex(textNumberIndex +1);
             setShowText(true);
@@ -122,6 +125,15 @@ export function StudentTestPage(props){
             setShowRanking(true);
         }
 
+    }
+
+    const showTextAfterBreak = ()=> {
+        setShowBreak(false)
+        setNewText(true);
+        setTextNumberIndex(textNumberIndex +1);
+        setShowText(true);
+        setShowQuestions(false);
+        setShowSummary(false);
     }
 
 
@@ -166,6 +178,14 @@ export function StudentTestPage(props){
 
     }
 
+    if(finalTexts && finalTexts.length > 0)
+    {
+            var takeBreak = <Container> <StudentBreak showTextAfterBreak={showTextAfterBreak}
+
+                                 /> </Container>
+
+    }
+
 
     return (
         <Container className='rowC'>
@@ -182,6 +202,7 @@ export function StudentTestPage(props){
                                           You finished the reading!<br/> Click to continue.
                                      </Button>
                                  </Link>) :(<></>)}
+            {showBreak  ? (<div> {takeBreak} </div>) : (<></>)}
         </Container>
 
     )

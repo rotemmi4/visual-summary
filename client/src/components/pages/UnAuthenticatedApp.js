@@ -13,6 +13,7 @@ import  RankPage  from "./RankPage";
 import RankByOrderPage from "./RankByOrder";
 import TheLastPage from "./TheLastPage";
 import {BeforeRankingPage} from "./BeforeRankingPage";
+import {StudentBreak} from "../StudentBreak";
 
 function UnAuthenticatedApp() {
 

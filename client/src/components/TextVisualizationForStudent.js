@@ -11,7 +11,6 @@ export function TextVisualizationForStudent(props){
     const showBar = props.showBar
 
     const [showBtn, setShowBtn] = useState(false)
-    // const [countBtn, setCountBtn] = useState(0)
 
 
     let timer1 = undefined;
@@ -20,32 +19,6 @@ export function TextVisualizationForStudent(props){
     const startReadingTime = new Date();
 
 
-    // const timer = () => {
-    //     let counter = TIME_FOR_READING;
-    //     timer1 = setInterval(function() {
-    //         if (counter > 0) {
-    //             try{
-    //                 document.getElementById("maybeCount").innerHTML = "Seconds left: " + String(counter);
-    //             }catch (e){
-    //                 console.log("OK!")
-    //             }
-    //
-    //             counter--;
-    //         }
-    //         if (counter === 0) {
-    //             try{
-    //                 document.getElementById("maybeCount").innerHTML = "";
-    //             }catch (e){
-    //                 console.log("OK!")
-    //             }
-    //
-    //             props.moveToQuestions()
-    //             clearInterval(timer1);
-    //             this.timer1 = undefined;
-    //         }
-    //     }, 1000);
-    // }
-    // let timerBtn = <div>Check</div>
 
 
     const timer = () => {
