@@ -16,10 +16,7 @@ export function StudentExplanationPage(){
     const StartTest = () => {
 
         get_random_test_id().then( response => setStudentTestID(response.data));
-
     }
-
-    // let ax = useAxiosGet('http://127.0.0.1:5000/student/get_test_id');
 
     function get_random_test_id() {
         let chosen_test = TEST_ID;
@@ -28,7 +25,7 @@ export function StudentExplanationPage(){
     }
 
     let find_test = null
-    if(studentTestID != ""){
+    if(studentTestID !== ""){
         find_test=
             <div>
                 <Link to={`/Student/Test/${studentTestID}isbefore`} >
@@ -51,28 +48,44 @@ export function StudentExplanationPage(){
         <Container className="mb-3 my-5 " >
 
             <Card >
-              <Card.Body className="mb-3 my-5 " >
+              <Card.Body className="mb-3 my-5 align-items-center" >
                 <Card.Title className="text-center mb-3">
                     <h2>
                         Test Instructions
                     </h2>
                 </Card.Title>
-                <Card.Text className="align-items-center justify-content-center ">
-                  Welcome to our test!
+                <Card.Text className="align-items-center justify-content-center" >
+                    <p style={{textAlign: 'right'}}>
+                                          {/*Welcome to our test!*/}
+                  .שלום ותודה על השתתפותך בניסוי
                     <br/><br/>
-                    we here to check which of the visualizations is the best.<br/>
-                    so first of all you gonna get a text with some visualization and then answer on few questions.<br/>
-                    this you gonna make 12 time.<br/>
-                    after you finish all texts, you will need to degree the best visualization for you by choosing a score from 1 to 5.<br/>
+                    .מטרת הניסוי היא לבחון ויזואליזציות שונות בהשווה לטקסט המקורי ולהצגת טקסט מתומצת
+                    <br/>
+                    .במהלך הניסוי תדרש\י לקרוא מספר טקסטים המוצגים בויזואליזציות שונות
+                    <br/>
+                    .את\ה נדרש לקרוא כל טקסט לפחות 5 דקות ולאחר מכן תדרש לייצר סיכום של טקסט זה
+                    <br/>
+                    .בתום שלב הסיכום תצתרך לענות על מספר שאלות על הטקסט שקראת
+                    <br/>
+                    .כמו כן, תידרש לדרג את הויזואליזציות השונות לתמצות טקסט שהוצגו לך במהלך הניסוי
+                    {/*we here to check which of the visualizations is the best.<br/>*/}
+                    {/*so first of all you gonna get a text with some visualization and then answer on few questions.<br/>*/}
+                    {/*this you gonna make 12 time.<br/>*/}
+                    {/*after you finish all texts, you will need to degree the best visualization for you by choosing a score from 1 to 5.<br/>*/}
                     <br/><br/>
-                    Thanks for all support!<br/>
-                </Card.Text>
+                    {/*Thanks for all support!<br/>*/}
+                    </p>
+
+                </Card.Text >
                   {/*<Link to={`/Student/Test/${studentTestID}`} >*/}
                   {/*    <Button variant="primary" onClick={StartTest}>*/}
                   {/*        Start the test!*/}
                   {/*    </Button>*/}
                   {/*</Link>*/}
-                  {find_test}
+                  <div style={{textAlign:'center'}}>
+                      {find_test}
+                  </div>
+
 
               </Card.Body>
             </Card>
