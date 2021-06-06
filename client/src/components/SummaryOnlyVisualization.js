@@ -10,7 +10,7 @@ export function SummaryOnlyVisualization(props){
     return (
         <>
             {sentences.map(sentence => (
-                sentence.weight > threshold ? <span style={{whiteSpace: "pre-line"}}>{sentence.content} </span> : null
+                sentence.weight > threshold ? <span style={{whiteSpace: "pre-line", 'font-size': '120%'}}>{sentence.content} </span> : null
             ))}
         </>
     )

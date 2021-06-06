@@ -7,7 +7,7 @@ export function WithOutVisualization(props){
 
     return (
             sentences.map(sentence => (
-            <span style={{whiteSpace: "pre-line"}}  >{sentence.content} </span>
+            <span style={{whiteSpace: "pre-line", 'font-size': '120%'}}  >{sentence.content} </span>
             ))
 
     )

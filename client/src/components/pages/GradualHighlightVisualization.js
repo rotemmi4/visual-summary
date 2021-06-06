@@ -10,7 +10,7 @@ export function GradualHighlightVisualization(props){
             let colorIndex = parseInt(props.palette.length * sentence.weight);
             if (colorIndex == props.palette.length)
                 colorIndex--;
-            return <span style={{'background': props.palette[colorIndex], whiteSpace: "pre-line"}}>{sentence.content} </span>
+            return <span style={{'background': props.palette[colorIndex], whiteSpace: "pre-line", 'font-size': '120%'}}>{sentence.content} </span>
         })
     )
 }
