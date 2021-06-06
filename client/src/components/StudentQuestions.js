@@ -28,11 +28,13 @@ export function StudentQuestions(props) {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [showScore, setShowScore] = useState(false);
     const [score, setScore] = useState(0);
+    const [showNext, setShowNext] = useState(false);
     const lastText = props.lastText
 
 
     // const [isCorrect, setIsCorrect] = useState(false);
     let correct = false;
+//    let showNext = false;
 
     const handleAnswerOptionClick = (isCorrect) => {
         // console.log("correct -> " + correct);
@@ -94,11 +96,13 @@ export function StudentQuestions(props) {
                             </div>
                             <div className='answer-section'>
                                 {allQuestions[currentQuestionIndex].answer_options.map((answer_options) => (
-                                    <button className="button_question" onClick={()=>{correct = answer_options.is_correct}}>{answer_options.answer_content}</button>
+                                    <button className="button_question" onClick={()=>{correct=answer_options.is_correct; setShowNext(true)}}>{answer_options.answer_content}</button>
                                     // <button className="button_question" onClick={() => handleAnswerOptionClick(answer_options.is_correct)}>{answer_options.answer_content}</button>
                                 ))}
                                 <br/>
-                                <button onClick={() => handleAnswerOptionClick(correct)}>Next</button>
+                                {showNext ? (<button onClick={() => {handleAnswerOptionClick(correct); setShowNext(false)}}>Next</button>) : (<></>)}
+
+
                             </div>
                         </>
                     )}
