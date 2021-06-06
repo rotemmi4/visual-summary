@@ -55,18 +55,18 @@ export function StudentExplanationPage(){
                     </h2>
                 </Card.Title>
                 <Card.Text className="align-items-center justify-content-center" >
-                    <p style={{textAlign: 'right'}}>
+                    <p style={{textAlign: 'right', fontSize:"120%"}}>
                                           {/*Welcome to our test!*/}
                   .שלום ותודה על השתתפותך בניסוי
+                    <br/><br/><br/>
+                    .מטרת הניסוי היא לבחון ויזואליזציות שונות בהשוואה לטקסט המקורי ולהצגת טקסט מתומצת
                     <br/><br/>
-                    .מטרת הניסוי היא לבחון ויזואליזציות שונות בהשווה לטקסט המקורי ולהצגת טקסט מתומצת
-                    <br/>
                     .במהלך הניסוי תדרש\י לקרוא מספר טקסטים המוצגים בויזואליזציות שונות
-                    <br/>
+                    <br/><br/>
                     .את\ה נדרש לקרוא כל טקסט לפחות 5 דקות ולאחר מכן תדרש לייצר סיכום של טקסט זה
-                    <br/>
-                    .בתום שלב הסיכום תצתרך לענות על מספר שאלות על הטקסט שקראת
-                    <br/>
+                    <br/><br/>
+                    .בתום שלב הסיכום תצטרך לענות על מספר שאלות על הטקסט שקראת
+                    <br/><br/>
                     .כמו כן, תידרש לדרג את הויזואליזציות השונות לתמצות טקסט שהוצגו לך במהלך הניסוי
                     {/*we here to check which of the visualizations is the best.<br/>*/}
                     {/*so first of all you gonna get a text with some visualization and then answer on few questions.<br/>*/}
