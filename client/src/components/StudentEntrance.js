@@ -36,9 +36,10 @@ export function StudentEntrance(props){
                 <br/>
               <Form.Label>Student Division</Form.Label>
               <Form.Control as="select"  name="studentDivision" onChange={props.handleInputChange}>
-                <option value="Software and Information Systems Engineering">Software and Information Systems Engineering</option>
+                <option value=" "> </option>
+                  <option value="Software and Information Systems Engineering">Software and Information Systems Engineering</option>
                 <option value="Software Engineering">Software Engineering</option>
-                  <option value="Other">Other</option>
+                  {/*<option value="Other">Other</option>*/}
               </Form.Control>
 
               <br/>

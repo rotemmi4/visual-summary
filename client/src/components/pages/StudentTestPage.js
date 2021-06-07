@@ -18,7 +18,7 @@ export function StudentTestPage(props){
     const testID = testIDFull.split("is")[0];
     localStorage.setItem('test_id', testID);
     localStorage.setItem('testIDFull', testIDFull);
-    const TIME_FOR_READING = 5; // 5 Seconds ! we need 5 * 60 => 5 Minutes!
+    const TIME_FOR_READING = 5 * 60; // 5 Seconds ! we need 5 * 60 => 5 Minutes!
 
     const [showText, setShowText] = useState(true)
     const [showSummary, setShowSummary] = useState(false)
