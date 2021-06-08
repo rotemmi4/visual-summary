@@ -32,7 +32,7 @@ export function StudentQuestions(props) {
     const lastText = props.lastText
 
 
-    // const [isCorrect, setIsCorrect] = useState(false);
+    const [isCorrect1, setIsCorrect1] = useState(false);
     let correct = false;
 //    let showNext = false;
 
@@ -54,6 +54,7 @@ export function StudentQuestions(props) {
         newList.push(dict)
         setResults(newList)
         // set timer
+        console.log(dict)
         setTimer(new Date())
         const nextQuestion = currentQuestionIndex + 1;
         if (nextQuestion < allQuestions.length) {
@@ -96,11 +97,11 @@ export function StudentQuestions(props) {
                             </div>
                             <div className='answer-section'>
                                 {allQuestions[currentQuestionIndex].answer_options.map((answer_options) => (
-                                    <button className="button_question" onClick={()=>{correct=answer_options.is_correct; setShowNext(true)}}>{answer_options.answer_content}</button>
+                                    <button className="button_question" onClick={()=>{setIsCorrect1(answer_options.is_correct); setShowNext(true)}}>{answer_options.answer_content}</button>
                                     // <button className="button_question" onClick={() => handleAnswerOptionClick(answer_options.is_correct)}>{answer_options.answer_content}</button>
                                 ))}
                                 <br/>
-                                {showNext ? (<button onClick={() => {handleAnswerOptionClick(correct); setShowNext(false)}}>Next</button>) : (<></>)}
+                                {showNext ? (<button onClick={() => {handleAnswerOptionClick(isCorrect1); setShowNext(false)}}>Next</button>) : (<></>)}
 
 
                             </div>
