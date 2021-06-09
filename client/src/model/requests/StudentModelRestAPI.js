@@ -126,9 +126,15 @@ export function updateRank(student_id, WithoutVisualization_place ,highlight_pla
 
 export function saveStudentSummary(student_id,text_id,summary, readingTime, summaryTime){
     const url = 'http://127.0.0.1:5000/saveSummary'
-    const s1 = summary.replaceAll("\n"," ").replaceAll("\r"," ").replaceAll("\t"," ")
-    const body = "{  \"student_id\":\"" + student_id + "\", \"text_id\":\"" + text_id + "\", " +
-        "\"summary\":\"" + s1 + "\", \"readingTime\":\"" + readingTime + "\", \"summaryTime\":\"" + summaryTime + "\" }"
+    // const s1 = summary.replaceAll("\n"," ").replaceAll("\r"," ")
+    //     .replaceAll("\t"," ").replaceAll("\"","\"\"")
+    const body = {
+        "student_id": student_id,
+        "text_id": text_id,
+        "summary": summary,
+        "readingTime": readingTime,
+        "summaryTime": summaryTime
+    }
     //const headers = {headers : {"x-auth-token": getToken()}}
     return axios.post(url,body)
 }
