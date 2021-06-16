@@ -25,7 +25,7 @@ export default function ShowTest() {
         else if(id == 2)
             return "Highlight"
         else if(id == 3)
-            return "Increased Font"
+            return "Font"
         else if(id == 4)
             return "Gradual Font"
         else
